@@ -19,96 +19,269 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Latin Learning Application designed as an interactive, module-based platform for learning Latin through dynamic content and active practice sessions.
+Latin Learning Application - An interactive, module-based platform for learning Latin through dynamic content and active practice sessions.
+
+### Current Project State (Last Updated: 2025-08-09)
+
+#### ✅ Completed:
+1. **Monorepo Structure** - Set up with npm workspaces
+   - `/apps/web` - React SPA with Vite
+   - `/apps/mobile` - React Native with Expo
+   - `/packages/types` - Shared TypeScript definitions
+   - `/packages/data` - Vocabulary data service
+   - `/packages/shared` - Shared utilities (to be expanded)
+
+2. **Web App Foundation**
+   - Dark theme configured with MUI (Material-UI)
+   - Dashboard/Homepage component with stats and quick actions
+   - Theme: Dark background (#121212) with purple (#BB86FC) and cyan (#03DAC6) accents
+
+3. **Data Layer**
+   - 690 Latin words imported from vocabulary.json
+   - Normalized data structure with IDs and consistent types
+   - VocabularyService class for filtering, searching, and retrieving words
+   - Script to normalize vocabulary data (`scripts/normalize-vocabulary.js`)
+
+4. **Development Environment**
+   - Git repository initialized
+   - Comprehensive .gitignore configured
+   - Dev server runs on http://localhost:5173
+
+#### 🚧 In Progress:
+- Study Session feature - Component-based architecture started
+- DurationSelector component created
+
+#### 📋 Next Steps:
+- Complete Study Session components (see NEXT_STEPS.md)
+- Implement routing between pages
+- Add state management for session data
+- Create flashcard and drill components
 
 ## Technical Stack
 
-- **Architecture**: Single Page Application (SPA)
-- **Web Framework**: React.js (use Vite for initial setup)
-- **Mobile Framework**: React Native
+- **Architecture**: Single Page Application (SPA) + Mobile App
+- **Web Framework**: React 18 with TypeScript
+- **Build Tool**: Vite
+- **Mobile Framework**: React Native with Expo
 - **UI Components**: 
-  - Web: MUI (Material-UI) - Material Design 3 components only
+  - Web: MUI (Material-UI v6) - Material Design 3 components only
   - Mobile: React Native Paper
-- **State Management**: React Context API (consider Zustand if complexity grows)
-- **AI Integration**: Gemini API for dynamic content generation
-- **Internationalization**: Support for multiple languages (Spanish as initial target)
-
-## Development Approach
-
-**Component-First Methodology**: Always develop and test individual components before assembling screens. Each component should be:
-1. Defined independently
-2. Coded as a reusable module
-3. Tested in isolation
-
-## UI/UX Requirements
-
-- **Theme**: Dark theme by default (#121212 background)
-- **Color Scheme**:
-  - Primary (high-emphasis): Purple
-  - Secondary (medium-emphasis): Blue
-  - Text/Icons: Light grey/off-white for contrast
-- **Layout**: Fully responsive, viewport-contained without main page scrolling
-- **Scrolling**: Internal components become independently scrollable when content exceeds predetermined height
-
-## Core Module: Study Session
-
-The application centers around a three-phase study session:
-
-1. **Configuration Screen**:
-   - Word selection via filterable dropdown
-   - Session duration selection (5/10/15 minutes)
-   - Drill type selection using Filter Chips
-
-2. **Study Phase (Flashcards)**:
-   - Two-step reveal: Latin grammatical info → Spanish translation
-   - Gemini API integration for example sentence generation
-   - Non-flipping cards (click to reveal translation)
-
-3. **Exercise Phase**:
-   - Timed drills with instant feedback
-   - Multiple exercise types (Multiple Choice, Fill-in-the-Blank, Direct Input)
+- **State Management**: React Context API (will add Zustand if needed)
+- **Routing**: React Router DOM (to be implemented)
+- **AI Integration**: Gemini API (future)
+- **Internationalization**: i18next (installed, not configured)
 
 ## Development Commands
 
-Since this is a new project, initialize with:
-
 ```bash
-# For React (Vite) setup
-npm create vite@latest . -- --template react
+# Install dependencies (from root)
 npm install
 
-# Essential dependencies to install
-npm install @mui/material @emotion/react @emotion/styled
-npm install react-router-dom
-npm install i18next react-i18next
+# Run web app
+npm run dev:web
+# Or directly:
+cd apps/web && npm run dev
 
-# Development
-npm run dev
+# Run mobile app  
+npm run dev:mobile
+# Or directly:
+cd apps/mobile && npm start
 
-# Build
-npm run build
+# Normalize vocabulary data
+node scripts/normalize-vocabulary.js
 
-# Preview production build
-npm run preview
+# Build web app
+npm run build:web
 ```
 
 ## Project Structure
 
-Recommended directory structure:
 ```
-src/
-  components/     # Reusable UI components
-  screens/        # Full screen views
-  contexts/       # React Context providers
-  services/       # API integrations (Gemini)
-  utils/          # Helper functions
-  i18n/          # Internationalization files
-  data/          # Vocabulary database
+latin2/
+├── apps/
+│   ├── web/                    # React web application
+│   │   ├── src/
+│   │   │   ├── app/            # App-level components (future: router, providers)
+│   │   │   ├── config/         # Configuration (theme.ts)
+│   │   │   ├── features/       # Feature-based modules
+│   │   │   │   ├── dashboard/  # Homepage
+│   │   │   │   └── study-session/ # Study session (in progress)
+│   │   │   ├── components/     # Shared components (to be added)
+│   │   │   ├── hooks/          # Custom React hooks (to be added)
+│   │   │   └── services/       # API services (future)
+│   │   └── index.html
+│   └── mobile/                  # React Native app
+│       └── src/                 # To be structured
+├── packages/
+│   ├── types/                   # TypeScript type definitions
+│   ├── data/                    # Data service layer
+│   └── shared/                  # Shared utilities
+├── scripts/
+│   └── normalize-vocabulary.js  # Data normalization script
+├── vocabulary.json              # Original Latin words data
+├── vocabulary-normalized.json   # Processed data with IDs
+└── CLAUDE.md                    # This file
 ```
 
-## Key Implementation Notes
+## Component Development Guidelines
 
-- No custom-styled interactive components - use Material Design 3 exclusively
-- All user-facing text must be i18n-ready
-- Vocabulary data structure should include: Nominative, Genitive, Declension, Gender, Spanish translation
-- Session state should track: selected words, duration, drill types, progress, scores
+### Component-First Methodology
+1. **Build small, focused components first**
+   - Each component should have a single responsibility
+   - Components should be reusable and not know about larger context
+   - Example: DurationSelector only handles duration selection
+
+2. **Component Types:**
+   - **Presentational/Dumb Components**: Only display UI, receive props, emit events
+   - **Container/Smart Components**: Manage state and business logic
+   - **Layout Components**: Handle page structure and composition
+
+3. **Props Pattern:**
+   ```typescript
+   interface ComponentProps {
+     value: SomeType;           // Data to display
+     onChange: (val) => void;    // Callback for changes
+     disabled?: boolean;         // Optional props with ?
+   }
+   ```
+
+4. **File Organization:**
+   ```
+   feature/
+   ├── components/
+   │   ├── FeatureMain.tsx     # Main container
+   │   ├── SubComponent.tsx    # Smaller pieces
+   │   └── index.ts           # Barrel export
+   ├── hooks/                  # Feature-specific hooks
+   ├── types/                  # Feature types
+   └── utils/                  # Feature utilities
+   ```
+
+## CSS/Styling Guidelines
+
+### MUI sx prop patterns:
+```javascript
+sx={{
+  // Spacing (multiplied by 8px)
+  p: 2,      // padding: 16px
+  m: 2,      // margin: 16px
+  px: 2,     // padding-left and padding-right
+  py: 2,     // padding-top and padding-bottom
+  mt: 2,     // margin-top
+  mb: 2,     // margin-bottom
+  
+  // Flexbox
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  
+  // Sizing
+  width: '100%',
+  minHeight: 400,
+  
+  // Colors (use theme colors)
+  bgcolor: 'background.paper',
+  color: 'text.primary',
+}}
+```
+
+## Vocabulary Data Structure
+
+```typescript
+interface NormalizedLatinWord {
+  id: string;                    // e.g., "word_rosa_0001"
+  nominative: string;            // e.g., "Rosa"
+  genitive: string;              // e.g., "rosae"
+  declension: '1st' | '2nd' | '3rd' | '4th' | '5th';
+  gender: 'masculine' | 'feminine' | 'neuter';
+  spanishTranslation: string;
+  additionalMeanings: string[];
+  exampleSentence?: string;      // For AI generation
+}
+```
+
+## Study Session Architecture
+
+### Phase 1: Configuration
+- Word selection with filters
+- Duration selection (5/10/15 min)
+- Drill type selection
+
+### Phase 2: Flashcards
+- Show nominative, genitive, declension, gender
+- Click to reveal Spanish translation
+- "Generate Example" button for AI sentences
+
+### Phase 3: Drills
+- Multiple choice (Latin→Spanish, Spanish→Latin)
+- Fill in the blank
+- Direct input
+
+## Important Implementation Notes
+
+1. **No Backend Yet** - All data comes from local JSON files
+2. **No Custom Styling** - Use only MUI components
+3. **Mobile Responsive** - All layouts must work on phones
+4. **Dark Theme Only** - No light theme switch needed
+5. **Spanish UI** - All user-facing text in Spanish
+6. **Extensive Comments** - Every component heavily commented
+
+## Common Patterns to Use
+
+### State Management
+```javascript
+const [value, setValue] = useState(initialValue);
+```
+
+### Event Handlers
+```javascript
+const handleClick = () => {
+  // Handle the event
+};
+```
+
+### Conditional Rendering
+```javascript
+{condition && <Component />}
+{condition ? <ComponentA /> : <ComponentB />}
+```
+
+### Array Mapping
+```javascript
+{items.map(item => (
+  <Component key={item.id} {...item} />
+))}
+```
+
+## Git Workflow
+
+```bash
+# Check status
+git status
+
+# Add changes
+git add .
+
+# Commit with descriptive message
+git commit -m "feat: add component name"
+
+# Push to GitHub
+git push origin main
+```
+
+## Troubleshooting
+
+### Common Issues:
+1. **Module not found**: Run `npm install` from root
+2. **Port already in use**: Kill process on port 5173 or change port in vite.config
+3. **TypeScript errors**: Check imports and type definitions
+4. **Component not rendering**: Check exports/imports and console for errors
+
+## Resources for Learning
+
+- React Docs: https://react.dev
+- MUI Components: https://mui.com/components
+- TypeScript Handbook: https://www.typescriptlang.org/docs/
+- Vite Guide: https://vitejs.dev/guide/
+- CSS Flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
