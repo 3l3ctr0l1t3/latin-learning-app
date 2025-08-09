@@ -1,0 +1,92 @@
+Project Requirement Summary: Latin Learning Application
+As of: Saturday, August 9, 2025
+
+1. Core Concept & Vision
+An interactive, module-based application for learning Latin. The platform is designed to move beyond static lessons by integrating dynamic content and focusing on active practice through configurable study sessions.
+
+2. Technical Requirements
+Architecture: The application will be a Single Page Application (SPA) to ensure a fast, fluid user experience without page reloads.
+
+Codebase: A single, unified codebase will be used to build and deploy both the web and mobile applications.
+
+Web Framework: React.js (e.g., using Vite or Next.js).
+
+Mobile Framework: React Native.
+
+Development Paradigm: The project will follow a strict component-first methodology. Before any screen or view is assembled, all the individual components that comprise it must be defined, coded, and tested independently. This ensures a modular and reusable UI foundation.
+
+UI Component Library: The UI will be constructed exclusively using Material Design 3 components. No custom-styled interactive components will be created.
+
+Web Implementation: MUI (formerly Material-UI).
+
+Mobile Implementation: React Native Paper.
+
+State Management:
+
+Initial: React Context API for managing local and session state.
+
+Scalability: Zustand as a potential lightweight solution if state complexity grows.
+
+AI Integration: The application will leverage the Gemini API to provide dynamic, context-aware learning aids, such as generating example sentences for vocabulary words.
+
+Internationalization (i18n): The application should be architected to support multiple languages in the future. The initial target language will be Spanish. All user-facing text and content should be managed in a way that facilitates easy translation.
+
+3. UI/UX & Theme
+Theme Type: A Dark Theme will be the default and primary theme to reduce eye strain during study sessions.
+
+Color Palette & Roles:
+
+Background/Surface: A dark grey (e.g., #121212) will serve as the base for all screens and surfaces.
+
+Primary Color (High-Emphasis): Purple will be used for primary actions and key interactive elements (e.g., main buttons, progress indicators).
+
+Secondary Color (Medium-Emphasis): Blue will be used for secondary actions and interactive elements (e.g., filter chips, highlighting selections).
+
+"On" Colors (Text/Icons):
+
+On Primary/Secondary surfaces: A light, high-contrast white/off-white.
+
+On Background/Surface: A light grey for body text and icons to ensure readability without being harsh.
+
+Layout: The application layout must be fully responsive and fit within the viewport on all screen sizes without requiring the main page to scroll. Internal components, such as the "Selected Words View," must become independently scrollable when their content exceeds a predetermined height to maintain the overall page structure.
+
+4. Functional Requirements: "Study Session" Module
+This is the core user flow designed for active learning.
+
+Phase I: Session Configuration Screen
+Word Selection: Users can efficiently build a study list by:
+
+Filtering the entire vocabulary database by Searching for specific words via a text input field using a dropdown menu.
+
+Selecting multiple words at once from the filtered list in the dropdown .
+
+Selected Words View: A separate, scrollable list clearly displays all words currently chosen for the session, with the ability to remove words individually.
+
+Duration Selection: The user selects a fixed session time (5, 10, or 15 minutes) via a Segmented Button.
+
+Drill Selection: The user chooses one or more exercise types using toggleable Filter Chips.
+
+Phase II: Study Phase (Flashcards)
+Card Content: Each card is designed for a two-step reveal process:
+
+Initial View (Front): Displays the full grammatical information: Nominative, Genitive, Declension (e.g., "3rd decl."), and Gender.
+
+Revealed View (Back): Displays the Spanish translation alongside the original Latin word for reinforcement.
+
+Functionality: The card is not a literal flipping card. Instead, a user clicks or taps on the card to reveal the Spanish translation. This allows all information to be visible at once after the interaction. Users can navigate through the randomized deck.
+
+Gemini Feature: A "Generate Example" button on each card calls the Gemini API to create a unique Latin sentence using that word, providing valuable context.
+
+Progression: The app suggests moving to the exercises after a few cycles through the deck, though the user can proceed at any time via a persistent button.
+
+Phase III: Exercise Phase (Drills)
+Core Logic: A timed session where the app presents a randomized sequence of the selected drill types, using the selected words. Users receive instant feedback.
+
+Proposed Drill Types:
+
+Multiple Choice Translation (Latin to Spanish & Spanish to Latin).
+
+Fill-in-the-Blank (testing noun cases in context).
+
+Direct Input Translation (typing the Latin word (Nom.Gen, declension and genre) from a Spanish prompt ).
+

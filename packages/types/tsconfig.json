@@ -1,0 +1,46 @@
+{
+  // TypeScript Configuration File
+  // This tells TypeScript how to compile our code
+  "compilerOptions": {
+    // Which version of JavaScript to compile to
+    // "ES2020" is modern JavaScript supported by recent browsers
+    "target": "ES2020",
+    
+    // Which module system to use (how files import/export)
+    // "ESNext" uses the latest JavaScript module syntax
+    "module": "ESNext",
+    
+    // How TypeScript resolves module imports
+    // "node" means it follows Node.js rules for finding files
+    "moduleResolution": "node",
+    
+    // Enables all strict type checking options
+    // This catches more potential bugs (like Java with all warnings on)
+    "strict": true,
+    
+    // Generate .d.ts declaration files (type definition files)
+    // These help other packages understand our types
+    "declaration": true,
+    
+    // Where to output compiled JavaScript files
+    "outDir": "./dist",
+    
+    // Allow importing JSON files as modules
+    "resolveJsonModule": true,
+    
+    // Ensure consistent casing in file names (important for cross-platform)
+    "forceConsistentCasingInFileNames": true,
+    
+    // Skip type checking of declaration files in node_modules (faster builds)
+    "skipLibCheck": true,
+    
+    // Allow default imports from modules with no default export
+    "esModuleInterop": true
+  },
+  
+  // Which files to include in compilation
+  "include": ["src/**/*"],
+  
+  // Which files to exclude from compilation
+  "exclude": ["node_modules", "dist"]
+}

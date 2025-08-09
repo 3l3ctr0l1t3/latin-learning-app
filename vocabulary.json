@@ -1,0 +1,7019 @@
+[
+  {
+    "nominative": "Agricola",
+    "genitive": "agricolae",
+    "gender": "masculine",
+    "declension": 1,
+    "spanishMeaning": "agricultor",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Ala",
+    "genitive": "alae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "ala",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Amicitia",
+    "genitive": "amicitiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "amistad",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Analogia",
+    "genitive": "analogiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "analogía",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Ancilla",
+    "genitive": "ancillae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "criada",
+    "additionalMeanings": [
+      "sierva",
+      "latín clásico: esclava"
+    ]
+  },
+  {
+    "nominative": "Angustia",
+    "genitive": "angustiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "estrechez",
+    "additionalMeanings": [
+      "escasez",
+      "pobreza",
+      "angustia"
+    ]
+  },
+  {
+    "nominative": "Anima",
+    "genitive": "animae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "alma",
+    "additionalMeanings": [
+      "principio vital"
+    ]
+  },
+  {
+    "nominative": "Aqua",
+    "genitive": "aquae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "agua",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Āra",
+    "genitive": "ārae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "altar",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Arca",
+    "genitive": "arcae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "cofre",
+    "additionalMeanings": [
+      "caja",
+      "arca / arca foederis: Arca de la Alianza"
+    ]
+  },
+  {
+    "nominative": "Astronomia",
+    "genitive": "astronomiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "astronomía",
+    "additionalMeanings": [
+      "estudio de los astros y el universo"
+    ]
+  },
+  {
+    "nominative": "Aula",
+    "genitive": "aulae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "patio",
+    "additionalMeanings": [
+      "salón",
+      "clase"
+    ]
+  },
+  {
+    "nominative": "Avāritia",
+    "genitive": "avāritiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "codicia",
+    "additionalMeanings": [
+      "avaricia"
+    ]
+  },
+  {
+    "nominative": "Basílica",
+    "genitive": "basílicae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "Latín clásico: edificio público utilizado para transacciones comerciales y procedimientos legales",
+    "additionalMeanings": [
+      "latín medieval: iglesia",
+      "basílica"
+    ]
+  },
+  {
+    "nominative": "Bēstia",
+    "genitive": "bēstiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "bestia",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Biologia",
+    "genitive": "biologiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "biología",
+    "additionalMeanings": [
+      "estudio de los seres vivos"
+    ]
+  },
+  {
+    "nominative": "Botanica",
+    "genitive": "botanicae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "botánica",
+    "additionalMeanings": [
+      "ciencia de las plantas"
+    ]
+  },
+  {
+    "nominative": "Causa",
+    "genitive": "causae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "causa",
+    "additionalMeanings": [
+      "razón",
+      "motivo",
+      "ocasión",
+      "oportunidad"
+    ]
+  },
+  {
+    "nominative": "Cella",
+    "genitive": "cellae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "latín tardio: lugar de ocultación",
+    "additionalMeanings": [
+      "almacén",
+      "granero",
+      "latín medieval: celda (monástica)",
+      "monasterio"
+    ]
+  },
+  {
+    "nominative": "Chimia",
+    "genitive": "chimiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "química",
+    "additionalMeanings": [
+      "estudio de la composición de la materia"
+    ]
+  },
+  {
+    "nominative": "Columna",
+    "genitive": "columnae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "columna",
+    "additionalMeanings": [
+      "pilar"
+    ]
+  },
+  {
+    "nominative": "Continentia",
+    "genitive": "continentiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "continencia",
+    "additionalMeanings": [
+      "autodominio"
+    ]
+  },
+  {
+    "nominative": "Copia",
+    "genitive": "copiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "abundancia / copiae, -ārum: fuerzas, tropas",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Coquīna",
+    "genitive": "coquīnae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "cocina",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Corona",
+    "genitive": "coronae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "corona",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Creātūra",
+    "genitive": "creātūrae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "criatura",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Culpa",
+    "genitive": "culpae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "culpa",
+    "additionalMeanings": [
+      "falta"
+    ]
+  },
+  {
+    "nominative": "Cultura",
+    "genitive": "culturae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "cultura",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Cūra",
+    "genitive": "cūrae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "cuidado",
+    "additionalMeanings": [
+      "preocupación"
+    ]
+  },
+  {
+    "nominative": "Cūria",
+    "genitive": "cūriae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "tribunal",
+    "additionalMeanings": [
+      "la curia (papal)"
+    ]
+  },
+  {
+    "nominative": "Custodia",
+    "genitive": "custodiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "tutela",
+    "additionalMeanings": [
+      "cuidado",
+      "vigilancia"
+    ]
+  },
+  {
+    "nominative": "Dea",
+    "genitive": "deae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "diosa",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Dialectica",
+    "genitive": "dialecticae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "dialéctica",
+    "additionalMeanings": [
+      "arte del razonamiento y discusión"
+    ]
+  },
+  {
+    "nominative": "Disciplīna",
+    "genitive": "disciplīnae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "adiestramiento",
+    "additionalMeanings": [
+      "instrucción",
+      "aprendizaje",
+      "disciplina"
+    ]
+  },
+  {
+    "nominative": "Dīvitiae",
+    "genitive": "dīvitiārum",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "riquezas",
+    "additionalMeanings": [
+      "riqueza"
+    ]
+  },
+  {
+    "nominative": "Doctrīna",
+    "genitive": "doctrīnae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "doctrina",
+    "additionalMeanings": [
+      "enseñanza filosófica o teológica"
+    ]
+  },
+  {
+    "nominative": "Ecclēsia",
+    "genitive": "ecclēsiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "iglesia",
+    "additionalMeanings": [
+      "asamblea de fieles"
+    ]
+  },
+  {
+    "nominative": "Ecologia",
+    "genitive": "ecologiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "ecología",
+    "additionalMeanings": [
+      "estudio de las relaciones entre organismos y su ambiente"
+    ]
+  },
+  {
+    "nominative": "Economia",
+    "genitive": "economiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "economía",
+    "additionalMeanings": [
+      "ciencia de la producción y distribución de bienes"
+    ]
+  },
+  {
+    "nominative": "Epistula",
+    "genitive": "epistulae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "carta",
+    "additionalMeanings": [
+      "género literario epistolar"
+    ]
+  },
+  {
+    "nominative": "Essentia",
+    "genitive": "essentiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "esencia",
+    "additionalMeanings": [
+      "naturaleza intrínseca de algo"
+    ]
+  },
+  {
+    "nominative": "Fabula",
+    "genitive": "fabulae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "fábula",
+    "additionalMeanings": [
+      "relato con mensaje filosófico o moral"
+    ]
+  },
+  {
+    "nominative": "Fallacia",
+    "genitive": "fallaciae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "falacia",
+    "additionalMeanings": [
+      "error o engaño lógico"
+    ]
+  },
+  {
+    "nominative": "Fāma",
+    "genitive": "fāmae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "rumor",
+    "additionalMeanings": [
+      "fama",
+      "informe",
+      "reputación"
+    ]
+  },
+  {
+    "nominative": "Familia",
+    "genitive": "familiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "hogar",
+    "additionalMeanings": [
+      "familia"
+    ]
+  },
+  {
+    "nominative": "Fēmina",
+    "genitive": "fēminae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "mujer",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Fenestra",
+    "genitive": "fenestrae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "ventana",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Fīdūcia",
+    "genitive": "fīdūciae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "confianza",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Figura",
+    "genitive": "figurae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "figura",
+    "additionalMeanings": [
+      "recurso literario o retórico"
+    ]
+  },
+  {
+    "nominative": "Fīlia",
+    "genitive": "fīliae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "hija",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Flamma",
+    "genitive": "flammae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "llama",
+    "additionalMeanings": [
+      "fuego"
+    ]
+  },
+  {
+    "nominative": "Forma",
+    "genitive": "formae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "forma",
+    "additionalMeanings": [
+      "belleza"
+    ]
+  },
+  {
+    "nominative": "Fortūna",
+    "genitive": "fortūnae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "fortuna",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Fuga",
+    "genitive": "fugae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "huida",
+    "additionalMeanings": [
+      "vuelo"
+    ]
+  },
+  {
+    "nominative": "Geographia",
+    "genitive": "geographiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "geografía",
+    "additionalMeanings": [
+      "estudio de la tierra y sus características"
+    ]
+  },
+  {
+    "nominative": "Geologia",
+    "genitive": "geologiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "geología",
+    "additionalMeanings": [
+      "estudio de la composición y estructura de la tierra"
+    ]
+  },
+  {
+    "nominative": "Gloria",
+    "genitive": "gloriae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "gloria",
+    "additionalMeanings": [
+      "fama"
+    ]
+  },
+  {
+    "nominative": "Grātia",
+    "genitive": "grātiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "favor",
+    "additionalMeanings": [
+      "influencia",
+      "gratitud",
+      "agradecimiento",
+      "latín eclesiastico: gracia",
+      "asistencia divina / verbī grātiā: por ejemplo"
+    ]
+  },
+  {
+    "nominative": "Hasta",
+    "genitive": "hastae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "lanza",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Hebdomada",
+    "genitive": "hebdomadae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "semana",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Herba",
+    "genitive": "herbae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "hierba",
+    "additionalMeanings": [
+      "pasto",
+      "vegetación"
+    ]
+  },
+  {
+    "nominative": "Herēsia",
+    "genitive": "herēsiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "herejía",
+    "additionalMeanings": [
+      "doctrina contraria a la fe oficial"
+    ]
+  },
+  {
+    "nominative": "Historia",
+    "genitive": "historiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "historia",
+    "additionalMeanings": [
+      "narrativa de eventos reales o ficticios",
+      "relato"
+    ]
+  },
+  {
+    "nominative": "Hōra",
+    "genitive": "hōrae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "hora",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Hostia",
+    "genitive": "hostiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "animal de sacrificio",
+    "additionalMeanings": [
+      "víctima / latín eclesíastico: hostia",
+      "pan consagrado (de la misa)"
+    ]
+  },
+  {
+    "nominative": "Iānua",
+    "genitive": "iānuae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "puerta",
+    "additionalMeanings": [
+      "entrada"
+    ]
+  },
+  {
+    "nominative": "Idea",
+    "genitive": "ideae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "idea",
+    "additionalMeanings": [
+      "noción o representación lógica"
+    ]
+  },
+  {
+    "nominative": "Iniūria",
+    "genitive": "iniūriae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "injusticia",
+    "additionalMeanings": [
+      "agravio",
+      "afrenta"
+    ]
+  },
+  {
+    "nominative": "Insidiae",
+    "genitive": "insidiārum",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "emboscada",
+    "additionalMeanings": [
+      "artificio",
+      "complot",
+      "trampa"
+    ]
+  },
+  {
+    "nominative": "Insula",
+    "genitive": "insulae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "isla",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Invidia",
+    "genitive": "invidiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "envidia",
+    "additionalMeanings": [
+      "celos",
+      "odio"
+    ]
+  },
+  {
+    "nominative": "Ira",
+    "genitive": "irae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "ira",
+    "additionalMeanings": [
+      "enojo"
+    ]
+  },
+  {
+    "nominative": "Iustitia",
+    "genitive": "iustitiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "justicia",
+    "additionalMeanings": [
+      "virtud moral y principio ético"
+    ]
+  },
+  {
+    "nominative": "Lacrima",
+    "genitive": "lacrimae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "lágrima (de llanto)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Laetitia",
+    "genitive": "laetitiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "felicidad",
+    "additionalMeanings": [
+      "alegría"
+    ]
+  },
+  {
+    "nominative": "Lectura",
+    "genitive": "lecturae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "lectura",
+    "additionalMeanings": [
+      "acción de leer textos"
+    ]
+  },
+  {
+    "nominative": "Libra",
+    "genitive": "librae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "latín tardio: balanza",
+    "additionalMeanings": [
+      "par de balanzas",
+      "latín medieval: libra (de peso, dinero)"
+    ]
+  },
+  {
+    "nominative": "Līnea",
+    "genitive": "līneae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "línea",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Lingua",
+    "genitive": "linguae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "lengua (parte del cuerpo)",
+    "additionalMeanings": [
+      "lenguaje",
+      "idioma o sistema de comunicación"
+    ]
+  },
+  {
+    "nominative": "Littera",
+    "genitive": "litterae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "letra [del abecedario]",
+    "additionalMeanings": [
+      "carta / litterae, -ārum: literatura",
+      "cartas"
+    ]
+  },
+  {
+    "nominative": "Lucerna",
+    "genitive": "lucernae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "lámpara",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Lūna",
+    "genitive": "lūnae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "la luna",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Malitia",
+    "genitive": "malitiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "mala voluntad",
+    "additionalMeanings": [
+      "rencor",
+      "malicia"
+    ]
+  },
+  {
+    "nominative": "Materia",
+    "genitive": "materiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "materia",
+    "additionalMeanings": [
+      "contenido de un razonamiento"
+    ]
+  },
+  {
+    "nominative": "Mathematica",
+    "genitive": "mathematicae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "matemática",
+    "additionalMeanings": [
+      "ciencia de los números y las formas"
+    ]
+  },
+  {
+    "nominative": "Medicina",
+    "genitive": "medicinae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "medicina",
+    "additionalMeanings": [
+      "ciencia de la salud y la curación"
+    ]
+  },
+  {
+    "nominative": "Memoria",
+    "genitive": "memoriae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "memoria",
+    "additionalMeanings": [
+      "recuerdo"
+    ]
+  },
+  {
+    "nominative": "Mēnsa",
+    "genitive": "mēnsae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "mesa",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Metaphora",
+    "genitive": "metaphorae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "metáfora",
+    "additionalMeanings": [
+      "figura retórica en la literatura"
+    ]
+  },
+  {
+    "nominative": "Methodologia",
+    "genitive": "methodologiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "metodología",
+    "additionalMeanings": [
+      "estudio lógico de los métodos"
+    ]
+  },
+  {
+    "nominative": "Mīlitia",
+    "genitive": "mīlitiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "servicio militar",
+    "additionalMeanings": [
+      "guerra"
+    ]
+  },
+  {
+    "nominative": "Misericordia",
+    "genitive": "misericordiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "misericordia",
+    "additionalMeanings": [
+      "piedad",
+      "ternura",
+      "compasión"
+    ]
+  },
+  {
+    "nominative": "Missa",
+    "genitive": "missae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "(la) Misa (liturgia de la Eucaristía, Santa Cena)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Mora",
+    "genitive": "morae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "retraso",
+    "additionalMeanings": [
+      "impedimento"
+    ]
+  },
+  {
+    "nominative": "Morphologia",
+    "genitive": "morphologiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "morfología",
+    "additionalMeanings": [
+      "estudio de las formas de las palabras"
+    ]
+  },
+  {
+    "nominative": "Musica",
+    "genitive": "musicae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "música",
+    "additionalMeanings": [
+      "estudio de los sonidos y armonías"
+    ]
+  },
+  {
+    "nominative": "Nātūra",
+    "genitive": "nātūrae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "naturaleza",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Nauta",
+    "genitive": "nautae",
+    "gender": "masculine",
+    "declension": 1,
+    "spanishMeaning": "marinero",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Nuptiae",
+    "genitive": "nuptiārum",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "matrimonio",
+    "additionalMeanings": [
+      "boda",
+      "esponsales"
+    ]
+  },
+  {
+    "nominative": "Opera",
+    "genitive": "operae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "labor",
+    "additionalMeanings": [
+      "actividad",
+      "trabajo"
+    ]
+  },
+  {
+    "nominative": "Orthographia",
+    "genitive": "orthographiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "ortografía",
+    "additionalMeanings": [
+      "estudio de la escritura correcta"
+    ]
+  },
+  {
+    "nominative": "Paenitentia",
+    "genitive": "paenitentiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "arrepentimiento",
+    "additionalMeanings": [
+      "latín eclesiastico: penitencia (confesión sacramental de los pecados)"
+    ]
+  },
+  {
+    "nominative": "Pagina",
+    "genitive": "paginae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "página",
+    "additionalMeanings": [
+      "unidad de texto escrito"
+    ]
+  },
+  {
+    "nominative": "Palma",
+    "genitive": "palmae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "palma (de la mano)",
+    "additionalMeanings": [
+      "palmera"
+    ]
+  },
+  {
+    "nominative": "Pāpa",
+    "genitive": "pāpae",
+    "gender": "masculine",
+    "declension": 1,
+    "spanishMeaning": "padre",
+    "additionalMeanings": [
+      "Papa"
+    ]
+  },
+  {
+    "nominative": "Paradoxa",
+    "genitive": "paradoxae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "paradoja",
+    "additionalMeanings": [
+      "afirmación que desafía la lógica común"
+    ]
+  },
+  {
+    "nominative": "Pascha",
+    "genitive": "paschae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "Pascua",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Patria",
+    "genitive": "patriae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "patria",
+    "additionalMeanings": [
+      "país"
+    ]
+  },
+  {
+    "nominative": "Pecunia",
+    "genitive": "pecuniae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "dinero",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Persōna",
+    "genitive": "persōnae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "persona",
+    "additionalMeanings": [
+      "párroco"
+    ]
+  },
+  {
+    "nominative": "Petra",
+    "genitive": "petrae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "roca",
+    "additionalMeanings": [
+      "peñasco",
+      "piedra"
+    ]
+  },
+  {
+    "nominative": "Philosophia",
+    "genitive": "philosophiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "filosofía",
+    "additionalMeanings": [
+      "amor por el saber"
+    ]
+  },
+  {
+    "nominative": "Phonologia",
+    "genitive": "phonologiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "fonología",
+    "additionalMeanings": [
+      "estudio de los sonidos en un sistema lingüístico"
+    ]
+  },
+  {
+    "nominative": "Physica",
+    "genitive": "physicae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "física",
+    "additionalMeanings": [
+      "estudio de las leyes de la naturaleza"
+    ]
+  },
+  {
+    "nominative": "Plaga",
+    "genitive": "plagae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "golpe",
+    "additionalMeanings": [
+      "injuria",
+      "plaga",
+      "pestilencia"
+    ]
+  },
+  {
+    "nominative": "Platea",
+    "genitive": "plateae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "calle",
+    "additionalMeanings": [
+      "avenida"
+    ]
+  },
+  {
+    "nominative": "Poena",
+    "genitive": "poenae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "pena",
+    "additionalMeanings": [
+      "castigo"
+    ]
+  },
+  {
+    "nominative": "Poesia",
+    "genitive": "poesiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "poesía",
+    "additionalMeanings": [
+      "género literario",
+      "arte literario basado en el ritmo y la métrica"
+    ]
+  },
+  {
+    "nominative": "Pōēta",
+    "genitive": "pōētae",
+    "gender": "masculine",
+    "declension": 1,
+    "spanishMeaning": "poeta",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Porta",
+    "genitive": "portae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "puerta",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Praeda",
+    "genitive": "praedae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "botín",
+    "additionalMeanings": [
+      "despojo",
+      "presa"
+    ]
+  },
+  {
+    "nominative": "Praesentia",
+    "genitive": "praesentiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "presencia",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Prīmitiae",
+    "genitive": "prīmitiārum",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "primicias",
+    "additionalMeanings": [
+      "primeras ofrendas"
+    ]
+  },
+  {
+    "nominative": "Prophēta",
+    "genitive": "prophētae",
+    "gender": "masculine",
+    "declension": 1,
+    "spanishMeaning": "profeta",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Prosa",
+    "genitive": "prosae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "prosa",
+    "additionalMeanings": [
+      "forma de expresión literaria"
+    ]
+  },
+  {
+    "nominative": "Prosodia",
+    "genitive": "prosodiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "prosodia",
+    "additionalMeanings": [
+      "estudio del ritmo y la entonación"
+    ]
+  },
+  {
+    "nominative": "Providentia",
+    "genitive": "providentiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "providencia",
+    "additionalMeanings": [
+      "cuidado divino del mundo"
+    ]
+  },
+  {
+    "nominative": "Provincia",
+    "genitive": "provinciae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "provincia",
+    "additionalMeanings": [
+      "deber oficial"
+    ]
+  },
+  {
+    "nominative": "Psychologia",
+    "genitive": "psychologiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "psicología",
+    "additionalMeanings": [
+      "ciencia del alma y la mente"
+    ]
+  },
+  {
+    "nominative": "Puella",
+    "genitive": "puellae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "chica",
+    "additionalMeanings": [
+      "joven (fem.)"
+    ]
+  },
+  {
+    "nominative": "Pūgna",
+    "genitive": "pūgnae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "pelea a puñetazos",
+    "additionalMeanings": [
+      "pelea",
+      "batalla"
+    ]
+  },
+  {
+    "nominative": "Rēgīna",
+    "genitive": "rēgīnae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "reina",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Regula",
+    "genitive": "regulae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "latín tardio: vara de medir",
+    "additionalMeanings": [
+      "latín medieval: regla",
+      "patrón",
+      "modelo",
+      "ejemplo",
+      "regla (monástica)"
+    ]
+  },
+  {
+    "nominative": "Reliquiae",
+    "genitive": "reliquiārum",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "sobras",
+    "additionalMeanings": [
+      "restos",
+      "vestigios",
+      "latín eclesiastico: reliquias (de los santos)"
+    ]
+  },
+  {
+    "nominative": "Rhetorica",
+    "genitive": "rhetoricae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "retórica",
+    "additionalMeanings": [
+      "arte de la persuasión en la literatura"
+    ]
+  },
+  {
+    "nominative": "Ruīna",
+    "genitive": "ruīnae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "derrumbe",
+    "additionalMeanings": [
+      "caída",
+      "ruina"
+    ]
+  },
+  {
+    "nominative": "Sagitta",
+    "genitive": "sagittae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "flecha",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Sapientia",
+    "genitive": "sapientiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "sabiduría",
+    "additionalMeanings": [
+      "conocimiento profundo y objetivo último de la filosofía"
+    ]
+  },
+  {
+    "nominative": "Satura",
+    "genitive": "saturae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "sátira",
+    "additionalMeanings": [
+      "género literario de crítica social"
+    ]
+  },
+  {
+    "nominative": "Scena",
+    "genitive": "scenae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "escena",
+    "additionalMeanings": [
+      "parte de una obra teatral o narrativa"
+    ]
+  },
+  {
+    "nominative": "Scientia",
+    "genitive": "scientiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "ciencia",
+    "additionalMeanings": [
+      "conocimiento basado en principios lógicos",
+      "conocimiento reflexivo y ordenado"
+    ]
+  },
+  {
+    "nominative": "Scrība",
+    "genitive": "scrībae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "escriba",
+    "additionalMeanings": [
+      "escribano"
+    ]
+  },
+  {
+    "nominative": "Scriptūra",
+    "genitive": "scriptūrae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "escrito",
+    "additionalMeanings": [
+      "escritura (sagrada) (la biblia)"
+    ]
+  },
+  {
+    "nominative": "Semantica",
+    "genitive": "semanticae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "semántica",
+    "additionalMeanings": [
+      "estudio del significado de las palabras"
+    ]
+  },
+  {
+    "nominative": "Sententia",
+    "genitive": "sententiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "sentencia",
+    "additionalMeanings": [
+      "expresión literaria de una verdad o idea",
+      "opinión",
+      "juicio"
+    ]
+  },
+  {
+    "nominative": "Silva",
+    "genitive": "silvae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "bosque",
+    "additionalMeanings": [
+      "selva",
+      "arboleda"
+    ]
+  },
+  {
+    "nominative": "Sociologia",
+    "genitive": "sociologiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "sociología",
+    "additionalMeanings": [
+      "estudio de la sociedad"
+    ]
+  },
+  {
+    "nominative": "Sophistica",
+    "genitive": "sophisticae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "sofística",
+    "additionalMeanings": [
+      "arte de argumentar",
+      "a menudo de forma falaz"
+    ]
+  },
+  {
+    "nominative": "Stella",
+    "genitive": "stellae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "estrella",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Substantia",
+    "genitive": "substantiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "esencia",
+    "additionalMeanings": [
+      "ser",
+      "materia",
+      "sustancia",
+      "fortuna",
+      "propiedad"
+    ]
+  },
+  {
+    "nominative": "Tabula",
+    "genitive": "tabulae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "tabla",
+    "additionalMeanings": [
+      "soporte para escribir o símbolo de memoria literaria",
+      "tablón",
+      "tablilla para escribir",
+      "inscripción"
+    ]
+  },
+  {
+    "nominative": "Tenebrae",
+    "genitive": "tenebrārum",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "oscuridad",
+    "additionalMeanings": [
+      "las sombras"
+    ]
+  },
+  {
+    "nominative": "Terra",
+    "genitive": "terrae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "tierra",
+    "additionalMeanings": [
+      "terreno"
+    ]
+  },
+  {
+    "nominative": "Theologia",
+    "genitive": "theologiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "teología",
+    "additionalMeanings": [
+      "estudio de lo divino"
+    ]
+  },
+  {
+    "nominative": "Theoria",
+    "genitive": "theoriae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "teoría",
+    "additionalMeanings": [
+      "reflexión literaria o crítica"
+    ]
+  },
+  {
+    "nominative": "Toga",
+    "genitive": "togae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "toga (prenda exterior de un ciudadano romano en tiempos de paz)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Tragoedia",
+    "genitive": "tragoediae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "tragedia",
+    "additionalMeanings": [
+      "género literario dramático"
+    ]
+  },
+  {
+    "nominative": "Tuba",
+    "genitive": "tubae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "trompeta",
+    "additionalMeanings": [
+      "trompeta de guerra"
+    ]
+  },
+  {
+    "nominative": "Tunica",
+    "genitive": "tunicae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "camisa",
+    "additionalMeanings": [
+      "túnica"
+    ]
+  },
+  {
+    "nominative": "Turba",
+    "genitive": "turbae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "multitud",
+    "additionalMeanings": [
+      "alboroto"
+    ]
+  },
+  {
+    "nominative": "Umbra",
+    "genitive": "umbrae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "sombra",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Unda",
+    "genitive": "undae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "ola",
+    "additionalMeanings": [
+      "agua que fluye",
+      "agua"
+    ]
+  },
+  {
+    "nominative": "Via",
+    "genitive": "viae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "camino",
+    "additionalMeanings": [
+      "calle (vg. Via Apia)"
+    ]
+  },
+  {
+    "nominative": "Victima",
+    "genitive": "victimae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "animal de sacrificio",
+    "additionalMeanings": [
+      "víctima"
+    ]
+  },
+  {
+    "nominative": "Victoria",
+    "genitive": "victoriae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "victoria",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Vigilia",
+    "genitive": "vigiliae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "vigilia",
+    "additionalMeanings": [
+      "velar",
+      "permanecer despierto",
+      "latín eclesíastico: vigilia (servicio litúrgico nocturno)"
+    ]
+  },
+  {
+    "nominative": "Villa",
+    "genitive": "villae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "latín tardio: villa",
+    "additionalMeanings": [
+      "hacienda",
+      "latín medieval: pueblo",
+      "ciudad"
+    ]
+  },
+  {
+    "nominative": "Vinea",
+    "genitive": "vineae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "viña",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Virga",
+    "genitive": "virgae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "sarmiento",
+    "additionalMeanings": [
+      "rama",
+      "bastón",
+      "vara"
+    ]
+  },
+  {
+    "nominative": "Vita",
+    "genitive": "vitae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "vida",
+    "additionalMeanings": [
+      "tanto terrenal como espiritual"
+    ]
+  },
+  {
+    "nominative": "Zoologia",
+    "genitive": "zoologiae",
+    "gender": "feminine",
+    "declension": 1,
+    "spanishMeaning": "zoología",
+    "additionalMeanings": [
+      "estudio de los animales"
+    ]
+  },
+  {
+    "nominative": "Aevum",
+    "genitive": "aevī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "eternidad",
+    "additionalMeanings": [
+      "vida",
+      "edad"
+    ]
+  },
+  {
+    "nominative": "Ager",
+    "genitive": "agrī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "campo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Agnus",
+    "genitive": "agnī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "cordero",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Amicus",
+    "genitive": "amici",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "amigo",
+    "additionalMeanings": [
+      "compañero"
+    ]
+  },
+  {
+    "nominative": "Angelus",
+    "genitive": "angelī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "ángel",
+    "additionalMeanings": [
+      "mensajero"
+    ]
+  },
+  {
+    "nominative": "Angulus",
+    "genitive": "angulī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "rincón",
+    "additionalMeanings": [
+      "lugar poco frecuentado"
+    ]
+  },
+  {
+    "nominative": "Animus",
+    "genitive": "animi",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "espíritu",
+    "additionalMeanings": [
+      "alma",
+      "mente",
+      "corazón",
+      "ánimo",
+      "voluntad",
+      "principio racional"
+    ]
+  },
+  {
+    "nominative": "Annus",
+    "genitive": "annī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "año",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Anulus",
+    "genitive": "anulī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "anillo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Aper",
+    "genitive": "aprī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "jabalí",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Apostolus",
+    "genitive": "apostolī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "apóstol",
+    "additionalMeanings": [
+      "especialmente el apóstol Pablo"
+    ]
+  },
+  {
+    "nominative": "Arcanum",
+    "genitive": "arcani",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "misterio",
+    "additionalMeanings": [
+      "secreto divino"
+    ]
+  },
+  {
+    "nominative": "Argentum",
+    "genitive": "argentī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "plata",
+    "additionalMeanings": [
+      "dinero"
+    ]
+  },
+  {
+    "nominative": "Argumentum",
+    "genitive": "argumenti",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "argumento",
+    "additionalMeanings": [
+      "razón o prueba en lógica"
+    ]
+  },
+  {
+    "nominative": "Arma",
+    "genitive": "armorum",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "armas",
+    "additionalMeanings": [
+      "armamento"
+    ]
+  },
+  {
+    "nominative": "Asinus",
+    "genitive": "asinī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "burro",
+    "additionalMeanings": [
+      "asno",
+      "estúpido",
+      "imbécil"
+    ]
+  },
+  {
+    "nominative": "Astrum",
+    "genitive": "astrī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "estrella",
+    "additionalMeanings": [
+      "constelación"
+    ]
+  },
+  {
+    "nominative": "Ātrium",
+    "genitive": "ātriī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "patio",
+    "additionalMeanings": [
+      "sala exterior",
+      "vestíbulo"
+    ]
+  },
+  {
+    "nominative": "Aurum",
+    "genitive": "aurī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "oro",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Auxilium",
+    "genitive": "auxiliī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "apoyo",
+    "additionalMeanings": [
+      "asistencia",
+      "ayuda",
+      "auxilio / plural, auxilia, -iōrum: fuerzas auxiliares"
+    ]
+  },
+  {
+    "nominative": "Baptismus",
+    "genitive": "baptismī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "bautismo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Bellum",
+    "genitive": "bellī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "guerra",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Beneficium",
+    "genitive": "beneficiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "servicio",
+    "additionalMeanings": [
+      "bondad",
+      "beneficio"
+    ]
+  },
+  {
+    "nominative": "Brāchium",
+    "genitive": "brāchiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "brazo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Caelum",
+    "genitive": "caelī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "cielo",
+    "additionalMeanings": [
+      "clima",
+      "tiempo / sustantivo plural masculino: caelī, caelõrum: los cielos"
+    ]
+  },
+  {
+    "nominative": "Campus",
+    "genitive": "campi",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "campo",
+    "additionalMeanings": [
+      "llanura",
+      "ámbito o esfera de acción"
+    ]
+  },
+  {
+    "nominative": "Capillus",
+    "genitive": "capillī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "pelo (humano o animal)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Capitulum",
+    "genitive": "capitulī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "latín tardio: una cabecita",
+    "additionalMeanings": [
+      "cariño",
+      "mascota",
+      "latín eclesíastico: latín medieval: capítulo",
+      "epígrafe",
+      "sección",
+      "punto del orden del día",
+      "lectura litúrgica breve",
+      "órgano de gobierno de una catedral",
+      "reunión de trabajo de una comunidad monástica u orden religiosa, o el edificio utilizado para reuniones"
+    ]
+  },
+  {
+    "nominative": "Castellum",
+    "genitive": "castellī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "latín tardio: castillo",
+    "additionalMeanings": [
+      "fuerte",
+      "fortaleza",
+      "latín medieval: ciudad",
+      "aldea"
+    ]
+  },
+  {
+    "nominative": "Castrum",
+    "genitive": "castrī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "latín tardio: lugar fortificado",
+    "additionalMeanings": [
+      "fortaleza",
+      "castillo",
+      "pcastra, castrorum (n.): campamento militar",
+      "campamento",
+      "latín medieval: en singular, ciudad (fortificada)",
+      "castillo"
+    ]
+  },
+  {
+    "nominative": "Christus",
+    "genitive": "christī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "Cristo (Mesías, ungido)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Cibus",
+    "genitive": "cibī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "alimento",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Claustrum",
+    "genitive": "claustrī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "latín tardio: barrera",
+    "additionalMeanings": [
+      "impedimento",
+      "fortaleza fronteriza",
+      "latín medieval: recinto",
+      "claustro",
+      "monasterio"
+    ]
+  },
+  {
+    "nominative": "Clericus",
+    "genitive": "clericī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "clérigo",
+    "additionalMeanings": [
+      "miembro del clero (el que ha sido ordenado en una orden sagrada para el servicio en la iglesia)",
+      "erudito",
+      "estudiante",
+      "escriba",
+      "secretario"
+    ]
+  },
+  {
+    "nominative": "Coenobium",
+    "genitive": "coenobiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "monasterio",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Collegium",
+    "genitive": "collegi",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "colegio",
+    "additionalMeanings": [
+      "comunidad de estudiosos o religiosos"
+    ]
+  },
+  {
+    "nominative": "Conceptus",
+    "genitive": "concepti",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "concepto",
+    "additionalMeanings": [
+      "idea lógica o mental"
+    ]
+  },
+  {
+    "nominative": "Consilium",
+    "genitive": "consilii",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "plan",
+    "additionalMeanings": [
+      "consejo",
+      "grupo de consejeros",
+      "deliberación",
+      "razón (lo que es sensato)"
+    ]
+  },
+  {
+    "nominative": "Convivium",
+    "genitive": "convivii",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "banquete",
+    "additionalMeanings": [
+      "fiesta"
+    ]
+  },
+  {
+    "nominative": "Corus",
+    "genitive": "corī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "latín tardio: baile coral",
+    "additionalMeanings": [
+      "coro teatral",
+      "latín eclesiastico: latín medieval: coro (clero que mantiene los servicios en una iglesia)",
+      "porción del edificio de una iglesia reservada para el clero y los cantores"
+    ]
+  },
+  {
+    "nominative": "Damnum",
+    "genitive": "damnī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "daño",
+    "additionalMeanings": [
+      "injuria"
+    ]
+  },
+  {
+    "nominative": "Dēsīderium",
+    "genitive": "dēsīderiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "deseo",
+    "additionalMeanings": [
+      "anhelo",
+      "petición",
+      "ruego"
+    ]
+  },
+  {
+    "nominative": "Deus",
+    "genitive": "dei",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "un dios",
+    "additionalMeanings": [
+      "Dios",
+      "entidad divina"
+    ]
+  },
+  {
+    "nominative": "Diabolus",
+    "genitive": "diabolī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "diablo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Diaconus",
+    "genitive": "diaconī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "diácono",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Digitus",
+    "genitive": "digitī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "dedo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Discipulus",
+    "genitive": "discipulī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "estudiante",
+    "additionalMeanings": [
+      "latín eclesíastico: discípulo (de cristo en los evangelios)"
+    ]
+  },
+  {
+    "nominative": "Discursus",
+    "genitive": "discursi",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "discurso",
+    "additionalMeanings": [
+      "razonamiento lógico o argumentativo"
+    ]
+  },
+  {
+    "nominative": "Dominium",
+    "genitive": "dominiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "dominio",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Dominus",
+    "genitive": "dominī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "amo",
+    "additionalMeanings": [
+      "señor",
+      "con ref. A Dios",
+      "a una persona de la trinidad",
+      "o a Jesucristo",
+      "el Señor / contr.",
+      "domnus, -ī (m.): título de dirección para eclesiásticos y caballeros (evitando el título divino dominus) / fem.",
+      "domina, -ae (f.): señora",
+      "ama"
+    ]
+  },
+  {
+    "nominative": "Dōnum",
+    "genitive": "dōnī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "regalo",
+    "additionalMeanings": [
+      "presente"
+    ]
+  },
+  {
+    "nominative": "Dorsum",
+    "genitive": "dorsī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "espalda",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Episcopus",
+    "genitive": "episcopī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "obispo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Equus",
+    "genitive": "equī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "caballo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Evangelium",
+    "genitive": "evangeliī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "evangelio",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Exemplum",
+    "genitive": "exemplī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "ejemplo",
+    "additionalMeanings": [
+      "muestra",
+      "modelo",
+      "copia",
+      "ilustración lógica de un argumento",
+      "modelo a seguir modelo ético o doctrinal"
+    ]
+  },
+  {
+    "nominative": "Famulus",
+    "genitive": "famuli",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "criado",
+    "additionalMeanings": [
+      "asistente",
+      "miembro de una casa / famula, -ae (f.) [dativo/ablativo plural, famulābus]: criada"
+    ]
+  },
+  {
+    "nominative": "Fatum",
+    "genitive": "fati",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "destino",
+    "additionalMeanings": [
+      "voluntad divina o inexorable",
+      "muerte"
+    ]
+  },
+  {
+    "nominative": "Ferrum",
+    "genitive": "ferrī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "hierro",
+    "additionalMeanings": [
+      "arma o utensilio de hierro",
+      "espada",
+      "fuerza de las armas"
+    ]
+  },
+  {
+    "nominative": "Filius",
+    "genitive": "filii",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "hijo",
+    "additionalMeanings": [
+      "descendiente"
+    ]
+  },
+  {
+    "nominative": "Fluvius",
+    "genitive": "fluviī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "río",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Forum",
+    "genitive": "fori",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "foro",
+    "additionalMeanings": [
+      "mercado",
+      "lugar de discusión filosófica o debate teológico"
+    ]
+  },
+  {
+    "nominative": "Gaudium",
+    "genitive": "gaudiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "deleite",
+    "additionalMeanings": [
+      "alegría",
+      "placer"
+    ]
+  },
+  {
+    "nominative": "Genius",
+    "genitive": "genii",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "genio",
+    "additionalMeanings": [
+      "espíritu protector o intelectual"
+    ]
+  },
+  {
+    "nominative": "Gladius",
+    "genitive": "gladii",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "espada [de gladiador]",
+    "additionalMeanings": [
+      "símbolo de poder o justicia"
+    ]
+  },
+  {
+    "nominative": "Habitaculum",
+    "genitive": "habitaculī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "habitación",
+    "additionalMeanings": [
+      "morada"
+    ]
+  },
+  {
+    "nominative": "Holocaustum",
+    "genitive": "holocaustī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "holocausto",
+    "additionalMeanings": [
+      "sacrificio"
+    ]
+  },
+  {
+    "nominative": "Hospitium",
+    "genitive": "hospitiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "acogida hospitalaria",
+    "additionalMeanings": [
+      "hospitalidad"
+    ]
+  },
+  {
+    "nominative": "Humus",
+    "genitive": "humi",
+    "gender": "feminine",
+    "declension": 2,
+    "spanishMeaning": "tierra",
+    "additionalMeanings": [
+      "locativo humī: en el suelo"
+    ]
+  },
+  {
+    "nominative": "Ieiūnium",
+    "genitive": "ieiūniī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "ayuno",
+    "additionalMeanings": [
+      "hambre"
+    ]
+  },
+  {
+    "nominative": "Imperium",
+    "genitive": "imperiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "mando",
+    "additionalMeanings": [
+      "poder"
+    ]
+  },
+  {
+    "nominative": "Ingenium",
+    "genitive": "ingeniī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "habilidad",
+    "additionalMeanings": [
+      "genio",
+      "disposición",
+      "capacidad",
+      "talento / latín medieval: ingenio",
+      "truco"
+    ]
+  },
+  {
+    "nominative": "Initium",
+    "genitive": "initii",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "comienzo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Iudicium",
+    "genitive": "iudicii",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "juicio",
+    "additionalMeanings": [
+      "afirmación o negación en lógica"
+    ]
+  },
+  {
+    "nominative": "Iūdicium",
+    "genitive": "iūdiciī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "juicio",
+    "additionalMeanings": [
+      "decisión",
+      "prueba / diēs iūdiciī: día del juicio (fin del mundo)",
+      "iūdicium Deī: juicio de Dios",
+      "es decir",
+      "juicio por ordalía (de agua hirviendo, hierro caliente, combate, etc.)"
+    ]
+  },
+  {
+    "nominative": "Iugum",
+    "genitive": "iugī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "yugo",
+    "additionalMeanings": [
+      "cresta",
+      "cadena de colinas"
+    ]
+  },
+  {
+    "nominative": "Iūmentum",
+    "genitive": "iūmentī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "bestia de carga",
+    "additionalMeanings": [
+      "caballo de tiro",
+      "mula",
+      "asno"
+    ]
+  },
+  {
+    "nominative": "Liber",
+    "genitive": "libri",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "libro",
+    "additionalMeanings": [
+      "texto escrito"
+    ]
+  },
+  {
+    "nominative": "Lignum",
+    "genitive": "lignī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "madera",
+    "additionalMeanings": [
+      "madero / latín eclesiastico: horca",
+      "cruz"
+    ]
+  },
+  {
+    "nominative": "Locus",
+    "genitive": "locī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "lugar",
+    "additionalMeanings": [
+      "n. Plural, loca, -ōrum: lugares",
+      "región",
+      "m. Plural locī, ōrum: pasajes",
+      "citas (de autores)",
+      "lugares comunes",
+      "en filosofía",
+      "lugar lógico o argumento",
+      "posición en un texto o espacio conceptual",
+      "tópico lógico o lugar común argumentativo"
+    ]
+  },
+  {
+    "nominative": "Lupus",
+    "genitive": "lupī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "lobo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Magister",
+    "genitive": "magistrī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "maestro",
+    "additionalMeanings": [
+      "profesor",
+      "docente",
+      "maestro de escuela",
+      "guía o mentor",
+      "guía espiritual"
+    ]
+  },
+  {
+    "nominative": "Medicus",
+    "genitive": "medicī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "médico",
+    "additionalMeanings": [
+      "cirujano"
+    ]
+  },
+  {
+    "nominative": "Medium",
+    "genitive": "mediī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "medio",
+    "additionalMeanings": [
+      "término medio en un silogismo"
+    ]
+  },
+  {
+    "nominative": "Membrum",
+    "genitive": "membrī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "miembro",
+    "additionalMeanings": [
+      "miembro del cuerpo"
+    ]
+  },
+  {
+    "nominative": "Mendācium",
+    "genitive": "mendāciī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "mentira",
+    "additionalMeanings": [
+      "falsedad"
+    ]
+  },
+  {
+    "nominative": "Ministerium",
+    "genitive": "ministerii",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "cargo o funciones de un ministro",
+    "additionalMeanings": [
+      "servicio",
+      "ministerio",
+      "oficio",
+      "ocupación",
+      "empleo",
+      "administración"
+    ]
+  },
+  {
+    "nominative": "Ministro",
+    "genitive": "ministrī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "ministro",
+    "additionalMeanings": [
+      "asistente"
+    ]
+  },
+  {
+    "nominative": "Mīrāculum",
+    "genitive": "mīrāculī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "maravilla",
+    "additionalMeanings": [
+      "prodigio",
+      "milagro"
+    ]
+  },
+  {
+    "nominative": "Modus",
+    "genitive": "modī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "medida",
+    "additionalMeanings": [
+      "modo",
+      "manera",
+      "clase",
+      "estructura de un razonamiento"
+    ]
+  },
+  {
+    "nominative": "Moenia",
+    "genitive": "moenium",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "murallas",
+    "additionalMeanings": [
+      "fortificaciones"
+    ]
+  },
+  {
+    "nominative": "Monachus",
+    "genitive": "monachī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "monje / fem., monacha, -ae: monja",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Monastērium",
+    "genitive": "monastēriī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "monasterio",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Monumentum",
+    "genitive": "monumenti",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "monumento",
+    "additionalMeanings": [
+      "sepulcro",
+      "tumba",
+      "obra conmemorativa"
+    ]
+  },
+  {
+    "nominative": "Morbus",
+    "genitive": "morbī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "enfermedad",
+    "additionalMeanings": [
+      "dolencia"
+    ]
+  },
+  {
+    "nominative": "Mundus",
+    "genitive": "mundi",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "mundo",
+    "additionalMeanings": [
+      "universo físico o espiritual"
+    ]
+  },
+  {
+    "nominative": "Murus",
+    "genitive": "muri",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "muro",
+    "additionalMeanings": [
+      "límite o defensa"
+    ]
+  },
+  {
+    "nominative": "Mysterium",
+    "genitive": "mysteriī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "misterio",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Negotium",
+    "genitive": "negotii",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "negocio",
+    "additionalMeanings": [
+      "asuntos (opuesto a ōtium: ocio, ociosidad)"
+    ]
+  },
+  {
+    "nominative": "Numerus",
+    "genitive": "numeri",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "número",
+    "additionalMeanings": [
+      "cantidad o medida",
+      "armonía o estructura racional"
+    ]
+  },
+  {
+    "nominative": "Nummus",
+    "genitive": "nummi",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "moneda",
+    "additionalMeanings": [
+      "dinero"
+    ]
+  },
+  {
+    "nominative": "Nūntius",
+    "genitive": "nūntiī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "mensajero",
+    "additionalMeanings": [
+      "noticia"
+    ]
+  },
+  {
+    "nominative": "Obsequium",
+    "genitive": "obsequiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "consentimiento",
+    "additionalMeanings": [
+      "un ceder",
+      "obediencia",
+      "lealtad / latín medieval: también comitiva",
+      "asistencia",
+      "servicio",
+      "ceremonia"
+    ]
+  },
+  {
+    "nominative": "Oceanus",
+    "genitive": "oceanī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "océano",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Oculus",
+    "genitive": "oculī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "ojo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Odium",
+    "genitive": "odiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "odio",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Officium",
+    "genitive": "officii",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "deber",
+    "additionalMeanings": [
+      "servicio",
+      "tarea",
+      "responsabilidad moral o espiritual"
+    ]
+  },
+  {
+    "nominative": "Oleum",
+    "genitive": "oleī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "aceite",
+    "additionalMeanings": [
+      "aceite de oliva"
+    ]
+  },
+  {
+    "nominative": "Oppidum",
+    "genitive": "oppidī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "pueblo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Ōrātōrium",
+    "genitive": "ōrātōriī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "capilla",
+    "additionalMeanings": [
+      "oratorio",
+      "iglesia"
+    ]
+  },
+  {
+    "nominative": "Organum",
+    "genitive": "organi",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "órgano",
+    "additionalMeanings": [
+      "herramienta lógica (obra de Aristóteles)"
+    ]
+  },
+  {
+    "nominative": "Örnāmentum",
+    "genitive": "örnāmentī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "adorno",
+    "additionalMeanings": [
+      "decoración"
+    ]
+  },
+  {
+    "nominative": "Õsculum",
+    "genitive": "õsculī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "beso",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Õstium",
+    "genitive": "õstiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "puerta",
+    "additionalMeanings": [
+      "entrada",
+      "desembocadura (de río, cueva, etc.)"
+    ]
+  },
+  {
+    "nominative": "Ōtium",
+    "genitive": "ōtiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "ocio",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Palātium",
+    "genitive": "palātiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "palacio",
+    "additionalMeanings": [
+      "residencia oficial"
+    ]
+  },
+  {
+    "nominative": "Pallium",
+    "genitive": "palliī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "capa",
+    "additionalMeanings": [
+      "manto"
+    ]
+  },
+  {
+    "nominative": "Perīculum",
+    "genitive": "perīculi",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "peligro",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Põmus",
+    "genitive": "põmī",
+    "gender": "feminine",
+    "declension": 2,
+    "spanishMeaning": "fruto (de un árbol, por ejemplo, manzana, pera)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Pontus",
+    "genitive": "pontī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "el mar abierto",
+    "additionalMeanings": [
+      "las profundidades"
+    ]
+  },
+  {
+    "nominative": "Populus",
+    "genitive": "populi",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "[personas del] pueblo",
+    "additionalMeanings": [
+      "vox populi",
+      "latín medieval: también ejército / latín medieval: masculino plural, populī, -ōrum: multitud",
+      "muchedumbre"
+    ]
+  },
+  {
+    "nominative": "Praedicatum",
+    "genitive": "praedicati",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "predicado",
+    "additionalMeanings": [
+      "parte lógica de una proposición"
+    ]
+  },
+  {
+    "nominative": "Praemium",
+    "genitive": "praemiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "generosidad",
+    "additionalMeanings": [
+      "recompensa"
+    ]
+  },
+  {
+    "nominative": "Praesidium",
+    "genitive": "praesidiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "protección",
+    "additionalMeanings": [
+      "defensa",
+      "latín tardio: guarnición"
+    ]
+  },
+  {
+    "nominative": "Prātum",
+    "genitive": "prātī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "prado",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Pretium",
+    "genitive": "pretiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "precio",
+    "additionalMeanings": [
+      "valor",
+      "recompensa"
+    ]
+  },
+  {
+    "nominative": "Principium",
+    "genitive": "principiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "principio",
+    "additionalMeanings": [
+      "origen o fundamento",
+      "base lógica de un argumento"
+    ]
+  },
+  {
+    "nominative": "Proelium",
+    "genitive": "proeliī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "batalla",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Propositum",
+    "genitive": "propositi",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "propósito",
+    "additionalMeanings": [
+      "intención o premisa lógica"
+    ]
+  },
+  {
+    "nominative": "Psalmus",
+    "genitive": "psalmī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "salmo (pieza de poesía bíblica)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Puer",
+    "genitive": "puerī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "niño",
+    "additionalMeanings": [
+      "esclavo / diminutivo, puerulus, -ī (m.): niño pequeño",
+      "pequeño esclavo"
+    ]
+  },
+  {
+    "nominative": "Quadrivium",
+    "genitive": "quadriviī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "latín tardio: lugar donde confluyen cuatro caminos",
+    "additionalMeanings": [
+      "latín medieval: quadrivium, el segundo grupo de las siete artes liberales (a saber: aritmética, geometría, música y astronomía)"
+    ]
+  },
+  {
+    "nominative": "Rēgnum",
+    "genitive": "rēgnī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "reino",
+    "additionalMeanings": [
+      "reinado",
+      "regla"
+    ]
+  },
+  {
+    "nominative": "Sabbatum",
+    "genitive": "sabbatī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "shabbat",
+    "additionalMeanings": [
+      "sábado"
+    ]
+  },
+  {
+    "nominative": "Saccus",
+    "genitive": "saccī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "saco",
+    "additionalMeanings": [
+      "bolsa"
+    ]
+  },
+  {
+    "nominative": "Sacerdotium",
+    "genitive": "sacerdotii",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "oficio sacerdotal",
+    "additionalMeanings": [
+      "sacerdocio"
+    ]
+  },
+  {
+    "nominative": "Sacramentum",
+    "genitive": "sacramentī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "sacramento",
+    "additionalMeanings": [
+      "signo sagrado",
+      "latín tardio: juramento",
+      "latín eclesíastico: sacramento"
+    ]
+  },
+  {
+    "nominative": "Sacrificium",
+    "genitive": "sacrificii",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "sacrificio",
+    "additionalMeanings": [
+      "acto de devoción espiritual"
+    ]
+  },
+  {
+    "nominative": "Saeculum",
+    "genitive": "saeculī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "siglo",
+    "additionalMeanings": [
+      "raza",
+      "generación",
+      "edad",
+      "el pueblo de cualquier tiempo",
+      "vida",
+      "cien años",
+      "siglo",
+      "época o mundo temporal",
+      "latín medieval: el mundo (temporal)",
+      "la edad presente / fórmula litúrgica, et in saecula saeculorum: y hasta los siglos de los siglos (es decir, para siempre)"
+    ]
+  },
+  {
+    "nominative": "Sepulcrum",
+    "genitive": "sepulcrī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "lugar de enterramiento",
+    "additionalMeanings": [
+      "tumba",
+      "sepulcro"
+    ]
+  },
+  {
+    "nominative": "Servus",
+    "genitive": "servi",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "esclavo",
+    "additionalMeanings": [
+      "siervo o subordinado"
+    ]
+  },
+  {
+    "nominative": "Signum",
+    "genitive": "signi",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "señal",
+    "additionalMeanings": [
+      "símbolo o indicio",
+      "norma",
+      "marca"
+    ]
+  },
+  {
+    "nominative": "Silentium",
+    "genitive": "silentiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "silencio",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Silogismus",
+    "genitive": "silogismi",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "silogismo",
+    "additionalMeanings": [
+      "forma de razonamiento deductivo"
+    ]
+  },
+  {
+    "nominative": "Sōlācium",
+    "genitive": "sōlāciī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "consuelo",
+    "additionalMeanings": [
+      "alivio",
+      "consolación",
+      "solaz",
+      "latín medieval: ayuda",
+      "asistencia"
+    ]
+  },
+  {
+    "nominative": "Somnus",
+    "genitive": "somnī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "sueño",
+    "additionalMeanings": [
+      "sopor / masculino plural somnī, somnōrum: sueños"
+    ]
+  },
+  {
+    "nominative": "Sonus",
+    "genitive": "sonī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "sonido",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Spatium",
+    "genitive": "spatii",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "espacio (usualmente de tiempo, no de lugar)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Studium",
+    "genitive": "studii",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "afán",
+    "additionalMeanings": [
+      "celo",
+      "entusiasmo",
+      "búsqueda",
+      "estudio",
+      "buena voluntad"
+    ]
+  },
+  {
+    "nominative": "Supplicium",
+    "genitive": "suppliciī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "castigo",
+    "additionalMeanings": [
+      "pena"
+    ]
+  },
+  {
+    "nominative": "Tabernaculum",
+    "genitive": "tabernaculī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "tienda",
+    "additionalMeanings": [
+      "morada",
+      "latín eclesíastico: tienda con cortinas"
+    ]
+  },
+  {
+    "nominative": "Talentum",
+    "genitive": "talentī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "talento (unidad de dinero o peso)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Tēctum",
+    "genitive": "tēctī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "techo",
+    "additionalMeanings": [
+      "edificio",
+      "casa"
+    ]
+  },
+  {
+    "nominative": "Tēlum",
+    "genitive": "tēlī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "arma de proyectil",
+    "additionalMeanings": [
+      "lanza",
+      "jabalina"
+    ]
+  },
+  {
+    "nominative": "Templum",
+    "genitive": "templī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "templo",
+    "additionalMeanings": [
+      "lugar consagrado para la divinidad"
+    ]
+  },
+  {
+    "nominative": "Terminus",
+    "genitive": "terminī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "línea divisoria",
+    "additionalMeanings": [
+      "límite",
+      "término",
+      "elemento de una proposición o silogismo",
+      "límite conceptual o definición filosófica"
+    ]
+  },
+  {
+    "nominative": "Testāmentum",
+    "genitive": "testāmentī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "(última) voluntad",
+    "additionalMeanings": [
+      "testamento",
+      "latín eclesíastico: Antiguo o Nuevo Testamento"
+    ]
+  },
+  {
+    "nominative": "Testimonium",
+    "genitive": "testimoniī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "testigo",
+    "additionalMeanings": [
+      "testimonio",
+      "prueba",
+      "evidencia"
+    ]
+  },
+  {
+    "nominative": "Thesaurus",
+    "genitive": "thesauri",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "tesoro",
+    "additionalMeanings": [
+      "diccionario en varios volúmenes",
+      "algo guardado",
+      "provisión",
+      "almacén"
+    ]
+  },
+  {
+    "nominative": "Tormentum",
+    "genitive": "tormentī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "tormento",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Tribūnus",
+    "genitive": "tribūnī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "tribuno (título de varios funcionarios romanos, como tribūnus mīlitum: tribuno de los soldados, tribūnus plēbis: tribuno del pueblo, tribūnus aerāriī: tribuno del tesoro público)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Trivium",
+    "genitive": "triviī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "latín tardio: lugar donde confluyen tres caminos",
+    "additionalMeanings": [
+      "latín medieval: trivium = primer grupo de las siete artes liberales (a saber: gramática, dialéctica y retórica)"
+    ]
+  },
+  {
+    "nominative": "Tumulus",
+    "genitive": "tumulī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "tumba",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Ventus",
+    "genitive": "ventī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "viento",
+    "additionalMeanings": [
+      "brisa"
+    ]
+  },
+  {
+    "nominative": "Verbum",
+    "genitive": "verbi",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "palabra",
+    "additionalMeanings": [
+      "verbo divino o principio creador"
+    ]
+  },
+  {
+    "nominative": "Vesper",
+    "genitive": "vesperī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "el lucero vespertino (Venus)",
+    "additionalMeanings": [
+      "tarde"
+    ]
+  },
+  {
+    "nominative": "Vestīgium",
+    "genitive": "vestīgiī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "pisada",
+    "additionalMeanings": [
+      "huella",
+      "rastro"
+    ]
+  },
+  {
+    "nominative": "Vestimentum",
+    "genitive": "vestimentī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "vestido",
+    "additionalMeanings": [
+      "prenda de vestir"
+    ]
+  },
+  {
+    "nominative": "Vinculum",
+    "genitive": "vinculī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "lazo",
+    "additionalMeanings": [
+      "atadura",
+      "grillete",
+      "cadena",
+      "vínculo",
+      "atadura o conexión moral o espiritual"
+    ]
+  },
+  {
+    "nominative": "Vīnum",
+    "genitive": "vīnī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "vid",
+    "additionalMeanings": [
+      "vino"
+    ]
+  },
+  {
+    "nominative": "Vir",
+    "genitive": "virī",
+    "gender": "masculine",
+    "declension": 2,
+    "spanishMeaning": "hombre (varón adulto)",
+    "additionalMeanings": [
+      "marido"
+    ]
+  },
+  {
+    "nominative": "Vitium",
+    "genitive": "vitii",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "defecto",
+    "additionalMeanings": [
+      "falta",
+      "crimen",
+      "vicio"
+    ]
+  },
+  {
+    "nominative": "Vocabulum",
+    "genitive": "vocabulī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "palabra (para una cosa)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Vōtum",
+    "genitive": "vōtī",
+    "gender": "neuter",
+    "declension": 2,
+    "spanishMeaning": "promesa solemne",
+    "additionalMeanings": [
+      "voto",
+      "esperanza",
+      "oración"
+    ]
+  },
+  {
+    "nominative": "Vulgus",
+    "genitive": "vulgī",
+    "gender": "neuter and masculine",
+    "declension": 2,
+    "spanishMeaning": "la gente común / adverbio, vulgō: comúnmente",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Abstractio",
+    "genitive": "abstractionis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "abstracción",
+    "additionalMeanings": [
+      "proceso de separar conceptos de lo concreto"
+    ]
+  },
+  {
+    "nominative": "Aedēs",
+    "genitive": "aedis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "edificio",
+    "additionalMeanings": [
+      "plural, aedēs, aedum: casa"
+    ]
+  },
+  {
+    "nominative": "Aequor",
+    "genitive": "aequoris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "superficie llana",
+    "additionalMeanings": [
+      "mar",
+      "llanura"
+    ]
+  },
+  {
+    "nominative": "Āēr",
+    "genitive": "āĕris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "aire",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Aes",
+    "genitive": "aeris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "cobre",
+    "additionalMeanings": [
+      "bronce"
+    ]
+  },
+  {
+    "nominative": "Aestās",
+    "genitive": "aestātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "verano",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Aetās",
+    "genitive": "aetātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "edad",
+    "additionalMeanings": [
+      "tiempo de la vida"
+    ]
+  },
+  {
+    "nominative": "Aeternitās",
+    "genitive": "aeternitātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "eternidad",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Aether",
+    "genitive": "aetheris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "aire puro superior",
+    "additionalMeanings": [
+      "éter",
+      "cielo"
+    ]
+  },
+  {
+    "nominative": "Affirmatio",
+    "genitive": "affirmationis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "afirmación",
+    "additionalMeanings": [
+      "proposición lógica positiva"
+    ]
+  },
+  {
+    "nominative": "Agmen",
+    "genitive": "āgminis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "línea de marcha",
+    "additionalMeanings": [
+      "ejército",
+      "fuerzas"
+    ]
+  },
+  {
+    "nominative": "Altar",
+    "genitive": "altāris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "altar",
+    "additionalMeanings": [
+      "también, altāria, altārium (n. Plural): latín tardio: cosas colocadas sobre un altar para el sacrificio",
+      "latín eclesiastico: altar"
+    ]
+  },
+  {
+    "nominative": "Altitūdō",
+    "genitive": "altitūdinis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "altura",
+    "additionalMeanings": [
+      "altivez",
+      "rango o estatus exaltado"
+    ]
+  },
+  {
+    "nominative": "Amor",
+    "genitive": "amoris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "amor",
+    "additionalMeanings": [
+      "sentimiento profundo o afecto"
+    ]
+  },
+  {
+    "nominative": "Animal",
+    "genitive": "animālis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "ser vivo",
+    "additionalMeanings": [
+      "animal"
+    ]
+  },
+  {
+    "nominative": "Arbor",
+    "genitive": "arboris",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "árbol",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Ariēs",
+    "genitive": "arietis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "carnero (oveja macho)",
+    "additionalMeanings": [
+      "ariete"
+    ]
+  },
+  {
+    "nominative": "Ars",
+    "genitive": "artis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "arte",
+    "additionalMeanings": [
+      "habilidad creativa",
+      "especialmente en la escritura"
+    ]
+  },
+  {
+    "nominative": "Articulatio",
+    "genitive": "articulationis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "articulación",
+    "additionalMeanings": [
+      "formación de sonidos del habla"
+    ]
+  },
+  {
+    "nominative": "Arx",
+    "genitive": "arcis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "ciudadela",
+    "additionalMeanings": [
+      "castillo",
+      "cumbre"
+    ]
+  },
+  {
+    "nominative": "Auctor",
+    "genitive": "auctoris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "originador",
+    "additionalMeanings": [
+      "fundador",
+      "promotor",
+      "autor",
+      "autoridad"
+    ]
+  },
+  {
+    "nominative": "Auctoritas",
+    "genitive": "auctoritatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "autoridad",
+    "additionalMeanings": [
+      "influencia",
+      "peso poder o prestigio"
+    ]
+  },
+  {
+    "nominative": "Auris",
+    "genitive": "auris",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "oído",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Avis",
+    "genitive": "avis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "pájaro / ablativo más comúnmente avī que ave",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Bonitās",
+    "genitive": "bonitātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "bondad",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Bōs",
+    "genitive": "bovis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "buey / genitivo plural boum",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Brevis",
+    "genitive": "brevis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "brevedad",
+    "additionalMeanings": [
+      "corta duración"
+    ]
+  },
+  {
+    "nominative": "Cadāver",
+    "genitive": "cadāveris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "cuerpo muerto",
+    "additionalMeanings": [
+      "cadáver",
+      "carcasa"
+    ]
+  },
+  {
+    "nominative": "Caedēs",
+    "genitive": "caedis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "matanza",
+    "additionalMeanings": [
+      "sacrificio"
+    ]
+  },
+  {
+    "nominative": "Calix",
+    "genitive": "calicis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "taza",
+    "additionalMeanings": [
+      "copa",
+      "recipiente para beber"
+    ]
+  },
+  {
+    "nominative": "Calor",
+    "genitive": "calōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "calor",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Canis",
+    "genitive": "canis",
+    "gender": "common",
+    "declension": 3,
+    "spanishMeaning": "perro",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Captīvitās",
+    "genitive": "captīvitātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "cautiverio",
+    "additionalMeanings": [
+      "esclavitud"
+    ]
+  },
+  {
+    "nominative": "Caput",
+    "genitive": "capitis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "cabeza",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Carcer",
+    "genitive": "carceris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "prisión",
+    "additionalMeanings": [
+      "cárcel"
+    ]
+  },
+  {
+    "nominative": "Cāritās",
+    "genitive": "cāritātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "latín tardio: carestía",
+    "additionalMeanings": [
+      "alto precio",
+      "afecto",
+      "latín medieval: amor",
+      "caridad",
+      "favor",
+      "amor divino y desinteresado hacia los demás"
+    ]
+  },
+  {
+    "nominative": "Carmen",
+    "genitive": "carminis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "poema",
+    "additionalMeanings": [
+      "composición literaria en verso",
+      "canción"
+    ]
+  },
+  {
+    "nominative": "Carō",
+    "genitive": "carnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "carne",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Castitās",
+    "genitive": "castitātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "castidad",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Certāmen",
+    "genitive": "certāminis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "contienda",
+    "additionalMeanings": [
+      "lucha",
+      "combate",
+      "batalla",
+      "ordalía"
+    ]
+  },
+  {
+    "nominative": "Cinis",
+    "genitive": "cineris",
+    "gender": "masculine/feminine",
+    "declension": 3,
+    "spanishMeaning": "cenizas",
+    "additionalMeanings": [
+      "brasas"
+    ]
+  },
+  {
+    "nominative": "Cīvis",
+    "genitive": "cīvis",
+    "gender": "common",
+    "declension": 3,
+    "spanishMeaning": "ciudadano",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Cīvitās",
+    "genitive": "cīvitātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "latín tardio: ciudadanía",
+    "additionalMeanings": [
+      "la condición de ciudadano",
+      "la comunidad de ciudadanos",
+      "cuerpo político",
+      "estado",
+      "latín medieval: ciudad",
+      "pueblo"
+    ]
+  },
+  {
+    "nominative": "Clāmor",
+    "genitive": "clāmōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "clamor",
+    "additionalMeanings": [
+      "grito"
+    ]
+  },
+  {
+    "nominative": "Clāritās",
+    "genitive": "clāritātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "brillo",
+    "additionalMeanings": [
+      "esplendor",
+      "distinción",
+      "claridad",
+      "luminosidad o fama",
+      "renombre"
+    ]
+  },
+  {
+    "nominative": "Clāvis",
+    "genitive": "clāvis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "llave",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Cōdex",
+    "genitive": "codicis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "libro",
+    "additionalMeanings": [
+      "códice"
+    ]
+  },
+  {
+    "nominative": "Cōgitātiō",
+    "genitive": "cōgitātiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "pensar",
+    "additionalMeanings": [
+      "considerar",
+      "pensamiento",
+      "reflexión",
+      "meditación"
+    ]
+  },
+  {
+    "nominative": "Cognātiō",
+    "genitive": "cognātiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "parentesco",
+    "additionalMeanings": [
+      "relación",
+      "asociación / parentela",
+      "relaciones"
+    ]
+  },
+  {
+    "nominative": "Cohors",
+    "genitive": "cohortis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "cohorte",
+    "additionalMeanings": [
+      "banda",
+      "tropa"
+    ]
+  },
+  {
+    "nominative": "Collis",
+    "genitive": "collis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "colina",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Color",
+    "genitive": "coloris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "color",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Comes",
+    "genitive": "comitis",
+    "gender": "common",
+    "declension": 3,
+    "spanishMeaning": "compañero",
+    "additionalMeanings": [
+      "asociado",
+      "socio",
+      "asistente",
+      "seguidor"
+    ]
+  },
+  {
+    "nominative": "Commūniō",
+    "genitive": "commūniōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "comunidad",
+    "additionalMeanings": [
+      "participación mutua",
+      "compañerismo",
+      "latín eclesiastico: también comunión (es decir, recepción del pan y el vino consagrados de la Eucaristía",
+      "corpus Domini: Cuerpo de Cristo)"
+    ]
+  },
+  {
+    "nominative": "Communis",
+    "genitive": "communis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "común",
+    "additionalMeanings": [
+      "temas compartidos en la tradición literaria"
+    ]
+  },
+  {
+    "nominative": "Conclusio",
+    "genitive": "conclusionis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "conclusión",
+    "additionalMeanings": [
+      "proposición que sigue lógicamente de las premisas"
+    ]
+  },
+  {
+    "nominative": "Condītiō",
+    "genitive": "condītiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "acuerdo",
+    "additionalMeanings": [
+      "condición"
+    ]
+  },
+  {
+    "nominative": "Confessiō",
+    "genitive": "confessionis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "confesión",
+    "additionalMeanings": [
+      "reconocimiento",
+      "latín eclesíastico: credo",
+      "confesión de creencia",
+      "sufrimiento por reconocimiento de Cristo"
+    ]
+  },
+  {
+    "nominative": "Confūsiō",
+    "genitive": "confūsiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "mezcla",
+    "additionalMeanings": [
+      "combinación",
+      "confusión",
+      "desorden",
+      "rubor",
+      "vergüenza"
+    ]
+  },
+  {
+    "nominative": "Coniunx",
+    "genitive": "coniugis",
+    "gender": "common",
+    "declension": 3,
+    "spanishMeaning": "cónyuge",
+    "additionalMeanings": [
+      "esposo",
+      "esposa"
+    ]
+  },
+  {
+    "nominative": "Consuētūdo",
+    "genitive": "consuētūdinis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "costumbre",
+    "additionalMeanings": [
+      "hábito"
+    ]
+  },
+  {
+    "nominative": "Consul",
+    "genitive": "consulis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "cónsul (uno de los dos más altos magistrados de la república romana, con dos elegidos anualmente por el senado)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Contemplatio",
+    "genitive": "contemplationis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "contemplación",
+    "additionalMeanings": [
+      "acto filosófico de reflexión profunda"
+    ]
+  },
+  {
+    "nominative": "Contradictio",
+    "genitive": "contradictionis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "contradicción",
+    "additionalMeanings": [
+      "incompatibilidad lógica entre proposiciones"
+    ]
+  },
+  {
+    "nominative": "Conversātiō",
+    "genitive": "conversātiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "trato familiar",
+    "additionalMeanings": [
+      "asociación"
+    ]
+  },
+  {
+    "nominative": "Cor",
+    "genitive": "cordis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "corazón",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Corpus",
+    "genitive": "corporis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "cuerpo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Creātiō",
+    "genitive": "creātiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "latín tardio: elección",
+    "additionalMeanings": [
+      "nombramiento",
+      "elección (de funcionarios cívicos, etc.)",
+      "latín medieval: creación"
+    ]
+  },
+  {
+    "nominative": "Creator",
+    "genitive": "creātōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "creador",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Crīmen",
+    "genitive": "criminis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "crimen",
+    "additionalMeanings": [
+      "acusación / latín tardio: veredicto"
+    ]
+  },
+  {
+    "nominative": "Crux",
+    "genitive": "crucis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "cruz (especialmente de Cristo)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Cubīle",
+    "genitive": "cubīlis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "sofá",
+    "additionalMeanings": [
+      "cama"
+    ]
+  },
+  {
+    "nominative": "Culmen",
+    "genitive": "culminis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "cima",
+    "additionalMeanings": [
+      "cumbre",
+      "altura",
+      "techo"
+    ]
+  },
+  {
+    "nominative": "Cupīdō",
+    "genitive": "cupīdinis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "deseo",
+    "additionalMeanings": [
+      "afán",
+      "ansia"
+    ]
+  },
+  {
+    "nominative": "Daemon",
+    "genitive": "daemonis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "latín tardio: espíritu",
+    "additionalMeanings": [
+      "genio",
+      "latín eclesiastico: demonio",
+      "espíritu maligno"
+    ]
+  },
+  {
+    "nominative": "Dēceptiō",
+    "genitive": "dēceptionis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "decepción",
+    "additionalMeanings": [
+      "engaño"
+    ]
+  },
+  {
+    "nominative": "Declinatio",
+    "genitive": "declinationis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "declinación",
+    "additionalMeanings": [
+      "variación de palabras según sus casos"
+    ]
+  },
+  {
+    "nominative": "Decus",
+    "genitive": "decōris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "belleza",
+    "additionalMeanings": [
+      "gracia",
+      "ornamento",
+      "gloria",
+      "honor"
+    ]
+  },
+  {
+    "nominative": "Definitio",
+    "genitive": "definitionis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "definición",
+    "additionalMeanings": [
+      "determinación precisa de un concepto"
+    ]
+  },
+  {
+    "nominative": "Denominatio",
+    "genitive": "denominationis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "denominación",
+    "additionalMeanings": [
+      "acción de nombrar algo"
+    ]
+  },
+  {
+    "nominative": "Dēns",
+    "genitive": "dentis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "diente",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Dēvētiō",
+    "genitive": "dēvētiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "devoción",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Dictio",
+    "genitive": "dictionis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "dicción",
+    "additionalMeanings": [
+      "estilo o elección de palabras"
+    ]
+  },
+  {
+    "nominative": "Dignitas",
+    "genitive": "dignitatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "dignidad",
+    "additionalMeanings": [
+      "valor",
+      "reputación",
+      "honor o mérito",
+      "valor intrínseco del ser humano"
+    ]
+  },
+  {
+    "nominative": "Dīlēctiō",
+    "genitive": "dīlēctōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "deleite",
+    "additionalMeanings": [
+      "placer",
+      "amor",
+      "buena voluntad"
+    ]
+  },
+  {
+    "nominative": "Dioecēsis",
+    "genitive": "dioecēsis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "latín tardio: jurisdicción de un gobernador",
+    "additionalMeanings": [
+      "distrito",
+      "latín eclesíastico: diócesis",
+      "territorio eclesiástico de un obispo"
+    ]
+  },
+  {
+    "nominative": "Disputatio",
+    "genitive": "disputationis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "disputa",
+    "additionalMeanings": [
+      "debate lógico o argumentativo"
+    ]
+  },
+  {
+    "nominative": "Distinctio",
+    "genitive": "distinctionis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "distinción",
+    "additionalMeanings": [
+      "diferenciación de conceptos o ideas"
+    ]
+  },
+  {
+    "nominative": "Doctor",
+    "genitive": "doctōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "maestro",
+    "additionalMeanings": [
+      "instructor"
+    ]
+  },
+  {
+    "nominative": "Dolor",
+    "genitive": "dolōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "dolor",
+    "additionalMeanings": [
+      "pena"
+    ]
+  },
+  {
+    "nominative": "Dulcēdō",
+    "genitive": "dulcēdinis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "dulzura",
+    "additionalMeanings": [
+      "agrado"
+    ]
+  },
+  {
+    "nominative": "Dux",
+    "genitive": "ducis",
+    "gender": "common",
+    "declension": 3,
+    "spanishMeaning": "líder",
+    "additionalMeanings": [
+      "latín medieval: duque"
+    ]
+  },
+  {
+    "nominative": "Editio",
+    "genitive": "editionis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "edición",
+    "additionalMeanings": [
+      "publicación de un texto literario"
+    ]
+  },
+  {
+    "nominative": "Error",
+    "genitive": "errōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "extravío",
+    "additionalMeanings": [
+      "error",
+      "equivocación"
+    ]
+  },
+  {
+    "nominative": "Eternitas",
+    "genitive": "eternitatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "eternidad",
+    "additionalMeanings": [
+      "duración infinita fuera del tiempo"
+    ]
+  },
+  {
+    "nominative": "Famēs",
+    "genitive": "famis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "hambre",
+    "additionalMeanings": [
+      "carestía"
+    ]
+  },
+  {
+    "nominative": "Fēlis",
+    "genitive": "fēlis",
+    "gender": "common",
+    "declension": 3,
+    "spanishMeaning": "gato",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Fēstīvitās",
+    "genitive": "fēstīvitātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "latín tardio: buen humor",
+    "additionalMeanings": [
+      "agrado",
+      "latín medieval: ocasión festiva",
+      "fiesta",
+      "festividad"
+    ]
+  },
+  {
+    "nominative": "Fīnis",
+    "genitive": "fīnis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "extremo",
+    "additionalMeanings": [
+      "límite"
+    ]
+  },
+  {
+    "nominative": "Flōs",
+    "genitive": "flōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "flor",
+    "additionalMeanings": [
+      "florecimiento"
+    ]
+  },
+  {
+    "nominative": "Flūmen",
+    "genitive": "flūminis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "arroyo",
+    "additionalMeanings": [
+      "río"
+    ]
+  },
+  {
+    "nominative": "Foedus",
+    "genitive": "foederis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "tratado",
+    "additionalMeanings": [
+      "acuerdo",
+      "contrato"
+    ]
+  },
+  {
+    "nominative": "Fōns",
+    "genitive": "fontis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "manantial",
+    "additionalMeanings": [
+      "fuente"
+    ]
+  },
+  {
+    "nominative": "Fors",
+    "genitive": "fortis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "azar",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Fortitūdō",
+    "genitive": "fortitūdinis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "fortaleza",
+    "additionalMeanings": [
+      "fuerza",
+      "resolución",
+      "valentía",
+      "fuerza de carácter",
+      "virtud estoica o moral"
+    ]
+  },
+  {
+    "nominative": "Frāter",
+    "genitive": "frātris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "hermano",
+    "additionalMeanings": [
+      "latín eclesiastico: fraile / Frātrēs Minōrēs: frailes menores",
+      "franciscanos"
+    ]
+  },
+  {
+    "nominative": "Fraternitas",
+    "genitive": "fraternitatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "fraternidad",
+    "additionalMeanings": [
+      "hermandad"
+    ]
+  },
+  {
+    "nominative": "Fraus",
+    "genitive": "fraudis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "trampa",
+    "additionalMeanings": [
+      "engaño",
+      "imposición",
+      "fraude"
+    ]
+  },
+  {
+    "nominative": "Frōns",
+    "genitive": "frontis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "frente",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Fūr",
+    "genitive": "fūris",
+    "gender": "common",
+    "declension": 3,
+    "spanishMeaning": "ladrón",
+    "additionalMeanings": [
+      "bribón"
+    ]
+  },
+  {
+    "nominative": "Furor",
+    "genitive": "furōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "ira",
+    "additionalMeanings": [
+      "furia"
+    ]
+  },
+  {
+    "nominative": "Generātiō",
+    "genitive": "generātiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "familia",
+    "additionalMeanings": [
+      "generación"
+    ]
+  },
+  {
+    "nominative": "Gēns",
+    "genitive": "gentis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "latín tardio: clan tribu",
+    "additionalMeanings": [
+      "raza",
+      "nación",
+      "pueblo / omnēs gentēs: humanidad",
+      "humanidad / latín medieval: en plural, gentēs, gentium (n. Plural): los paganos",
+      "bárbaros"
+    ]
+  },
+  {
+    "nominative": "Genus",
+    "genitive": "generis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "origen",
+    "additionalMeanings": [
+      "linaje",
+      "especie",
+      "género"
+    ]
+  },
+  {
+    "nominative": "Gravitas",
+    "genitive": "gravitatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "gravedad",
+    "additionalMeanings": [
+      "seriedad o peso moral"
+    ]
+  },
+  {
+    "nominative": "Grex",
+    "genitive": "gregis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "rebaño",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Hiems",
+    "genitive": "hiemis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "invierno",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Homō",
+    "genitive": "hominis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "hombre",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Honor",
+    "genitive": "honōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "honor",
+    "additionalMeanings": [
+      "gloria",
+      "cargo",
+      "puesto"
+    ]
+  },
+  {
+    "nominative": "Hospes",
+    "genitive": "hospitis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "huésped",
+    "additionalMeanings": [
+      "forastero"
+    ]
+  },
+  {
+    "nominative": "Hostis",
+    "genitive": "hostis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "extraño",
+    "additionalMeanings": [
+      "enemigo"
+    ]
+  },
+  {
+    "nominative": "Humanitas",
+    "genitive": "humanitatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "humanidad",
+    "additionalMeanings": [
+      "cualidad del ser humano y su moralidad"
+    ]
+  },
+  {
+    "nominative": "Humilitās",
+    "genitive": "humilitātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "latín tardio: bajeza",
+    "additionalMeanings": [
+      "insignificancia",
+      "latín medieval: humildad"
+    ]
+  },
+  {
+    "nominative": "Ignis",
+    "genitive": "ignis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "fuego",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Imāgō",
+    "genitive": "imāginis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "imagen",
+    "additionalMeanings": [
+      "forma",
+      "figura"
+    ]
+  },
+  {
+    "nominative": "Imitatio",
+    "genitive": "imitationis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "imitación",
+    "additionalMeanings": [
+      "técnica literaria de reproducir estilos o temas"
+    ]
+  },
+  {
+    "nominative": "Immortalitas",
+    "genitive": "immortalitatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "inmortalidad",
+    "additionalMeanings": [
+      "perpetuidad del alma o el espíritu"
+    ]
+  },
+  {
+    "nominative": "Imperator",
+    "genitive": "imperātōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "latín tardio: comandante",
+    "additionalMeanings": [
+      "general",
+      "latín tardio: Emperador"
+    ]
+  },
+  {
+    "nominative": "Indignātiō",
+    "genitive": "indignātiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "disgusto",
+    "additionalMeanings": [
+      "indignación",
+      "desdén"
+    ]
+  },
+  {
+    "nominative": "Infāns",
+    "genitive": "infantis",
+    "gender": "common",
+    "declension": 3,
+    "spanishMeaning": "latín tardio: incapaz de hablar",
+    "additionalMeanings": [
+      "bebé",
+      "infante",
+      "latín medieval: también niño"
+    ]
+  },
+  {
+    "nominative": "Infinitas",
+    "genitive": "infinitatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "infinitud",
+    "additionalMeanings": [
+      "concepto metafísico del infinito"
+    ]
+  },
+  {
+    "nominative": "Infirmitās",
+    "genitive": "infirmitātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "debilidad",
+    "additionalMeanings": [
+      "flaqueza"
+    ]
+  },
+  {
+    "nominative": "Inīquitās",
+    "genitive": "inīquitātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "inequidad",
+    "additionalMeanings": [
+      "injusticia",
+      "latín eclesiastico: maldad",
+      "pecaminosidad"
+    ]
+  },
+  {
+    "nominative": "Interpretatio",
+    "genitive": "interpretationis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "interpretación",
+    "additionalMeanings": [
+      "explicación del significado"
+    ]
+  },
+  {
+    "nominative": "Iter",
+    "genitive": "itineris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "viaje",
+    "additionalMeanings": [
+      "ruta",
+      "camino"
+    ]
+  },
+  {
+    "nominative": "Iūdex",
+    "genitive": "iūdicis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "juez",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Iūs",
+    "genitive": "iūris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "derecho",
+    "additionalMeanings": [
+      "justicia",
+      "ley",
+      "norma"
+    ]
+  },
+  {
+    "nominative": "Iuventūs",
+    "genitive": "iuventūtis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "la edad de la juventud",
+    "additionalMeanings": [
+      "la juventud / colectivo, los jóvenes",
+      "la juventud"
+    ]
+  },
+  {
+    "nominative": "Labor",
+    "genitive": "laboris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "trabajo",
+    "additionalMeanings": [
+      "esfuerzo"
+    ]
+  },
+  {
+    "nominative": "Lapis",
+    "genitive": "lapidis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "piedra",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Lātitūdō",
+    "genitive": "lātitūdinis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "amplitud",
+    "additionalMeanings": [
+      "anchura"
+    ]
+  },
+  {
+    "nominative": "Latrō",
+    "genitive": "latrōnis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "ladrón",
+    "additionalMeanings": [
+      "bandido"
+    ]
+  },
+  {
+    "nominative": "Laus",
+    "genitive": "laudis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "alabanza",
+    "additionalMeanings": [
+      "encomio",
+      "estima / latín eclesiastico: como plural, laudēs (es decir matūtīnae): Laudes (servicio litúrgico al amanecer, llamado así por incluir los salmos 148-150, que comienzan Laudate...)"
+    ]
+  },
+  {
+    "nominative": "Lēctiō",
+    "genitive": "lēctiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "latín tardio: acto de escoger",
+    "additionalMeanings": [
+      "seleccionar",
+      "acto de leer",
+      "leer en voz alta",
+      "latín eclesiastico: y latín medieval:, lectura",
+      "lección",
+      "porción de texto que se lee"
+    ]
+  },
+  {
+    "nominative": "Lēctor",
+    "genitive": "lēctōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "lector",
+    "additionalMeanings": [
+      "conferenciante",
+      "profesor"
+    ]
+  },
+  {
+    "nominative": "Legiō",
+    "genitive": "legiõnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "legión",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Leō",
+    "genitive": "leōnis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "león",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Lex",
+    "genitive": "legis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "ley",
+    "additionalMeanings": [
+      "principio lingüístico o gramatical"
+    ]
+  },
+  {
+    "nominative": "Libertas",
+    "genitive": "libertatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "libertad",
+    "additionalMeanings": [
+      "capacidad de elección y autodeterminación"
+    ]
+  },
+  {
+    "nominative": "Libīdō",
+    "genitive": "libīdinis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "pasión",
+    "additionalMeanings": [
+      "lujuria"
+    ]
+  },
+  {
+    "nominative": "Līmen",
+    "genitive": "līminis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "umbral",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Lītus",
+    "genitive": "lītoris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "orilla",
+    "additionalMeanings": [
+      "costa"
+    ]
+  },
+  {
+    "nominative": "Locutio",
+    "genitive": "locutionis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "locución",
+    "additionalMeanings": [
+      "expresión o frase"
+    ]
+  },
+  {
+    "nominative": "Longitūdō",
+    "genitive": "longitūdinis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "longitud",
+    "additionalMeanings": [
+      "(de tiempo) larga duración"
+    ]
+  },
+  {
+    "nominative": "Lūmen",
+    "genitive": "lūminis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "luz",
+    "additionalMeanings": [
+      "lámpara"
+    ]
+  },
+  {
+    "nominative": "Lūx",
+    "genitive": "lūcis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "luz (del día)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Magnitudo",
+    "genitive": "magnitudinis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "grandeza",
+    "additionalMeanings": [
+      "tamaño",
+      "magnitud o importancia"
+    ]
+  },
+  {
+    "nominative": "Mare",
+    "genitive": "maris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "mar",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Mártir",
+    "genitive": "martyris",
+    "gender": "masculine/feminine",
+    "declension": 3,
+    "spanishMeaning": "testigo",
+    "additionalMeanings": [
+      "mártir (el que ha sido asesinado dando testimonio de la fe cristiana)"
+    ]
+  },
+  {
+    "nominative": "Māter",
+    "genitive": "mātris",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "madre",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Mel",
+    "genitive": "mellis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "miel",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Mēns",
+    "genitive": "mentis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "mente",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Mēnsis",
+    "genitive": "mēnsis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "mes",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Mercēs",
+    "genitive": "mercedis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "precio",
+    "additionalMeanings": [
+      "salario",
+      "sueldo",
+      "recompensa"
+    ]
+  },
+  {
+    "nominative": "Merx",
+    "genitive": "mercis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "bien",
+    "additionalMeanings": [
+      "mercancía"
+    ]
+  },
+  {
+    "nominative": "Mīles",
+    "genitive": "mīlitis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "soldado",
+    "additionalMeanings": [
+      "latín medieval: también caballero"
+    ]
+  },
+  {
+    "nominative": "Mōns",
+    "genitive": "montis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "montaña",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Mors",
+    "genitive": "mortis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "muerte",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Mōs",
+    "genitive": "mōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "costumbre",
+    "additionalMeanings": [
+      "hábito / en plural, mōrēs, mõrum: carácter"
+    ]
+  },
+  {
+    "nominative": "Mulier",
+    "genitive": "mulieris",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "mujer",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Multitūdō",
+    "genitive": "multitūdinis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "multitud",
+    "additionalMeanings": [
+      "número"
+    ]
+  },
+  {
+    "nominative": "Mūnus",
+    "genitive": "mūneris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "regalo",
+    "additionalMeanings": [
+      "ofrenda",
+      "deber",
+      "obligación / latín tardio: en plural, mūnera, mūnuerum: espectáculo de gladiadores"
+    ]
+  },
+  {
+    "nominative": "Mūs",
+    "genitive": "mūris",
+    "gender": "common",
+    "declension": 3,
+    "spanishMeaning": "ratón",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Narratio",
+    "genitive": "narrationis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "narración",
+    "additionalMeanings": [
+      "acto de contar una historia"
+    ]
+  },
+  {
+    "nominative": "Nātiō",
+    "genitive": "nātiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "nacimiento",
+    "additionalMeanings": [
+      "origen",
+      "rango social",
+      "raza de personas",
+      "nación",
+      "país",
+      "territorio"
+    ]
+  },
+  {
+    "nominative": "Nāvis",
+    "genitive": "nāvis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "barco",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Necessitās",
+    "genitive": "necessitātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "necesidad",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Negatio",
+    "genitive": "negationis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "negación",
+    "additionalMeanings": [
+      "proposición lógica negativa"
+    ]
+  },
+  {
+    "nominative": "Nemus",
+    "genitive": "nemoris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "madera",
+    "additionalMeanings": [
+      "arboleda",
+      "bosque"
+    ]
+  },
+  {
+    "nominative": "Nepōs",
+    "genitive": "nepōtis",
+    "gender": "common",
+    "declension": 3,
+    "spanishMeaning": "sobrino",
+    "additionalMeanings": [
+      "sobrina",
+      "nieto",
+      "nieta"
+    ]
+  },
+  {
+    "nominative": "Nex",
+    "genitive": "necis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "asesinato",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Nobilitas",
+    "genitive": "nobilitatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "nobleza",
+    "additionalMeanings": [
+      "alta posición o excelencia moral"
+    ]
+  },
+  {
+    "nominative": "Nomen",
+    "genitive": "nominis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "nombre",
+    "additionalMeanings": [
+      "palabra que designa algo"
+    ]
+  },
+  {
+    "nominative": "Novitās",
+    "genitive": "novitātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "novedad",
+    "additionalMeanings": [
+      "renovación",
+      "reforma"
+    ]
+  },
+  {
+    "nominative": "Nox",
+    "genitive": "noctis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "noche / nocte, noctū: de noche",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Nūbēs",
+    "genitive": "nūbis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "nube",
+    "additionalMeanings": [
+      "niebla"
+    ]
+  },
+  {
+    "nominative": "Nūmen",
+    "genitive": "nūminis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "voluntad divina",
+    "additionalMeanings": [
+      "deidad"
+    ]
+  },
+  {
+    "nominative": "Occāsiō",
+    "genitive": "occāsiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "oportunidad",
+    "additionalMeanings": [
+      "ocasión",
+      "momento adecuado"
+    ]
+  },
+  {
+    "nominative": "Odor",
+    "genitive": "odōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "olor",
+    "additionalMeanings": [
+      "aroma",
+      "hedor",
+      "fragancia"
+    ]
+  },
+  {
+    "nominative": "Onus",
+    "genitive": "oneris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "carga",
+    "additionalMeanings": [
+      "peso"
+    ]
+  },
+  {
+    "nominative": "Opus",
+    "genitive": "operis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "trabajo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Örātiō",
+    "genitive": "ōrātiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "oración",
+    "additionalMeanings": [
+      "estructura básica del discurso",
+      "discurso",
+      "alocución",
+      "latín eclesíastico: oración"
+    ]
+  },
+  {
+    "nominative": "Orbis",
+    "genitive": "orbis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "círculo",
+    "additionalMeanings": [
+      "globo / orbis terrārum: el mundo"
+    ]
+  },
+  {
+    "nominative": "Ördō",
+    "genitive": "ōrdinis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "orden",
+    "additionalMeanings": [
+      "rango",
+      "fila",
+      "latín eclesíastico:, orden (de monjes, religiosos, etc.)",
+      "latín medieval:, forma de proceder",
+      "ritual"
+    ]
+  },
+  {
+    "nominative": "Orīgō",
+    "genitive": "orīginis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "origen",
+    "additionalMeanings": [
+      "fuente"
+    ]
+  },
+  {
+    "nominative": "Ōs",
+    "genitive": "ōris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "boca",
+    "additionalMeanings": [
+      "cara"
+    ]
+  },
+  {
+    "nominative": "Os",
+    "genitive": "ossis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "hueso",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Ovis",
+    "genitive": "ovis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "oveja",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Pānis",
+    "genitive": "pānis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "pan",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Parēns",
+    "genitive": "parentis",
+    "gender": "common",
+    "declension": 3,
+    "spanishMeaning": "procreador",
+    "additionalMeanings": [
+      "madre",
+      "padre",
+      "progenitor",
+      "antepasado / latín medieval: como plural, parentēs, parentum (c.): parientes"
+    ]
+  },
+  {
+    "nominative": "Pars",
+    "genitive": "partis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "parte",
+    "additionalMeanings": [
+      "trozo",
+      "porción",
+      "bando",
+      "región",
+      "partido",
+      "facción / adverbio, partim: en parte"
+    ]
+  },
+  {
+    "nominative": "Passiō",
+    "genitive": "passiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "sufrimiento (especialmente la pasión de Cristo y los sufrimientos de los mártires)",
+    "additionalMeanings": [
+      "emoción",
+      "enfermedad"
+    ]
+  },
+  {
+    "nominative": "Pāstor",
+    "genitive": "pāstōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "pastor",
+    "additionalMeanings": [
+      "boyero"
+    ]
+  },
+  {
+    "nominative": "Pater",
+    "genitive": "patris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "padre",
+    "additionalMeanings": [
+      "antepasado"
+    ]
+  },
+  {
+    "nominative": "Pāx",
+    "genitive": "pācis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "paz",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Peccator",
+    "genitive": "peccātōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "pecador",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Pectus",
+    "genitive": "pectoris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "pecho",
+    "additionalMeanings": [
+      "seno"
+    ]
+  },
+  {
+    "nominative": "Pecus",
+    "genitive": "pecoris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "ganado",
+    "additionalMeanings": [
+      "oveja"
+    ]
+  },
+  {
+    "nominative": "Pedes",
+    "genitive": "peditis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "el que va a pie",
+    "additionalMeanings": [
+      "soldado de infantería",
+      "lacayo",
+      "paje"
+    ]
+  },
+  {
+    "nominative": "Persecūtiō",
+    "genitive": "persecutiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "persecución",
+    "additionalMeanings": [
+      "sufrimiento"
+    ]
+  },
+  {
+    "nominative": "Pēs",
+    "genitive": "pedis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "pie",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Pietās",
+    "genitive": "pietātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "latín tardio: conducta obediente",
+    "additionalMeanings": [
+      "sentido del deber",
+      "devoción (especialmente entre padres e hijos)",
+      "respeto",
+      "latín eclesíastico: piedad",
+      "bondad"
+    ]
+  },
+  {
+    "nominative": "Piscis",
+    "genitive": "piscis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "pez",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Plēbs",
+    "genitive": "plēbis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "la gente común",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Pōns",
+    "genitive": "pontis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "puente",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Pontifex",
+    "genitive": "pontificis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "latín tardio: sacerdote (presidente en los sacrificios)",
+    "additionalMeanings": [
+      "latín eclesíastico: obispo",
+      "pontífice (especialmente el obispo de Roma, el Papa)"
+    ]
+  },
+  {
+    "nominative": "Possessiō",
+    "genitive": "possessiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "posesión",
+    "additionalMeanings": [
+      "propiedad"
+    ]
+  },
+  {
+    "nominative": "Potestās",
+    "genitive": "potestātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "poder",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Praedicator",
+    "genitive": "praedicātōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "predicador",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Praetor",
+    "genitive": "praetōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "pretor (uno de los principales magistrados romanos)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Presbítero",
+    "genitive": "presbyteris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "sacerdote",
+    "additionalMeanings": [
+      "presbítero"
+    ]
+  },
+  {
+    "nominative": "Prex",
+    "genitive": "precis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "oración",
+    "additionalMeanings": [
+      "ruego"
+    ]
+  },
+  {
+    "nominative": "Princeps",
+    "genitive": "principis",
+    "gender": "masculine/feminine",
+    "declension": 3,
+    "spanishMeaning": "primero",
+    "additionalMeanings": [
+      "jefe / como sustantivo",
+      "princeps, principis (m./f.): líder",
+      "persona al mando",
+      "capitán (de un ejército)",
+      "latín medieval: príncipe"
+    ]
+  },
+  {
+    "nominative": "Propositio",
+    "genitive": "propositionis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "proposición",
+    "additionalMeanings": [
+      "enunciado que expresa una verdad o falsedad"
+    ]
+  },
+  {
+    "nominative": "Pudor",
+    "genitive": "pudōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "sentido de la vergüenza",
+    "additionalMeanings": [
+      "pudor",
+      "propiedad"
+    ]
+  },
+  {
+    "nominative": "Pulchritūdō",
+    "genitive": "pulchritūdinis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "belleza",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Pulvis",
+    "genitive": "pulveris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "polvo",
+    "additionalMeanings": [
+      "polvillo"
+    ]
+  },
+  {
+    "nominative": "Rādīx",
+    "genitive": "rādīcis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "raíz",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Ratiō",
+    "genitive": "ratiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "método",
+    "additionalMeanings": [
+      "plan",
+      "sistema",
+      "razón",
+      "capacidad de pensamiento lógico y racional",
+      "recuento",
+      "causa",
+      "modo",
+      "manera"
+    ]
+  },
+  {
+    "nominative": "Redēmptiō",
+    "genitive": "redemptiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "recompra",
+    "additionalMeanings": [
+      "liberación",
+      "rescate",
+      "redención",
+      "acto de liberación por gracia divina"
+    ]
+  },
+  {
+    "nominative": "Regiō",
+    "genitive": "regiõnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "frontera",
+    "additionalMeanings": [
+      "región",
+      "país"
+    ]
+  },
+  {
+    "nominative": "Rêligiō",
+    "genitive": "rêligiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "latín tardio: conciencia",
+    "additionalMeanings": [
+      "devoción",
+      "piedad",
+      "sentido de obligación o deber religioso para con los dioses",
+      "latín medieval: modo de vida",
+      "vida (monástica) religiosa",
+      "cualquier orden de monjes o monjas"
+    ]
+  },
+  {
+    "nominative": "Resurrectiō",
+    "genitive": "resurrectiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "resucitar",
+    "additionalMeanings": [
+      "resurrección (de entre los muertos) (especialmente de Jesucristo)"
+    ]
+  },
+  {
+    "nominative": "Revelatio",
+    "genitive": "revelationis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "revelación",
+    "additionalMeanings": [
+      "comunicación divina a la humanidad"
+    ]
+  },
+  {
+    "nominative": "Rēx",
+    "genitive": "rēgis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "rey",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Rūs",
+    "genitive": "rūris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "campo",
+    "additionalMeanings": [
+      "campiña"
+    ]
+  },
+  {
+    "nominative": "Salūs",
+    "genitive": "salūtis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "salud",
+    "additionalMeanings": [
+      "seguridad",
+      "salvación (del alma)",
+      "liberación espiritual y unión con Dios / saludo abreviado, S.P.D. = salūtem plūrimam dīcit: envía cordial saludo"
+    ]
+  },
+  {
+    "nominative": "Sanctitas",
+    "genitive": "sanctitatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "santidad",
+    "additionalMeanings": [
+      "perfección moral y espiritual"
+    ]
+  },
+  {
+    "nominative": "Sanguis",
+    "genitive": "sanguinis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "sangre",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Sānitās",
+    "genitive": "sānitātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "salud",
+    "additionalMeanings": [
+      "salud del cuerpo"
+    ]
+  },
+  {
+    "nominative": "Scelus",
+    "genitive": "sceleris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "delito",
+    "additionalMeanings": [
+      "pecado"
+    ]
+  },
+  {
+    "nominative": "Scriptor",
+    "genitive": "scriptoris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "escritor",
+    "additionalMeanings": [
+      "creador de textos literarios"
+    ]
+  },
+  {
+    "nominative": "Sēdēs",
+    "genitive": "sēdis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "sede",
+    "additionalMeanings": [
+      "trono",
+      "morada",
+      "habitación / sēdēs episcopālis: sede episcopal (ciudad catedralicia de una diócesis)",
+      "sēdēs apostolica: sede apostólica (es decir, Roma, lugar de descanso de Pedro y Pablo)"
+    ]
+  },
+  {
+    "nominative": "Sēmen",
+    "genitive": "sēminis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "semilla",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Senectūs",
+    "genitive": "senectūtis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "vejez",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Sermō",
+    "genitive": "sermonis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "conversación",
+    "additionalMeanings": [
+      "discurso",
+      "palabra",
+      "sermón"
+    ]
+  },
+  {
+    "nominative": "Serpēns",
+    "genitive": "serpentis",
+    "gender": "feminine/masculine",
+    "declension": 3,
+    "spanishMeaning": "serpiente",
+    "additionalMeanings": [
+      "culebra"
+    ]
+  },
+  {
+    "nominative": "Sīdus",
+    "genitive": "sīderis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "estrella",
+    "additionalMeanings": [
+      "constelación"
+    ]
+  },
+  {
+    "nominative": "Significatio",
+    "genitive": "significationis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "significación",
+    "additionalMeanings": [
+      "sentido o interpretación de una palabra"
+    ]
+  },
+  {
+    "nominative": "Similitūdō",
+    "genitive": "similitūdinis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "semejanza",
+    "additionalMeanings": [
+      "parecido",
+      "imitación"
+    ]
+  },
+  {
+    "nominative": "Societas",
+    "genitive": "societatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "sociedad",
+    "additionalMeanings": [
+      "comunidad o asociación",
+      "unión de individuos en un orden racional"
+    ]
+  },
+  {
+    "nominative": "Sōl",
+    "genitive": "sōlis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "sol",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Sõlitūdō",
+    "genitive": "sõlitūdinis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "soledad",
+    "additionalMeanings": [
+      "lugar solitario",
+      "páramo"
+    ]
+  },
+  {
+    "nominative": "Sollicitūdō",
+    "genitive": "sollicitūdinis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "preocupación",
+    "additionalMeanings": [
+      "cuidado ansioso (por algo)"
+    ]
+  },
+  {
+    "nominative": "Soror",
+    "genitive": "sorōris",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "hermana",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Sors",
+    "genitive": "sortis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "suerte",
+    "additionalMeanings": [
+      "destino",
+      "oráculo"
+    ]
+  },
+  {
+    "nominative": "Syntax",
+    "genitive": "syntaxis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "sintaxis",
+    "additionalMeanings": [
+      "disposición de palabras en la oración"
+    ]
+  },
+  {
+    "nominative": "Tempestas",
+    "genitive": "tempestātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "período de tiempo",
+    "additionalMeanings": [
+      "estación",
+      "mal tiempo",
+      "tormenta"
+    ]
+  },
+  {
+    "nominative": "Tempus",
+    "genitive": "temporis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "tiempo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Testis",
+    "genitive": "testis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "testigo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Timor",
+    "genitive": "timōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "miedo",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Trānslātiō",
+    "genitive": "trānslātiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "traslado de un lugar a otro (latín eclesiastico: promoción de un obispo de una diócesis a otra; reinhumación solemne de las reliquias de un santo)",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Turris",
+    "genitive": "turris",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "torre",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Urbs",
+    "genitive": "urbis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "ciudad",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Ütilitās",
+    "genitive": "ūtilitātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "utilidad",
+    "additionalMeanings": [
+      "beneficio"
+    ]
+  },
+  {
+    "nominative": "Uxor",
+    "genitive": "uxoris",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "esposa",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Vallēs",
+    "genitive": "vallis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "valle",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Vānitās",
+    "genitive": "vānitātis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "vacío",
+    "additionalMeanings": [
+      "nada",
+      "falsedad",
+      "engaño",
+      "mentira",
+      "vanidad",
+      "vanagloria"
+    ]
+  },
+  {
+    "nominative": "Vās",
+    "genitive": "vāsis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "recipiente",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Vātēs",
+    "genitive": "vātis",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "poeta",
+    "additionalMeanings": [
+      "bardo"
+    ]
+  },
+  {
+    "nominative": "Venter",
+    "genitive": "ventris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "vientre",
+    "additionalMeanings": [
+      "estómago",
+      "matriz / frūctus ventris: fruto del vientre",
+      "niño"
+    ]
+  },
+  {
+    "nominative": "Vēr",
+    "genitive": "vēris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "primavera",
+    "additionalMeanings": [
+      "primaveral"
+    ]
+  },
+  {
+    "nominative": "Veritas",
+    "genitive": "veritatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "verdad",
+    "additionalMeanings": [
+      "conformidad del pensamiento con la realidad",
+      "realidad o autenticidad"
+    ]
+  },
+  {
+    "nominative": "Vestis",
+    "genitive": "vestis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "vestido",
+    "additionalMeanings": [
+      "túnica / plural, vestēs, vestium: vestimenta"
+    ]
+  },
+  {
+    "nominative": "Vetus",
+    "genitive": "veteris",
+    "gender": "adjective",
+    "declension": 3,
+    "spanishMeaning": "viejo",
+    "additionalMeanings": [
+      "antiguo"
+    ]
+  },
+  {
+    "nominative": "Victor",
+    "genitive": "victōris",
+    "gender": "masculine",
+    "declension": 3,
+    "spanishMeaning": "conquistador",
+    "additionalMeanings": [
+      "vencedor"
+    ]
+  },
+  {
+    "nominative": "Virgō",
+    "genitive": "virginis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "doncella",
+    "additionalMeanings": [
+      "muchacha",
+      "virgen / beāta María virgō: la Santísima Virgen María"
+    ]
+  },
+  {
+    "nominative": "Virtūs",
+    "genitive": "virtūtis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "virtud",
+    "additionalMeanings": [
+      "excelencia moral",
+      "intelectual o valentía",
+      "poder",
+      "fuerza",
+      "valor",
+      "hombría",
+      "acontecimiento o señal milagrosa / latín medieval: plural, virtūtēs, virtūtum: poderes",
+      "milagros",
+      "huestes / bíblico, dominus deus virtūtum: Señor Dios de las huestes/ejércitos (angélicos)"
+    ]
+  },
+  {
+    "nominative": "Vīs",
+    "genitive": "vīrium",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "fuerza",
+    "additionalMeanings": [
+      "poder / usualmente plural con sentido singular, vīrēs, vīrium: fuerza"
+    ]
+  },
+  {
+    "nominative": "Vīsiō",
+    "genitive": "vīsiōnis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "sentido de ver",
+    "additionalMeanings": [
+      "vista",
+      "apariencia",
+      "aparición",
+      "idea",
+      "concepción",
+      "noción"
+    ]
+  },
+  {
+    "nominative": "Volūmen",
+    "genitive": "volūminis",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "rollo",
+    "additionalMeanings": [
+      "pergamino",
+      "libro",
+      "volumen"
+    ]
+  },
+  {
+    "nominative": "Voluntās",
+    "genitive": "voluntatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "deseo",
+    "additionalMeanings": [
+      "anhelo"
+    ]
+  },
+  {
+    "nominative": "Voluptās",
+    "genitive": "voluptatis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "placer",
+    "additionalMeanings": [
+      "enjoyment"
+    ]
+  },
+  {
+    "nominative": "Vōx",
+    "genitive": "vocis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "voz",
+    "additionalMeanings": [
+      "emisión / gramaticalmente, vocal"
+    ]
+  },
+  {
+    "nominative": "Vulnus",
+    "genitive": "vulneris",
+    "gender": "neuter",
+    "declension": 3,
+    "spanishMeaning": "herida",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Vulpēs",
+    "genitive": "vulpis",
+    "gender": "feminine",
+    "declension": 3,
+    "spanishMeaning": "zorro",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Accentus",
+    "genitive": "accentūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "acento",
+    "additionalMeanings": [
+      "énfasis en una sílaba o palabra"
+    ]
+  },
+  {
+    "nominative": "Actus",
+    "genitive": "actus",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "acto",
+    "additionalMeanings": [
+      "realización de un potencial lógico"
+    ]
+  },
+  {
+    "nominative": "Adventus",
+    "genitive": "adventūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "venida",
+    "additionalMeanings": [
+      "aproximación",
+      "llegada",
+      "Adviento (tiempo litúrgico que precede a la Navidad)"
+    ]
+  },
+  {
+    "nominative": "Affectus",
+    "genitive": "affectūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "afecto",
+    "additionalMeanings": [
+      "disposición emocional en un razonamiento ético o espiritual"
+    ]
+  },
+  {
+    "nominative": "Arcus",
+    "genitive": "arcūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "arco",
+    "additionalMeanings": [
+      "curva de entonación en la pronunciación"
+    ]
+  },
+  {
+    "nominative": "Ascensus",
+    "genitive": "ascensūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "ascenso",
+    "additionalMeanings": [
+      "elevación espiritual o metafísica"
+    ]
+  },
+  {
+    "nominative": "Auditus",
+    "genitive": "auditūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "audición",
+    "additionalMeanings": [
+      "capacidad de percibir sonidos lingüísticos"
+    ]
+  },
+  {
+    "nominative": "Cantus",
+    "genitive": "cantūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "canción",
+    "additionalMeanings": [
+      "canto"
+    ]
+  },
+  {
+    "nominative": "Cāsus",
+    "genitive": "cāsūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "caída",
+    "additionalMeanings": [
+      "caso",
+      "casualidad",
+      "accidente",
+      "(des)fortuna",
+      "situación",
+      "apuro"
+    ]
+  },
+  {
+    "nominative": "Cōnspectus",
+    "genitive": "cōnspectūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "vista",
+    "additionalMeanings": [
+      "vista (de algo)",
+      "estudio",
+      "consideración"
+    ]
+  },
+  {
+    "nominative": "Conventus",
+    "genitive": "conventūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "reunión",
+    "additionalMeanings": [
+      "asamblea",
+      "muchedumbre / latín eclesiastico: convento",
+      "monasterio"
+    ]
+  },
+  {
+    "nominative": "Cornū",
+    "genitive": "cornūs",
+    "gender": "neuter",
+    "declension": 4,
+    "spanishMeaning": "cuerno",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Cultus",
+    "genitive": "cultūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "culto",
+    "additionalMeanings": [
+      "veneración religiosa o práctica devocional",
+      "observancia (de un rito religioso)"
+    ]
+  },
+  {
+    "nominative": "Currus",
+    "genitive": "currūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "carro",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Cursus",
+    "genitive": "cursūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "curso",
+    "additionalMeanings": [
+      "dirección"
+    ]
+  },
+  {
+    "nominative": "Decretus",
+    "genitive": "decretūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "decreto",
+    "additionalMeanings": [
+      "conclusión lógica o decisión razonada",
+      "resolución oficial emitida por una autoridad"
+    ]
+  },
+  {
+    "nominative": "Dictus",
+    "genitive": "dictūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "dicho",
+    "additionalMeanings": [
+      "expresión o enunciado"
+    ]
+  },
+  {
+    "nominative": "Discursus",
+    "genitive": "discursūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "discurso",
+    "additionalMeanings": [
+      "movimiento del pensamiento de una idea a otra"
+    ]
+  },
+  {
+    "nominative": "Exercitus",
+    "genitive": "exercitūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "ejercito",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Exitus",
+    "genitive": "exitūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "salida",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Flatus",
+    "genitive": "flatus",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "aliento",
+    "additionalMeanings": [
+      "emisión de aire en la fonación"
+    ]
+  },
+  {
+    "nominative": "Fluctus",
+    "genitive": "fluctūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "inundación",
+    "additionalMeanings": [
+      "marejada",
+      "oleaje"
+    ]
+  },
+  {
+    "nominative": "Frūctus",
+    "genitive": "frūctūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "fruto",
+    "additionalMeanings": [
+      "cosecha",
+      "alegría",
+      "deleite"
+    ]
+  },
+  {
+    "nominative": "Gemitus",
+    "genitive": "gemitūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "gemido",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Genū",
+    "genitive": "genūs",
+    "gender": "neuter",
+    "declension": 4,
+    "spanishMeaning": "rodilla",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Gradus",
+    "genitive": "gradūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "paso",
+    "additionalMeanings": [
+      "grado",
+      "rango"
+    ]
+  },
+  {
+    "nominative": "Habitus",
+    "genitive": "habitūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "latín tardio: condición",
+    "additionalMeanings": [
+      "hábito",
+      "cualidad",
+      "naturaleza",
+      "carácter",
+      "vestido",
+      "atuendo",
+      "latín medieval: (monástico) hábito"
+    ]
+  },
+  {
+    "nominative": "Ictus",
+    "genitive": "ictūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "golpe",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Impetus",
+    "genitive": "impetūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "ímpetu",
+    "additionalMeanings": [
+      "ataque",
+      "fuerza de un argumento o razonamiento"
+    ]
+  },
+  {
+    "nominative": "Intellectus",
+    "genitive": "intellectūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "intelecto",
+    "additionalMeanings": [
+      "capacidad racional de entender"
+    ]
+  },
+  {
+    "nominative": "Manus",
+    "genitive": "manūs",
+    "gender": "feminine",
+    "declension": 4,
+    "spanishMeaning": "mano",
+    "additionalMeanings": [
+      "símbolo de acción o poder divino",
+      "de escritura o anotación gramatical"
+    ]
+  },
+  {
+    "nominative": "Metus",
+    "genitive": "metūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "miedo",
+    "additionalMeanings": [
+      "temor"
+    ]
+  },
+  {
+    "nominative": "Mõtus",
+    "genitive": "mõtūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "movimiento",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Natus",
+    "genitive": "natūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "nacimiento",
+    "additionalMeanings": [
+      "origen especialmente en contexto teológico o filosófico"
+    ]
+  },
+  {
+    "nominative": "Nexus",
+    "genitive": "nexūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "conexión",
+    "additionalMeanings": [
+      "relación entre palabras o frases"
+    ]
+  },
+  {
+    "nominative": "Partus",
+    "genitive": "partūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "nacimiento",
+    "additionalMeanings": [
+      "parto"
+    ]
+  },
+  {
+    "nominative": "Progressus",
+    "genitive": "progressūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "progreso",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Recursus",
+    "genitive": "recursūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "recurso",
+    "additionalMeanings": [
+      "medio legal para impugnar una decisión"
+    ]
+  },
+  {
+    "nominative": "Rursus",
+    "genitive": "rursūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "repetición",
+    "additionalMeanings": [
+      "acto de reiterar para énfasis o claridad"
+    ]
+  },
+  {
+    "nominative": "Senātus",
+    "genitive": "senātūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "senado",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Sēnsus",
+    "genitive": "sēnsūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "sentimiento",
+    "additionalMeanings": [
+      "emoción",
+      "sentido",
+      "ingenio"
+    ]
+  },
+  {
+    "nominative": "Sinus",
+    "genitive": "sinūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "pliegue de una prenda",
+    "additionalMeanings": [
+      "hueco",
+      "golfo",
+      "bahía",
+      "regazo",
+      "seno"
+    ]
+  },
+  {
+    "nominative": "Sonitus",
+    "genitive": "sonitūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "ruido",
+    "additionalMeanings": [
+      "sonido",
+      "estruendo",
+      "elemento básico en la fonética y fonología"
+    ]
+  },
+  {
+    "nominative": "Spīritus",
+    "genitive": "spīritūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "aliento",
+    "additionalMeanings": [
+      "viento",
+      "vida",
+      "espíritu / spīritus sanctus: el espíritu santo",
+      "esencia vital o divina",
+      "referencia a la pronunciación del espíritu áspero o suave en latín"
+    ]
+  },
+  {
+    "nominative": "Status",
+    "genitive": "statūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "estación",
+    "additionalMeanings": [
+      "posición",
+      "condición",
+      "situación",
+      "rango",
+      "estatus"
+    ]
+  },
+  {
+    "nominative": "Terminus",
+    "genitive": "terminūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "término",
+    "additionalMeanings": [
+      "concepto fundamental en un silogismo"
+    ]
+  },
+  {
+    "nominative": "Tumultus",
+    "genitive": "tumultūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "confusión",
+    "additionalMeanings": []
+  },
+  {
+    "nominative": "Ūsus",
+    "genitive": "ūsūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "uso",
+    "additionalMeanings": [
+      "experiencia"
+    ]
+  },
+  {
+    "nominative": "Versus",
+    "genitive": "versūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "verso",
+    "additionalMeanings": [
+      "línea métrica en la prosodia y poesía",
+      "estrofa (de un canto responsorio litúrgico)"
+    ]
+  },
+  {
+    "nominative": "Vultus",
+    "genitive": "vultūs",
+    "gender": "masculine",
+    "declension": 4,
+    "spanishMeaning": "rostro",
+    "additionalMeanings": [
+      "mirada",
+      "expresión",
+      "posible interpretación de tonos en el discurso"
+    ]
+  },
+  {
+    "nominative": "Aciēs",
+    "genitive": "aciēī",
+    "gender": "feminine",
+    "declension": 5,
+    "spanishMeaning": "borde",
+    "additionalMeanings": [
+      "línea de batalla"
+    ]
+  },
+  {
+    "nominative": "Diēs",
+    "genitive": "diēī",
+    "gender": "masculine or feminine",
+    "declension": 5,
+    "spanishMeaning": "día",
+    "additionalMeanings": [
+      "hora fija",
+      "día señalado"
+    ]
+  },
+  {
+    "nominative": "Faciēs",
+    "genitive": "faciēī",
+    "gender": "feminine",
+    "declension": 5,
+    "spanishMeaning": "forma",
+    "additionalMeanings": [
+      "apariencia",
+      "aspecto",
+      "vista",
+      "latín medieval: cara"
+    ]
+  },
+  {
+    "nominative": "Fidēs",
+    "genitive": "fideī",
+    "gender": "feminine",
+    "declension": 5,
+    "spanishMeaning": "fe",
+    "additionalMeanings": [
+      "confianza"
+    ]
+  },
+  {
+    "nominative": "Merīdiēs",
+    "genitive": "merīdiēī",
+    "gender": "masculine",
+    "declension": 5,
+    "spanishMeaning": "mediodía",
+    "additionalMeanings": [
+      "Sur (dirección del mayor calor del sol)"
+    ]
+  },
+  {
+    "nominative": "Rēs",
+    "genitive": "reī",
+    "gender": "feminine",
+    "declension": 5,
+    "spanishMeaning": "cosa",
+    "additionalMeanings": [
+      "realidad",
+      "posesión",
+      "asunto",
+      "negocio / rēs pūblica (rēspūblica): república",
+      "mancomunidad / rēs familiaris: propiedad familiar",
+      "hacienda / rēs mīlitāris: arte de la guerra / rēs novae: revolución"
+    ]
+  },
+  {
+    "nominative": "Speciēs",
+    "genitive": "speciēī",
+    "gender": "feminine",
+    "declension": 5,
+    "spanishMeaning": "aspecto",
+    "additionalMeanings": [
+      "apariencia",
+      "especie (de un género)"
+    ]
+  },
+  {
+    "nominative": "Spēs",
+    "genitive": "speī",
+    "gender": "feminine",
+    "declension": 5,
+    "spanishMeaning": "esperanza",
+    "additionalMeanings": []
+  }
+]
