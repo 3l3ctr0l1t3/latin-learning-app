@@ -23,6 +23,10 @@ import {
   Timer as TimerIcon,
 } from '@mui/icons-material';
 
+// Importar el tipo SessionDuration desde nuestro archivo de tipos centralizado
+// Esto asegura consistencia en toda la aplicación
+import type { SessionDuration } from '../types';
+
 /**
  * Props Interface
  * 
@@ -32,12 +36,12 @@ import {
  * In Java terms: Props are like constructor parameters or method arguments
  */
 interface DurationSelectorProps {
-  // Current selected value
-  value: 5 | 10 | 15;
+  // Current selected value - usando el tipo importado
+  value: SessionDuration;
   
   // Callback function that fires when user selects a duration
   // The parent component passes this function down
-  onChange: (duration: 5 | 10 | 15) => void;
+  onChange: (duration: SessionDuration) => void;
   
   // Optional: disable the entire component
   disabled?: boolean;

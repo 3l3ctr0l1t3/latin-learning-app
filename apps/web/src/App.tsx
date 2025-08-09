@@ -23,15 +23,28 @@ import { darkTheme } from './config/theme';
 // Import our Dashboard component
 import Dashboard from './features/dashboard/components/Dashboard';
 
+// Import our new ComponentCanvas for development
+// This is our interactive development canvas where we can see and test components
+import ComponentCanvas from './features/component-canvas/ComponentCanvas';
+
+// Import React's useState hook to manage which view we're showing
+import { useState } from 'react';
+
+// Import Box and Button from MUI for layout and navigation
+import { Box, Button, AppBar, Toolbar, Typography } from '@mui/material';
+
 /**
  * App Component
  * 
  * This is the root of our component tree.
  * Every React app has one root component that contains all others.
+ * We've added a simple navigation to switch between Dashboard and ComponentCanvas
  */
 function App() {
-  // For now, we're just showing the Dashboard
-  // Later, we'll add routing to switch between different pages
+  // Estado para controlar qué vista mostrar
+  // 'dashboard' muestra el Dashboard principal
+  // 'canvas' muestra el ComponentCanvas para desarrollo
+  const [currentView, setCurrentView] = useState<'dashboard' | 'canvas'>('canvas');
   
   return (
     // ThemeProvider makes our theme available to all MUI components
@@ -44,8 +57,41 @@ function App() {
           4. Ensures consistent rendering across browsers */}
       <CssBaseline />
       
-      {/* Our actual app content */}
-      <Dashboard />
+      {/* AppBar - Barra de navegación superior */}
+      {/* position="static" significa que no se queda fija al hacer scroll */}
+      <AppBar position="static" sx={{ bgcolor: 'background.paper' }}>
+        <Toolbar>
+          {/* Título de la aplicación */}
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            🏛️ Latin Learning App
+          </Typography>
+          
+          {/* Botones de navegación */}
+          {/* variant="outlined" si es la vista actual, "text" si no */}
+          <Button 
+            color={currentView === 'dashboard' ? 'primary' : 'inherit'}
+            variant={currentView === 'dashboard' ? 'outlined' : 'text'}
+            onClick={() => setCurrentView('dashboard')}
+            sx={{ mr: 2 }} // margin-right de 16px
+          >
+            Dashboard
+          </Button>
+          
+          <Button 
+            color={currentView === 'canvas' ? 'secondary' : 'inherit'}
+            variant={currentView === 'canvas' ? 'outlined' : 'text'}
+            onClick={() => setCurrentView('canvas')}
+          >
+            🎨 Canvas
+          </Button>
+        </Toolbar>
+      </AppBar>
+      
+      {/* Contenedor principal con el contenido */}
+      <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+        {/* Renderizado condicional: mostramos un componente u otro según currentView */}
+        {currentView === 'dashboard' ? <Dashboard /> : <ComponentCanvas />}
+      </Box>
       
       {/* Later, we'll replace the Dashboard with a Router like this:
           <Router>
