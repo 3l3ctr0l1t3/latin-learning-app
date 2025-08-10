@@ -154,7 +154,7 @@ const DrillTypeSelector: React.FC<DrillTypeSelectorProps> = ({
           sx={{ 
             color: 'warning.main',
             display: 'block',
-            mb: 2
+            mb: 1.5  // Reducido de 2 a 1.5 para ahorrar espacio
           }}
         >
           ⚠️ Selecciona al menos un tipo de ejercicio
@@ -174,7 +174,7 @@ const DrillTypeSelector: React.FC<DrillTypeSelectorProps> = ({
               elevation={1} // Nivel de sombra (1 es sutil)
               data-testid={`drill-type-selector-option-${drillType}`}
               sx={{
-                mb: 2, // margin-bottom entre tarjetas
+                mb: 1.5, // margin-bottom reducido entre tarjetas para evitar overflow
                 p: { xs: 1.5, sm: 2 }, // padding responsivo
                 // Cambiar el fondo cuando está seleccionado
                 bgcolor: value.includes(drillType) 

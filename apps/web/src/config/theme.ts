@@ -252,13 +252,14 @@ export const BREAKPOINTS = {
 // Latin Learning Specific Colors
 // These are semantic colors for different Latin concepts
 export const LATIN_COLORS = {
-  // Declension Colors - cada declinación tiene su propio color
+  // Declension Colors - Sistema armonizado de colores
+  // Progresión espectral: Violeta → Índigo → Cyan → Ámbar → Rosa
   declensions: {
-    '1st': '#9C27B0', // Púrpura - Material Design Purple 500
-    '2nd': '#2196F3', // Azul - Material Design Blue 500
-    '3rd': '#26C6DA', // Teal/Turquesa - Bridges blue and cyan perfectly
-    '4th': '#FF6B9D', // Rosa cálido - Harmonizes with purple theme
-    '5th': '#F06292', // Rosa intenso - More theme-appropriate than red
+    '1st': '#A78BFA', // Violeta - Análogo al púrpura principal
+    '2nd': '#818CF8', // Índigo - Transición natural desde violeta
+    '3rd': '#22D3EE', // Cyan - Color puente vibrante
+    '4th': '#FBD38D', // Ámbar - Conecta con color secundario
+    '5th': '#FDA4AF', // Rosa Coral - Complementario cálido
   },
   
   // Gender Colors - colores para géneros gramaticales

@@ -10,10 +10,9 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, LinearProgress, Chip } from '@mui/material';
+import { Box, Typography, LinearProgress } from '@mui/material';
 import TimerIcon from '@mui/icons-material/Timer';
 import PauseIcon from '@mui/icons-material/Pause';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 /**
  * PROPS DEL COMPONENTE

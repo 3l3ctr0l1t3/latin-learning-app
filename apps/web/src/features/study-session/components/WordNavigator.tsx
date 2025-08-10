@@ -144,7 +144,7 @@ const WordNavigator: React.FC<WordNavigatorProps> = ({
     e.preventDefault();
   };
   
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (_e: React.MouseEvent) => {
     if (!isDragging.current) return;
   };
   

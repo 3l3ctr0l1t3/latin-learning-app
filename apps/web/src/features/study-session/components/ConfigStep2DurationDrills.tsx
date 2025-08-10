@@ -8,8 +8,7 @@
  */
 
 import React from 'react';
-import { Box, Typography, Stack, Button } from '@mui/material';
-import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import { Box, Typography } from '@mui/material';
 import DurationSelector from './DurationSelector';
 import DrillTypeSelector from './DrillTypeSelector';
 import type { DrillType, SessionDuration } from '../types';
@@ -43,12 +42,17 @@ const ConfigStep2DurationDrills: React.FC<ConfigStep2DurationDrillsProps> = ({
   onDurationChange,
   drillTypes,
   onDrillTypesChange,
-  onStartSession,
-  canStartSession = true,
 }) => {
   return (
     // Stack vertical con espaciado optimizado
-    <Stack data-testid="config-step2-duration-drills" spacing={2}>  {/* Reducido de 3-4 a 2 para menos espacio */}
+    // Usamos Box con display flex para mejor control del espaciado
+    <Box data-testid="config-step2-duration-drills" sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: { xs: 1.5, md: 2 },  // Espaciado reducido entre secciones para evitar overflow
+      height: 'auto',  // Altura automática según contenido
+      maxHeight: '100%'  // No exceder la altura del contenedor
+    }}>
       {/* TÍTULO DEL PASO - Más compacto */}
       <Typography
         data-testid="step2-title"
@@ -83,7 +87,7 @@ const ConfigStep2DurationDrills: React.FC<ConfigStep2DurationDrillsProps> = ({
         />
       </Box>
 
-    </Stack>
+    </Box>
   );
 };
 

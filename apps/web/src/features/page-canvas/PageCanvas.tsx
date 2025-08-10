@@ -101,14 +101,39 @@ const StudySessionConfigPage: React.FC = () => {
   };
 
   // Si la sesión está activa, mostrar el componente StudySession
+  // IMPORTANTE: Mantener el mismo contenedor con altura definida
   if (sessionStarted) {
     return (
-      <StudySession
-        selectedWords={selectedWords}
-        duration={duration}
-        drillTypes={drillTypes}
-        onEndSession={handleEndSession}
-      />
+      <Box 
+        data-testid="study-session-wrapper"
+        sx={{ 
+          // Mantener las mismas alturas que en la configuración
+          minHeight: { 
+            xs: 'calc(100vh - 110px)',  // Móvil: ajustado para llenar toda la pantalla
+            md: '600px',  // Desktop mediano: altura consistente
+            lg: '650px',  // Desktop grande: altura consistente
+            xl: '700px'   // Desktop XL: altura consistente
+          },
+          height: { 
+            xs: 'calc(100vh - 110px)',  // Móvil: forzar altura completa exacta
+            md: '600px',  // Desktop mediano: altura fija
+            lg: '650px',  // Desktop grande: altura fija
+            xl: '700px'   // Desktop XL: altura fija
+          },
+          display: 'flex',
+          flexDirection: 'column',
+          pt: .5,  // Padding superior pequeño
+          px: 1.3,  // Padding horizontal pequeño
+          pb: .5,  // Padding inferior pequeño
+        }}
+      >
+        <StudySession
+          selectedWords={selectedWords}
+          duration={duration}
+          drillTypes={drillTypes}
+          onEndSession={handleEndSession}
+        />
+      </Box>
     );
   }
 
@@ -140,8 +165,10 @@ const StudySessionConfigPage: React.FC = () => {
         sx={{ 
           flexGrow: 1,  // Toma todo el espacio disponible
           minHeight: '250px',
-          overflowY: 'auto',  // Permitir scroll si el contenido es muy largo
-          overflowX: 'hidden'  // Evitar scroll horizontal
+          // Solo mostrar scroll en el paso 1 (selección de palabras) que puede tener mucho contenido
+          // En el paso 2 (duración y ejercicios) no hay necesidad de scroll
+          overflowY: currentStep === 0 ? 'auto' : 'hidden',  // 'hidden' evita scroll en paso 2
+          overflowX: 'hidden'  // Evitar scroll horizontal siempre
         }}>
         {/* PASO 1: SELECCIONAR PALABRAS - Usando el nuevo componente optimizado */}
         {currentStep === 0 && (

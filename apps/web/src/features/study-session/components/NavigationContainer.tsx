@@ -76,7 +76,7 @@ const NavigationContainer: React.FC<NavigationContainerProps> = ({
         }}
         data-testid="navigation-content-area"
       >
-        {children}
+        {children as any}
       </Box>
 
       {/* BARRA DE NAVEGACIÓN */}

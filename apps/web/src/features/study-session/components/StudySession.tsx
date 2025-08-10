@@ -18,7 +18,6 @@ import {
   Paper,
   Typography,
   Button,
-  Chip,
   Stack,
   Alert
 } from '@mui/material';
@@ -27,8 +26,9 @@ import SessionTimer from './SessionTimer';
 import type { LatinWord } from './WordCard';
 import type { DrillType, SessionDuration } from '../types';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import SchoolIcon from '@mui/icons-material/School';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+// Comentados - se usarán cuando implementemos la función getPhaseInfo
+// import SchoolIcon from '@mui/icons-material/School';
+// import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 
 /**
  * FASES DE LA SESIÓN
@@ -59,8 +59,8 @@ const StudySession: React.FC<StudySessionProps> = ({
   // Estado de la fase actual
   const [currentPhase, setCurrentPhase] = useState<SessionPhase>('review');
   
-  // Estado para pausar el timer
-  const [isTimerPaused, setIsTimerPaused] = useState(false);
+  // Estado para pausar el timer - se usará en futuras implementaciones
+  const [isTimerPaused] = useState(false);
   
   // Estado para rastrear si el tiempo se acabó
   const [timeIsUp, setTimeIsUp] = useState(false);
@@ -81,9 +81,9 @@ const StudySession: React.FC<StudySessionProps> = ({
     setCurrentPhase('summary');
   };
   
-  /**
-   * OBTENER ICONO Y COLOR PARA LA FASE ACTUAL
-   */
+  // Función getPhaseInfo comentada - se usará en futuras implementaciones
+  // cuando necesitemos mostrar información de la fase actual
+  /*
   const getPhaseInfo = () => {
     switch (currentPhase) {
       case 'review':
@@ -108,19 +108,15 @@ const StudySession: React.FC<StudySessionProps> = ({
   };
   
   const phaseInfo = getPhaseInfo();
+  */
   
   return (
     <Box sx={{ 
-      height: '100%', 
-      minHeight: {
-        xs: 'calc(100vh - 64px)',  // Móvil: pantalla completa menos AppBar
-        md: '600px',  // Desktop mediano: altura consistente
-        lg: '650px',  // Desktop grande: altura consistente
-        xl: '700px'   // Desktop XL: altura consistente
-      },
-      display: 'flex', 
-      flexDirection: 'column', 
-      position: 'relative' 
+      height: '100%',  // Usa toda la altura del contenedor padre
+      // Removemos minHeight ya que el contenedor padre ya define la altura
+      display: 'flex',  // Contenedor flex vertical
+      flexDirection: 'column',  // Elementos apilados verticalmente
+      position: 'relative'  // Para posicionamiento de elementos hijos si es necesario
     }} data-testid="study-session-container">
       {/* HEADER SIMPLIFICADO CON TIMER EN ESQUINA */}
       <Box sx={{ 
@@ -159,10 +155,21 @@ const StudySession: React.FC<StudySessionProps> = ({
       )}
       
       {/* CONTENIDO DE LA FASE ACTUAL */}
-      <Box sx={{ flexGrow: 1, overflow: 'auto' }} data-testid="study-session-content">
+      {/* Box con flexGrow: 1 toma todo el espacio disponible en el contenedor flex */}
+      {/* display: flex y flexDirection: column lo convierten en contenedor flex vertical */}
+      <Box sx={{ 
+        flexGrow: 1,  // Toma todo el espacio disponible del contenedor padre
+        overflow: 'auto',  // Permite scroll si el contenido es muy largo
+        display: 'flex',  // Convierte este Box en contenedor flex
+        flexDirection: 'column'  // Los hijos se apilan verticalmente
+      }} data-testid="study-session-content">
         {/* FASE 1: REVISIÓN DE PALABRAS */}
         {currentPhase === 'review' && (
-          <Box data-testid="phase-review">
+          <Box sx={{ 
+            height: '100%',  // Ocupa toda la altura del contenedor padre
+            display: 'flex',  // También es un contenedor flex
+            flexDirection: 'column'  // Para que StudyWordsViewer pueda expandirse
+          }} data-testid="phase-review">
             <StudyWordsViewer
               words={selectedWords}
               onContinueToExercises={handleContinueToExercises}

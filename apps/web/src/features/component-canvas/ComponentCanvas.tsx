@@ -41,11 +41,14 @@ import WordSelectionStep from '../study-session/components/WordSelectionStep';
 
 // Importar componentes de ejercicios
 import MultipleChoiceOption from '../study-session/components/exercises/MultipleChoiceOption';
+import MultipleChoiceDrillCard from '../study-session/components/exercises/MultipleChoiceDrillCard';
+import MultipleChoiceDeclensionCard from '../study-session/components/exercises/MultipleChoiceDeclensionCard';
 
 // Importar componentes de navegación y estudio
 import StudyWordsViewer from '../study-session/components/StudyWordsViewer';
 import StudySession from '../study-session/components/StudySession';
 import SessionTimer from '../study-session/components/SessionTimer';
+import DrillSessionComponent from '../study-session/components/DrillSessionComponent';
 
 // Importar tipos necesarios (ya no necesitamos Declension y Gender aquí)
 
@@ -89,7 +92,7 @@ const ComponentCanvas: React.FC = () => {
   // Estado para WordSearchDropdown - palabras seleccionadas en la búsqueda
   const [selectedSearchWords, setSelectedSearchWords] = useState<LatinWord[]>([]);
   
-  // Palabras de ejemplo adicionales para SelectedWordChip
+  // Palabras de ejemplo adicionales para SelectedWordChip y ejercicios
   const sampleWords: LatinWord[] = [
     sampleWord, // La palabra que ya teníamos
     {
@@ -109,6 +112,60 @@ const ComponentCanvas: React.FC = () => {
       gender: 'neuter',
       spanishTranslation: 'templo',
       additionalMeanings: ['santuario'],
+    },
+    {
+      id: 'word_aqua_0004',
+      nominative: 'Aqua',
+      genitive: 'aquae',
+      declension: '1st',
+      gender: 'feminine',
+      spanishTranslation: 'agua',
+      additionalMeanings: ['líquido'],
+    },
+    {
+      id: 'word_liber_0005',
+      nominative: 'Liber',
+      genitive: 'libri',
+      declension: '2nd',
+      gender: 'masculine',
+      spanishTranslation: 'libro',
+      additionalMeanings: ['obra', 'texto'],
+    },
+    {
+      id: 'word_mensa_0006',
+      nominative: 'Mensa',
+      genitive: 'mensae',
+      declension: '1st',
+      gender: 'feminine',
+      spanishTranslation: 'mesa',
+      additionalMeanings: ['tabla'],
+    },
+    {
+      id: 'word_rex_0007',
+      nominative: 'Rex',
+      genitive: 'regis',
+      declension: '3rd',
+      gender: 'masculine',
+      spanishTranslation: 'rey',
+      additionalMeanings: ['monarca', 'soberano'],
+    },
+    {
+      id: 'word_dies_0008',
+      nominative: 'Dies',
+      genitive: 'diei',
+      declension: '5th',
+      gender: 'masculine',
+      spanishTranslation: 'día',
+      additionalMeanings: ['jornada', 'fecha'],
+    },
+    {
+      id: 'word_manus_0009',
+      nominative: 'Manus',
+      genitive: 'manus',
+      declension: '4th',
+      gender: 'feminine',
+      spanishTranslation: 'mano',
+      additionalMeanings: ['poder', 'fuerza'],
     }
   ];
   
@@ -127,6 +184,209 @@ const ComponentCanvas: React.FC = () => {
         {/* Grid container para organizar los componentes en columnas */}
         {/* spacing={2} en móvil para menos espacio entre elementos */}
         <Grid container spacing={{ xs: 2, sm: 3 }}>
+          
+          {/* COMPONENTE NUEVO: DrillSessionComponent - Sesión completa de ejercicios */}
+          <Grid item xs={12}>
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                p: { xs: 2, sm: 3 }, 
+                height: '100%',
+                bgcolor: 'background.paper'
+              }}
+            >
+              <Typography 
+                variant="h6" 
+                gutterBottom 
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
+              >
+                🆕 DrillSessionComponent
+              </Typography>
+              
+              <Typography 
+                variant="body2" 
+                sx={{ mb: 2, color: 'text.secondary' }}
+              >
+                Orquestador de sesión de ejercicios. Genera drills aleatorios, maneja navegación,
+                tracking de respuestas y control de tiempo. Este componente maneja toda la lógica
+                de la sesión de práctica.
+              </Typography>
+              
+              <Divider sx={{ mb: 3 }} />
+              
+              <Box sx={{ 
+                height: 500,
+                overflow: 'auto',  // Agregar scroll si el contenido es muy grande
+                position: 'relative'  // Para contener el contenido
+              }}>
+                <DrillSessionComponent
+                  selectedWords={sampleWords}
+                  drillTypes={['multipleChoice', 'multipleChoiceDeclension']}
+                  sessionDurationMinutes={5}
+                  onSessionEnd={(results) => {
+                    console.log('Sesión terminada. Resultados:', results);
+                  }}
+                  onProgress={(completed, total) => {
+                    console.log(`Progreso: ${completed}/${total}`);
+                  }}
+                />
+              </Box>
+            </Paper>
+          </Grid>
+          
+          {/* COMPONENTE NUEVO: MultipleChoiceDeclension - Ejercicio de declinación (Primera instancia) */}
+          <Grid item xs={12}>
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                p: { xs: 2, sm: 3 }, 
+                height: '100%',
+                bgcolor: 'background.paper'
+              }}
+            >
+              <Typography 
+                variant="h6" 
+                gutterBottom 
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
+              >
+                🆕 MultipleChoiceDeclension - Ejercicio de Declinación
+              </Typography>
+              
+              <Typography 
+                variant="body2" 
+                sx={{ mb: 2, color: 'text.secondary' }}
+              >
+                Ejercicio para identificar la declinación de una palabra latina.
+                Muestra la palabra y su genitivo, el usuario debe elegir entre las 5 declinaciones.
+                Incluye colores distintivos y explicación educativa.
+              </Typography>
+              
+              <Divider sx={{ mb: 3 }} />
+              
+              <Box sx={{ 
+                display: 'flex',
+                justifyContent: 'center',
+                overflow: 'auto',
+                p: 2
+              }}>
+                <MultipleChoiceDeclensionCard
+                  currentWord={sampleWords[6]} // Rex, regis - 3ª declinación
+                  onAnswer={(isCorrect) => {
+                    console.log(`Respuesta declinación: ${isCorrect ? 'Correcta' : 'Incorrecta'}`);
+                  }}
+                  showLabels={true}
+                />
+              </Box>
+            </Paper>
+          </Grid>
+          
+          {/* COMPONENTE: MultipleChoiceDeclension - Segunda instancia con palabra diferente */}
+          <Grid item xs={12} md={6}>
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                p: { xs: 2, sm: 3 }, 
+                height: '100%',
+                bgcolor: 'background.paper'
+              }}
+            >
+              <Typography 
+                variant="h6" 
+                gutterBottom 
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
+              >
+                MultipleChoiceDeclension - Ejemplo 2
+              </Typography>
+              
+              <Typography 
+                variant="body2" 
+                sx={{ mb: 2, color: 'text.secondary' }}
+              >
+                Otro ejemplo con una palabra de la 5ª declinación.
+              </Typography>
+              
+              <Divider sx={{ mb: 3 }} />
+              
+              <Box sx={{ 
+                overflow: 'auto',
+                p: 1
+              }}>
+                <MultipleChoiceDeclensionCard
+                  currentWord={sampleWords[7]} // Dies, diei - 5ª declinación
+                  onAnswer={(isCorrect) => {
+                    console.log(`Respuesta declinación: ${isCorrect ? 'Correcta' : 'Incorrecta'}`);
+                  }}
+                  showLabels={true}
+                />
+              </Box>
+            </Paper>
+          </Grid>
+          
+          {/* COMPONENTE: MultipleChoiceDeclension - Tercera instancia */}
+          <Grid item xs={12} md={6}>
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                p: { xs: 2, sm: 3 }, 
+                height: '100%',
+                bgcolor: 'background.paper'
+              }}
+            >
+              <Typography 
+                variant="h6" 
+                gutterBottom 
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
+              >
+                MultipleChoiceDeclension - Ejemplo 3
+              </Typography>
+              
+              <Typography 
+                variant="body2" 
+                sx={{ mb: 2, color: 'text.secondary' }}
+              >
+                Ejemplo con una palabra de la 4ª declinación.
+              </Typography>
+              
+              <Divider sx={{ mb: 3 }} />
+              
+              <Box sx={{ 
+                overflow: 'auto',
+                p: 1
+              }}>
+                <MultipleChoiceDeclensionCard
+                  currentWord={sampleWords[8]} // Manus, manus - 4ª declinación
+                  onAnswer={(isCorrect) => {
+                    console.log(`Respuesta declinación: ${isCorrect ? 'Correcta' : 'Incorrecta'}`);
+                  }}
+                  showLabels={true}
+                />
+              </Box>
+            </Paper>
+          </Grid>
+          
+          {/* COMPONENTE DE EJERCICIO: MultipleChoiceDrillCard (Latin → Spanish) */}
+          <Grid item xs={12} md={6}>
+            <MultipleChoiceDrillCard
+              currentWord={sampleWord}
+              allWords={sampleWords}
+              questionType="latinToSpanish"
+              onAnswer={(isCorrect) => console.log('Respuesta Latin→Spanish:', isCorrect ? 'Correcta' : 'Incorrecta')}
+              numberOfOptions={4}
+              showLabels={true}
+            />
+          </Grid>
+          
+          {/* COMPONENTE DE EJERCICIO: MultipleChoiceDrillCard (Spanish → Latin) */}
+          <Grid item xs={12} md={6}>
+            <MultipleChoiceDrillCard
+              currentWord={sampleWords[1]}  // Usar una palabra diferente para variedad
+              allWords={sampleWords}
+              questionType="spanishToLatin"
+              onAnswer={(isCorrect) => console.log('Respuesta Spanish→Latin:', isCorrect ? 'Correcta' : 'Incorrecta')}
+              numberOfOptions={4}
+              showLabels={true}
+            />
+          </Grid>
           
           {/* COMPONENTE 1: DurationSelector */}
           {/* xs={12} = ancho completo en móvil */}

@@ -23,12 +23,10 @@ import {
 } from '@mui/material';
 
 // Iconos para hacer la tarjeta más visual
-import SchoolIcon from '@mui/icons-material/School'; // Para el título
 import TranslateIcon from '@mui/icons-material/Translate'; // Para traducción
-// import CategoryIcon from '@mui/icons-material/Category'; // Para declinación - Removed - not being used
 
 // Importar colores por declinación
-import { getDeclensionColor, DECLENSION_INFO } from '../constants/colors';
+import { getDeclensionColor } from '../constants/colors';
 
 /**
  * INTERFAZ DE DATOS DE PALABRA
@@ -55,19 +53,19 @@ interface WordCardProps {
   showTranslation?: boolean; // Si mostrar o no la traducción (por defecto true)
   compact?: boolean;         // Modo compacto con menos detalles (por defecto false)
   minimal?: boolean;         // Modo minimalista sin etiquetas (por defecto false)
+  exercise?: boolean;        // Modo ejercicio: compacto, sin traducción, centrado (por defecto false)
   onClick?: () => void;      // Callback opcional cuando se hace clic en la tarjeta
   selected?: boolean;        // Si la tarjeta está seleccionada
 }
 
+// Importar colores del tema centralizado
+import { LATIN_COLORS } from '../../../config/theme';
+
 /**
  * MAPEO DE COLORES POR GÉNERO
- * Cada género tiene un color asociado para identificación visual rápida
+ * Usa los colores centralizados del tema
  */
-const genderColors: Record<string, string> = {
-  masculine: '#2196F3',  // Azul para masculino
-  feminine: '#E91E63',   // Rosa para femenino
-  neuter: '#9C27B0',     // Púrpura para neutro
-};
+const genderColors: Record<string, string> = LATIN_COLORS.genders;
 
 /**
  * TRADUCCIONES AL ESPAÑOL
@@ -98,9 +96,96 @@ const WordCard: React.FC<WordCardProps> = ({
   showTranslation = true,  // Por defecto muestra la traducción
   compact = false,          // Por defecto no es compacto
   minimal = false,          // Por defecto no es minimalista
+  exercise = false,         // Por defecto no es modo ejercicio
   onClick,                  // Opcional, puede ser undefined
   selected = false,         // Por defecto no está seleccionada
 }) => {
+  /**
+   * RENDERIZADO MODO EJERCICIO
+   * Versión compacta para ejercicios: muestra solo la palabra con su información
+   * gramatical, sin traducción. Perfecta para preguntas de ejercicios.
+   */
+  if (exercise) {
+    return (
+      <Card
+        elevation={2}
+        sx={{
+          // Tamaño FIJO para evitar cambios de tamaño entre palabras
+          width: { xs: '100%', sm: 450, md: 500, lg: 550, xl: 600 },  // Ancho fijo en desktop
+          minHeight: { xs: 120, sm: 140, md: 160, lg: 170, xl: 180 },  // Altura mínima consistente
+          height: { xs: 120, sm: 140, md: 160, lg: 170, xl: 180 },  // Altura fija para consistencia
+          margin: '0 auto',  // Centrado horizontal
+          cursor: onClick ? 'pointer' : 'default',
+          transition: 'all 0.3s ease',
+          border: '2px solid',
+          borderColor: 'primary.main',  // Borde púrpura para consistencia
+          bgcolor: 'background.paper',
+          '&:hover': onClick ? {
+            elevation: 4,
+            transform: 'translateY(-2px)',
+          } : {},
+        }}
+        data-testid="word-card-exercise"
+      >
+        <CardContent sx={{ 
+          textAlign: 'center',  // Todo centrado
+          py: 2,
+          px: 3
+        }} data-testid="word-card-exercise-content">
+          {/* ENUNCIACIÓN - Grande y centrada, con color por declinación */}
+          <Typography 
+            variant="h4" 
+            component="div" 
+            sx={{ 
+              fontWeight: 'bold',
+              color: getDeclensionColor(word.declension),
+              mb: 2,
+              letterSpacing: 1
+            }}
+            data-testid="text-word-enunciation-exercise"
+          >
+            {word.nominative}, {word.genitive}
+          </Typography>
+          
+          {/* Información gramatical en una línea */}
+          <Stack 
+            direction="row" 
+            spacing={2} 
+            justifyContent="center" 
+            alignItems="center"
+            data-testid="grammar-info-stack-exercise"
+          >
+            {/* Declinación */}
+            <Chip 
+              label={declensionLabels[word.declension]}
+              size="medium"
+              variant="outlined"
+              sx={{ 
+                borderColor: getDeclensionColor(word.declension),
+                color: getDeclensionColor(word.declension),
+                borderWidth: 2,
+                fontWeight: 'medium'
+              }}
+              data-testid="chip-declension-exercise"
+            />
+            
+            {/* Género */}
+            <Chip 
+              label={genderLabels[word.gender]}
+              size="medium"
+              sx={{ 
+                bgcolor: genderColors[word.gender],
+                color: 'white',
+                fontWeight: 'bold'
+              }}
+              data-testid="chip-gender-exercise"
+            />
+          </Stack>
+        </CardContent>
+      </Card>
+    );
+  }
+
   /**
    * RENDERIZADO MINIMALISTA
    * Modo ultra-limpio sin etiquetas, solo información esencial
@@ -112,6 +197,12 @@ const WordCard: React.FC<WordCardProps> = ({
         elevation={selected ? 6 : 2}
         onClick={onClick}
         sx={{
+          // TAMAÑO ESTÁTICO para todas las tarjetas
+          width: '100%',  // Toma todo el ancho disponible del contenedor
+          maxWidth: { xs: '100%', sm: 500, md: 550 },  // Ancho máximo consistente
+          minHeight: { xs: 250, sm: 280, md: 300 },  // Altura mínima consistente
+          height: { xs: 250, sm: 280, md: 300 },  // Altura fija para mantener consistencia
+          margin: '0 auto',  // Centrado horizontal
           cursor: onClick ? 'pointer' : 'default',
           transition: 'all 0.3s ease',
           border: selected ? 2 : '1px solid',
@@ -126,7 +217,14 @@ const WordCard: React.FC<WordCardProps> = ({
         }}
         data-testid="word-card-minimal"
       >
-        <CardContent sx={{ textAlign: 'center', py: 3 }} data-testid="word-card-minimal-content">
+        <CardContent sx={{ 
+          textAlign: 'center',  // Texto centrado horizontalmente
+          height: '100%',  // Usa toda la altura de la tarjeta
+          display: 'flex',  // Contenedor flex
+          flexDirection: 'column',  // Elementos apilados verticalmente
+          justifyContent: 'center',  // Centra el contenido verticalmente
+          py: 3  // Padding vertical
+        }} data-testid="word-card-minimal-content">
           {/* ENUNCIACIÓN - Grande y centrada, con color por declinación */}
           <Typography 
             variant="h3" 
@@ -222,6 +320,12 @@ const WordCard: React.FC<WordCardProps> = ({
         elevation={selected ? 8 : 2}
         onClick={onClick}
         sx={{
+          // TAMAÑO ESTÁTICO para mantener consistencia
+          width: '100%',  // Toma todo el ancho disponible
+          maxWidth: { xs: '100%', sm: 400, md: 450 },  // Ancho máximo más pequeño que minimal
+          minHeight: { xs: 100, sm: 110, md: 120 },  // Altura más compacta
+          height: { xs: 100, sm: 110, md: 120 },  // Altura fija compacta
+          margin: '0 auto',  // Centrado horizontal
           // sx es el prop para estilos en MUI
           cursor: onClick ? 'pointer' : 'default', // Cursor de mano si es clickeable
           transition: 'all 0.3s ease', // Animación suave para cambios
@@ -235,7 +339,12 @@ const WordCard: React.FC<WordCardProps> = ({
         }}
         data-testid="word-card-compact"
       >
-        <CardContent sx={{ p: { xs: 1.5, sm: 2 } }} data-testid="word-card-compact-content"> {/* padding responsivo */}
+        <CardContent sx={{ 
+          p: { xs: 1.5, sm: 2 },  // padding responsivo
+          height: '100%',  // Usa toda la altura disponible
+          display: 'flex',  // Contenedor flex
+          alignItems: 'center'  // Centra verticalmente el contenido
+        }} data-testid="word-card-compact-content">
           <Stack 
             direction={{ xs: 'column', sm: 'row' }} // Columna en móvil, fila en desktop
             spacing={{ xs: 1, sm: 2 }} 
@@ -286,6 +395,12 @@ const WordCard: React.FC<WordCardProps> = ({
       elevation={selected ? 8 : 3}
       onClick={onClick}
       sx={{
+        // TAMAÑO ESTÁTICO para todas las presentaciones
+        width: '100%',  // Toma todo el ancho disponible
+        maxWidth: { xs: '100%', sm: 550, md: 600 },  // Ancho máximo más grande para versión completa
+        minHeight: { xs: 320, sm: 350, md: 380 },  // Altura mayor para toda la información
+        height: { xs: 320, sm: 350, md: 380 },  // Altura fija para consistencia
+        margin: '0 auto',  // Centrado horizontal
         cursor: onClick ? 'pointer' : 'default',
         transition: 'all 0.3s ease',
         border: selected ? 2 : '1px solid',

@@ -32,7 +32,9 @@ import WordSearchDropdown from './WordSearchDropdown';
 import type { LatinWord } from './WordCard';
 
 // Servicio de vocabulario para obtener palabras aleatorias
-import { VocabularyService } from '@latin-app/data';
+// Importamos la instancia singleton en lugar de la clase
+// Esto evita crear múltiples instancias y el mensaje "Loaded 690 words" apareciendo varias veces
+import { vocabularyService } from '@latin-app/data';
 
 /**
  * PROPS DEL COMPONENTE
@@ -83,11 +85,10 @@ const WordSelectionStep: React.FC<WordSelectionStepProps> = ({
   minWords = 5,       // Valor por defecto: mínimo 5 palabras
   maxWords = 30,      // Valor por defecto: máximo 30 palabras
 }) => {
-  // CREACIÓN DE SERVICIO DE VOCABULARIO
-  // useMemo: Hook que memoriza un valor y solo lo recalcula si cambian las dependencias
-  // En este caso, [] vacío significa que se crea una sola vez
-  // Es como un Singleton en Java - una sola instancia reutilizada
-  const vocabularyService = React.useMemo(() => new VocabularyService(), []);
+  // SERVICIO DE VOCABULARIO
+  // Ya no necesitamos crear una instancia local - usamos el singleton importado
+  // vocabularyService está disponible directamente desde el import
+  // Esto evita múltiples mensajes de "Loaded 690 words" en la consola
 
   // VALIDACIONES BOOLEANAS
   // isComplete: ¿Ya seleccionó el mínimo de palabras?

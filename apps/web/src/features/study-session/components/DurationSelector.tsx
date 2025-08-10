@@ -125,11 +125,6 @@ const DurationSelector: React.FC<DurationSelectorProps> = ({
           </Stack>
         </ToggleButton>
       </ToggleButtonGroup>
-      
-      {/* Helper text */}
-      <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }} data-testid="duration-selector-help-text">
-        Sesiones más cortas son mejores para mantener la concentración
-      </Typography>
     </Box>
   );
 };

@@ -19,7 +19,6 @@ import {
   Chip,
   Stack
 } from '@mui/material';
-import NavigationContainer from './NavigationContainer';
 import WordNavigator from './WordNavigator';
 import type { LatinWord } from './WordCard';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -62,13 +61,10 @@ const StudyWordsViewer: React.FC<StudyWordsViewerProps> = ({
   
   return (
     <Box sx={{ 
-      display: 'flex', 
-      flexDirection: 'column', 
-      height: '100%',
-      minHeight: {
-        xs: 'calc(100vh - 180px)',  // Móvil: llenar pantalla completa menos headers/nav
-        sm: '100%'  // Tablets y desktop: usar altura del contenedor
-      }
+      display: 'flex',  // Contenedor flex para organizar los elementos verticalmente
+      flexDirection: 'column',  // Elementos apilados verticalmente
+      height: '100%'  // Ocupa toda la altura disponible del contenedor padre (100%)
+      // Removemos minHeight ya que el contenedor padre ya define la altura correcta
     }} data-testid="study-words-viewer-container">
       {/* ENCABEZADO CON INFORMACIÓN */}
       <Box sx={{ mb: { xs: 2, sm: 3 } }} data-testid="study-words-viewer-header">
@@ -109,22 +105,34 @@ const StudyWordsViewer: React.FC<StudyWordsViewerProps> = ({
       </Box>
       
       {/* NAVEGADOR DE PALABRAS INTEGRADO */}
-      <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }} data-testid="word-navigator-section">
+      {/* flexGrow: 1 hace que este Box tome todo el espacio disponible */}
+      {/* Esto empuja el botón de continuar hacia abajo */}
+      <Box sx={{ 
+        flexGrow: 1,  // Toma todo el espacio disponible, empujando el botón hacia abajo
+        display: 'flex',  // Contenedor flex
+        flexDirection: 'column',  // Organización vertical
+        justifyContent: 'center',  // Centra el WordNavigator verticalmente
+        minHeight: 0,  // Permite que el contenido se comprima si es necesario
+        overflow: 'auto'  // Permite scroll si el contenido es muy alto
+      }} data-testid="word-navigator-section">
         <WordNavigator
           words={words}
           showTranslation={showTranslation}
           onWordChange={setCurrentIndex}
           showSwipeHint={true}
+          minimalCard={true}  // Usar la versión minimal del WordCard con tamaño estático
         />
       </Box>
       
-      {/* BOTÓN CONTINUAR A EJERCICIOS - Al fondo en desktop */}
+      {/* BOTÓN CONTINUAR A EJERCICIOS - Siempre al fondo */}
+      {/* mt: 'auto' con flexbox empuja este elemento al final del contenedor */}
       <Box sx={{ 
-        mt: { xs: 3, md: 'auto' },  // Auto margin-top en desktop lo empuja al fondo
-        mb: { xs: 0, md: 2 },  // Pequeño margen inferior en desktop
-        pt: { xs: 0, md: 2 },  // Padding superior en desktop para separación
-        display: 'flex', 
-        justifyContent: 'center' 
+        mt: 'auto',  // margin-top: auto empuja este Box al fondo del contenedor flex
+        pt: 2,  // Padding superior para separación del contenido
+        pb: { xs: 2, md: 3 },  // Padding inferior para dar espacio en el fondo
+        display: 'flex',  // Para centrar el botón horizontalmente
+        justifyContent: 'center',  // Centra el botón horizontalmente
+        flexShrink: 0  // Evita que el botón se comprima
       }} data-testid="continue-button-section">
         <Button
           variant="outlined"

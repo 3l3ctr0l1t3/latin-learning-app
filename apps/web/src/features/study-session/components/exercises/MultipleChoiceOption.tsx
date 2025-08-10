@@ -1,33 +1,35 @@
 /**
  * COMPONENTE DE OPCIÓN INDIVIDUAL PARA MULTIPLE CHOICE
  * 
- * Representa una sola opción en un ejercicio de opción múltiple.
- * Maneja su propio estado visual según si está seleccionada,
- * si es correcta, y si ya se respondió.
+ * Diseño limpio y moderno con feedback visual mediante bordes.
+ * NO cambia el color de fondo, solo usa bordes para indicar estado.
  * 
  * CONCEPTOS IMPORTANTES:
- * - Componente presentacional: Solo muestra UI, no maneja lógica de negocio
- * - Props para estado: Recibe todo lo que necesita para mostrarse
- * - Feedback visual: Cambia colores según el estado
+ * - Diseño minimalista: Interfaz limpia sin distracciones
+ * - Feedback sutil: Bordes para indicar correcto/incorrecto
+ * - Accesibilidad: Alto contraste y estados claros
  */
 
 import React from 'react';
 import {
+  Paper,
   Box,
-  FormControlLabel,
-  Radio,
-  Typography
+  Typography,
+  useTheme
 } from '@mui/material';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CancelIcon from '@mui/icons-material/Cancel';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 
 /**
  * PROPS DEL COMPONENTE
  */
 interface MultipleChoiceOptionProps {
   // Datos de la opción
-  id: string;                           // ID único de la opción
+  id: string;                           // ID único de la opción  
   text: string;                         // Texto a mostrar
+  label?: string;                       // Etiqueta opcional (A, B, C, D)
   
   // Estado de la opción
   isSelected: boolean;                  // Si está seleccionada actualmente
@@ -40,131 +42,233 @@ interface MultipleChoiceOptionProps {
 }
 
 /**
- * COMPONENTE DE OPCIÓN DE MULTIPLE CHOICE
+ * COMPONENTE DE OPCIÓN DE MULTIPLE CHOICE - DISEÑO NUEVO
  * 
- * Muestra una opción con radio button, texto, y feedback visual
+ * Tarjeta elegante con bordes que cambian de color según el estado
  */
 const MultipleChoiceOption: React.FC<MultipleChoiceOptionProps> = ({
   id,
   text,
+  label,
   isSelected,
   isCorrect,
   isAnswered,
   isDisabled = false,
   onSelect
 }) => {
+  // Usar el tema para acceder a los colores
+  const theme = useTheme();
   /**
-   * DETERMINAR COLOR DEL BORDE
-   * - Verde si es correcta y ya se respondió
-   * - Rojo si está seleccionada, es incorrecta y ya se respondió
-   * - Default (divider) en otros casos
+   * DETERMINAR COLOR Y GROSOR DEL BORDE
+   * - Verde brillante (3px) si es correcta y ya se respondió
+   * - Rojo brillante (3px) si está seleccionada incorrectamente  
+   * - Púrpura (2px) si está seleccionada pero no respondida
+   * - Púrpura sutil (1px) para opciones no seleccionadas (antes de responder)
+   * - Gris sutil (1px) para opciones no seleccionadas (después de responder)
    */
-  const getBorderColor = () => {
-    if (!isAnswered) return 'divider';
+  const getBorderStyle = () => {
+    // Después de responder
+    if (isAnswered) {
+      if (isCorrect) {
+        return {
+          borderWidth: 3,
+          borderColor: theme.palette.success.main,  // Color success del tema (cyan)
+          borderStyle: 'solid'
+        };
+      }
+      if (isSelected && !isCorrect) {
+        return {
+          borderWidth: 3,
+          borderColor: theme.palette.error.main,  // Color error del tema (soft red)
+          borderStyle: 'solid'
+        };
+      }
+      // Opciones no seleccionadas después de responder
+      return {
+        borderWidth: 1,
+        borderColor: 'divider',  // Gris sutil
+        borderStyle: 'solid'
+      };
+    }
     
-    if (isCorrect) return 'success.main';
-    if (isSelected && !isCorrect) return 'error.main';
-    return 'divider';
+    // Antes de responder
+    if (isSelected) {
+      return {
+        borderWidth: 2,
+        borderColor: '#BB86FC',  // Púrpura del tema más prominente
+        borderStyle: 'solid'
+      };
+    }
+    
+    // Estado normal (no seleccionado, no respondido)
+    // Usar púrpura sutil para todas las opciones no seleccionadas
+    return {
+      borderWidth: 1,
+      borderColor: 'rgba(187, 134, 252, 0.4)',  // Púrpura del tema con transparencia
+      borderStyle: 'solid'
+    };
   };
 
   /**
-   * DETERMINAR COLOR DE FONDO
-   * - Verde oscuro si es correcta y ya se respondió
-   * - Rojo oscuro si está seleccionada incorrectamente
-   * - Fondo default en otros casos
+   * OBTENER ICONO DE ESTADO
+   * Solo muestra iconos después de responder
    */
-  const getBackgroundColor = () => {
-    if (!isAnswered) return 'background.default';
-    
-    if (isCorrect) return 'success.dark';
-    if (isSelected && !isCorrect) return 'error.dark';
-    return 'background.default';
-  };
-
-  /**
-   * DETERMINAR QUÉ ICONO MOSTRAR
-   * - Check verde si es correcta
-   * - X roja si está seleccionada incorrectamente
-   * - Null en otros casos
-   */
-  const getIcon = () => {
+  const getStatusIcon = () => {
     if (!isAnswered) return null;
     
-    if (isCorrect) return <CheckCircleIcon color="success" data-testid={`correct-icon-${id}`} />;
-    if (isSelected && !isCorrect) return <CancelIcon color="error" data-testid={`incorrect-icon-${id}`} />;
+    if (isCorrect) {
+      return (
+        <CheckCircleOutlineIcon 
+          sx={{ color: theme.palette.success.main, fontSize: 28 }}
+          data-testid={`correct-icon-${id}`}
+        />
+      );
+    }
+    
+    if (isSelected && !isCorrect) {
+      return (
+        <HighlightOffIcon 
+          sx={{ color: theme.palette.error.main, fontSize: 28 }}
+          data-testid={`incorrect-icon-${id}`}
+        />
+      );
+    }
+    
     return null;
   };
 
+  /**
+   * OBTENER ICONO DE SELECCIÓN
+   * Radio button personalizado
+   */
+  const getSelectionIcon = () => {
+    if (isSelected) {
+      return <RadioButtonCheckedIcon sx={{ color: isAnswered ? 'text.secondary' : 'primary.main' }} />;
+    }
+    return <RadioButtonUncheckedIcon sx={{ color: 'text.secondary' }} />;
+  };
+
   return (
-    <Box
+    <Paper
+      elevation={0}  // Sin elevación para integrarse mejor
       sx={{
-        // Espaciado y bordes
-        mb: 2,
-        p: 2,
-        border: '2px solid',
-        borderColor: getBorderColor(),
-        borderRadius: 1,
+        // Espaciado
+        mb: 1.5,  // Menos margen entre opciones
+        p: 0,  // Sin padding, lo manejamos internamente
         
-        // Color de fondo con transparencia
-        backgroundColor: getBackgroundColor(),
+        // Borde dinámico
+        ...getBorderStyle(),
         
-        // Transición suave para cambios de color
-        transition: 'all 0.3s ease',
+        // Esquinas redondeadas
+        borderRadius: 1.5,
         
-        // Hover effect solo si no está respondida
+        // Fondo sutil diferente del Paper principal
+        backgroundColor: isSelected && !isAnswered ? 'action.selected' : 'background.default',
+        
+        // Transiciones suaves
+        transition: 'all 0.2s ease-in-out',
+        
+        // Efectos hover solo cuando es interactivo
         ...(!isAnswered && !isDisabled && {
           '&:hover': {
-            backgroundColor: 'action.hover',
+            transform: 'translateX(4px)',  // Ligero desplazamiento horizontal
+            boxShadow: 3,
+            borderColor: isSelected ? '#BB86FC' : 'rgba(187, 134, 252, 0.7)',  // Púrpura más visible en hover
             cursor: 'pointer'
           }
         }),
         
-        // Opacidad reducida si está deshabilitada
-        opacity: isDisabled ? 0.6 : 1
+        // Estado deshabilitado
+        ...(isDisabled && {
+          opacity: 0.5,
+          cursor: 'not-allowed'
+        })
       }}
       onClick={() => !isAnswered && !isDisabled && onSelect(id)}
       data-testid={`multiple-choice-option-${id}`}
     >
-      <FormControlLabel
-        value={id}
-        control={
-          <Radio 
-            checked={isSelected}
-            disabled={isAnswered || isDisabled}
-            // onChange manejado por onClick del Box
-            onChange={() => {}}
-            data-testid={`radio-option-${id}`}
-          />
-        }
-        data-testid={`form-control-label-${id}`}
-        label={
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }} data-testid={`option-label-container-${id}`}>
-            {/* Texto de la opción */}
-            <Typography
-              sx={{
-                fontWeight: isSelected ? 'bold' : 'normal'
-              }}
-              data-testid={`text-option-${id}`}
-            >
-              {text}
-            </Typography>
-            
-            {/* Icono de feedback (solo después de responder) */}
-            {getIcon() && (
-              <Box data-testid={`feedback-icon-${id}`}>
-                {getIcon()}
-              </Box>
-            )}
-          </Box>
-        }
-        sx={{ 
-          m: 0, 
-          width: '100%',
-          // Evitar que el label capture clicks
-          pointerEvents: isAnswered || isDisabled ? 'none' : 'auto'
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          p: 2,  // Padding interno más compacto
+          gap: 1.5  // Espaciado entre elementos más ajustado
         }}
-      />
-    </Box>
+      >
+        {/* COLUMNA IZQUIERDA: Etiqueta opcional o icono de selección */}
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minWidth: 40
+          }}
+        >
+          {label ? (
+            // Si hay etiqueta (A, B, C, D), mostrarla en un círculo
+            <Box
+              sx={{
+                width: 36,
+                height: 36,
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                // Usar púrpura para mantener consistencia con el tema
+                backgroundColor: isSelected && !isAnswered ? '#BB86FC' : 'rgba(187, 134, 252, 0.15)',
+                color: isSelected && !isAnswered ? 'white' : 'text.primary',
+                fontWeight: 'bold',
+                fontSize: '1.1rem',
+                transition: 'all 0.2s ease'
+              }}
+              data-testid={`option-label-${id}`}
+            >
+              {label}
+            </Box>
+          ) : (
+            // Si no hay etiqueta, mostrar radio button
+            <Box data-testid={`radio-${id}`}>
+              {getSelectionIcon()}
+            </Box>
+          )}
+        </Box>
+
+        {/* COLUMNA CENTRAL: Texto de la opción */}
+        <Box sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="body1"
+            sx={{
+              fontSize: '1.05rem',
+              lineHeight: 1.6,
+              color: 'text.primary',
+              // Texto en negrita si está seleccionada
+              fontWeight: isSelected && !isAnswered ? 500 : 400
+            }}
+            data-testid={`text-option-${id}`}
+          >
+            {text}
+          </Typography>
+        </Box>
+
+        {/* COLUMNA DERECHA: Icono de feedback (solo después de responder) */}
+        {getStatusIcon() && (
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              animation: isAnswered ? 'fadeIn 0.3s ease-in' : 'none',
+              '@keyframes fadeIn': {
+                from: { opacity: 0, transform: 'scale(0.8)' },
+                to: { opacity: 1, transform: 'scale(1)' }
+              }
+            }}
+            data-testid={`feedback-icon-${id}`}
+          >
+            {getStatusIcon()}
+          </Box>
+        )}
+      </Box>
+    </Paper>
   );
 };
 

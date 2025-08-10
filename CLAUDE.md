@@ -400,3 +400,4 @@ git push origin main
 - Vite Guide: https://vitejs.dev/guide/
 - CSS Flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 - Add unique identifiers to each UI element coded, Always ALWAYS
+- When creating new components, add them to the start of the component cnavas, not the end

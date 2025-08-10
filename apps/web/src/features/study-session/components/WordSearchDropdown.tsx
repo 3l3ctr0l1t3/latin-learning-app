@@ -19,7 +19,7 @@
  * 4. Click en X → elimina de selección (sin abrir dropdown)
  */
 
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Box,
   TextField,
@@ -42,7 +42,9 @@ import SelectedWordChip from './SelectedWordChip';
 import SelectedWordsDisplay from './SelectedWordsDisplay';
 
 // Servicio de datos
-import { VocabularyService } from '@latin-app/data';
+// Importamos la instancia singleton en lugar de la clase
+// Esto evita crear múltiples instancias y el mensaje "Loaded 690 words" apareciendo varias veces
+import { vocabularyService } from '@latin-app/data';
 
 /**
  * PROPS DEL COMPONENTE
@@ -90,7 +92,9 @@ const WordSearchDropdown: React.FC<WordSearchDropdownProps> = ({
   // SERVICIOS
   // ============================================================================
   
-  const vocabularyService = useMemo(() => new VocabularyService(), []);
+  // Ya no necesitamos crear una instancia local - usamos el singleton importado
+  // vocabularyService está disponible directamente desde el import
+  // Esto evita múltiples mensajes de "Loaded 690 words" en la consola
   
   // ============================================================================
   // EFECTOS
