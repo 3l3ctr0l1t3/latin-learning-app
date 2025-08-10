@@ -21,7 +21,6 @@ import React from 'react';
 import {
   Box,      // Contenedor flexible
   Button,   // Botón para limpiar todo
-  Typography,  // Para texto
   useMediaQuery,  // Hook para detectar tamaño de pantalla
   useTheme,       // Hook para acceder al tema
 } from '@mui/material';
@@ -127,49 +126,29 @@ const SelectedWordsDisplay: React.FC<SelectedWordsDisplayProps> = ({
       </Button>
       
       {/* CONTENEDOR DE CHIPS DE PALABRAS */}
-      {/* En móvil: mostrar solo las primeras 3 palabras y un indicador de "+X más" */}
-      {/* En desktop: flexbox normal con wrap mostrando todas */}
+      {/* Flexbox normal con wrap mostrando todas las palabras sin límite de altura */}
       <Box sx={{ 
         display: 'flex',      // Contenedor flexible
         flexWrap: 'wrap',     // Siempre permitir wrap
         gap: 1,               // Espacio entre chips (8px)
       }}>
         {/* MAP: Crear un chip por cada palabra */}
-        {/* En móvil, solo mostrar las primeras 3 */}
-        {selectedWords
-          .slice(0, isMobile ? 3 : selectedWords.length) // En móvil solo 3, en desktop todas
-          .map((word, index) => (
-            <SelectedWordChip
-              key={word.id}
-              word={word}                      // Datos de la palabra
-              variant={isMobile ? "compact" : "default"}  // Usar variante compacta en móvil
-              showTooltip={showTooltips}       // Mostrar/ocultar tooltip
-              colorByDeclension={colorByDeclension} // Colorear por declinación
-              
-              // Callback para eliminar esta palabra específica
-              onDelete={() => onRemoveWord(word.id)}
-              
-              // Callback opcional para clicks (si se proporciona)
-              onClick={onWordClick ? () => onWordClick(word) : undefined}
-            />
-          ))
-        }
-        
-        {/* INDICADOR DE MÁS PALABRAS EN MÓVIL */}
-        {isMobile && selectedWords.length > 3 && (
-          <Typography 
-            variant="body2" 
-            sx={{ 
-              display: 'flex',
-              alignItems: 'center',
-              color: 'text.secondary',
-              fontStyle: 'italic',
-              px: 1
-            }}
-          >
-            +{selectedWords.length - 3} más
-          </Typography>
-        )}
+        {/* Mostramos TODAS las palabras sin scroll, el wrap las acomoda automáticamente */}
+        {selectedWords.map((word) => (
+          <SelectedWordChip
+            key={word.id}
+            word={word}                      // Datos de la palabra
+            variant={isMobile ? "compact" : "default"}  // Usar variante compacta en móvil
+            showTooltip={showTooltips}       // Mostrar/ocultar tooltip
+            colorByDeclension={colorByDeclension} // Colorear por declinación
+            
+            // Callback para eliminar esta palabra específica
+            onDelete={() => onRemoveWord(word.id)}
+            
+            // Callback opcional para clicks (si se proporciona)
+            onClick={onWordClick ? () => onWordClick(word) : undefined}
+          />
+        ))}
       </Box>
     </Box>
   );
@@ -202,7 +181,6 @@ export default SelectedWordsDisplay;
  * 
  * 5. DISEÑO RESPONSIVO:
  *    - useMediaQuery para detectar móvil
- *    - En desktop: muestra todas las palabras con wrap
- *    - En móvil: muestra solo 3 palabras con indicador "+X más"
+ *    - Muestra todas las palabras con wrap natural
  *    - Variante compacta de chips en móvil para ahorrar espacio
  */

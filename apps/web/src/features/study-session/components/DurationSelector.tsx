@@ -66,7 +66,7 @@ const DurationSelector: React.FC<DurationSelectorProps> = ({
    * We receive the new value and pass it up to the parent.
    */
   const handleChange = (
-    event: React.MouseEvent<HTMLElement>,
+    _event: React.MouseEvent<HTMLElement>, // Prefix with _ to indicate unused
     newDuration: 5 | 10 | 15 | null,
   ) => {
     // Only call onChange if we have a valid new value

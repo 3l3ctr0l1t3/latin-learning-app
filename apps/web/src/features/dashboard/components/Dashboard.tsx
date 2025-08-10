@@ -13,7 +13,7 @@ import React from 'react';
 
 // Import centralized theme constants for consistent styling
 // Usamos ruta relativa porque el alias @ no está configurado
-import { LATIN_COLORS, SHADOWS } from '../../../config/theme';
+import { LATIN_COLORS } from '../../../config/theme'; // SHADOWS removed - not being used
 
 // Import Material-UI components
 // These are pre-built components that follow Material Design guidelines
@@ -25,7 +25,7 @@ import {
   Card,         // Card is a surface for content
   CardContent,  // CardContent adds padding inside a Card
   Grid,         // Grid helps create responsive layouts
-  IconButton,   // Button that shows just an icon
+  // IconButton,   // Button that shows just an icon - Removed - not being used
   Stack,        // Stack arranges items vertically or horizontally
   Chip,         // Chip is a small tag-like component
   LinearProgress, // Progress bar

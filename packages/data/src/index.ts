@@ -10,16 +10,16 @@
 
 // Import our type definitions from the types package
 // The '@latin-app/types' is the package name we defined in package.json
-import { NormalizedLatinWord, VocabularyFilter } from '@latin-app/types';
+import type { NormalizedLatinWord, VocabularyFilter } from '@latin-app/types';
 
 // Import string normalization utilities for case/accent insensitive search
 // CRITICAL: All searches must be case and accent insensitive
 import { 
-  normalizeForSearch, 
+  // normalizeForSearch, // Removed - not being used
   stringIncludes, 
   stringStartsWith,
   compareStrings,
-  fuzzySearchScore 
+  // fuzzySearchScore // Removed - not being used
 } from '@latin-app/shared';
 
 // Import the normalized vocabulary JSON file
@@ -51,7 +51,11 @@ export class VocabularyService {
   constructor() {
     // Load and validate the vocabulary data
     // 'as' is a type assertion - tells TypeScript what type this is
-    this.words = vocabularyData as NormalizedLatinWord[];
+    // Fix type issue: vocabularyData has null for exampleSentence, but our type expects string | undefined
+    this.words = vocabularyData.map(word => ({
+      ...word,
+      exampleSentence: word.exampleSentence ?? undefined // Convert null to undefined
+    })) as NormalizedLatinWord[];
     
     // Log how many words we loaded (useful for debugging)
     console.log(`VocabularyService: Loaded ${this.words.length} words`);

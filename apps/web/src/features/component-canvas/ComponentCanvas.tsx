@@ -10,7 +10,7 @@ import {
   Grid, 
   Divider,
   Container,
-  Alert,
+  // Alert, // Removed - not being used
   Button,
   Chip,
   Stack  // Ya lo teníamos importado, verificando que esté
@@ -28,7 +28,7 @@ import WordCard from '../study-session/components/WordCard';
 import type { LatinWord } from '../study-session/components/WordCard';
 
 // Importar WordSearchBar para búsqueda de palabras (versión antigua)
-import WordSearchBar from '../study-session/components/WordSearchBar';
+// import WordSearchBar from '../study-session/components/WordSearchBar'; // Removed - not being used
 
 // Importar WordSearchDropdown - versión mejorada con dropdown
 import WordSearchDropdown from '../study-session/components/WordSearchDropdown';
@@ -38,6 +38,14 @@ import SelectedWordChip from '../study-session/components/SelectedWordChip';
 
 // Importar WordSelectionStep - componente integrado de selección
 import WordSelectionStep from '../study-session/components/WordSelectionStep';
+
+// Importar componentes de ejercicios
+import MultipleChoiceOption from '../study-session/components/exercises/MultipleChoiceOption';
+
+// Importar componentes de navegación y estudio
+import StudyWordsViewer from '../study-session/components/StudyWordsViewer';
+import StudySession from '../study-session/components/StudySession';
+import SessionTimer from '../study-session/components/SessionTimer';
 
 // Importar tipos necesarios (ya no necesitamos Declension y Gender aquí)
 
@@ -75,8 +83,8 @@ const ComponentCanvas: React.FC = () => {
   const [showTranslation, setShowTranslation] = useState(true);
 
   // Estado para WordSearchBar - el texto de búsqueda
-  const [searchText, setSearchText] = useState('');
-  const [searchTextWithDebounce, setSearchTextWithDebounce] = useState('');
+  // const [searchText, setSearchText] = useState(''); // Removed - not being used
+  // const [searchTextWithDebounce, setSearchTextWithDebounce] = useState(''); // Removed - not being used
   
   // Estado para WordSearchDropdown - palabras seleccionadas en la búsqueda
   const [selectedSearchWords, setSelectedSearchWords] = useState<LatinWord[]>([]);
@@ -105,7 +113,7 @@ const ComponentCanvas: React.FC = () => {
   ];
   
   // Estado para manejar palabras seleccionadas en SelectedWordChip demo
-  const [selectedWordIds, setSelectedWordIds] = useState<string[]>(['word_rosa_0001', 'word_dominus_0002']);
+  // const [selectedWordIds, setSelectedWordIds] = useState<string[]>(['word_rosa_0001', 'word_dominus_0002']); // Removed - not being used
   
   // Estado para WordSelectionStep - componente integrado
   const [stepSelectedWords, setStepSelectedWords] = useState<LatinWord[]>([]);
@@ -562,6 +570,251 @@ const ComponentCanvas: React.FC = () => {
                   disabled={true}
                 />
               </Stack>
+            </Paper>
+          </Grid>
+
+          {/* COMPONENTE 7: MultipleChoiceOption - Opción de ejercicio */}
+          <Grid item xs={12} md={6}>
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                p: { xs: 2, sm: 3 }, 
+                height: '100%',
+                bgcolor: 'background.paper'
+              }}
+            >
+              {/* Encabezado del componente */}
+              <Typography 
+                variant="h6" 
+                gutterBottom 
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
+              >
+                🆕 MultipleChoiceOption
+              </Typography>
+              
+              {/* Descripción del componente */}
+              <Typography 
+                variant="body2" 
+                sx={{ mb: 2, color: 'text.secondary' }}
+              >
+                Opción individual para ejercicios de selección múltiple.
+                Muestra diferentes estados según la interacción.
+              </Typography>
+              
+              <Divider sx={{ mb: 3 }} />
+              
+              {/* Estados del componente */}
+              <Stack spacing={2}>
+                {/* Estado normal */}
+                <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+                  Estado Normal (no seleccionada):
+                </Typography>
+                <MultipleChoiceOption
+                  id="option1"
+                  text="Rosa, la rosa"
+                  isSelected={false}
+                  isCorrect={false}
+                  isAnswered={false}
+                  onSelect={(id) => console.log('Seleccionada:', id)}
+                />
+                
+                {/* Estado seleccionada */}
+                <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+                  Seleccionada (antes de responder):
+                </Typography>
+                <MultipleChoiceOption
+                  id="option2"
+                  text="Aqua, el agua"
+                  isSelected={true}
+                  isCorrect={false}
+                  isAnswered={false}
+                  onSelect={(id) => console.log('Seleccionada:', id)}
+                />
+                
+                {/* Respuesta correcta */}
+                <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+                  Respuesta Correcta (después de responder):
+                </Typography>
+                <MultipleChoiceOption
+                  id="option3"
+                  text="Mensa, la mesa"
+                  isSelected={true}
+                  isCorrect={true}
+                  isAnswered={true}
+                  onSelect={(id) => console.log('Seleccionada:', id)}
+                />
+                
+                {/* Respuesta incorrecta */}
+                <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+                  Respuesta Incorrecta (después de responder):
+                </Typography>
+                <MultipleChoiceOption
+                  id="option4"
+                  text="Terra, la tierra"
+                  isSelected={true}
+                  isCorrect={false}
+                  isAnswered={true}
+                  onSelect={(id) => console.log('Seleccionada:', id)}
+                />
+                
+                {/* Opción correcta no seleccionada */}
+                <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+                  Correcta pero no seleccionada (después de responder):
+                </Typography>
+                <MultipleChoiceOption
+                  id="option5"
+                  text="Stella, la estrella"
+                  isSelected={false}
+                  isCorrect={true}
+                  isAnswered={true}
+                  onSelect={(id) => console.log('Seleccionada:', id)}
+                />
+                
+                {/* Estado deshabilitado */}
+                <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+                  Deshabilitada:
+                </Typography>
+                <MultipleChoiceOption
+                  id="option6"
+                  text="Luna, la luna"
+                  isSelected={false}
+                  isCorrect={false}
+                  isAnswered={false}
+                  isDisabled={true}
+                  onSelect={(id) => console.log('Seleccionada:', id)}
+                />
+              </Stack>
+            </Paper>
+          </Grid>
+
+          {/* COMPONENTE 8: StudyWordsViewer - Visor de palabras para estudiar */}
+          <Grid item xs={12}>
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                p: { xs: 2, sm: 3 }, 
+                height: '100%',
+                bgcolor: 'background.paper'
+              }}
+            >
+              {/* Encabezado del componente */}
+              <Typography 
+                variant="h6" 
+                gutterBottom 
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
+              >
+                🆕 StudyWordsViewer
+              </Typography>
+              
+              {/* Descripción del componente */}
+              <Typography 
+                variant="body2" 
+                sx={{ mb: 2, color: 'text.secondary' }}
+              >
+                Visor de palabras para la fase de estudio. Permite navegar entre palabras
+                seleccionadas y continuar a ejercicios en cualquier momento.
+              </Typography>
+              
+              <Divider sx={{ mb: 3 }} />
+              
+              {/* El componente StudyWordsViewer con palabras de ejemplo */}
+              <Box sx={{ height: 600 }}>
+                <StudyWordsViewer
+                  words={sampleWords}
+                  onContinueToExercises={() => {
+                    console.log('Continuar a ejercicios');
+                  }}
+                  showTranslation={true}
+                />
+              </Box>
+            </Paper>
+          </Grid>
+
+          {/* COMPONENTE 9: SessionTimer - Timer de sesión */}
+          <Grid item xs={12} md={6}>
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                p: { xs: 2, sm: 3 }, 
+                height: '100%',
+                bgcolor: 'background.paper'
+              }}
+            >
+              <Typography 
+                variant="h6" 
+                gutterBottom 
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
+              >
+                🆕 SessionTimer
+              </Typography>
+              
+              <Typography 
+                variant="body2" 
+                sx={{ mb: 2, color: 'text.secondary' }}
+              >
+                Timer que muestra el progreso de la sesión con barra visual y colores.
+              </Typography>
+              
+              <Divider sx={{ mb: 3 }} />
+              
+              <Stack spacing={2}>
+                <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+                  Timer de 5 minutos:
+                </Typography>
+                <SessionTimer
+                  totalMinutes={5}
+                  onTimeUp={() => console.log('¡Tiempo terminado!')}
+                  isPaused={false}
+                />
+                
+                <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
+                  Timer pausado:
+                </Typography>
+                <SessionTimer
+                  totalMinutes={10}
+                  onTimeUp={() => console.log('¡Tiempo terminado!')}
+                  isPaused={true}
+                />
+              </Stack>
+            </Paper>
+          </Grid>
+
+          {/* COMPONENTE 10: StudySession - Sesión completa */}
+          <Grid item xs={12}>
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                p: { xs: 2, sm: 3 }, 
+                height: '100%',
+                bgcolor: 'background.paper'
+              }}
+            >
+              <Typography 
+                variant="h6" 
+                gutterBottom 
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
+              >
+                🆕 StudySession
+              </Typography>
+              
+              <Typography 
+                variant="body2" 
+                sx={{ mb: 2, color: 'text.secondary' }}
+              >
+                Sesión de estudio completa con timer. Comienza con revisión de palabras,
+                luego ejercicios, y finaliza con resumen.
+              </Typography>
+              
+              <Divider sx={{ mb: 3 }} />
+              
+              <Box sx={{ height: 700 }}>
+                <StudySession
+                  selectedWords={sampleWords}
+                  duration={5}
+                  drillTypes={['multipleChoice', 'fillInBlank']}
+                  onEndSession={() => console.log('Sesión finalizada')}
+                />
+              </Box>
             </Paper>
           </Grid>
 

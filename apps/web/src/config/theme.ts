@@ -36,11 +36,11 @@ export const darkTheme = createTheme({
     },
     
     // Secondary color - used for secondary actions
-    // Cyan/Teal for contrast with purple
+    // Warm gold/amber for better contrast with purple
     secondary: {
-      main: '#03DAC6',  // Cyan
-      light: '#66FFF0',
-      dark: '#00A896',
+      main: '#FFA726',  // Warm amber/orange
+      light: '#FFD95B',
+      dark: '#FB8C00',
       contrastText: '#000000',
     },
     

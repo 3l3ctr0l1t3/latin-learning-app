@@ -217,7 +217,7 @@ const DrillTypeSelector: React.FC<DrillTypeSelectorProps> = ({
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }} data-testid={`drill-type-selector-content-${drillType}`}>
                     {/* Icono con color */}
                     <Box sx={{ color: config.color, display: 'flex' }} data-testid={`drill-type-selector-icon-${drillType}`}>
-                      {config.icon}
+                      <>{config.icon}</>
                     </Box>
                     
                     {/* Textos del label */}
@@ -248,15 +248,6 @@ const DrillTypeSelector: React.FC<DrillTypeSelectorProps> = ({
         )}
       </FormGroup>
 
-      {/* Resumen de selección - muestra qué está seleccionado */}
-      {hasSelection && (
-        <Box sx={{ mt: 2, p: 2, bgcolor: 'background.default', borderRadius: 1 }} data-testid="drill-type-selector-summary">
-          <Typography variant="caption" sx={{ color: 'text.secondary' }} data-testid="drill-type-selector-summary-text">
-            Seleccionados: {value.length} tipo{value.length !== 1 ? 's' : ''} de ejercicio
-            {/* El operador ternario añade 's' para plural si hay más de 1 */}
-          </Typography>
-        </Box>
-      )}
     </Box>
   );
 };

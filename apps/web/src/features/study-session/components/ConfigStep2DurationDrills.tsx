@@ -1,14 +1,15 @@
 /**
  * CONFIG STEP 2: DURATION AND DRILL TYPES
  * 
- * Segundo paso de la configuración de sesión de estudio.
- * Permite seleccionar duración y tipos de ejercicios.
+ * Segundo y último paso de la configuración de sesión de estudio.
+ * Permite seleccionar duración, tipos de ejercicios y comenzar la sesión.
  * 
- * OPTIMIZADO: Espaciado reducido para maximizar el uso del espacio vertical.
+ * OPTIMIZADO: Incluye botón de inicio para eliminar el paso 3.
  */
 
 import React from 'react';
-import { Box, Typography, Stack } from '@mui/material';
+import { Box, Typography, Stack, Button } from '@mui/material';
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import DurationSelector from './DurationSelector';
 import DrillTypeSelector from './DrillTypeSelector';
 import type { DrillType, SessionDuration } from '../types';
@@ -25,19 +26,25 @@ interface ConfigStep2DurationDrillsProps {
   drillTypes: DrillType[];
   // Callback para cambio de tipos
   onDrillTypesChange: (types: DrillType[]) => void;
+  // Callback para comenzar la sesión (nuevo)
+  onStartSession?: () => void;
+  // Si el botón de inicio debe estar habilitado
+  canStartSession?: boolean;
 }
 
 /**
  * COMPONENTE STEP 2: DURACIÓN Y EJERCICIOS
  * 
  * Versión optimizada con espaciado mínimo pero funcional.
- * Usa Stack para organización vertical con gaps controlados.
+ * Incluye botón de inicio de sesión al final.
  */
 const ConfigStep2DurationDrills: React.FC<ConfigStep2DurationDrillsProps> = ({
   duration,
   onDurationChange,
   drillTypes,
   onDrillTypesChange,
+  onStartSession,
+  canStartSession = true,
 }) => {
   return (
     // Stack vertical con espaciado optimizado
@@ -57,22 +64,25 @@ const ConfigStep2DurationDrills: React.FC<ConfigStep2DurationDrillsProps> = ({
       </Typography>
 
       {/* SECCIÓN DE DURACIÓN - Compacta */}
-      <Box>
+      <Box data-testid="duration-section">
         {/* Selector de duración sin descripción extra para ahorrar espacio */}
         <DurationSelector
           value={duration}
           onChange={onDurationChange}
+          data-testid="duration-selector"
         />
       </Box>
       
       {/* SECCIÓN DE TIPOS DE EJERCICIOS - Compacta */}
-      <Box>
+      <Box data-testid="drill-types-section">
         {/* DrillTypeSelector ya tiene su propia descripción interna */}
         <DrillTypeSelector
           value={drillTypes}
           onChange={onDrillTypesChange}
+          data-testid="drill-type-selector"
         />
       </Box>
+
     </Stack>
   );
 };

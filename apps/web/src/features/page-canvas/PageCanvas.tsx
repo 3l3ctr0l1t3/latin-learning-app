@@ -13,7 +13,7 @@
 import React, { useState } from 'react';
 import {
   Box,
-  Container,
+  // Container, // Removed - not being used
   Paper,
   Button
 } from '@mui/material';
@@ -25,7 +25,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 // Importar nuestros componentes
 import ConfigStep1WordSelection from '../study-session/components/ConfigStep1WordSelection';
 import ConfigStep2DurationDrills from '../study-session/components/ConfigStep2DurationDrills';
-import ConfigStep3Review from '../study-session/components/ConfigStep3Review';
+import StudySession from '../study-session/components/StudySession';
 
 // Importar tipos
 import type { DrillType, SessionDuration } from '../study-session/types';
@@ -36,9 +36,7 @@ import type { LatinWord } from '../study-session/components/WordCard';
  * 
  * Esta página permite al usuario configurar una sesión de estudio:
  * 1. Seleccionar palabras para estudiar
- * 2. Elegir la duración de la sesión
- * 3. Seleccionar tipos de ejercicios
- * 4. Revisar y comenzar la sesión
+ * 2. Elegir la duración, tipos de ejercicios y comenzar la sesión
  */
 const StudySessionConfigPage: React.FC = () => {
   // Estados para la configuración de la sesión
@@ -46,12 +44,12 @@ const StudySessionConfigPage: React.FC = () => {
   const [duration, setDuration] = useState<SessionDuration>(10);
   const [drillTypes, setDrillTypes] = useState<DrillType[]>(['multipleChoice']);
   const [currentStep, setCurrentStep] = useState(0); // Para navegación por pasos
+  const [sessionStarted, setSessionStarted] = useState(false); // Estado para sesión activa
 
   // Pasos de configuración
   const steps = [
     'Seleccionar Palabras',
-    'Duración y Ejercicios',
-    'Revisar y Comenzar'
+    'Duración y Ejercicios'
   ];
 
   /**
@@ -85,21 +83,53 @@ const StudySessionConfigPage: React.FC = () => {
         return true;
     }
   };
+  
+  /**
+   * MANEJADOR PARA INICIAR SESIÓN
+   */
+  const handleStartSession = () => {
+    setSessionStarted(true);
+  };
+  
+  /**
+   * MANEJADOR PARA FINALIZAR SESIÓN
+   */
+  const handleEndSession = () => {
+    setSessionStarted(false);
+    setCurrentStep(0); // Volver al inicio
+    // Opcionalmente, limpiar las selecciones
+  };
+
+  // Si la sesión está activa, mostrar el componente StudySession
+  if (sessionStarted) {
+    return (
+      <StudySession
+        selectedWords={selectedWords}
+        duration={duration}
+        drillTypes={drillTypes}
+        onEndSession={handleEndSession}
+      />
+    );
+  }
 
   return (
     <Box 
       data-testid="study-session-config-page"
       sx={{ 
-      pt: 0,  // Sin padding superior
-      px: 0,  // Sin padding horizontal
-      pb: 0,  // Sin padding inferior
+      pt: .5,  // Sin padding superior
+      px: 1.3,  // Sin padding horizontal
+      pb: .5,  // Sin padding inferior
       minHeight: { 
         xs: 'calc(100vh - 110px)',  // Móvil: ajustado para llenar toda la pantalla
-        sm: '500px'  // Desktop: altura fija
+        md: '600px',  // Desktop mediano: altura consistente
+        lg: '650px',  // Desktop grande: altura consistente
+        xl: '700px'   // Desktop XL: altura consistente
       },
       height: { 
         xs: 'calc(100vh - 110px)',  // Móvil: forzar altura completa exacta
-        sm: 'auto'  // Desktop: altura automática
+        md: '600px',  // Desktop mediano: altura fija
+        lg: '650px',  // Desktop grande: altura fija
+        xl: '700px'   // Desktop XL: altura fija
       },
       display: 'flex',
       flexDirection: 'column'
@@ -123,46 +153,33 @@ const StudySessionConfigPage: React.FC = () => {
           />
         )}
 
-        {/* PASO 2: DURACIÓN Y EJERCICIOS - Usando componente optimizado */}
+        {/* PASO 2: DURACIÓN Y EJERCICIOS - Con botón de inicio integrado */}
         {currentStep === 1 && (
           <ConfigStep2DurationDrills
             duration={duration}
             onDurationChange={setDuration}
             drillTypes={drillTypes}
             onDrillTypesChange={setDrillTypes}
-          />
-        )}
-
-        {/* PASO 3: REVISAR Y COMENZAR - Usando componente optimizado */}
-        {currentStep === 2 && (
-          <ConfigStep3Review
-            selectedWords={selectedWords}
-            duration={duration}
-            drillTypes={drillTypes}
-            onStartSession={() => {
-              console.log('Comenzar sesión con:', {
-                words: selectedWords,
-                duration,
-                drillTypes
-              });
-            }}
+            onStartSession={handleStartSession}
+            canStartSession={selectedWords.length >= 5}
           />
         )}
       </Box>
 
       {/* NAVEGACIÓN ENTRE PASOS */}
-      <Box 
-        data-testid="navigation-buttons-container"
-        sx={{ 
-        mt: { xs: 2, sm: 3 },  // Menos margen en móvil
-        pt: { xs: 1.5, sm: 2 },  // Menos padding en móvil
-        pb: { xs: 0, sm: 0, l:0, xl:0, m:0 },  // Padding inferior solo en móvil
-        borderTop: '1px solid',
-        borderColor: 'divider',
-        display: 'flex', 
-        justifyContent: 'space-between',
-        gap: 2  // Espacio entre botones
-      }}>
+      {(
+        <Box 
+          data-testid="navigation-buttons-container"
+          sx={{ 
+          mt: { xs: 2, sm: 3 },  // Menos margen en móvil
+          pt: { xs: 1.5, sm: 2 },  // Menos padding en móvil
+          pb: { xs: 0, sm: 0, l:0, xl:0, m:0 },  // Padding inferior solo en móvil
+          borderTop: '1px solid',
+          borderColor: 'divider',
+          display: 'flex', 
+          justifyContent: 'space-between',
+          gap: 2  // Espacio entre botones
+        }}>
         <Button
           data-testid="nav-button-back"
           startIcon={<ArrowBackIcon />}
@@ -180,16 +197,25 @@ const StudySessionConfigPage: React.FC = () => {
           data-testid="nav-button-next"
           endIcon={<ArrowForwardIcon />}
           variant="contained"
-          onClick={handleNext}
-          disabled={currentStep === steps.length - 1 || !canProceed()}
+          onClick={() => {
+            // En el paso 1, "Comenzar" inicia la sesión
+            if (currentStep === 1) {
+              handleStartSession();
+            } else {
+              handleNext();
+            }
+          }}
+          disabled={!canProceed()}
           sx={{ 
             fontSize: { xs: '1rem', sm: '0.875rem' },
             py: { xs: 1.5, sm: 1 }
           }}
         >
-          Siguiente
+          {/* Mostrar "Comenzar" en el paso 2, "Siguiente" en otros pasos */}
+          {currentStep === 1 ? 'Comenzar' : 'Siguiente'}
         </Button>
       </Box>
+      )}
     </Box>
   );
 };
@@ -202,14 +228,56 @@ const StudySessionConfigPage: React.FC = () => {
  */
 const PageCanvas: React.FC = () => {
   return (
-      <Box data-testid="page-canvas-wrapper" maxWidth="xl" sx={{ py: { xs: 1, sm: 3, md: 4 }, m: { xs: 1, sm: 2, md: 3 , xl:2} }}>
-        
+    // Contenedor externo que centra el contenido
+    <Box 
+      data-testid="page-canvas-wrapper" 
+      sx={{ 
+        // Centrar horizontalmente con margin auto
+        display: 'flex',
+        justifyContent: 'center',
+        py: { xs: 1, sm: 3, md: 4 },
+        px: { xs: 1, sm: 2, md: 3 },
+        minHeight: 'calc(100vh - 64px)', // Altura total menos el AppBar
+      }}
+    >
+      {/* Contenedor con ancho máximo para pantallas grandes */}
+      <Box
+        sx={{
+          width: '100%',
+          // Limitar el ancho máximo según el tamaño de pantalla
+          maxWidth: {
+            xs: '100%',     // Móvil: ancho completo
+            sm: '600px',    // Tablets pequeñas: 600px
+            md: '800px',    // Tablets: 800px
+            lg: '900px',    // Desktop: 900px
+            xl: '1000px'    // Desktop grande: 1000px
+          }
+        }}
+      >
         {/* CONTENEDOR PRINCIPAL */}
-        <Paper data-testid="main-container" sx={{ width: '100%', p: { xs: 1, sm: 3 },  pb: { xs: 1.2, sm: 1.2, l:1.2, xl:2 }, }}>
+        <Paper 
+          data-testid="main-container" 
+          sx={{ 
+            width: '100%', 
+            p: { 
+              xs: 1,      // Móvil: padding pequeño
+              sm: 2,      // Tablet: padding medio
+              md: 3,      // Desktop: padding normal
+              lg: 4       // Desktop grande: padding amplio
+            },
+            // Sombra más sutil para pantallas grandes
+            boxShadow: {
+              xs: 1,
+              sm: 2,
+              md: 3,
+              lg: 4
+            }
+          }}
+        >
           <StudySessionConfigPage />
         </Paper>
-
       </Box>
+    </Box>
   );
 };
 

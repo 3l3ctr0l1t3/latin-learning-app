@@ -25,7 +25,10 @@ import {
 // Iconos para hacer la tarjeta más visual
 import SchoolIcon from '@mui/icons-material/School'; // Para el título
 import TranslateIcon from '@mui/icons-material/Translate'; // Para traducción
-import CategoryIcon from '@mui/icons-material/Category'; // Para declinación
+// import CategoryIcon from '@mui/icons-material/Category'; // Para declinación - Removed - not being used
+
+// Importar colores por declinación
+import { getDeclensionColor, DECLENSION_INFO } from '../constants/colors';
 
 /**
  * INTERFAZ DE DATOS DE PALABRA
@@ -111,26 +114,30 @@ const WordCard: React.FC<WordCardProps> = ({
         sx={{
           cursor: onClick ? 'pointer' : 'default',
           transition: 'all 0.3s ease',
-          border: selected ? 2 : 0,
-          borderColor: 'primary.main',
-          bgcolor: selected ? 'action.selected' : 'background.paper',
+          border: selected ? 2 : '1px solid',
+          borderColor: selected ? 'primary.main' : 'divider',
+          bgcolor: (theme) => 
+            selected ? 'action.selected' : 
+            theme.palette.mode === 'dark' ? '#1a1a1a' : '#fafafa',
           '&:hover': onClick ? {
             elevation: 4,
             transform: 'translateY(-2px)',
           } : {},
         }}
+        data-testid="word-card-minimal"
       >
-        <CardContent sx={{ textAlign: 'center', py: 3 }}>
-          {/* ENUNCIACIÓN - Grande y centrada, sin etiqueta */}
+        <CardContent sx={{ textAlign: 'center', py: 3 }} data-testid="word-card-minimal-content">
+          {/* ENUNCIACIÓN - Grande y centrada, con color por declinación */}
           <Typography 
             variant="h3" 
             component="div" 
             sx={{ 
               fontWeight: 'bold',
-              color: 'primary.main',
+              color: getDeclensionColor(word.declension),
               mb: 2,
               letterSpacing: 1
             }}
+            data-testid="text-word-enunciation-minimal"
           >
             {word.nominative}, {word.genitive}
           </Typography>
@@ -142,13 +149,19 @@ const WordCard: React.FC<WordCardProps> = ({
             justifyContent="center" 
             alignItems="center"
             sx={{ mb: 2 }}
+            data-testid="grammar-info-stack-minimal"
           >
-            {/* Declinación - Solo el valor */}
+            {/* Declinación - Con color matching */}
             <Chip 
               label={declensionLabels[word.declension]}
               size="medium"
               variant="outlined"
-              sx={{ borderColor: 'secondary.main' }}
+              sx={{ 
+                borderColor: getDeclensionColor(word.declension),
+                color: getDeclensionColor(word.declension),
+                borderWidth: 2
+              }}
+              data-testid="chip-declension-minimal"
             />
             
             {/* Género - Solo el chip con color */}
@@ -160,6 +173,7 @@ const WordCard: React.FC<WordCardProps> = ({
                 color: 'white',
                 fontWeight: 'bold'
               }}
+              data-testid="chip-gender-minimal"
             />
           </Stack>
           
@@ -172,6 +186,7 @@ const WordCard: React.FC<WordCardProps> = ({
                 color: 'text.primary',
                 fontWeight: 'medium'
               }}
+              data-testid="text-translation-minimal"
             >
               {word.spanishTranslation}
             </Typography>
@@ -186,6 +201,7 @@ const WordCard: React.FC<WordCardProps> = ({
                 color: 'text.secondary',
                 fontStyle: 'italic'
               }}
+              data-testid="text-additional-meanings-minimal"
             >
               ({word.additionalMeanings.join(', ')})
             </Typography>
@@ -217,20 +233,23 @@ const WordCard: React.FC<WordCardProps> = ({
             transform: 'translateY(-2px)', // Sube ligeramente la tarjeta
           } : {},
         }}
+        data-testid="word-card-compact"
       >
-        <CardContent sx={{ p: { xs: 1.5, sm: 2 } }}> {/* padding responsivo */}
+        <CardContent sx={{ p: { xs: 1.5, sm: 2 } }} data-testid="word-card-compact-content"> {/* padding responsivo */}
           <Stack 
             direction={{ xs: 'column', sm: 'row' }} // Columna en móvil, fila en desktop
             spacing={{ xs: 1, sm: 2 }} 
-            alignItems={{ xs: 'flex-start', sm: 'center' }}>
-            {/* ENUNCIACIÓN COMPLETA - Lo más importante incluso en modo compacto */}
+            alignItems={{ xs: 'flex-start', sm: 'center' }}
+            data-testid="compact-info-stack">
+            {/* ENUNCIACIÓN COMPLETA - Con color por declinación */}
             <Typography 
               variant="h6" 
               component="div" 
               sx={{ 
                 fontWeight: 'bold',
-                color: 'primary.main' 
+                color: getDeclensionColor(word.declension)
               }}
+              data-testid="text-word-enunciation-compact"
             >
               {word.nominative}, {word.genitive}
             </Typography>
@@ -243,11 +262,12 @@ const WordCard: React.FC<WordCardProps> = ({
                 bgcolor: genderColors[word.gender],
                 color: 'white',
               }}
+              data-testid="chip-gender-compact"
             />
             
             {/* Traducción si está habilitada */}
             {showTranslation && (
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.secondary" data-testid="text-translation-compact">
                 {word.spanishTranslation}
               </Typography>
             )}
@@ -268,95 +288,86 @@ const WordCard: React.FC<WordCardProps> = ({
       sx={{
         cursor: onClick ? 'pointer' : 'default',
         transition: 'all 0.3s ease',
-        border: selected ? 2 : 0,
-        borderColor: 'primary.main',
-        // backgroundColor cambia si está seleccionada
-        bgcolor: selected ? 'action.selected' : 'background.paper',
+        border: selected ? 2 : '1px solid',
+        borderColor: selected ? 'primary.main' : 'divider',
+        // backgroundColor sutilmente diferente del fondo de página
+        bgcolor: (theme) => 
+          selected ? 'action.selected' : 
+          theme.palette.mode === 'dark' ? '#1a1a1a' : '#fafafa',
         '&:hover': onClick ? {
           elevation: 6,
           transform: 'translateY(-4px)',
           boxShadow: (theme) => theme.shadows[6], // Sombra del tema
         } : {},
       }}
+      data-testid="word-card-full"
     >
-      <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
-        {/* ENUNCIACIÓN LATINA - LO MÁS IMPORTANTE */}
-        {/* En latín, las palabras se enuncian con nominativo y genitivo */}
-        {/* Esto es fundamental para identificar la declinación */}
+      <CardContent sx={{ p: { xs: 2, sm: 3 } }} data-testid="word-card-full-content">
+        {/* ENUNCIACIÓN, DECLINACIÓN Y GÉNERO AGRUPADOS PARA MEJOR LECTURA */}
         <Box sx={{ 
-          textAlign: 'center', // Centrar el texto para darle importancia
-          mb: { xs: 2, sm: 3 }, // Margen inferior responsivo
-          p: { xs: 1.5, sm: 2 }, // Padding responsivo
-          bgcolor: 'action.hover', // Fondo ligeramente diferente
-          borderRadius: 2, // Bordes redondeados
-          border: '1px solid',
-          borderColor: 'divider'
-        }}>
-          {/* Icono y etiqueta pequeña */}
-          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mb: 1 }}>
-            <SchoolIcon sx={{ mr: 1, color: 'primary.main', fontSize: 20 }} />
-            <Typography variant="caption" color="text.secondary">
-              ENUNCIACIÓN LATINA
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+          mb: 3
+        }} data-testid="word-header-section">
+          {/* LÍNEA SUPERIOR: ENUNCIACIÓN + CHIPS JUNTOS EN DESKTOP */}
+          <Box sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            alignItems: { xs: 'center', md: 'center' },
+            gap: { xs: 2, md: 2 },
+            flexWrap: { xs: 'wrap', md: 'nowrap' }
+          }}>
+            {/* ENUNCIACIÓN PRINCIPAL - Con color por declinación */}
+            <Typography 
+              variant="h4" 
+              component="div" 
+              sx={{ 
+                fontWeight: 'bold',
+                color: getDeclensionColor(word.declension),
+                letterSpacing: 1,
+                textAlign: { xs: 'center', md: 'left' }
+              }}
+              data-testid="text-word-enunciation-full"
+            >
+              {word.nominative}, {word.genitive}
             </Typography>
-          </Box>
-          
-          {/* LA ENUNCIACIÓN PRINCIPAL - Nominativo, Genitivo */}
-          <Typography 
-            variant="h4" 
-            component="div" 
-            sx={{ 
-              fontWeight: 'bold',
-              color: 'primary.main',
-              letterSpacing: 1, // Espaciado entre letras para mejor legibilidad
-            }}
-          >
-            {word.nominative}, {word.genitive}
-          </Typography>
-        </Box>
-
-        {/* INFORMACIÓN GRAMATICAL EN UNA LÍNEA */}
-        <Box sx={{ 
-          display: 'flex', 
-          flexDirection: { xs: 'column', sm: 'row' }, // Columna en móvil
-          justifyContent: 'space-around', // Distribuir uniformemente
-          alignItems: 'center',
-          gap: { xs: 1, sm: 0 }, // Espacio entre elementos en móvil
-          mb: 2,
-          p: { xs: 1, sm: 1.5 },
-          bgcolor: 'background.default',
-          borderRadius: 1
-        }}>
-          {/* Declinación */}
-          <Box sx={{ textAlign: 'center' }}>
-            <Typography variant="caption" color="text.secondary" display="block">
-              Declinación
-            </Typography>
+            
+            {/* DECLINACIÓN Y GÉNERO - Ahora al lado inmediato del texto en desktop */}
+            <Stack 
+              direction="row" 
+              spacing={1}
+              sx={{ 
+                justifyContent: { xs: 'center', md: 'flex-start' }
+              }}
+              data-testid="grammar-chips-stack"
+            >
+            {/* Declinación */}
             <Chip 
               label={declensionLabels[word.declension]}
-              size="small"
+              size="medium"
               variant="outlined"
-              sx={{ borderColor: 'secondary.main', mt: 0.5 }}
+              sx={{ 
+                borderColor: getDeclensionColor(word.declension),
+                borderWidth: 2,
+                fontWeight: 'medium',
+                color: getDeclensionColor(word.declension)
+              }}
+              data-testid="chip-declension-full"
             />
-          </Box>
-          
-          {/* Separador vertical */}
-          <Divider orientation="vertical" flexItem />
-          
-          {/* Género */}
-          <Box sx={{ textAlign: 'center' }}>
-            <Typography variant="caption" color="text.secondary" display="block">
-              Género
-            </Typography>
+            
+            {/* Género */}
             <Chip 
               label={genderLabels[word.gender]}
-              size="small"
+              size="medium"
               sx={{ 
                 bgcolor: genderColors[word.gender],
                 color: 'white',
-                fontWeight: 'bold',
-                mt: 0.5
+                fontWeight: 'bold'
               }}
+              data-testid="chip-gender-full"
             />
+          </Stack>
           </Box>
         </Box>
 
@@ -364,23 +375,23 @@ const WordCard: React.FC<WordCardProps> = ({
 
         {/* TRADUCCIÓN */}
         {showTranslation && (
-          <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
-            <TranslateIcon sx={{ mr: 1, color: 'info.main', fontSize: 20, mt: 0.5 }} />
-            <Box>
-              <Typography variant="subtitle2" color="text.secondary">
+          <Box sx={{ display: 'flex', alignItems: 'flex-start' }} data-testid="translation-section">
+            <TranslateIcon sx={{ mr: 1, color: 'info.main', fontSize: 20, mt: 0.5 }} data-testid="translation-icon" />
+            <Box data-testid="translation-content">
+              <Typography variant="subtitle2" color="text.secondary" data-testid="text-translation-label">
                 Traducción:
               </Typography>
-              <Typography variant="body1" sx={{ fontWeight: 'medium' }}>
+              <Typography variant="body1" sx={{ fontWeight: 'medium' }} data-testid="text-translation-full">
                 {word.spanishTranslation}
               </Typography>
               
               {/* Significados adicionales si existen */}
               {word.additionalMeanings && word.additionalMeanings.length > 0 && (
-                <Box sx={{ mt: 1 }}>
-                  <Typography variant="caption" color="text.secondary">
+                <Box sx={{ mt: 1 }} data-testid="additional-meanings-section">
+                  <Typography variant="caption" color="text.secondary" data-testid="text-additional-meanings-label">
                     Otros significados:
                   </Typography>
-                  <Typography variant="body2">
+                  <Typography variant="body2" data-testid="text-additional-meanings-full">
                     {word.additionalMeanings.join(', ')}
                   </Typography>
                 </Box>
@@ -399,11 +410,11 @@ const WordCard: React.FC<WordCardProps> = ({
               borderRadius: 1,
               border: '1px solid',
               borderColor: 'divider'
-            }}>
-              <Typography variant="caption" color="text.secondary">
+            }} data-testid="example-sentence-section">
+              <Typography variant="caption" color="text.secondary" data-testid="text-example-label">
                 Ejemplo:
               </Typography>
-              <Typography variant="body2" sx={{ fontStyle: 'italic', mt: 0.5 }}>
+              <Typography variant="body2" sx={{ fontStyle: 'italic', mt: 0.5 }} data-testid="text-example-sentence">
                 "{word.exampleSentence}"
               </Typography>
             </Box>
@@ -417,13 +428,14 @@ const WordCard: React.FC<WordCardProps> = ({
             pt: 2, 
             borderTop: '2px solid',
             borderColor: 'primary.main'
-          }}>
+          }} data-testid="selected-indicator-section">
             <Typography 
               variant="caption" 
               sx={{ 
                 color: 'primary.main',
                 fontWeight: 'bold'
               }}
+              data-testid="text-selected-indicator"
             >
               ✓ Seleccionada
             </Typography>

@@ -4,7 +4,7 @@
  * Tercer paso de la configuración - Revisión final.
  * Muestra un resumen de la configuración antes de comenzar.
  * 
- * OPTIMIZADO: Layout compacto con scroll para las palabras.
+ * OPTIMIZADO: Layout compacto sin restricciones de altura.
  */
 
 import React from 'react';
@@ -45,7 +45,7 @@ const ConfigStep3Review: React.FC<ConfigStep3ReviewProps> = ({
     multipleChoice: 'Opción Múltiple',
     fillInBlank: 'Completar Espacios',
     directInput: 'Entrada Directa',
-    flashcards: 'Tarjetas',
+    // flashcards: 'Tarjetas', // Removed - not a valid DrillType
   };
 
   return (
@@ -71,7 +71,7 @@ const ConfigStep3Review: React.FC<ConfigStep3ReviewProps> = ({
         gap: 2
       }}
       data-testid="config-step3-review-summary-grid">
-        {/* PALABRAS SELECCIONADAS - Con scroll */}
+        {/* PALABRAS SELECCIONADAS */}
         <Paper sx={{ 
           p: 1.5,  // Padding reducido
           bgcolor: 'background.default',
@@ -83,11 +83,6 @@ const ConfigStep3Review: React.FC<ConfigStep3ReviewProps> = ({
             Palabras ({selectedWords.length})
           </Typography>
           <Box sx={{ 
-            maxHeight: { 
-              xs: 200,  // Móvil: ~4-6 líneas de chips
-              sm: 120   // Desktop: mantener compacto
-            },
-            overflowY: 'auto',
             display: 'flex',
             flexWrap: 'wrap',
             gap: 0.5  // Gap mínimo entre chips
@@ -98,7 +93,7 @@ const ConfigStep3Review: React.FC<ConfigStep3ReviewProps> = ({
                 key={word.id}
                 word={word}
                 variant="compact"
-                size="small"  // Tamaño pequeño
+                // size="small"  // Removed - not a valid prop for SelectedWordChip
                 showTooltip={true}
                 colorByDeclension={true}
                 data-testid={`config-step3-review-word-chip-${index}`}

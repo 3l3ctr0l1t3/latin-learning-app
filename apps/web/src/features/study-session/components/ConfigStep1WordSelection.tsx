@@ -9,6 +9,7 @@
  */
 
 import React from 'react';
+import { Box } from '@mui/material';
 import WordSelectionStep from './WordSelectionStep';
 import type { LatinWord } from './WordCard';
 
@@ -41,12 +42,14 @@ const ConfigStep1WordSelection: React.FC<ConfigStep1WordSelectionProps> = ({
   // Directamente retornar WordSelectionStep sin wrapper innecesario
   // Este componente actúa como un alias con valores por defecto
   return (
-    <WordSelectionStep
-      selectedWords={selectedWords}
-      onSelectionChange={onSelectionChange}
-      minWords={minWords}
-      maxWords={maxWords}
-    />
+    <Box data-testid="config-step1-word-selection">
+      <WordSelectionStep
+        selectedWords={selectedWords}
+        onSelectionChange={onSelectionChange}
+        minWords={minWords}
+        maxWords={maxWords}
+      />
+    </Box>
   );
 };
 

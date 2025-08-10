@@ -104,7 +104,7 @@ const GenderFilter: React.FC<GenderFilterProps> = ({
    * El ToggleButtonGroup maneja arrays de valores directamente
    */
   const handleToggleChange = (
-    event: React.MouseEvent<HTMLElement>,
+    _event: React.MouseEvent<HTMLElement>, // Prefix with _ to indicate unused
     newGenders: Gender[]
   ) => {
     // newGenders puede ser null si se deseleccionan todos
@@ -236,7 +236,7 @@ const GenderFilter: React.FC<GenderFilterProps> = ({
                     display: 'flex',
                     color: isSelected(gender) ? config.color : 'inherit' 
                   }}>
-                    {config.icon}
+                    <>{config.icon}</>
                   </Box>
                   
                   {/* Etiqueta */}
@@ -273,7 +273,7 @@ const GenderFilter: React.FC<GenderFilterProps> = ({
                   onClick={() => handleChipClick(gender)}
                   disabled={disabled}
                   variant={selected ? 'filled' : 'outlined'}
-                  size={size}
+                  size={size === 'large' ? 'medium' : size} // Chip doesn't support 'large'
                   sx={{
                     bgcolor: selected ? config.color : 'transparent',
                     borderColor: selected ? config.color : 'divider',

@@ -6,8 +6,7 @@
  * All other components are children of this one.
  */
 
-// Import React
-import React from 'react';
+// Import React - not needed as separate import in React 17+
 
 // Import Material-UI theme provider components
 // ThemeProvider applies our theme to all child components
