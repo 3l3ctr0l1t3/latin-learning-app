@@ -206,7 +206,12 @@ function App() {
       </Drawer>
       
       {/* Contenedor principal con el contenido */}
-      <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+      <Box sx={{ 
+        minHeight: '100vh', 
+        bgcolor: 'background.default',
+        width: '100%',
+        overflow: 'hidden'  // Prevenir overflow horizontal
+      }}>
         {/* Renderizado condicional: mostramos el componente según currentView */}
         {currentView === 'dashboard' && <Dashboard />}
         {currentView === 'components' && <ComponentCanvas />}

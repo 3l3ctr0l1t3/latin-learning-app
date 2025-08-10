@@ -62,7 +62,6 @@ const WordSearchDropdown: React.FC<WordSearchDropdownProps> = ({
   selectedWords,
   onSelectionChange,
   maxSelection = 20,
-  placeholder = 'Buscar palabras en latín o español...', // Se ignora, usamos uno fijo
   disabled = false
 }) => {
   // ============================================================================
@@ -440,6 +439,7 @@ const WordSearchDropdown: React.FC<WordSearchDropdownProps> = ({
         }}
         showTooltips={true}
         colorByDeclension={true}
+        data-testid="word-search-dropdown-selected-words"
       />
     </Box>
   );

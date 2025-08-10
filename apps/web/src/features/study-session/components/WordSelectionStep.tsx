@@ -21,7 +21,6 @@ import React from 'react';
 import {
   Box,           // Contenedor flexible - como un div mejorado
   Typography,    // Componente para todo tipo de texto
-  Paper,         // Crea una superficie elevada con sombra
   Button,        // Botón interactivo
 } from '@mui/material';
 
@@ -116,86 +115,102 @@ const WordSelectionStep: React.FC<WordSelectionStepProps> = ({
   // Todo componente React debe retornar JSX (JavaScript XML)
   // JSX es como HTML pero con superpoderes de JavaScript
   return (
-    <Box>
-      {/* TARJETA ÚNICA Y COMPACTA */}
-      {/* Paper crea una tarjeta elevada con sombra */}
-      {/* sx={{ }} es el prop para estilos en MUI */}
-      <Paper sx={{ 
-        p: 3,     // padding: 3 * 8px = 24px en todos los lados
-      }}>
-        {/* ENCABEZADO CON TÍTULO Y ACCIÓN RÁPIDA */}
-        {/* display: 'flex' crea un contenedor flexible (flexbox) */}
-        {/* alignItems: 'center' alinea verticalmente al centro */}
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-          {/* Typography maneja todo el texto con estilos consistentes */}
-          {/* flexGrow: 1 hace que este elemento ocupe todo el espacio disponible */}
-          <Typography variant="h6" sx={{ flexGrow: 1, color: 'secondary.main' }}>
-            🔍 Buscar y Seleccionar Palabras
-          </Typography>
-          
-          {/* BOTÓN DE SELECCIÓN ALEATORIA */}
-          {/* Solo se muestra si no está lleno */}
-          {!isFull && (
-            <Button
-              startIcon={<AutoAwesomeIcon />}  // Icono a la izquierda del texto
-              variant="outlined"                // Solo borde, sin relleno
-              size="small"                      // Tamaño reducido
-              onClick={handleRandomSelection}   // Función a ejecutar al hacer click
-            >
-              20 Aleatorias
-            </Button>
-          )}
-        </Box>
+    // CONTENEDOR PRINCIPAL SIN WRAPPER EXTRA
+    // Usamos Box directamente sin anidación innecesaria
+    <Box 
+      data-testid="word-selection-step"
+      sx={{ 
+      pt: 0,    // padding-top: 0 para maximizar espacio vertical
+      px: 0,    // Sin padding horizontal extra
+      pb: 2,    // padding-bottom: 16px
+    }}>
+      {/* ENCABEZADO CON TÍTULO Y ACCIÓN RÁPIDA */}
+      {/* display: 'flex' crea un contenedor flexible (flexbox) */}
+      {/* alignItems: 'center' alinea verticalmente al centro */}
+      <Box 
+        data-testid="word-selection-header"
+        sx={{ display: 'flex', alignItems: 'center', pt: 0, mb: 1.5 }}>
+        {/* Typography maneja todo el texto con estilos consistentes */}
+        {/* flexGrow: 1 hace que este elemento ocupe todo el espacio disponible */}
+        <Typography 
+          data-testid="word-selection-title"
+          variant="h6" 
+          sx={{ 
+          flexGrow: 1, 
+          color: 'primary.main',  // Usar púrpura del tema para mejor visibilidad
+          fontWeight: 'medium'
+        }}>
+          🔍 Paso 1: Buscar y Seleccionar Palabras
+        </Typography>
         
-        {/* ESTADO DE VALIDACIÓN */}
-        {/* Solo mostrar el estado, no las instrucciones (ya están en el placeholder) */}
-        {(selectedWords.length > 0 || !isComplete) && (
-          <Typography variant="body2" sx={{ mb: 2 }}>
-            {/* RENDERIZADO CONDICIONAL para mostrar el estado */}
-            {!isComplete && (
-              // Si NO está completo, mostrar cuántas faltan
-              <Typography 
-                component="span"  // span = elemento en línea (no rompe la línea)
-                color="warning.main" 
-                sx={{ fontWeight: 'bold' }}
-              >
-                {/* Template literal con ${} para insertar variables */}
-                Necesitas al menos {minWords - selectedWords.length} palabra{minWords - selectedWords.length !== 1 ? 's' : ''} más.
-              </Typography>
-            )}
-            {isComplete && !isFull && (
-              // Si está completo pero no lleno, mostrar éxito
-              <Typography 
-                component="span" 
-                color="success.main" 
-                sx={{ fontWeight: 'bold' }}
-              >
-                ✓ Listo para continuar
-              </Typography>
-            )}
-            {isFull && (
-              // Si está lleno, mostrar límite alcanzado
-              <Typography 
-                component="span" 
-                color="info.main" 
-                sx={{ fontWeight: 'bold' }}
-              >
-                Has alcanzado el máximo de {maxWords} palabras
-              </Typography>
-            )}
-          </Typography>
+        {/* BOTÓN DE SELECCIÓN ALEATORIA */}
+        {/* Solo se muestra si no está lleno */}
+        {!isFull && (
+          <Button
+            data-testid="random-selection-button"
+            startIcon={<AutoAwesomeIcon />}  // Icono a la izquierda del texto
+            variant="outlined"                // Solo borde, sin relleno
+            size="small"                      // Tamaño reducido
+            onClick={handleRandomSelection}   // Función a ejecutar al hacer click
+          >
+            20 Aleatorias
+          </Button>
         )}
+      </Box>
+      
+      {/* ESTADO DE VALIDACIÓN */}
+      {/* Solo mostrar el estado, no las instrucciones (ya están en el placeholder) */}
+      {(selectedWords.length > 0 || !isComplete) && (
+        <Typography 
+          data-testid="validation-status"
+          variant="body2" 
+          sx={{ mb: 1 }}>
+          {/* RENDERIZADO CONDICIONAL para mostrar el estado */}
+          {!isComplete && (
+            // Si NO está completo, mostrar cuántas faltan
+            <Typography 
+              component="span"  // span = elemento en línea (no rompe la línea)
+              color="warning.main" 
+              sx={{ fontWeight: 'bold' }}
+            >
+              {/* Template literal con ${} para insertar variables */}
+              Necesitas al menos {minWords - selectedWords.length} palabra{minWords - selectedWords.length !== 1 ? 's' : ''} más.
+            </Typography>
+          )}
+          {isComplete && !isFull && (
+            // Si está completo pero no lleno, mostrar éxito
+            // Usamos el color secundario (cyan) que combina mejor con el tema
+            <Typography 
+              component="span" 
+              color="secondary.main" 
+              sx={{ fontWeight: 'bold' }}
+            >
+              ✓ Listo para continuar
+            </Typography>
+          )}
+          {isFull && (
+            // Si está lleno, mostrar límite alcanzado
+            <Typography 
+              component="span" 
+              color="info.main" 
+              sx={{ fontWeight: 'bold' }}
+            >
+              Has alcanzado el máximo de {maxWords} palabras
+            </Typography>
+          )}
+        </Typography>
+      )}
 
-        {/* COMPONENTE DE BÚSQUEDA Y SELECCIÓN */}
-        {/* WordSearchDropdown maneja todo: búsqueda, dropdown, y visualización de seleccionadas */}
-        {/* No necesitamos duplicar la visualización de palabras seleccionadas */}
-        <WordSearchDropdown
-          selectedWords={selectedWords}        // Le pasamos el array actual
-          onSelectionChange={onSelectionChange} // Le pasamos la función callback
-          maxSelection={maxWords}              // Límite máximo
-          // No necesitamos pasar placeholder, usa el por defecto del componente
-        />
-      </Paper>
+      {/* COMPONENTE DE BÚSQUEDA Y SELECCIÓN */}
+      {/* WordSearchDropdown maneja todo: búsqueda, dropdown, y visualización de seleccionadas */}
+      {/* No necesitamos duplicar la visualización de palabras seleccionadas */}
+      <WordSearchDropdown
+        data-testid="word-search-dropdown"
+        selectedWords={selectedWords}        // Le pasamos el array actual
+        onSelectionChange={onSelectionChange} // Le pasamos la función callback
+        maxSelection={maxWords}              // Límite máximo
+        // No necesitamos pasar placeholder, usa el por defecto del componente
+      />
     </Box>
   );
 };

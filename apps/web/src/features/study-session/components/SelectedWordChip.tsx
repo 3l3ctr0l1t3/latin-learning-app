@@ -106,11 +106,11 @@ const SelectedWordChip: React.FC<SelectedWordChipProps> = ({
       case 'detailed':
         // Enunciación completa con género
         return (
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-            <span style={{ fontWeight: 'bold' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }} data-testid="selected-word-chip-detailed-content">
+            <span style={{ fontWeight: 'bold' }} data-testid="selected-word-chip-word-text">
               {word.nominative}, {word.genitive}
             </span>
-            <span style={{ opacity: 0.7, fontSize: '0.85em' }}>
+            <span style={{ opacity: 0.7, fontSize: '0.85em' }} data-testid="selected-word-chip-gender-text">
               ({word.gender === 'masculine' ? 'm' : word.gender === 'feminine' ? 'f' : 'n'})
             </span>
           </Box>
@@ -126,21 +126,21 @@ const SelectedWordChip: React.FC<SelectedWordChipProps> = ({
    * CREAR EL CONTENIDO DEL TOOLTIP
    */
   const tooltipContent = (
-    <Box>
+    <Box data-testid="selected-word-chip-tooltip-content">
       {/* Enunciación completa */}
-      <Box sx={{ mb: 1 }}>
+      <Box sx={{ mb: 1 }} data-testid="selected-word-chip-tooltip-word">
         <strong>{word.nominative}, {word.genitive}</strong>
       </Box>
       
       {/* Información gramatical */}
-      <Box sx={{ fontSize: '0.85em' }}>
+      <Box sx={{ fontSize: '0.85em' }} data-testid="selected-word-chip-tooltip-grammar">
         <div>Género: {word.gender === 'masculine' ? 'Masculino' : 
                      word.gender === 'feminine' ? 'Femenino' : 'Neutro'}</div>
         <div>Declinación: {word.declension}</div>
       </Box>
       
       {/* Traducción */}
-      <Box sx={{ mt: 1, fontStyle: 'italic' }}>
+      <Box sx={{ mt: 1, fontStyle: 'italic' }} data-testid="selected-word-chip-tooltip-translation">
         {word.spanishTranslation}
       </Box>
     </Box>
@@ -160,6 +160,7 @@ const SelectedWordChip: React.FC<SelectedWordChipProps> = ({
               width: 24,
               height: 24
             }}
+            data-testid="selected-word-chip-avatar"
           >
             <SchoolIcon sx={{ fontSize: 16 }} />
           </Avatar>
@@ -177,11 +178,13 @@ const SelectedWordChip: React.FC<SelectedWordChipProps> = ({
               color: 'error.main'
             }
           }} 
+          data-testid="selected-word-chip-delete-icon"
         />
       }
       disabled={disabled}
       // Variante visual del chip
       variant={onClick ? 'outlined' : 'filled'}
+      data-testid="selected-word-chip"
       // Estilos personalizados
       sx={{
         // Color de fondo basado en declinación (con transparencia)
@@ -231,6 +234,7 @@ const SelectedWordChip: React.FC<SelectedWordChipProps> = ({
         placement="top"
         // enterDelay evita que aparezca muy rápido
         enterDelay={500}
+        data-testid="selected-word-chip-tooltip"
       >
         {chipElement}
       </Tooltip>

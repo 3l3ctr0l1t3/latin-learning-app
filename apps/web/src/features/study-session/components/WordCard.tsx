@@ -360,7 +360,7 @@ const WordCard: React.FC<WordCardProps> = ({
           </Box>
         </Box>
 
-        <Divider sx={{ my: 2 }} />
+        <Divider sx={{ my: 2 }} data-testid="word-card-divider-1" />
 
         {/* TRADUCCIÓN */}
         {showTranslation && (
@@ -392,7 +392,7 @@ const WordCard: React.FC<WordCardProps> = ({
         {/* ORACIÓN DE EJEMPLO (si existe) */}
         {word.exampleSentence && (
           <>
-            <Divider sx={{ my: 2 }} />
+            <Divider sx={{ my: 2 }} data-testid="word-card-divider-2" />
             <Box sx={{ 
               p: 2, 
               bgcolor: 'action.hover', 

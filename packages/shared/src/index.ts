@@ -13,9 +13,7 @@
  * The "export * from" syntax takes all exports from another file
  * and re-exports them from this file. This creates a single entry point.
  * 
- * Users can then import like: import { formatTime } from '@latin-app/shared'
- * instead of: import { formatTime } from '@latin-app/shared/utils/time'
+ * Users can then import like: import { normalizeForSearch } from '@latin-app/shared'
+ * instead of: import { normalizeForSearch } from '@latin-app/shared/utils/stringUtils'
  */
-export * from './constants';
 export * from './utils';
-export * from './validators';

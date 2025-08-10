@@ -29,11 +29,17 @@ import KeyboardIcon from '@mui/icons-material/Keyboard'; // Icono para entrada d
 // Esto es mejor práctica que definirlo aquí porque evita problemas de importación
 import type { DrillType } from '../types';
 
+// Importamos los colores centralizados del tema
+// Usamos ruta relativa porque el alias @ no está configurado
+import { LATIN_COLORS } from '../../../config/theme';
+
 /**
  * CONFIGURACIÓN DE EJERCICIOS
  * Este objeto contiene toda la información sobre cada tipo de ejercicio.
  * Es una buena práctica mantener esta configuración separada del componente
  * para facilitar cambios futuros y traducciones.
+ * 
+ * Los colores ahora vienen del tema centralizado
  */
 const drillTypeConfig: Record<DrillType, {
   label: string;
@@ -45,19 +51,19 @@ const drillTypeConfig: Record<DrillType, {
     label: 'Opción Múltiple',
     description: 'Selecciona la respuesta correcta entre varias opciones',
     icon: <QuizIcon />,
-    color: '#BB86FC' // Color púrpura del tema
+    color: LATIN_COLORS.drillTypes.multipleChoice // Color desde tema centralizado
   },
   fillInBlank: {
     label: 'Llenar Espacios',
     description: 'Completa la palabra o frase que falta',
     icon: <EditIcon />,
-    color: '#03DAC6' // Color cyan del tema
+    color: LATIN_COLORS.drillTypes.spanishToLatin // Color desde tema centralizado
   },
   directInput: {
     label: 'Entrada Directa',
     description: 'Escribe la respuesta completa',
     icon: <KeyboardIcon />,
-    color: '#CF6679' // Color rojo/rosa del tema
+    color: LATIN_COLORS.drillTypes.fillInBlank // Color desde tema centralizado
   }
 };
 
@@ -124,11 +130,12 @@ const DrillTypeSelector: React.FC<DrillTypeSelectorProps> = ({
 
   return (
     // Box es como un <div> con superpoderes de estilo
-    <Box>
+    <Box data-testid="drill-type-selector">
       {/* Título del selector */}
       <Typography 
         variant="subtitle1" 
         gutterBottom // Agrega margen inferior automáticamente
+        data-testid="drill-type-selector-title"
         sx={{ 
           fontWeight: 'bold',
           color: 'text.primary',
@@ -143,6 +150,7 @@ const DrillTypeSelector: React.FC<DrillTypeSelectorProps> = ({
       {!hasSelection && (
         <Typography 
           variant="caption" 
+          data-testid="drill-type-selector-warning"
           sx={{ 
             color: 'warning.main',
             display: 'block',
@@ -155,7 +163,7 @@ const DrillTypeSelector: React.FC<DrillTypeSelectorProps> = ({
 
       {/* FormGroup agrupa checkboxes relacionados */}
       {/* Es importante para accesibilidad (screen readers) */}
-      <FormGroup>
+      <FormGroup data-testid="drill-type-selector-form-group">
         {/* Object.entries convierte un objeto en array de [clave, valor] */}
         {/* Esto nos permite iterar sobre drillTypeConfig */}
         {(Object.entries(drillTypeConfig) as [DrillType, typeof drillTypeConfig[DrillType]][]).map(
@@ -164,6 +172,7 @@ const DrillTypeSelector: React.FC<DrillTypeSelectorProps> = ({
             <Paper
               key={drillType} // React necesita una key única para cada elemento en un map
               elevation={1} // Nivel de sombra (1 es sutil)
+              data-testid={`drill-type-selector-option-${drillType}`}
               sx={{
                 mb: 2, // margin-bottom entre tarjetas
                 p: { xs: 1.5, sm: 2 }, // padding responsivo
@@ -185,12 +194,14 @@ const DrillTypeSelector: React.FC<DrillTypeSelectorProps> = ({
             >
               {/* FormControlLabel conecta un label con un control de formulario */}
               <FormControlLabel
+                data-testid={`drill-type-selector-control-${drillType}`}
                 control={
                   // El Checkbox en sí
                   <Checkbox
                     checked={value.includes(drillType)} // true si está en el array
                     onChange={() => handleChange(drillType)} // Llamar al manejador
                     disabled={disabled} // Desactivar si el prop disabled es true
+                    data-testid={`drill-type-selector-checkbox-${drillType}`}
                     sx={{
                       // Color personalizado cuando está marcado
                       color: config.color,
@@ -203,19 +214,20 @@ const DrillTypeSelector: React.FC<DrillTypeSelectorProps> = ({
                 // El label es lo que se muestra junto al checkbox
                 label={
                   // Box con flexbox para organizar icono y textos
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }} data-testid={`drill-type-selector-content-${drillType}`}>
                     {/* Icono con color */}
-                    <Box sx={{ color: config.color, display: 'flex' }}>
+                    <Box sx={{ color: config.color, display: 'flex' }} data-testid={`drill-type-selector-icon-${drillType}`}>
                       {config.icon}
                     </Box>
                     
                     {/* Textos del label */}
-                    <Box>
-                      <Typography variant="body1" sx={{ fontWeight: 'medium' }}>
+                    <Box data-testid={`drill-type-selector-label-${drillType}`}>
+                      <Typography variant="body1" sx={{ fontWeight: 'medium' }} data-testid={`drill-type-selector-title-${drillType}`}>
                         {config.label}
                       </Typography>
                       <Typography 
                         variant="caption" 
+                        data-testid={`drill-type-selector-description-${drillType}`}
                         sx={{ 
                           color: 'text.secondary',
                           display: 'block' // caption es inline por defecto, lo hacemos block
@@ -238,8 +250,8 @@ const DrillTypeSelector: React.FC<DrillTypeSelectorProps> = ({
 
       {/* Resumen de selección - muestra qué está seleccionado */}
       {hasSelection && (
-        <Box sx={{ mt: 2, p: 2, bgcolor: 'background.default', borderRadius: 1 }}>
-          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+        <Box sx={{ mt: 2, p: 2, bgcolor: 'background.default', borderRadius: 1 }} data-testid="drill-type-selector-summary">
+          <Typography variant="caption" sx={{ color: 'text.secondary' }} data-testid="drill-type-selector-summary-text">
             Seleccionados: {value.length} tipo{value.length !== 1 ? 's' : ''} de ejercicio
             {/* El operador ternario añade 's' para plural si hay más de 1 */}
           </Typography>

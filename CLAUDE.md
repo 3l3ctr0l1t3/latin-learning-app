@@ -17,6 +17,43 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 5. **Think of the user as a beginner** - Don't assume knowledge of React patterns or modern JS
 6. **Comment every function, component, and CSS rule** - Explain the purpose and how it works
 
+## CRITICAL: String Search and Comparison Requirements
+
+**ALL searches and comparisons in the application MUST be case-insensitive and accent-insensitive.**
+
+### Mandatory Search/Comparison Rules:
+1. **Case Insensitive**: "Rosa", "ROSA", "rosa" must all match
+2. **Accent/Tilde Insensitive**: "María" must match "maria", "MARÍA", "Maria"
+3. **Diacritic Insensitive**: All diacritical marks must be ignored:
+   - Tildes: á→a, é→e, í→i, ó→o, ú→u
+   - Dieresis: ü→u
+   - Ñ: ñ→n
+   - Latin macrons: ā→a, ē→e, ī→i, ō→o, ū→u
+4. **Use Centralized Functions**: ALWAYS use the stringUtils functions from `@latin-app/shared`:
+   - `normalizeForSearch()` - for normalizing strings
+   - `compareStrings()` - for exact comparison
+   - `stringIncludes()` - for partial matching
+   - `stringStartsWith()` - for prefix matching
+   - `fuzzySearchScore()` - for relevance scoring
+
+### Implementation Location:
+The string normalization utilities are located in `/packages/shared/src/utils/stringUtils.ts`
+
+### Example Usage:
+```javascript
+import { compareStrings, stringIncludes } from '@latin-app/shared';
+
+// These all return true:
+compareStrings("Rosa", "rosa")     // true
+compareStrings("María", "MARIA")   // true
+stringIncludes("niño juega", "NINO") // true
+```
+
+This is CRITICAL for the Latin learning app as users may:
+- Not remember exact capitalization
+- Type without accents on their keyboard
+- Search in Spanish (with tildes) or Latin (with macrons)
+
 ## Project Overview
 
 Latin Learning Application - An interactive, module-based platform for learning Latin through dynamic content and active practice sessions.

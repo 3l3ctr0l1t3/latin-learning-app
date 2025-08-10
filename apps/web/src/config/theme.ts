@@ -50,13 +50,15 @@ export const darkTheme = createTheme({
     },
     
     // Warning color - used for warning states
+    // Using a warm pink that fits our theme better than orange
     warning: {
-      main: '#FF9800',  // Orange
+      main: '#FF6B9D',  // Warm pink - fits better with purple/cyan theme
     },
     
     // Success color - used for success states
+    // Using a cyan variant that matches our secondary color theme
     success: {
-      main: '#4CAF50',  // Green
+      main: '#00E5CC',  // Bright cyan - matches our theme better than green
     },
     
     // Info color - used for informational messages
@@ -240,4 +242,79 @@ export const BREAKPOINTS = {
   md: 960,   // Medium (tablet landscape)
   lg: 1280,  // Large (desktop)
   xl: 1920,  // Extra large (wide desktop)
+};
+
+/**
+ * CUSTOM APP STYLES
+ * Centralized style constants for consistent UI across the app
+ */
+
+// Latin Learning Specific Colors
+// These are semantic colors for different Latin concepts
+export const LATIN_COLORS = {
+  // Declension Colors - cada declinación tiene su propio color
+  declensions: {
+    '1st': '#9C27B0', // Púrpura - Material Design Purple 500
+    '2nd': '#2196F3', // Azul - Material Design Blue 500
+    '3rd': '#26C6DA', // Teal/Turquesa - Bridges blue and cyan perfectly
+    '4th': '#FF6B9D', // Rosa cálido - Harmonizes with purple theme
+    '5th': '#F06292', // Rosa intenso - More theme-appropriate than red
+  },
+  
+  // Gender Colors - colores para géneros gramaticales
+  genders: {
+    masculine: '#2196F3',  // Azul
+    feminine: '#E91E63',   // Rosa
+    neuter: '#9C27B0',     // Púrpura
+  },
+  
+  // Drill Type Colors - colores para tipos de ejercicios
+  drillTypes: {
+    multipleChoice: '#BB86FC', // Púrpura del tema principal
+    spanishToLatin: '#03DAC6',  // Cyan del tema principal
+    fillInBlank: '#CF6679',     // Rojo/Rosa del tema
+  },
+  
+  // Gradients - for special UI elements
+  gradients: {
+    primary: 'linear-gradient(45deg, #BB86FC 30%, #03DAC6 90%)',
+    subtle: 'linear-gradient(135deg, rgba(187, 134, 252, 0.1) 0%, rgba(3, 218, 198, 0.1) 100%)',
+  },
+  
+  // Default fallback color
+  default: '#757575', // Gris por defecto
+};
+
+// Common shadows for elevation effects
+export const SHADOWS = {
+  small: '0 2px 4px rgba(0, 0, 0, 0.2)',
+  medium: '0 4px 6px rgba(0, 0, 0, 0.3)',
+  large: '0 8px 12px rgba(0, 0, 0, 0.4)',
+  glow: '0 0 20px rgba(187, 134, 252, 0.3)', // Purple glow effect
+  purpleGlow: '0 4px 8px rgba(187, 134, 252, 0.3)', // For hover effects
+  darkGlow: '0 8px 12px rgba(0, 0, 0, 0.4)', // Dark elevation
+};
+
+// Common border styles
+export const BORDERS = {
+  thin: '1px solid rgba(255, 255, 255, 0.12)',
+  medium: '2px solid rgba(255, 255, 255, 0.12)',
+  accent: '2px solid #BB86FC', // Purple accent border
+};
+
+// Z-index layers (for managing overlapping elements)
+export const Z_INDEX = {
+  drawer: 1200,
+  modal: 1300,
+  snackbar: 1400,
+  tooltip: 1500,
+};
+
+// Common layout values
+export const LAYOUT = {
+  headerHeight: 64,          // Height of app header in pixels
+  drawerWidth: 240,          // Width of side drawer
+  contentMaxWidth: 1200,     // Max width for content
+  cardSpacing: 2,            // Standard spacing between cards (x8 = 16px)
+  sectionSpacing: 4,         // Spacing between sections (x8 = 32px)
 };

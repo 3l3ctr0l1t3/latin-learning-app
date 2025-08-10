@@ -24,6 +24,10 @@ import {
 import FilterListIcon from '@mui/icons-material/FilterList';
 import SchoolIcon from '@mui/icons-material/School';
 
+// Importamos los colores centralizados del tema
+// Usamos ruta relativa porque el alias @ no está configurado
+import { LATIN_COLORS } from '../../../config/theme';
+
 /**
  * TIPO: Declension
  * Las cinco declinaciones del latín
@@ -33,6 +37,7 @@ export type Declension = '1st' | '2nd' | '3rd' | '4th' | '5th';
 /**
  * CONFIGURACIÓN DE DECLINACIONES
  * Información sobre cada declinación para ayudar al estudiante
+ * Los colores ahora vienen del tema centralizado
  */
 const declensionInfo: Record<Declension, {
   label: string;
@@ -43,31 +48,31 @@ const declensionInfo: Record<Declension, {
   '1st': {
     label: '1ª',
     example: 'rosa, rosae',
-    color: '#9C27B0', // Púrpura
+    color: LATIN_COLORS.declensions['1st'], // Color desde tema centralizado
     description: 'Mayoría femeninas, genitivo -ae'
   },
   '2nd': {
     label: '2ª',
     example: 'dominus, domini',
-    color: '#2196F3', // Azul
+    color: LATIN_COLORS.declensions['2nd'], // Color desde tema centralizado
     description: 'Masculinas/neutras, genitivo -i'
   },
   '3rd': {
     label: '3ª',
     example: 'rex, regis',
-    color: '#4CAF50', // Verde
+    color: LATIN_COLORS.declensions['3rd'], // Color desde tema centralizado
     description: 'Variada, genitivo -is'
   },
   '4th': {
     label: '4ª',
     example: 'manus, manus',
-    color: '#FF9800', // Naranja
+    color: LATIN_COLORS.declensions['4th'], // Color desde tema centralizado
     description: 'Genitivo -us'
   },
   '5th': {
     label: '5ª',
     example: 'dies, diei',
-    color: '#F44336', // Rojo
+    color: LATIN_COLORS.declensions['5th'], // Color desde tema centralizado
     description: 'Genitivo -ei'
   }
 };

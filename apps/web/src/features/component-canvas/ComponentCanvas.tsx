@@ -115,36 +115,6 @@ const ComponentCanvas: React.FC = () => {
     <Container maxWidth="xl">
       {/* Box principal con padding vertical responsivo */}
       <Box sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
-        {/* Título del canvas */}
-        <Typography 
-          variant="h3" 
-          gutterBottom 
-          sx={{ 
-            color: 'primary.main', // Usa el color púrpura del tema
-            mb: 4, // margin-bottom de 32px
-            fontSize: { xs: '1.75rem', sm: '2.5rem', md: '3rem' } // Tamaño responsivo
-          }}
-        >
-          🎨 Canvas de Componentes
-        </Typography>
-
-        {/* Mensaje informativo para el usuario */}
-        <Alert 
-          severity="info" 
-          sx={{ 
-            mb: 4,
-            bgcolor: 'background.paper', // Fondo oscuro del tema
-            '& .MuiAlert-message': {
-              width: '100%'
-            }
-          }}
-        >
-          <Typography variant="body1">
-            Este es tu espacio de desarrollo interactivo. Aquí puedes ver y probar todos los componentes 
-            que estamos construyendo para la aplicación de Latin Learning. Cada componente está aislado 
-            para que puedas entender cómo funciona individualmente.
-          </Typography>
-        </Alert>
 
         {/* Grid container para organizar los componentes en columnas */}
         {/* spacing={2} en móvil para menos espacio entre elementos */}
@@ -169,7 +139,10 @@ const ComponentCanvas: React.FC = () => {
               <Typography 
                 variant="h6" 
                 gutterBottom 
-                sx={{ color: 'secondary.main' }} // Color cyan del tema
+                sx={{ 
+                  color: 'text.primary',  // Texto blanco principal
+                  fontWeight: 'medium'
+                }}
               >
                 ✅ DurationSelector
               </Typography>
@@ -183,7 +156,7 @@ const ComponentCanvas: React.FC = () => {
                 Los botones son mutuamente excluyentes (solo uno puede estar seleccionado).
               </Typography>
               
-              <Divider sx={{ mb: 2 }} />
+              <Divider sx={{ mb: 2 }} data-testid="component-canvas-duration-selector-divider" />
               
               {/* El componente real */}
               <DurationSelector 
@@ -219,7 +192,7 @@ const ComponentCanvas: React.FC = () => {
               <Typography 
                 variant="h6" 
                 gutterBottom 
-                sx={{ color: 'secondary.main' }} // Color cyan para componente completado
+                sx={{ color: 'text.primary', fontWeight: 'medium' }} // Color cyan para componente completado
               >
                 ✅ DrillTypeSelector
               </Typography>
@@ -269,7 +242,7 @@ const ComponentCanvas: React.FC = () => {
               <Typography 
                 variant="h6" 
                 gutterBottom 
-                sx={{ color: 'secondary.main' }}
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
               >
                 ✅ WordCard
               </Typography>
@@ -352,7 +325,7 @@ const ComponentCanvas: React.FC = () => {
               <Typography 
                 variant="h6" 
                 gutterBottom 
-                sx={{ color: 'secondary.main' }}
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
               >
                 ✅ WordSearchDropdown
               </Typography>
@@ -415,7 +388,7 @@ const ComponentCanvas: React.FC = () => {
               <Typography 
                 variant="h6" 
                 gutterBottom 
-                sx={{ color: 'secondary.main' }}
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
               >
                 ✅ WordSelectionStep (Componente Integrado)
               </Typography>
@@ -476,7 +449,7 @@ const ComponentCanvas: React.FC = () => {
               <Typography 
                 variant="h6" 
                 gutterBottom 
-                sx={{ color: 'secondary.main' }}
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
               >
                 ✅ SelectedWordChip
               </Typography>
@@ -594,53 +567,6 @@ const ComponentCanvas: React.FC = () => {
 
         </Grid>
 
-        {/* Sección de estadísticas del desarrollo */}
-        <Box sx={{ mt: 6 }}>
-          <Typography variant="h5" gutterBottom sx={{ color: 'primary.main' }}>
-            📊 Progreso del Desarrollo
-          </Typography>
-          
-          <Grid container spacing={2} sx={{ mt: 2 }}>
-            <Grid item xs={12} sm={4}>
-              <Paper sx={{ p: 2, bgcolor: 'success.dark', textAlign: 'center' }}>
-                <Typography variant="h4">6</Typography>
-                <Typography variant="body2">Componentes Completados</Typography>
-              </Paper>
-            </Grid>
-            
-            <Grid item xs={12} sm={4}>
-              <Paper sx={{ p: 2, bgcolor: 'warning.dark', textAlign: 'center' }}>
-                <Typography variant="h4">0</Typography>
-                <Typography variant="body2">En Progreso</Typography>
-              </Paper>
-            </Grid>
-            
-            <Grid item xs={12} sm={4}>
-              <Paper sx={{ p: 2, bgcolor: 'action.hover', textAlign: 'center' }}>
-                <Typography variant="h4">0</Typography>
-                <Typography variant="body2">Pendientes</Typography>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Box>
-
-        {/* Instrucciones para el usuario */}
-        <Alert 
-          severity="success" 
-          sx={{ 
-            mt: 4,
-            bgcolor: 'background.paper'
-          }}
-        >
-          <Typography variant="body2">
-            <strong>💡 Cómo usar este canvas:</strong><br />
-            1. Cada tarjeta representa un componente<br />
-            2. Los componentes con ✅ están listos y puedes interactuar con ellos<br />
-            3. Los componentes con ⬜ están pendientes de desarrollo<br />
-            4. Observa cómo cada componente es independiente y reutilizable<br />
-            5. Los valores que cambias se muestran en tiempo real
-          </Typography>
-        </Alert>
       </Box>
     </Container>
   );

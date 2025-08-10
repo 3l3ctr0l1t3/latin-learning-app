@@ -12,6 +12,16 @@
 // The '@latin-app/types' is the package name we defined in package.json
 import { NormalizedLatinWord, VocabularyFilter } from '@latin-app/types';
 
+// Import string normalization utilities for case/accent insensitive search
+// CRITICAL: All searches must be case and accent insensitive
+import { 
+  normalizeForSearch, 
+  stringIncludes, 
+  stringStartsWith,
+  compareStrings,
+  fuzzySearchScore 
+} from '@latin-app/shared';
+
 // Import the normalized vocabulary JSON file
 // In TypeScript/JavaScript, we can import JSON files directly
 // The '../../../' goes up 3 directories to reach the root
@@ -123,18 +133,20 @@ export class VocabularyService {
     
     // Filter by search text if specified
     if (filter.searchText && filter.searchText.trim() !== '') {
-      // Convert search text to lowercase for case-insensitive search
-      const searchLower = filter.searchText.toLowerCase().trim();
+      // IMPORTANT: Using normalized search for case and accent insensitive matching
+      // This ensures "Maria" matches "María", "ROSA" matches "rosa", etc.
+      const searchTerm = filter.searchText.trim();
       
       filtered = filtered.filter(word => {
         // Check if search text appears in nominative, genitive, or translation
+        // Using stringIncludes for accent/case insensitive comparison
         return (
-          word.nominative.toLowerCase().includes(searchLower) ||
-          word.genitive.toLowerCase().includes(searchLower) ||
-          word.spanishTranslation.toLowerCase().includes(searchLower) ||
+          stringIncludes(word.nominative, searchTerm) ||
+          stringIncludes(word.genitive, searchTerm) ||
+          stringIncludes(word.spanishTranslation, searchTerm) ||
           // Also check additional meanings
           word.additionalMeanings.some(meaning => 
-            meaning.toLowerCase().includes(searchLower)
+            stringIncludes(meaning, searchTerm)
           )
         );
       });
@@ -156,40 +168,42 @@ export class VocabularyService {
       return [];
     }
     
-    const searchLower = searchText.toLowerCase().trim();
+    const searchTerm = searchText.trim();
     
     // Create array of results with relevance scores
+    // IMPORTANT: Using normalized comparison for case/accent insensitive search
     const results = this.words
       .map(word => {
         let score = 0;
         
         // Exact match in nominative (highest score)
-        if (word.nominative.toLowerCase() === searchLower) {
+        // compareStrings handles case and accent differences
+        if (compareStrings(word.nominative, searchTerm)) {
           score += 100;
         }
         // Starts with search text in nominative
-        else if (word.nominative.toLowerCase().startsWith(searchLower)) {
+        else if (stringStartsWith(word.nominative, searchTerm)) {
           score += 50;
         }
         // Contains search text in nominative
-        else if (word.nominative.toLowerCase().includes(searchLower)) {
+        else if (stringIncludes(word.nominative, searchTerm)) {
           score += 25;
         }
         
         // Check Spanish translation
-        if (word.spanishTranslation.toLowerCase() === searchLower) {
+        if (compareStrings(word.spanishTranslation, searchTerm)) {
           score += 75;
-        } else if (word.spanishTranslation.toLowerCase().includes(searchLower)) {
+        } else if (stringIncludes(word.spanishTranslation, searchTerm)) {
           score += 20;
         }
         
         // Check genitive
-        if (word.genitive.toLowerCase().includes(searchLower)) {
+        if (stringIncludes(word.genitive, searchTerm)) {
           score += 15;
         }
         
         // Check additional meanings
-        if (word.additionalMeanings.some(m => m.toLowerCase().includes(searchLower))) {
+        if (word.additionalMeanings.some(m => stringIncludes(m, searchTerm))) {
           score += 10;
         }
         

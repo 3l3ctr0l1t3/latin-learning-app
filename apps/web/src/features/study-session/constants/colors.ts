@@ -5,9 +5,13 @@
  * en toda la aplicación de Latin Learning. Centralizar los colores
  * asegura consistencia visual y facilita cambios futuros.
  * 
- * IMPORTANTE: Siempre usar estos colores en lugar de definir nuevos
- * en cada componente.
+ * IMPORTANTE: Los colores ahora vienen del archivo theme.ts para
+ * mantener toda la configuración visual en un solo lugar.
  */
+
+// Importamos los colores desde el tema centralizado
+// Usamos ruta relativa porque el alias @ no está configurado
+import { LATIN_COLORS } from '../../../config/theme';
 
 /**
  * COLORES POR DECLINACIÓN
@@ -21,14 +25,10 @@
  * - 3ª Declinación: Verde (variada, -is)
  * - 4ª Declinación: Naranja (pocas palabras, -us)
  * - 5ª Declinación: Rojo (muy pocas palabras, -ei)
+ * 
+ * Estos colores ahora vienen del tema centralizado
  */
-export const DECLENSION_COLORS: Record<string, string> = {
-  '1st': '#9C27B0', // Púrpura - Material Design Purple 500
-  '2nd': '#2196F3', // Azul - Material Design Blue 500
-  '3rd': '#4CAF50', // Verde - Material Design Green 500
-  '4th': '#FF9800', // Naranja - Material Design Orange 500
-  '5th': '#F44336', // Rojo - Material Design Red 500
-};
+export const DECLENSION_COLORS: Record<string, string> = LATIN_COLORS.declensions;
 
 /**
  * COLORES POR GÉNERO
@@ -36,12 +36,10 @@ export const DECLENSION_COLORS: Record<string, string> = {
  * Aunque ahora priorizamos colores por declinación,
  * mantenemos estos para casos específicos donde el género
  * sea más relevante que la declinación.
+ * 
+ * Estos colores ahora vienen del tema centralizado
  */
-export const GENDER_COLORS: Record<string, string> = {
-  masculine: '#2196F3',  // Azul
-  feminine: '#E91E63',   // Rosa
-  neuter: '#9C27B0',     // Púrpura
-};
+export const GENDER_COLORS: Record<string, string> = LATIN_COLORS.genders;
 
 /**
  * INFORMACIÓN DE DECLINACIONES
@@ -99,7 +97,7 @@ export const DECLENSION_INFO = {
  * @returns El color hexadecimal correspondiente
  */
 export const getDeclensionColor = (declension: string): string => {
-  return DECLENSION_COLORS[declension] || '#757575'; // Gris por defecto
+  return DECLENSION_COLORS[declension] || LATIN_COLORS.default; // Usa el gris por defecto del tema
 };
 
 /**
@@ -109,7 +107,7 @@ export const getDeclensionColor = (declension: string): string => {
  * @returns El color hexadecimal correspondiente
  */
 export const getGenderColor = (gender: string): string => {
-  return GENDER_COLORS[gender] || '#757575'; // Gris por defecto
+  return GENDER_COLORS[gender] || LATIN_COLORS.default; // Usa el gris por defecto del tema
 };
 
 // Exportar todo para uso en otros componentes

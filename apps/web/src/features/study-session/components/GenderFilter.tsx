@@ -31,9 +31,14 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 // Importar el tipo Gender desde types
 import type { Gender } from '../types';
 
+// Importamos los colores centralizados del tema
+// Usamos ruta relativa porque el alias @ no está configurado
+import { LATIN_COLORS } from '../../../config/theme';
+
 /**
  * CONFIGURACIÓN DE GÉNEROS
  * Información visual y descriptiva para cada género
+ * Los colores ahora vienen del tema centralizado
  */
 const genderConfig: Record<Gender, {
   label: string;
@@ -45,21 +50,21 @@ const genderConfig: Record<Gender, {
   masculine: {
     label: 'Masculino',
     icon: <MaleIcon />,
-    color: '#2196F3', // Azul
+    color: LATIN_COLORS.genders.masculine, // Color desde tema centralizado
     examples: ['dominus', 'agricola', 'puer'],
     description: 'Sustantivos de género masculino'
   },
   feminine: {
     label: 'Femenino',
     icon: <FemaleIcon />,
-    color: '#E91E63', // Rosa
+    color: LATIN_COLORS.genders.feminine, // Color desde tema centralizado
     examples: ['rosa', 'puella', 'mater'],
     description: 'Sustantivos de género femenino'
   },
   neuter: {
     label: 'Neutro',
     icon: <TransgenderIcon />,
-    color: '#9C27B0', // Púrpura
+    color: LATIN_COLORS.genders.neuter, // Color desde tema centralizado
     examples: ['templum', 'bellum', 'corpus'],
     description: 'Sustantivos de género neutro'
   }

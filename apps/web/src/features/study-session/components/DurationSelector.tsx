@@ -76,11 +76,11 @@ const DurationSelector: React.FC<DurationSelectorProps> = ({
   };
   
   return (
-    <Box>
+    <Box data-testid="duration-selector">
       {/* Label with icon */}
-      <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
-        <TimerIcon color="primary" />
-        <Typography variant="subtitle1" fontWeight="medium">
+      <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }} data-testid="duration-selector-header">
+        <TimerIcon color="primary" data-testid="duration-selector-icon" />
+        <Typography variant="subtitle1" fontWeight="medium" data-testid="duration-selector-title">
           Duración de la sesión
         </Typography>
       </Stack>
@@ -95,6 +95,7 @@ const DurationSelector: React.FC<DurationSelectorProps> = ({
         fullWidth  // Buttons stretch to fill container
         color="primary"
         orientation="horizontal" // Mantener horizontal en todos los tamaños
+        data-testid="duration-selector-group"
         sx={{
           '& .MuiToggleButton-root': {
             // Hacer los botones más pequeños en móvil
@@ -103,30 +104,30 @@ const DurationSelector: React.FC<DurationSelectorProps> = ({
           }
         }}
       >
-        <ToggleButton value={5}>
+        <ToggleButton value={5} data-testid="duration-selector-button-5">
           <Stack spacing={0.5}>
-            <Typography variant="h6">5</Typography>
-            <Typography variant="caption">minutos</Typography>
+            <Typography variant="h6" data-testid="duration-selector-5-number">5</Typography>
+            <Typography variant="caption" data-testid="duration-selector-5-label">minutos</Typography>
           </Stack>
         </ToggleButton>
         
-        <ToggleButton value={10}>
+        <ToggleButton value={10} data-testid="duration-selector-button-10">
           <Stack spacing={0.5}>
-            <Typography variant="h6">10</Typography>
-            <Typography variant="caption">minutos</Typography>
+            <Typography variant="h6" data-testid="duration-selector-10-number">10</Typography>
+            <Typography variant="caption" data-testid="duration-selector-10-label">minutos</Typography>
           </Stack>
         </ToggleButton>
         
-        <ToggleButton value={15}>
+        <ToggleButton value={15} data-testid="duration-selector-button-15">
           <Stack spacing={0.5}>
-            <Typography variant="h6">15</Typography>
-            <Typography variant="caption">minutos</Typography>
+            <Typography variant="h6" data-testid="duration-selector-15-number">15</Typography>
+            <Typography variant="caption" data-testid="duration-selector-15-label">minutos</Typography>
           </Stack>
         </ToggleButton>
       </ToggleButtonGroup>
       
       {/* Helper text */}
-      <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
+      <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }} data-testid="duration-selector-help-text">
         Sesiones más cortas son mejores para mantener la concentración
       </Typography>
     </Box>

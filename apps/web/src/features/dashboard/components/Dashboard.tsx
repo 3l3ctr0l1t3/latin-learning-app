@@ -11,6 +11,10 @@
 // Import React (required for JSX)
 import React from 'react';
 
+// Import centralized theme constants for consistent styling
+// Usamos ruta relativa porque el alias @ no está configurado
+import { LATIN_COLORS, SHADOWS } from '../../../config/theme';
+
 // Import Material-UI components
 // These are pre-built components that follow Material Design guidelines
 import {
@@ -63,7 +67,7 @@ const Dashboard: React.FC = () => {
   return (
     // Container adds responsive margins and centers content
     // maxWidth="lg" means large max width (1280px)
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" data-testid="dashboard">
       {/* Box is like a div with styling props */}
       {/* sx prop is for custom styles (like inline CSS but better) */}
       <Box sx={{ 
@@ -88,8 +92,8 @@ const Dashboard: React.FC = () => {
             sx={{
               // Custom styles for this specific Typography
               fontWeight: 'bold',
-              // Background gradient for text
-              background: 'linear-gradient(45deg, #BB86FC 30%, #03DAC6 90%)',
+              // Background gradient for text - using centralized gradient
+              background: LATIN_COLORS.gradients.primary,
               // This makes the gradient show only on text
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -124,7 +128,7 @@ const Dashboard: React.FC = () => {
         
         {/* STATS SECTION - User progress cards */}
         {/* Grid container creates a responsive grid layout */}
-        <Grid container spacing={3} sx={{ mb: 6 }}>
+        <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ mb: 6 }}>
           {/* Grid item takes up space based on screen size */}
           {/* xs=12 means full width on extra small screens */}
           {/* sm=6 means half width on small screens */}
@@ -307,7 +311,7 @@ const Dashboard: React.FC = () => {
           p: 4, 
           textAlign: 'center',
           borderRadius: 2,
-          background: 'linear-gradient(135deg, rgba(187, 134, 252, 0.1) 0%, rgba(3, 218, 198, 0.1) 100%)',
+          background: LATIN_COLORS.gradients.subtle,  // Using centralized gradient
         }}>
           <Typography variant="h6" fontStyle="italic" gutterBottom>
             "Verba volant, scripta manent"
