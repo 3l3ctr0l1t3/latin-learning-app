@@ -94,6 +94,14 @@ const DurationSelector: React.FC<DurationSelectorProps> = ({
         disabled={disabled}
         fullWidth  // Buttons stretch to fill container
         color="primary"
+        orientation="horizontal" // Mantener horizontal en todos los tamaños
+        sx={{
+          '& .MuiToggleButton-root': {
+            // Hacer los botones más pequeños en móvil
+            px: { xs: 1, sm: 2 }, // padding horizontal responsivo
+            py: { xs: 0.5, sm: 1 }, // padding vertical responsivo
+          }
+        }}
       >
         <ToggleButton value={5}>
           <Stack spacing={0.5}>

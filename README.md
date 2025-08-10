@@ -1,24 +1,33 @@
 # Latin Learning Application 📚
 
-An interactive, module-based application for learning Latin through dynamic content and active practice sessions. Built with React, React Native, and Material Design.
+An interactive, module-based application for learning Latin through dynamic content and active practice sessions. Built with React, TypeScript, and Material Design.
 
-![Status](https://img.shields.io/badge/status-in%20development-yellow)
-![License](https://img.shields.io/badge/license-MIT-blue)
+![Status](https://img.shields.io/badge/status-40%25%20complete-yellow)
+![Components](https://img.shields.io/badge/components-11%2F26-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 ## 🌟 Features
 
-### Current Features
-- **Dark Theme Interface** - Easy on the eyes during study sessions
-- **Dashboard** - Track your progress with statistics
-- **690 Latin Words** - Complete vocabulary database with declensions and genders
-- **Responsive Design** - Works on desktop, tablet, and mobile
+### ✅ Current Features (Working Now!)
+- **Component System** - 11 production-ready React components
+- **Word Search** - Live search with dropdown and multi-select
+- **Smart Selection** - Color-coded chips by declension (1st-5th)
+- **Dark Theme** - Beautiful purple & cyan Material Design theme
+- **690 Latin Words** - Complete database with full grammatical info
+- **Mobile Responsive** - Optimized for all screen sizes
+- **Development Tools** - ComponentCanvas and PageCanvas for testing
 
-### Coming Soon
-- **Study Sessions** - Customizable practice sessions with flashcards
-- **Interactive Drills** - Multiple choice, fill-in-the-blank, and direct input exercises
-- **AI-Generated Examples** - Context sentences using Gemini API
-- **Progress Tracking** - Detailed statistics and study streaks
-- **Mobile App** - Native iOS and Android apps
+### 🚧 In Development
+- **Study Sessions** - Configuration screen 80% complete
+- **Flashcards** - Flip animation and progress tracking
+- **Practice Drills** - Multiple choice and fill-in-blank
+- **Results Screen** - Performance statistics
+
+### 🔮 Coming Soon
+- **AI Examples** - Gemini API integration for sentences
+- **Spaced Repetition** - Smart review scheduling
+- **User Profiles** - Save progress and preferences
+- **Mobile Apps** - Native iOS and Android versions
 
 ## 🚀 Quick Start
 
@@ -74,10 +83,10 @@ latin2/
 
 ## 📖 Documentation
 
-- [CLAUDE.md](./CLAUDE.md) - Development guidelines for AI assistance
-- [NEXT_STEPS.md](./NEXT_STEPS.md) - Development roadmap
-- [LEARNING_NOTES.md](./LEARNING_NOTES.md) - Web development concepts explained
-- [ARCHITECTURE.md](./ARCHITECTURE.md) - Technical architecture decisions
+- [CLAUDE.md](./CLAUDE.md) - AI assistant guidelines & coding standards
+- [PROJECT_STATUS.md](./PROJECT_STATUS.md) - Current project status & metrics
+- [NEXT_STEPS.md](./NEXT_STEPS.md) - Development roadmap & tasks
+- Component documentation inline with extensive comments
 
 ## 🎯 Study Session Flow
 
@@ -146,10 +155,14 @@ See [LEARNING_NOTES.md](./LEARNING_NOTES.md) for detailed explanations.
 
 ## 🐛 Known Issues
 
-- Mobile app not yet functional
-- Routing not implemented
-- AI integration pending
-- Some gender values in vocabulary need normalization
+- Dropdown flickers on fast typing (minor)
+- Mobile keyboard overlap on some devices (minor)
+- No loading states for async operations (minor)
+
+## ✅ Recently Fixed
+- Dropdown no longer appears when removing selected words
+- Responsive design now works properly on all devices
+- Mobile shows 3 words with "+X más" indicator
 
 ## 📄 License
 

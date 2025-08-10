@@ -166,7 +166,7 @@ const DrillTypeSelector: React.FC<DrillTypeSelectorProps> = ({
               elevation={1} // Nivel de sombra (1 es sutil)
               sx={{
                 mb: 2, // margin-bottom entre tarjetas
-                p: 2, // padding interno
+                p: { xs: 1.5, sm: 2 }, // padding responsivo
                 // Cambiar el fondo cuando está seleccionado
                 bgcolor: value.includes(drillType) 
                   ? 'action.selected' // Color de fondo para elementos seleccionados

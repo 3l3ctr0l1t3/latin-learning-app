@@ -218,8 +218,11 @@ const WordCard: React.FC<WordCardProps> = ({
           } : {},
         }}
       >
-        <CardContent sx={{ p: 2 }}> {/* padding: 16px (2 * 8px) */}
-          <Stack direction="row" spacing={2} alignItems="center">
+        <CardContent sx={{ p: { xs: 1.5, sm: 2 } }}> {/* padding responsivo */}
+          <Stack 
+            direction={{ xs: 'column', sm: 'row' }} // Columna en móvil, fila en desktop
+            spacing={{ xs: 1, sm: 2 }} 
+            alignItems={{ xs: 'flex-start', sm: 'center' }}>
             {/* ENUNCIACIÓN COMPLETA - Lo más importante incluso en modo compacto */}
             <Typography 
               variant="h6" 
@@ -276,14 +279,14 @@ const WordCard: React.FC<WordCardProps> = ({
         } : {},
       }}
     >
-      <CardContent>
+      <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
         {/* ENUNCIACIÓN LATINA - LO MÁS IMPORTANTE */}
         {/* En latín, las palabras se enuncian con nominativo y genitivo */}
         {/* Esto es fundamental para identificar la declinación */}
         <Box sx={{ 
           textAlign: 'center', // Centrar el texto para darle importancia
-          mb: 3, // Margen inferior mayor para separación
-          p: 2, // Padding para darle espacio
+          mb: { xs: 2, sm: 3 }, // Margen inferior responsivo
+          p: { xs: 1.5, sm: 2 }, // Padding responsivo
           bgcolor: 'action.hover', // Fondo ligeramente diferente
           borderRadius: 2, // Bordes redondeados
           border: '1px solid',
@@ -314,10 +317,12 @@ const WordCard: React.FC<WordCardProps> = ({
         {/* INFORMACIÓN GRAMATICAL EN UNA LÍNEA */}
         <Box sx={{ 
           display: 'flex', 
+          flexDirection: { xs: 'column', sm: 'row' }, // Columna en móvil
           justifyContent: 'space-around', // Distribuir uniformemente
           alignItems: 'center',
+          gap: { xs: 1, sm: 0 }, // Espacio entre elementos en móvil
           mb: 2,
-          p: 1.5,
+          p: { xs: 1, sm: 1.5 },
           bgcolor: 'background.default',
           borderRadius: 1
         }}>

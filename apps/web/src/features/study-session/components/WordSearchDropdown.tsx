@@ -1,14 +1,22 @@
 /**
  * WORD SEARCH DROPDOWN COMPONENT
  * 
- * Barra de búsqueda con dropdown que muestra palabras del vocabulario.
- * Permite buscar y seleccionar múltiples palabras sin cerrar el dropdown.
+ * Componente de búsqueda con dropdown para selección múltiple de palabras latinas.
+ * Combina un campo de búsqueda con un dropdown de resultados y visualización
+ * de palabras seleccionadas.
  * 
- * CONCEPTOS IMPORTANTES:
- * - Autocomplete: Componente de MUI para búsqueda con sugerencias
- * - Popper: Elemento flotante que se posiciona relativo a otro
- * - Multi-select: Permite seleccionar múltiples opciones
- * - Debouncing: Retrasa la búsqueda hasta que el usuario deja de escribir
+ * CARACTERÍSTICAS PRINCIPALES:
+ * - Búsqueda con debouncing (300ms) para optimizar rendimiento
+ * - Dropdown con chips coloreados por declinación
+ * - Selección múltiple sin cerrar el dropdown
+ * - Visualización de palabras seleccionadas con opción de eliminar
+ * - Prevención de apertura del dropdown al eliminar palabras
+ * 
+ * FLUJO DE DATOS:
+ * 1. Usuario escribe → debouncing → búsqueda en vocabulario
+ * 2. Resultados filtrados (excluye palabras ya seleccionadas)
+ * 3. Click en chip → añade a selección
+ * 4. Click en X → elimina de selección (sin abrir dropdown)
  */
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
@@ -20,73 +28,78 @@ import {
   InputAdornment,
   IconButton,
   Typography,
-  Divider,
-  ClickAwayListener,  // Detecta clicks fuera del componente
+  ClickAwayListener,
   Fade,
-  Stack,  // Para apilar elementos con espaciado automático
-  Chip,
 } from '@mui/material';
 
 // Iconos
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 
-// Importar el WordCard para mostrar resultados
-import WordCard from './WordCard';
+// Tipos y componentes internos
 import type { LatinWord } from './WordCard';
-
-// Importar SelectedWordChip para mostrar palabras seleccionadas
 import SelectedWordChip from './SelectedWordChip';
+import SelectedWordsDisplay from './SelectedWordsDisplay';
 
-// Importar el servicio de vocabulario
-// Usamos el nombre del paquete definido en package.json
+// Servicio de datos
 import { VocabularyService } from '@latin-app/data';
 
 /**
  * PROPS DEL COMPONENTE
  */
 interface WordSearchDropdownProps {
-  // Palabras actualmente seleccionadas
-  selectedWords: LatinWord[];
-  // Callback cuando cambia la selección
-  onSelectionChange: (words: LatinWord[]) => void;
-  // Máximo número de palabras que se pueden seleccionar
-  maxSelection?: number;
-  // Placeholder del campo de búsqueda
-  placeholder?: string;
-  // Deshabilitado
-  disabled?: boolean;
+  selectedWords: LatinWord[];                      // Palabras actualmente seleccionadas
+  onSelectionChange: (words: LatinWord[]) => void; // Callback para cambios en selección
+  maxSelection?: number;                           // Máximo de palabras permitidas
+  placeholder?: string;                            // Texto del placeholder (ya no se usa)
+  disabled?: boolean;                              // Estado deshabilitado
 }
 
 /**
- * COMPONENTE WORD SEARCH DROPDOWN
- * 
- * Búsqueda interactiva con dropdown de resultados.
- * Usa el VocabularyService para buscar en el vocabulario real.
+ * COMPONENTE PRINCIPAL
  */
 const WordSearchDropdown: React.FC<WordSearchDropdownProps> = ({
   selectedWords,
   onSelectionChange,
   maxSelection = 20,
-  placeholder = 'Buscar palabras en latín o español...',
+  placeholder = 'Buscar palabras en latín o español...', // Se ignora, usamos uno fijo
   disabled = false
 }) => {
+  // ============================================================================
   // ESTADOS
+  // ============================================================================
+  
+  // Texto de búsqueda y su versión con debounce
   const [searchText, setSearchText] = useState('');
   const [debouncedSearchText, setDebouncedSearchText] = useState('');
+  
+  // Control del dropdown
   const [isOpen, setIsOpen] = useState(false);
   const [filteredWords, setFilteredWords] = useState<LatinWord[]>([]);
   
-  // Referencias DOM
-  const anchorRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  // Instancia del servicio de vocabulario
+  // Flag para prevenir apertura del dropdown al eliminar palabras
+  const [isRemovingWord, setIsRemovingWord] = useState(false);
+  
+  // ============================================================================
+  // REFERENCIAS DOM
+  // ============================================================================
+  
+  const textFieldRef = useRef<HTMLDivElement>(null); // Para anclar el Popper
+  const inputRef = useRef<HTMLInputElement>(null);   // Para focus programático
+  
+  // ============================================================================
+  // SERVICIOS
+  // ============================================================================
+  
   const vocabularyService = useMemo(() => new VocabularyService(), []);
-
+  
+  // ============================================================================
+  // EFECTOS
+  // ============================================================================
+  
   /**
-   * DEBOUNCING
-   * Retrasa la búsqueda 300ms después de que el usuario deja de escribir
+   * EFECTO: Debouncing del texto de búsqueda
+   * Retrasa la búsqueda 300ms para no buscar en cada tecla
    */
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -97,82 +110,79 @@ const WordSearchDropdown: React.FC<WordSearchDropdownProps> = ({
   }, [searchText]);
 
   /**
-   * BÚSQUEDA DE PALABRAS
-   * Se ejecuta cuando cambia el texto debounced o la selección
+   * EFECTO: Búsqueda y filtrado de palabras
+   * Se ejecuta cuando cambia el texto con debounce o la selección
    */
   useEffect(() => {
+    // No hacer nada si estamos eliminando palabras
+    if (isRemovingWord) {
+      return;
+    }
+    
+    // Limpiar si no hay suficiente texto
     if (debouncedSearchText.trim().length < 2) {
-      // No buscar con menos de 2 caracteres
       setFilteredWords([]);
+      setIsOpen(false);
       return;
     }
 
-    // Buscar en el servicio de vocabulario
+    // Buscar en el vocabulario
     const results = vocabularyService.searchWords(debouncedSearchText);
     
-    // Filtrar las palabras ya seleccionadas
-    // Crear un Set con los IDs seleccionados para búsqueda más eficiente
+    // Filtrar palabras ya seleccionadas (usando Set para O(1) lookup)
     const selectedIds = new Set(selectedWords.map(w => w.id));
-    const filteredResults = results.filter(word => !selectedIds.has(word.id));
+    const availableResults = results.filter(word => !selectedIds.has(word.id));
     
-    // Limitar a 10 resultados para no saturar el dropdown
-    setFilteredWords(filteredResults.slice(0, 10));
+    // Limitar resultados y actualizar estado
+    setFilteredWords(availableResults.slice(0, 20));
     
-    // Abrir el dropdown si hay resultados
-    if (filteredResults.length > 0) {
-      setIsOpen(true);
-    } else {
-      // Cerrar si no hay resultados
-      setIsOpen(false);
-    }
-  }, [debouncedSearchText, vocabularyService, selectedWords]);
+    // Nota: NO abrimos el dropdown automáticamente aquí
+    // El dropdown se abre solo cuando el usuario interactúa
+  }, [debouncedSearchText, vocabularyService, selectedWords, isRemovingWord]);
 
+  // ============================================================================
+  // MANEJADORES DE EVENTOS
+  // ============================================================================
+  
   /**
-   * MANEJADOR DE CAMBIO DE TEXTO
+   * Maneja cambios en el campo de búsqueda
    */
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setSearchText(value);
     
-    // Abrir dropdown cuando el usuario empieza a escribir
-    if (value.length >= 2) {
+    // Abrir dropdown si hay suficiente texto y no estamos eliminando
+    if (value.length >= 2 && !isRemovingWord) {
       setIsOpen(true);
     }
   };
 
   /**
-   * MANEJADOR DE SELECCIÓN DE PALABRA
+   * Maneja la selección de una palabra del dropdown
    */
   const handleWordSelect = (word: LatinWord) => {
-    // Solo agregar si no excede el máximo
-    // No necesitamos verificar si ya está seleccionada porque
-    // las palabras seleccionadas ya no aparecen en el dropdown
     if (selectedWords.length < maxSelection) {
       onSelectionChange([...selectedWords, word]);
     }
-    
-    // NO cerrar el dropdown para permitir selección múltiple
-    // El dropdown se cierra con ESC o click afuera
+    // No cerrar el dropdown para permitir selección múltiple
   };
 
   /**
-   * MANEJADOR DE TECLAS
+   * Maneja eventos de teclado
    */
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Escape') {
-      // Cerrar dropdown con ESC
       setIsOpen(false);
       inputRef.current?.blur();
     } else if (event.key === 'ArrowDown' && !isOpen && filteredWords.length > 0) {
-      // Abrir con flecha abajo
       setIsOpen(true);
     }
   };
 
   /**
-   * LIMPIAR BÚSQUEDA
+   * Limpia el campo de búsqueda
    */
-  const handleClear = () => {
+  const handleClearSearch = () => {
     setSearchText('');
     setDebouncedSearchText('');
     setFilteredWords([]);
@@ -181,149 +191,215 @@ const WordSearchDropdown: React.FC<WordSearchDropdownProps> = ({
   };
 
   /**
-   * LIMPIAR SELECCIÓN
+   * Limpia toda la selección de palabras
    */
-  const handleClearSelection = () => {
+  const handleClearAll = () => {
     onSelectionChange([]);
   };
 
+  /**
+   * Maneja la eliminación de una palabra seleccionada
+   */
+  const handleRemoveWord = (wordId: string) => {
+    // Activar flag de protección
+    setIsRemovingWord(true);
+    
+    // Cerrar dropdown inmediatamente
+    setIsOpen(false);
+    
+    // Actualizar selección
+    const newSelection = selectedWords.filter(w => w.id !== wordId);
+    onSelectionChange(newSelection);
+    
+    // Resetear flag después de medio segundo
+    setTimeout(() => {
+      setIsRemovingWord(false);
+    }, 500);
+  };
 
+  /**
+   * Maneja el focus del campo de búsqueda
+   */
+  const handleFocus = () => {
+    // Solo abrir si hay resultados y no estamos eliminando
+    if (filteredWords.length > 0 && !isRemovingWord) {
+      setIsOpen(true);
+    }
+  };
+
+  /**
+   * Maneja clicks fuera del componente
+   */
+  const handleClickAway = () => {
+    setIsOpen(false);
+  };
+
+  // ============================================================================
+  // RENDERIZADO DE INDICADORES DE ESTADO
+  // ============================================================================
+  
+  const renderSearchIndicators = () => {
+    // Texto muy corto
+    if (searchText.length > 0 && searchText.length < 2) {
+      return (
+        <Typography variant="caption" color="text.secondary">
+          Escribe al menos 2 caracteres para buscar
+        </Typography>
+      );
+    }
+    
+    // Buscando (debouncing)
+    if (searchText && searchText !== debouncedSearchText && searchText.length >= 2) {
+      return (
+        <Typography variant="caption" color="text.secondary" sx={{ fontStyle: 'italic' }}>
+          Buscando...
+        </Typography>
+      );
+    }
+    
+    // Sin resultados
+    if (debouncedSearchText && debouncedSearchText.length >= 2 && filteredWords.length === 0) {
+      return (
+        <Typography variant="caption" color="text.secondary">
+          No hay palabras disponibles para "{debouncedSearchText}"
+        </Typography>
+      );
+    }
+    
+    return null;
+  };
+
+  // ============================================================================
+  // RENDERIZADO PRINCIPAL
+  // ============================================================================
+  
   return (
     <Box>
-      {/* CAMPO DE BÚSQUEDA */}
-      <ClickAwayListener onClickAway={() => setIsOpen(false)}>
-        <Box ref={anchorRef}>
-          <TextField
-            fullWidth
-            inputRef={inputRef}
-            value={searchText}
-            onChange={handleSearchChange}
-            onKeyDown={handleKeyDown}
-            onFocus={() => {
-              if (filteredWords.length > 0) {
-                setIsOpen(true);
-              }
-            }}
-            disabled={disabled}
-            placeholder={placeholder}
-            variant="outlined"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon color="action" />
-                </InputAdornment>
-              ),
-              endAdornment: searchText && (
-                <InputAdornment position="end">
-                  <IconButton
-                    size="small"
-                    onClick={handleClear}
-                    edge="end"
-                  >
-                    <ClearIcon fontSize="small" />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                '&.Mui-focused': {
+      {/* SECCIÓN DE BÚSQUEDA */}
+      <ClickAwayListener onClickAway={handleClickAway}>
+        <Box>
+          {/* Campo de búsqueda */}
+          <Box ref={textFieldRef}>
+            <TextField
+              fullWidth
+              inputRef={inputRef}
+              value={searchText}
+              onChange={handleSearchChange}
+              onKeyDown={handleKeyDown}
+              onFocus={handleFocus}
+              disabled={disabled}
+              placeholder="Busca palabras por su forma latina o traducción española..."
+              variant="outlined"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon color="action" />
+                  </InputAdornment>
+                ),
+                endAdornment: searchText && (
+                  <InputAdornment position="end">
+                    <IconButton
+                      size="small"
+                      onClick={handleClearSearch}
+                      edge="end"
+                    >
+                      <ClearIcon fontSize="small" />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                '& .MuiOutlinedInput-root': {
                   '& .MuiOutlinedInput-notchedOutline': {
                     borderColor: 'primary.main',
                     borderWidth: 2,
+                    borderRadius: isOpen ? '4px 4px 0 0' : '4px',
+                  },
+                  '&:hover .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'primary.main',
+                    borderWidth: 2,
+                  },
+                  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'primary.main',
+                    borderWidth: 2,
+                    borderRadius: isOpen ? '4px 4px 0 0' : '4px',
                   }
                 }
-              }
-            }}
-          />
-          
-          {/* INDICADORES DE BÚSQUEDA Y SELECCIÓN */}
-          <Box sx={{ mt: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography variant="caption" color="text.secondary">
-              {searchText.length > 0 && searchText.length < 2 && (
-                <span>Escribe al menos 2 caracteres para buscar</span>
-              )}
-              {searchText && searchText !== debouncedSearchText && searchText.length >= 2 && (
-                <span style={{ fontStyle: 'italic' }}>Buscando...</span>
-              )}
-              {debouncedSearchText && debouncedSearchText.length >= 2 && filteredWords.length > 0 && (
-                <span>{filteredWords.length} palabra{filteredWords.length !== 1 ? 's' : ''} disponible{filteredWords.length !== 1 ? 's' : ''}</span>
-              )}
-              {debouncedSearchText && debouncedSearchText.length >= 2 && filteredWords.length === 0 && (
-                <span>No hay palabras disponibles para "{debouncedSearchText}"</span>
-              )}
-            </Typography>
-            
-            {selectedWords.length > 0 && (
-              <Chip
-                label={`${selectedWords.length} seleccionada${selectedWords.length !== 1 ? 's' : ''}`}
-                size="small"
-                onDelete={handleClearSelection}
-                color="primary"
-                variant="outlined"
-              />
-            )}
+              }}
+            />
           </Box>
+          
+          {/* Indicadores de estado de búsqueda */}
+          {renderSearchIndicators() && (
+            <Box sx={{ mt: 1 }}>
+              {renderSearchIndicators()}
+            </Box>
+          )}
 
-          {/* DROPDOWN CON RESULTADOS */}
+          {/* Dropdown con resultados */}
           <Popper
             open={isOpen}
-            anchorEl={anchorRef.current}
+            anchorEl={textFieldRef.current}
             placement="bottom-start"
-            style={{ width: anchorRef.current?.clientWidth || 'auto', zIndex: 1300 }}
+            style={{ 
+              width: textFieldRef.current?.clientWidth || 'auto', 
+              zIndex: 1300
+            }}
             transition
+            modifiers={[
+              {
+                name: 'offset',
+                options: {
+                  offset: [0, 0],
+                },
+              },
+            ]}
           >
             {({ TransitionProps }) => (
               <Fade {...TransitionProps} timeout={350}>
                 <Paper 
                   elevation={8}
                   sx={{ 
-                    mt: 1,
-                    maxHeight: 400,
+                    maxHeight: 450,
                     overflow: 'auto',
-                    border: '1px solid',
-                    borderColor: 'divider',
+                    borderLeft: '2px solid',
+                    borderRight: '2px solid',
+                    borderBottom: '2px solid',
+                    borderTop: 'none',
+                    borderColor: 'primary.main',
+                    borderRadius: '0 0 4px 4px',
                   }}
                 >
-                  {/* LISTA DE RESULTADOS */}
                   {filteredWords.length > 0 ? (
                     <Box>
-                      {/* Título del dropdown */}
-                      <Box sx={{ p: 2, pb: 1 }}>
-                        <Typography variant="subtitle2" color="text.secondary">
-                          Palabras disponibles:
-                        </Typography>
-                      </Box>
-                      
-                      {/* Lista de palabras usando SelectedWordChip */}
-                      <Box sx={{ p: 2, pt: 1 }}>
-                        <Stack spacing={1}>
+                      {/* Chips de palabras disponibles */}
+                      <Box sx={{ p: 2 }}>
+                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                           {filteredWords.map((word) => (
                             <Box
                               key={word.id}
-                              onClick={() => handleWordSelect(word)}
                               sx={{
                                 cursor: 'pointer',
+                                display: 'inline-block',
                                 '&:hover': {
-                                  transform: 'translateX(4px)',
+                                  transform: 'translateY(-2px)',
                                   transition: 'transform 0.2s ease',
                                 },
                               }}
                             >
-                              {/* SelectedWordChip sin botón de eliminar para el dropdown */}
                               <SelectedWordChip
                                 word={word}
                                 variant="default"
                                 showTooltip={false}
                                 colorByDeclension={true}
-                                // Sin onDelete para que no aparezca la X
+                                onClick={() => handleWordSelect(word)}
                               />
                             </Box>
                           ))}
-                        </Stack>
+                        </Box>
                       </Box>
                       
-                      {/* INFORMACIÓN DE SELECCIÓN */}
+                      {/* Información de ayuda */}
                       <Box sx={{ 
                         p: 2, 
                         bgcolor: 'background.default',
@@ -341,7 +417,6 @@ const WordSearchDropdown: React.FC<WordSearchDropdownProps> = ({
                       </Box>
                     </Box>
                   ) : debouncedSearchText.length >= 2 ? (
-                    // Sin resultados
                     <Box sx={{ p: 3, textAlign: 'center' }}>
                       <Typography variant="body2" color="text.secondary">
                         No se encontraron palabras con "{debouncedSearchText}"
@@ -355,30 +430,17 @@ const WordSearchDropdown: React.FC<WordSearchDropdownProps> = ({
         </Box>
       </ClickAwayListener>
 
-      {/* PALABRAS SELECCIONADAS (usando SelectedWordChip con botón de eliminar) */}
-      {selectedWords.length > 0 && (
-        <Box sx={{ mt: 2 }}>
-          <Typography variant="subtitle2" gutterBottom sx={{ color: 'text.secondary' }}>
-            Palabras seleccionadas ({selectedWords.length}/{maxSelection}):
-          </Typography>
-          <Stack direction="row" spacing={1} flexWrap="wrap" sx={{ gap: 1 }}>
-            {selectedWords.map(word => (
-              <SelectedWordChip
-                key={word.id}
-                word={word}
-                onDelete={(wordId) => {
-                  // Eliminar la palabra de la selección
-                  const newSelection = selectedWords.filter(w => w.id !== wordId);
-                  onSelectionChange(newSelection);
-                }}
-                variant="default"  // Variante con enunciación completa
-                showTooltip={true}  // Mostrar tooltip con información
-                colorByDeclension={true}  // Colores por declinación
-              />
-            ))}
-          </Stack>
-        </Box>
-      )}
+      {/* SECCIÓN DE PALABRAS SELECCIONADAS */}
+      <SelectedWordsDisplay
+        selectedWords={selectedWords}
+        onRemoveWord={handleRemoveWord}
+        onClearAll={handleClearAll}
+        onWordClick={(word) => {
+          console.log('Palabra seleccionada clickeada:', word.nominative);
+        }}
+        showTooltips={true}
+        colorByDeclension={true}
+      />
     </Box>
   );
 };

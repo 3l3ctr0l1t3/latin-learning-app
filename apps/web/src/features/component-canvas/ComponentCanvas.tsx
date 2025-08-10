@@ -36,6 +36,9 @@ import WordSearchDropdown from '../study-session/components/WordSearchDropdown';
 // Importar SelectedWordChip para mostrar palabras seleccionadas
 import SelectedWordChip from '../study-session/components/SelectedWordChip';
 
+// Importar WordSelectionStep - componente integrado de selección
+import WordSelectionStep from '../study-session/components/WordSelectionStep';
+
 // Importar tipos necesarios (ya no necesitamos Declension y Gender aquí)
 
 // Importar los tipos desde el archivo de tipos
@@ -103,19 +106,23 @@ const ComponentCanvas: React.FC = () => {
   
   // Estado para manejar palabras seleccionadas en SelectedWordChip demo
   const [selectedWordIds, setSelectedWordIds] = useState<string[]>(['word_rosa_0001', 'word_dominus_0002']);
+  
+  // Estado para WordSelectionStep - componente integrado
+  const [stepSelectedWords, setStepSelectedWords] = useState<LatinWord[]>([]);
 
   return (
     // Container: Componente MUI que centra el contenido con márgenes automáticos
     <Container maxWidth="xl">
-      {/* Box principal con padding vertical (py=4 significa 32px) */}
-      <Box sx={{ py: 4 }}>
+      {/* Box principal con padding vertical responsivo */}
+      <Box sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
         {/* Título del canvas */}
         <Typography 
           variant="h3" 
           gutterBottom 
           sx={{ 
             color: 'primary.main', // Usa el color púrpura del tema
-            mb: 4 // margin-bottom de 32px
+            mb: 4, // margin-bottom de 32px
+            fontSize: { xs: '1.75rem', sm: '2.5rem', md: '3rem' } // Tamaño responsivo
           }}
         >
           🎨 Canvas de Componentes
@@ -140,15 +147,20 @@ const ComponentCanvas: React.FC = () => {
         </Alert>
 
         {/* Grid container para organizar los componentes en columnas */}
-        <Grid container spacing={3}>
+        {/* spacing={2} en móvil para menos espacio entre elementos */}
+        <Grid container spacing={{ xs: 2, sm: 3 }}>
           
           {/* COMPONENTE 1: DurationSelector */}
-          <Grid item xs={12} md={6} lg={4}>
+          {/* xs={12} = ancho completo en móvil */}
+          {/* sm={12} = ancho completo en tablets pequeñas */}
+          {/* md={6} = mitad del ancho en tablets */}
+          {/* lg={4} = un tercio en desktop */}
+          <Grid item xs={12} sm={12} md={6} lg={4}>
             {/* Paper: Crea una tarjeta elevada con sombra */}
             <Paper 
               elevation={3} 
               sx={{ 
-                p: 3, // padding de 24px en todos los lados
+                p: { xs: 2, sm: 3 }, // padding responsivo: 16px móvil, 24px desktop
                 height: '100%', // ocupa toda la altura disponible
                 bgcolor: 'background.paper' // color de fondo del tema oscuro
               }}
@@ -194,11 +206,11 @@ const ComponentCanvas: React.FC = () => {
           </Grid>
 
           {/* COMPONENTE 2: DrillTypeSelector - COMPLETADO */}
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} sm={12} md={6} lg={4}>
             <Paper 
               elevation={3} 
               sx={{ 
-                p: 3, 
+                p: { xs: 2, sm: 3 }, 
                 height: '100%',
                 bgcolor: 'background.paper'
               }}
@@ -244,11 +256,11 @@ const ComponentCanvas: React.FC = () => {
           </Grid>
 
           {/* COMPONENTE 3: WordCard - COMPLETADO */}
-          <Grid item xs={12} md={6} lg={6}> {/* Más ancho para ver mejor la tarjeta */}
+          <Grid item xs={12} sm={12} md={12} lg={6}> {/* Ancho completo en móvil y tablet */}
             <Paper 
               elevation={3} 
               sx={{ 
-                p: 3, 
+                p: { xs: 2, sm: 3 }, 
                 height: '100%',
                 bgcolor: 'background.paper'
               }}
@@ -327,11 +339,11 @@ const ComponentCanvas: React.FC = () => {
           </Grid>
 
           {/* COMPONENTE 4: WordSearchDropdown - MEJORADO */}
-          <Grid item xs={12} lg={8}>
+          <Grid item xs={12} sm={12} md={12} lg={8}>
             <Paper 
               elevation={3} 
               sx={{ 
-                p: 3, 
+                p: { xs: 2, sm: 3 }, 
                 height: '100%',
                 bgcolor: 'background.paper'
               }}
@@ -361,8 +373,8 @@ const ComponentCanvas: React.FC = () => {
               <WordSearchDropdown 
                 selectedWords={selectedSearchWords}
                 onSelectionChange={setSelectedSearchWords}
-                maxSelection={10}
-                placeholder="Busca palabras latinas o españolas (mín. 2 caracteres)..."
+                maxSelection={20}
+                // Usa el placeholder por defecto del componente
               />
               
               <Divider sx={{ my: 3 }} />
@@ -389,14 +401,73 @@ const ComponentCanvas: React.FC = () => {
             </Paper>
           </Grid>
 
-
-
-          {/* COMPONENTE 5: SelectedWordChip - COMPLETADO */}
-          <Grid item xs={12} md={6} lg={6}>
+          {/* COMPONENTE 5: WordSelectionStep - INTEGRADO */}
+          <Grid item xs={12}>
             <Paper 
               elevation={3} 
               sx={{ 
-                p: 3, 
+                p: { xs: 2, sm: 3 }, 
+                height: '100%',
+                bgcolor: 'background.paper'
+              }}
+            >
+              {/* Encabezado del componente */}
+              <Typography 
+                variant="h6" 
+                gutterBottom 
+                sx={{ color: 'secondary.main' }}
+              >
+                ✅ WordSelectionStep (Componente Integrado)
+              </Typography>
+              
+              {/* Descripción del componente */}
+              <Typography 
+                variant="body2" 
+                sx={{ mb: 2, color: 'text.secondary' }}
+              >
+                Componente completo para selección de palabras. Integra búsqueda, visualización de selección,
+                progreso, y acciones rápidas en una sola interfaz. Ideal para páginas completas.
+              </Typography>
+              
+              <Divider sx={{ mb: 3 }} />
+              
+              {/* El componente WordSelectionStep */}
+              <WordSelectionStep
+                selectedWords={stepSelectedWords}
+                onSelectionChange={setStepSelectedWords}
+                minWords={5}
+                maxWords={30}
+              />
+              
+              {/* Información sobre el componente */}
+              <Box sx={{ 
+                mt: 3,
+                p: 2, 
+                bgcolor: 'background.default', 
+                borderRadius: 1 
+              }}>
+                <Typography variant="subtitle2" gutterBottom sx={{ color: 'primary.main' }}>
+                  Características del componente integrado:
+                </Typography>
+                <Typography variant="body2" component="ul" sx={{ mt: 1, pl: 2 }}>
+                  <li>Búsqueda con dropdown integrada</li>
+                  <li>Visualización de progreso con barra</li>
+                  <li>Validación de mínimos y máximos</li>
+                  <li>Acciones rápidas (selección aleatoria, por declinación)</li>
+                  <li>Sugerencias temáticas</li>
+                  <li>Estado completo en un solo componente</li>
+                  <li>Ideal para usar en páginas de configuración</li>
+                </Typography>
+              </Box>
+            </Paper>
+          </Grid>
+
+          {/* COMPONENTE 6: SelectedWordChip - COMPLETADO */}
+          <Grid item xs={12} sm={12} md={12} lg={6}>
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                p: { xs: 2, sm: 3 }, 
                 height: '100%',
                 bgcolor: 'background.paper'
               }}
@@ -532,7 +603,7 @@ const ComponentCanvas: React.FC = () => {
           <Grid container spacing={2} sx={{ mt: 2 }}>
             <Grid item xs={12} sm={4}>
               <Paper sx={{ p: 2, bgcolor: 'success.dark', textAlign: 'center' }}>
-                <Typography variant="h4">5</Typography>
+                <Typography variant="h4">6</Typography>
                 <Typography variant="body2">Componentes Completados</Typography>
               </Paper>
             </Grid>
