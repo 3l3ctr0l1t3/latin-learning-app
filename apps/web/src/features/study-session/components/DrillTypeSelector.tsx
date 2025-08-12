@@ -63,7 +63,7 @@ const drillTypeConfig: Record<DrillType, {
     label: 'Escribir en Latín',
     description: 'Escribe la palabra latina completa con sus casos y atributos',
     icon: <EditIcon />,
-    color: LATIN_COLORS.drillTypes.writing || '#4CAF50' // Verde para escritura, con fallback
+    color: '#4CAF50' // Verde para escritura
   }
 };
 

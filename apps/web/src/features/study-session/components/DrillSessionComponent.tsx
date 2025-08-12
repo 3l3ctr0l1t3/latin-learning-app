@@ -395,13 +395,13 @@ const DrillSessionComponent: React.FC<DrillSessionComponentProps> = ({
         flexDirection: 'column',
         justifyContent: 'center',  // Centrar verticalmente el contenido
         alignItems: 'center',
-        px: { xs: 0.5, sm: 2, md: 3 },  // Mínimo padding en móvil
-        py: { xs: 0.5, sm: 1, md: 2 }  // Mínimo padding vertical en móvil
+        px: { xs: 0.5, sm: 1, md: 2, lg: 3 },  // Menos padding horizontal
+        py: { xs: 0.5, sm: 1, md: 1 }  // Mínimo padding vertical
       }}>
         <Fade in key={currentDrill.id}>
           <Box sx={{ 
             width: '100%',
-            maxWidth: { xs: '100%', sm: '100%', md: 900, lg: 1000 },  // Permitir más ancho
+            maxWidth: { xs: '100%', sm: '100%', md: 600, lg: 650, xl: 700 },  // Ancho más contenido
             height: '100%',  // Ocupar toda la altura disponible
             display: 'flex',
             flexDirection: 'column',
@@ -428,8 +428,7 @@ const DrillSessionComponent: React.FC<DrillSessionComponentProps> = ({
                   display: 'flex',
                   flexDirection: 'column',
                   height: '100%',
-                  maxHeight: '100%',
-                  overflow: 'auto'
+                  overflow: 'auto'  // Scroll solo si es necesario
                 }
               }
             }}>
@@ -442,6 +441,7 @@ const DrillSessionComponent: React.FC<DrillSessionComponentProps> = ({
                   onAnswer={handleDrillAnswer}
                   numberOfOptions={4}
                   showLabels={false}  // Sin labels para modo drill
+                  hideHeader={true}  // Ocultar header para ahorrar espacio
                 />
               )}
               
@@ -452,6 +452,7 @@ const DrillSessionComponent: React.FC<DrillSessionComponentProps> = ({
                   onAnswer={handleDrillAnswer}
                   showLabels={true}  // IMPORTANTE: Mostrar labels para ver las explicaciones educativas
                   compact={false}  // Usar versión completa
+                  hideHeader={true}  // Ocultar header para ahorrar espacio
                 />
               )}
               
@@ -462,6 +463,7 @@ const DrillSessionComponent: React.FC<DrillSessionComponentProps> = ({
                   onAnswer={handleDrillAnswer}
                   showLabels={true}  // Mostrar ayudas y labels
                   compact={false}  // Usar versión completa
+                  hideHeader={true}  // Ocultar header para ahorrar espacio
                 />
               )}
             </Box>

@@ -44,6 +44,7 @@ const ConfigStep3Review: React.FC<ConfigStep3ReviewProps> = ({
   const drillTypeLabels: Record<DrillType, string> = {
     multipleChoice: 'Opción Múltiple',
     multipleChoiceDeclension: 'Identificar Declinación',
+    typeLatinWord: 'Escribir en Latín'
   };
 
   return (

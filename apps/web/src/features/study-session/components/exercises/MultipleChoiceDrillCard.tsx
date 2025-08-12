@@ -35,6 +35,7 @@ interface MultipleChoiceDrillCardProps {
   
   // Configuración visual
   compact?: boolean;                         // Versión compacta
+  hideHeader?: boolean;                      // Ocultar encabezado para ahorrar espacio
 }
 
 /**
@@ -53,7 +54,8 @@ const MultipleChoiceDrillCard: React.FC<MultipleChoiceDrillCardProps> = ({
   onAnswer,
   numberOfOptions = 4,
   showLabels = true,
-  compact = false
+  compact = false,
+  hideHeader = false
 }) => {
   // Estado local para manejar el flujo del ejercicio
   const [isAnswered, setIsAnswered] = useState(false);
@@ -127,6 +129,7 @@ const MultipleChoiceDrillCard: React.FC<MultipleChoiceDrillCardProps> = ({
       
       // Configuración visual
       compact={compact}
+      hideHeader={hideHeader}
       
       // CONTENIDO ESPECÍFICO DEL EJERCICIO
       // Esto es lo que hace único a MultipleChoice

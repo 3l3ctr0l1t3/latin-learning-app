@@ -23,13 +23,13 @@ import MultipleChoiceOption from './MultipleChoiceOption';
 import type { LatinWord } from '../WordCard';
 import { getDeclensionColor } from '../../constants/colors';
 import { LATIN_COLORS } from '../../../../config/theme';
-import { HEIGHTS, RADIUS } from '../../constants/spacing';
+import { RADIUS } from '../../constants/spacing';
 
-// Espaciados compactos para evitar scroll
+// Espaciados compactos para que todo quepa sin scroll
 const COMPACT_SPACING = {
-  sectionGap: { xs: 1.5, sm: 2, md: 2.5 },  // Menos espacio entre secciones en móvil
-  optionGap: { xs: 1, sm: 1.5 },  // Menos espacio entre opciones en móvil
-  cardPadding: { xs: 1.5, sm: 2, md: 2.5 },  // Menos padding en las tarjetas
+  sectionGap: { xs: 0.75, sm: 1, md: 1.25 },     // Reducido para ahorrar espacio vertical
+  optionGap: { xs: 0.5, sm: 0.75, md: 1 },       // Menos espacio entre opciones
+  cardPadding: { xs: 1, sm: 1.25, md: 1.5 },     // Padding reducido
 };
 
 /**
@@ -295,7 +295,7 @@ const MultipleChoiceExercise: React.FC<MultipleChoiceExerciseProps> = ({
                 bgcolor: 'action.hover',  // Fondo sutil diferente
                 borderRadius: RADIUS.large,
                 width: '100%',
-                minHeight: { xs: 120, sm: HEIGHTS.questionCard },  // Menos altura en móvil
+                minHeight: { xs: 80, sm: 90, md: 100 },  // Altura reducida para ahorrar espacio
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
@@ -338,7 +338,7 @@ const MultipleChoiceExercise: React.FC<MultipleChoiceExerciseProps> = ({
               bgcolor: 'action.hover',  // Fondo sutil diferente
               borderRadius: RADIUS.large,
               width: '100%',
-              minHeight: { xs: 120, sm: HEIGHTS.questionCard },  // Menos altura en móvil
+              minHeight: { xs: 100, sm: 120, md: 130 },  // Altura reducida para evitar scroll
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',

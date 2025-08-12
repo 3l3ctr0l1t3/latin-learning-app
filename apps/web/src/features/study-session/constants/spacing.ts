@@ -55,9 +55,9 @@ export const HEIGHTS = {
   questionCard: { xs: 100, sm: 120, md: 140 },
   
   // Container heights for study session
-  // Aumentado significativamente para pantallas medianas y grandes
-  // para que los ejercicios se muestren correctamente
-  studyContainer: { xs: 600, sm: 650, md: 750, lg: 850, xl: 950 },
+  // Ajustado para pantallas medianas y grandes - más contenido, sin scroll
+  // Reducido para que quepa en la pantalla sin necesidad de scroll
+  studyContainer: { xs: 600, sm: 600, md: 650, lg: 700, xl: 750 },
 } as const;
 
 /**
@@ -65,8 +65,8 @@ export const HEIGHTS = {
  * Fixed widths for consistency
  */
 export const WIDTHS = {
-  // Exercise components
-  exerciseContainer: { xs: '100%', sm: 450, md: 500, lg: 550, xl: 600 },
+  // Exercise components - reducido para mejor fit en contenedores más pequeños
+  exerciseContainer: { xs: '100%', sm: 400, md: 450, lg: 500, xl: 550 },
   
   // Word cards
   wordCardMaxWidth: { xs: '100%', sm: 500, md: 550 },

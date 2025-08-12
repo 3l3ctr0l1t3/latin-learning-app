@@ -48,6 +48,7 @@ interface TypeLatinWordDrillCardProps {
   onAnswer: (isCorrect: boolean) => void;    // Callback cuando el usuario responde
   showLabels?: boolean;                      // Mostrar etiquetas de ayuda
   compact?: boolean;                         // Versión compacta para pantallas pequeñas
+  hideHeader?: boolean;                      // Ocultar encabezado para ahorrar espacio
 }
 
 /**
@@ -61,7 +62,7 @@ const TypeLatinWordExercise: React.FC<{
   hasAnswered: boolean;
   isCorrect: boolean;
   onSubmit: (nominative: string, genitive: string, gender: string, declension: string) => void;
-}> = ({ currentWord, showLabels, hasAnswered, isCorrect, onSubmit }) => {
+}> = ({ currentWord, showLabels, hasAnswered, onSubmit }) => {
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
   
@@ -407,7 +408,8 @@ const TypeLatinWordDrillCard: React.FC<TypeLatinWordDrillCardProps> = ({
   currentWord,
   onAnswer,
   showLabels = true,
-  compact = false
+  compact = false,
+  hideHeader = false
 }) => {
   const [hasAnswered, setHasAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -451,7 +453,8 @@ const TypeLatinWordDrillCard: React.FC<TypeLatinWordDrillCardProps> = ({
       isAnswered={hasAnswered}
       isCorrect={isCorrect}
       compact={compact}
-      maxWidth={{ xs: '100%', md: 700, lg: 800 }}
+      hideHeader={hideHeader}
+      maxWidth={{ xs: '100%', md: 600, lg: 700 }}
       
       // Contenido específico del ejercicio
       exerciseContent={

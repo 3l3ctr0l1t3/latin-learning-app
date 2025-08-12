@@ -42,6 +42,9 @@ interface MultipleChoiceDeclensionCardProps {
   
   // Versión compacta para móvil
   compact?: boolean;
+  
+  // Ocultar encabezado para ahorrar espacio
+  hideHeader?: boolean;
 }
 
 /**
@@ -109,7 +112,8 @@ const MultipleChoiceDeclensionCard: React.FC<MultipleChoiceDeclensionCardProps> 
   currentWord,
   onAnswer,
   showLabels = true,
-  compact = false
+  compact = false,
+  hideHeader = false
 }) => {
   // Estado del ejercicio
   const [selectedDeclension, setSelectedDeclension] = useState<string | null>(null);
@@ -387,6 +391,7 @@ const MultipleChoiceDeclensionCard: React.FC<MultipleChoiceDeclensionCardProps> 
       isAnswered={hasAnswered}
       isCorrect={isCorrect}
       compact={isCompact}
+      hideHeader={hideHeader}
       exerciseContent={exerciseContent}
       feedbackContent={
         hasAnswered && !showLabels && (

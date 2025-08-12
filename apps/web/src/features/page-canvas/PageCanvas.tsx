@@ -13,8 +13,6 @@
 import React, { useState } from 'react';
 import {
   Box,
-  // Container, // Removed - not being used
-  Paper,
   Button
 } from '@mui/material';
 
@@ -27,9 +25,6 @@ import Homepage from '../homepage/Homepage';
 import ConfigStep1WordSelection from '../study-session/components/ConfigStep1WordSelection';
 import ConfigStep2DurationDrills from '../study-session/components/ConfigStep2DurationDrills';
 import StudySession from '../study-session/components/StudySession';
-
-// Importar constantes de espaciado - para usar alturas consistentes
-import { HEIGHTS } from '../study-session/constants/spacing';
 
 // Importar tipos
 import type { DrillType, SessionDuration } from '../study-session/types';
@@ -146,37 +141,61 @@ const PageCanvas: React.FC = () => {
   // PÁGINA 2: SESIÓN DE ESTUDIO ACTIVA
   if (currentPage === 'study-session') {
     return (
-      <Box 
-        data-testid="study-session-wrapper"
-        sx={{ 
-          // Usar alturas desde constantes - ahora más grandes para pantallas md/lg/xl
-          minHeight: { 
-            xs: 'calc(100vh - 110px)',  // Móvil: ajustado para llenar toda la pantalla
-            sm: `${HEIGHTS.studyContainer.sm}px`,  // Tablet: 650px
-            md: `${HEIGHTS.studyContainer.md}px`,  // Desktop mediano: 750px (aumentado)
-            lg: `${HEIGHTS.studyContainer.lg}px`,  // Desktop grande: 850px (aumentado)
-            xl: `${HEIGHTS.studyContainer.xl}px`   // Desktop XL: 950px (aumentado)
-          },
-          height: { 
-            xs: 'calc(100vh - 110px)',  // Móvil: forzar altura completa exacta
-            sm: `${HEIGHTS.studyContainer.sm}px`,  // Tablet: 650px
-            md: `${HEIGHTS.studyContainer.md}px`,  // Desktop mediano: 750px
-            lg: `${HEIGHTS.studyContainer.lg}px`,  // Desktop grande: 850px
-            xl: `${HEIGHTS.studyContainer.xl}px`   // Desktop XL: 950px
-          },
+      <Box
+        data-testid="study-session-page-wrapper"
+        sx={{
+          // Centrar el contenido en pantallas grandes
           display: 'flex',
-          flexDirection: 'column',
-          pt: .5,  // Padding superior pequeño
-          px: 1.3,  // Padding horizontal pequeño
-          pb: .5,  // Padding inferior pequeño
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: 'calc(100vh - 110px)',
+          px: { xs: 0, md: 2, lg: 3, xl: 4 }, // Padding horizontal en pantallas grandes
+          py: { xs: 0, md: 2 }, // Padding vertical en pantallas grandes
         }}
       >
-        <StudySession
-          selectedWords={selectedWords}
-          duration={duration}
-          drillTypes={drillTypes}
-          onEndSession={handleEndSession}
-        />
+        <Box 
+          data-testid="study-session-wrapper"
+          sx={{ 
+            // Limitar el ancho máximo en pantallas grandes
+            width: '100%',
+            maxWidth: {
+              xs: '100%',      // Móvil: ancho completo
+              sm: '100%',      // Tablet pequeña: ancho completo
+              md: '900px',     // Desktop mediano: máximo 900px
+              lg: '1100px',    // Desktop grande: máximo 1100px
+              xl: '1300px'     // Desktop XL: máximo 1300px
+            },
+            // Ajustar alturas para que quepa sin scroll
+            height: { 
+              xs: 'calc(100vh - 110px)',  // Móvil: altura completa
+              sm: '600px',     // Tablet: 600px
+              md: '650px',     // Desktop mediano: 650px (reducido de 750px)
+              lg: '700px',     // Desktop grande: 700px (reducido de 850px)
+              xl: '750px'      // Desktop XL: 750px (reducido de 950px)
+            },
+            display: 'flex',
+            flexDirection: 'column',
+            // Agregar sombra y borde en pantallas grandes
+            boxShadow: { xs: 0, md: 3, lg: 4 },
+            borderRadius: { xs: 0, md: 2 },
+            bgcolor: { xs: 'transparent', md: 'background.paper' },
+            // Padding interno
+            p: {
+              xs: 0.5,         // Móvil: padding mínimo
+              sm: 1,           // Tablet: padding pequeño
+              md: 2,           // Desktop: padding normal
+              lg: 2.5,         // Desktop grande: más padding
+              xl: 3            // Desktop XL: padding amplio
+            }
+          }}
+        >
+          <StudySession
+            selectedWords={selectedWords}
+            duration={duration}
+            drillTypes={drillTypes}
+            onEndSession={handleEndSession}
+          />
+        </Box>
       </Box>
     );
   }
@@ -184,29 +203,53 @@ const PageCanvas: React.FC = () => {
   // PÁGINA 3: CONFIGURACIÓN DE SESIÓN DE ESTUDIO
 
   return (
-    <Box 
-      data-testid="study-session-config-page"
-      sx={{ 
-      pt: .5,  // Sin padding superior
-      px: 1.3,  // Sin padding horizontal
-      pb: .5,  // Sin padding inferior
-      minHeight: { 
-        xs: 'calc(100vh - 110px)',  // Móvil: ajustado para llenar toda la pantalla
-        sm: `${HEIGHTS.studyContainer.sm}px`,  // Tablet: 650px
-        md: `${HEIGHTS.studyContainer.md}px`,  // Desktop mediano: 750px (aumentado)
-        lg: `${HEIGHTS.studyContainer.lg}px`,  // Desktop grande: 850px (aumentado)
-        xl: `${HEIGHTS.studyContainer.xl}px`   // Desktop XL: 950px (aumentado)
-      },
-      height: { 
-        xs: 'calc(100vh - 110px)',  // Móvil: forzar altura completa exacta
-        sm: `${HEIGHTS.studyContainer.sm}px`,  // Tablet: 650px
-        md: `${HEIGHTS.studyContainer.md}px`,  // Desktop mediano: 750px
-        lg: `${HEIGHTS.studyContainer.lg}px`,  // Desktop grande: 850px
-        xl: `${HEIGHTS.studyContainer.xl}px`   // Desktop XL: 950px
-      },
-      display: 'flex',
-      flexDirection: 'column'
-    }}>
+    <Box
+      data-testid="config-page-wrapper"
+      sx={{
+        // Mismo enfoque que la sesión de estudio: centrado y contenido
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: 'calc(100vh - 110px)',
+        px: { xs: 0, md: 2, lg: 3, xl: 4 }, // Padding horizontal en pantallas grandes
+        py: { xs: 0, md: 2 }, // Padding vertical en pantallas grandes
+      }}
+    >
+      <Box 
+        data-testid="study-session-config-page"
+        sx={{ 
+          // Limitar el ancho máximo como en la sesión
+          width: '100%',
+          maxWidth: {
+            xs: '100%',      // Móvil: ancho completo
+            sm: '100%',      // Tablet pequeña: ancho completo
+            md: '900px',     // Desktop mediano: máximo 900px
+            lg: '1100px',    // Desktop grande: máximo 1100px
+            xl: '1300px'     // Desktop XL: máximo 1300px
+          },
+          // Alturas ajustadas para evitar scroll
+          height: { 
+            xs: 'calc(100vh - 110px)',  // Móvil: altura completa
+            sm: '600px',     // Tablet: 600px
+            md: '650px',     // Desktop mediano: 650px
+            lg: '700px',     // Desktop grande: 700px
+            xl: '750px'      // Desktop XL: 750px
+          },
+          display: 'flex',
+          flexDirection: 'column',
+          // Estilo visual consistente con la sesión
+          boxShadow: { xs: 0, md: 3, lg: 4 },
+          borderRadius: { xs: 0, md: 2 },
+          bgcolor: { xs: 'transparent', md: 'background.paper' },
+          // Padding interno
+          p: {
+            xs: 0.5,         // Móvil: padding mínimo
+            sm: 1,           // Tablet: padding pequeño
+            md: 2,           // Desktop: padding normal
+            lg: 2.5,         // Desktop grande: más padding
+            xl: 3            // Desktop XL: padding amplio
+          }
+        }}>
       {/* CONTENIDO DE CADA PASO */}
       <Box 
         data-testid="step-content-container"
@@ -291,6 +334,7 @@ const PageCanvas: React.FC = () => {
         </Button>
       </Box>
       )}
+      </Box>
     </Box>
   );
 };

@@ -18,7 +18,7 @@ import {
   Divider,
   Fade
 } from '@mui/material';
-import { SPACING, RADIUS } from '../../constants/spacing';
+import { SPACING, RADIUS, WIDTHS } from '../../constants/spacing';
 
 /**
  * PROPS BASE PARA TODOS LOS DRILL CARDS
@@ -38,6 +38,7 @@ export interface BaseDrillCardProps {
   // Configuración visual
   compact?: boolean;                     // Versión compacta
   maxWidth?: any;                        // Ancho máximo
+  hideHeader?: boolean;                  // Ocultar encabezado para ahorrar espacio
   
   // Contenido del ejercicio (lo que varía entre tipos)
   exerciseContent: React.ReactNode;      // El contenido específico del ejercicio
@@ -64,7 +65,8 @@ const BaseDrillCard: React.FC<BaseDrillCardProps> = ({
   isCorrect = false,
   // feedbackMessage,  // Comentado - no se usa actualmente
   compact = false,
-  maxWidth = { xs: '100%', sm: 450, md: 500, lg: 550, xl: 600 },
+  maxWidth = WIDTHS.exerciseContainer,
+  hideHeader = false,
   exerciseContent,
   feedbackContent
 }) => {
@@ -96,39 +98,43 @@ const BaseDrillCard: React.FC<BaseDrillCardProps> = ({
             : undefined,
         }}
       >
-        {/* ENCABEZADO COMÚN PARA TODOS LOS DRILL CARDS */}
-        <Box 
-          sx={{ 
-            mb: compact ? 2 : SPACING.componentGap, 
-            textAlign: 'center' 
-          }} 
-          data-testid="drill-card-header"
-        >
-          {/* Título principal */}
-          <Typography 
-            variant={compact ? "body1" : "h6"}
-            sx={{ 
-              fontWeight: 'bold',
-              color: 'text.primary',
-              mb: 0.5
-            }}
-            data-testid="drill-card-title"
-          >
-            {title}
-          </Typography>
-          
-          {/* Subtítulo/Instrucción */}
-          <Typography 
-            variant="caption" 
-            color="text.secondary"
-            sx={{ fontSize: compact ? '0.75rem' : '0.85rem' }}
-            data-testid="drill-card-subtitle"
-          >
-            {subtitle}
-          </Typography>
-        </Box>
-        
-        <Divider sx={{ mb: SPACING.sectionGap }} />
+        {/* ENCABEZADO COMÚN PARA TODOS LOS DRILL CARDS - Solo si no está oculto */}
+        {!hideHeader && (
+          <>
+            <Box 
+              sx={{ 
+                mb: { xs: 1, sm: 1.25, md: 1.5 },  // Más compacto en todas las pantallas
+                textAlign: 'center' 
+              }} 
+              data-testid="drill-card-header"
+            >
+              {/* Título principal */}
+              <Typography 
+                variant={compact ? "body1" : "h6"}
+                sx={{ 
+                  fontWeight: 'bold',
+                  color: 'text.primary',
+                  mb: 0.5
+                }}
+                data-testid="drill-card-title"
+              >
+                {title}
+              </Typography>
+              
+              {/* Subtítulo/Instrucción */}
+              <Typography 
+                variant="caption" 
+                color="text.secondary"
+                sx={{ fontSize: compact ? '0.75rem' : '0.85rem' }}
+                data-testid="drill-card-subtitle"
+              >
+                {subtitle}
+              </Typography>
+            </Box>
+            
+            <Divider sx={{ mb: { xs: 1, sm: 1.25, md: 1.5 } }} />
+          </>
+        )}
         
         {/* CONTENIDO DEL EJERCICIO - ESPECÍFICO DE CADA TIPO */}
         <Box data-testid="drill-card-exercise-content">

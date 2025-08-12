@@ -398,7 +398,7 @@ const ComponentCanvas: React.FC = () => {
               <Divider sx={{ mb: 3 }} />
               
               <Box sx={{ 
-                height: { xs: 600, sm: 700, md: 850, lg: 950, xl: 1050 },  // Altura aumentada para mejor visibilidad en pantallas grandes
+                height: { xs: 600, sm: 650, md: 700, lg: 750, xl: 800 },  // Altura más contenida
                 overflow: 'hidden',  // Sin scroll
                 position: 'relative',
                 display: 'flex',
@@ -1263,7 +1263,7 @@ const ComponentCanvas: React.FC = () => {
               
               <Divider sx={{ mb: 3 }} />
               
-              <Box sx={{ height: { xs: 700, sm: 750, md: 850, lg: 950, xl: 1050 } }}>
+              <Box sx={{ height: { xs: 600, sm: 650, md: 700, lg: 750, xl: 800 } }}>
                 <StudySession
                   selectedWords={sampleWords}
                   duration={5}
