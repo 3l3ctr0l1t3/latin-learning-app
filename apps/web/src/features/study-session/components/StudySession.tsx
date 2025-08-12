@@ -23,8 +23,10 @@ import {
 } from '@mui/material';
 import StudyWordsViewer from './StudyWordsViewer';
 import SessionTimer from './SessionTimer';
+import DrillSessionComponent from './DrillSessionComponent';
 import type { LatinWord } from './WordCard';
 import type { DrillType, SessionDuration } from '../types';
+import type { DrillType as DrillSessionType } from './DrillSessionComponent';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 // Comentados - se usarán cuando implementemos la función getPhaseInfo
 // import SchoolIcon from '@mui/icons-material/School';
@@ -65,6 +67,9 @@ const StudySession: React.FC<StudySessionProps> = ({
   // Estado para rastrear si el tiempo se acabó
   const [timeIsUp, setTimeIsUp] = useState(false);
   
+  // Estado para rastrear resultados de ejercicios
+  const [drillResults, setDrillResults] = useState<any[]>([]);
+  
   /**
    * MANEJADORES DE TRANSICIÓN ENTRE FASES
    */
@@ -72,7 +77,11 @@ const StudySession: React.FC<StudySessionProps> = ({
     setCurrentPhase('exercises');
   };
   
-  const handleFinishExercises = () => {
+  const handleFinishExercises = (results?: any[]) => {
+    // Guardar resultados si se proporcionan
+    if (results) {
+      setDrillResults(results);
+    }
     setCurrentPhase('summary');
   };
   
@@ -180,25 +189,18 @@ const StudySession: React.FC<StudySessionProps> = ({
         
         {/* FASE 2: EJERCICIOS */}
         {currentPhase === 'exercises' && (
-          <Paper sx={{ p: 3, textAlign: 'center' }} data-testid="phase-exercises">
-            <Typography variant="h5" gutterBottom data-testid="text-exercises-title">
-              Fase de Ejercicios
-            </Typography>
-            <Typography variant="body1" color="text.secondary" paragraph data-testid="text-exercises-description">
-              Los ejercicios están en desarrollo...
-            </Typography>
-            <Typography variant="body2" paragraph data-testid="text-drill-types-list">
-              Tipos de ejercicios seleccionados: {drillTypes.join(', ')}
-            </Typography>
-            <Button 
-              variant="contained" 
-              onClick={handleFinishExercises}
-              sx={{ mt: 2 }}
-              data-testid="button-finish-exercises"
-            >
-              Finalizar Ejercicios
-            </Button>
-          </Paper>
+          <Box sx={{ 
+            height: '100%',  // Ocupa toda la altura disponible
+            display: 'flex',
+            flexDirection: 'column'
+          }} data-testid="phase-exercises">
+            <DrillSessionComponent
+              selectedWords={selectedWords}
+              drillTypes={drillTypes as DrillSessionType[]}  // Conversión de tipos
+              sessionDurationMinutes={duration}  // Duración en minutos
+              onSessionEnd={handleFinishExercises}  // Callback cuando termine
+            />
+          </Box>
         )}
         
         {/* FASE 3: RESUMEN */}
@@ -235,6 +237,16 @@ const StudySession: React.FC<StudySessionProps> = ({
                 <Typography variant="body2" data-testid="text-stats-drill-types">
                   • Tipos de ejercicios: {drillTypes.length}
                 </Typography>
+                {drillResults.length > 0 && (
+                  <>
+                    <Typography variant="body2" data-testid="text-stats-exercises">
+                      • Ejercicios completados: {drillResults.length}
+                    </Typography>
+                    <Typography variant="body2" data-testid="text-stats-accuracy">
+                      • Precisión: {Math.round((drillResults.filter((r: any) => r.isCorrect).length / drillResults.length) * 100)}%
+                    </Typography>
+                  </>
+                )}
               </Box>
               
               <Button 

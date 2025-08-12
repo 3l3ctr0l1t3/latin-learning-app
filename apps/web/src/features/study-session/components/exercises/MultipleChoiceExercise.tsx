@@ -14,7 +14,6 @@ import React, { useState, useEffect } from 'react';
 import {
   Box,
   Typography,
-  Button,
   Fade,
   Stack,
   Chip,
@@ -24,8 +23,14 @@ import MultipleChoiceOption from './MultipleChoiceOption';
 import type { LatinWord } from '../WordCard';
 import { getDeclensionColor } from '../../constants/colors';
 import { LATIN_COLORS } from '../../../../config/theme';
-import { SPACING, HEIGHTS, RADIUS } from '../../constants/spacing';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { HEIGHTS, RADIUS } from '../../constants/spacing';
+
+// Espaciados compactos para evitar scroll
+const COMPACT_SPACING = {
+  sectionGap: { xs: 1.5, sm: 2, md: 2.5 },  // Menos espacio entre secciones en móvil
+  optionGap: { xs: 1, sm: 1.5 },  // Menos espacio entre opciones en móvil
+  cardPadding: { xs: 1.5, sm: 2, md: 2.5 },  // Menos padding en las tarjetas
+};
 
 /**
  * TIPOS DE PREGUNTA
@@ -48,7 +53,6 @@ interface MultipleChoiceExerciseProps {
   
   // Callbacks
   onAnswer?: (isCorrect: boolean) => void;  // Cuando se responde
-  onNext?: () => void;                       // Para continuar al siguiente
   
   // Configuración
   numberOfOptions?: number;                   // Número de opciones (default: 4)
@@ -65,7 +69,6 @@ const MultipleChoiceExercise: React.FC<MultipleChoiceExerciseProps> = ({
   allWords,
   questionType = 'latinToSpanish',
   onAnswer,
-  onNext,
   numberOfOptions = 4,
   showLabels = true
 }) => {
@@ -263,19 +266,6 @@ const MultipleChoiceExercise: React.FC<MultipleChoiceExerciseProps> = ({
     }
   };
 
-  /**
-   * MANEJAR CONTINUAR AL SIGUIENTE
-   */
-  const handleNext = () => {
-    // Resetear estado
-    setSelectedOption(null);
-    setIsAnswered(false);
-    
-    // Notificar al padre
-    if (onNext) {
-      onNext();
-    }
-  };
 
   /**
    * OBTENER ETIQUETA PARA LA OPCIÓN (A, B, C, D)
@@ -286,37 +276,41 @@ const MultipleChoiceExercise: React.FC<MultipleChoiceExerciseProps> = ({
 
   // Generar opciones cuando cambie la palabra
   useEffect(() => {
+    // Resetear estado cuando cambia la palabra
+    setSelectedOption(null);
+    setIsAnswered(false);
     generateOptions();
   }, [currentWord, questionType]);
 
   return (
     <Box sx={{ width: '100%' }} data-testid="multiple-choice-exercise">
       {/* PALABRA O CONCEPTO A PREGUNTAR */}
-      <Box sx={{ mb: SPACING.sectionGap }} data-testid="question-card">
+      <Box sx={{ mb: COMPACT_SPACING.sectionGap }} data-testid="question-card">
         {questionType === 'spanishToLatin' ? (
           // Para Español → Latín, mostrar el español en una tarjeta simple
             <Box
               sx={{
-                p: SPACING.sectionGap,
+                p: COMPACT_SPACING.cardPadding,
                 textAlign: 'center',
                 bgcolor: 'action.hover',  // Fondo sutil diferente
                 borderRadius: RADIUS.large,
                 width: '100%',
-                minHeight: HEIGHTS.questionCard,  // Altura consistente
+                minHeight: { xs: 120, sm: HEIGHTS.questionCard },  // Menos altura en móvil
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 mx: 'auto',
                 border: '2px solid',
-                borderColor: 'primary.main'
+                borderColor: getDeclensionColor(currentWord.declension)  // Usar color de declinación consistente
               }}
           >
             <Typography 
               variant="h4" 
               sx={{ 
                 fontWeight: 'bold',
-                color: 'primary.main',
-                letterSpacing: 1
+                color: getDeclensionColor(currentWord.declension),  // Usar color de declinación
+                letterSpacing: 1,
+                fontSize: { xs: '1.8rem', sm: '2.125rem' }  // Más pequeño en móvil
               }}
               data-testid="spanish-word-display"
             >
@@ -339,18 +333,18 @@ const MultipleChoiceExercise: React.FC<MultipleChoiceExerciseProps> = ({
           // Para Latín → Español y otros tipos, mostrar en el mismo estilo
           <Box
             sx={{
-              p: SPACING.sectionGap,
+              p: COMPACT_SPACING.cardPadding,
               textAlign: 'center',
               bgcolor: 'action.hover',  // Fondo sutil diferente
               borderRadius: RADIUS.large,
               width: '100%',
-              minHeight: HEIGHTS.questionCard,  // Altura consistente
+              minHeight: { xs: 120, sm: HEIGHTS.questionCard },  // Menos altura en móvil
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
               mx: 'auto',
               border: '2px solid',
-              borderColor: 'primary.main'
+              borderColor: getDeclensionColor(currentWord.declension)  // Usar color de declinación
             }}
           >
             {/* ENUNCIACIÓN con color por declinación */}
@@ -359,8 +353,9 @@ const MultipleChoiceExercise: React.FC<MultipleChoiceExerciseProps> = ({
               sx={{ 
                 fontWeight: 'bold',
                 color: getDeclensionColor(currentWord.declension),
-                mb: 1.5,
-                letterSpacing: 1
+                mb: { xs: 1, sm: 1.5 },  // Menos margen en móvil
+                letterSpacing: 1,
+                fontSize: { xs: '1.8rem', sm: '2.125rem' }  // Más pequeño en móvil
               }}
             >
               {currentWord.nominative}, {currentWord.genitive}
@@ -397,7 +392,7 @@ const MultipleChoiceExercise: React.FC<MultipleChoiceExerciseProps> = ({
         )}
       </Box>
 
-      <Divider sx={{ mb: SPACING.sectionGap }} />
+      <Divider sx={{ mb: COMPACT_SPACING.sectionGap }} />
 
       {/* OPCIONES */}
       <Box data-testid="options-container">
@@ -418,69 +413,6 @@ const MultipleChoiceExercise: React.FC<MultipleChoiceExerciseProps> = ({
         ))}
       </Box>
 
-      {/* SECCIÓN DE ACCIONES Y FEEDBACK - Fuera del Paper principal */}
-      {isAnswered && (
-        <Fade in timeout={300}>
-          <Box 
-            sx={{ 
-              mt: 1, 
-              display: 'flex', 
-              justifyContent: 'center'
-            }}
-            data-testid="action-buttons"
-          >
-            <Button
-              variant="contained"
-              size="large"
-              onClick={handleNext}
-              endIcon={<NavigateNextIcon />}
-              color="primary"
-              sx={{
-                px: 4,
-                py: 1.5
-              }}
-              data-testid="next-button"
-            >
-              Siguiente Ejercicio
-            </Button>
-          </Box>
-        </Fade>
-      )}
-
-        {/* MENSAJE DE FEEDBACK - Más compacto y encima del botón */}
-        <Fade in timeout={300}>
-          <Box 
-            sx={{ 
-              mt: 2,
-              mb: 2,
-              textAlign: 'center',
-              p: 1.5,
-              borderRadius: 1,
-              bgcolor: options.find(opt => opt.id === selectedOption)?.isCorrect 
-                ? 'rgba(0, 229, 204, 0.1)'  // Cyan transparente (success theme color)
-                : 'rgba(207, 102, 121, 0.1)',  // Soft red transparente (error theme color)
-              border: '1px solid',
-              borderColor: options.find(opt => opt.id === selectedOption)?.isCorrect 
-                ? 'success.main' 
-                : 'error.main'
-            }}
-            data-testid="feedback-message"
-          >
-            <Typography
-              variant="body1"
-              sx={{
-                color: options.find(opt => opt.id === selectedOption)?.isCorrect 
-                  ? 'success.main' 
-                  : 'error.main',
-                fontWeight: 'medium'
-              }}
-            >
-              {options.find(opt => opt.id === selectedOption)?.isCorrect 
-                ? '¡Correcto! 🎉' 
-                : 'Incorrecto. Intenta con la siguiente palabra.'}
-            </Typography>
-          </Box>
-        </Fade>
     </Box>
   );
 };

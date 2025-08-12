@@ -26,8 +26,10 @@ import {
 } from '@mui/material';
 import MultipleChoiceDrillCard from './exercises/MultipleChoiceDrillCard';
 import MultipleChoiceDeclensionCard from './exercises/MultipleChoiceDeclensionCard';
+import TypeLatinWordDrillCard from './exercises/TypeLatinWordDrillCard';
 import type { LatinWord } from './WordCard';
-import type { QuestionType } from './exercises/MultipleChoiceExercise';
+// Definimos QuestionType aquí ya que es usado por el componente
+export type QuestionType = 'latinToSpanish' | 'spanishToLatin' | 'gender' | 'declension';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -36,7 +38,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 /**
  * TIPOS DE DRILL DISPONIBLES
  */
-export type DrillType = 'multipleChoice' | 'multipleChoiceDeclension' | 'fillInBlank' | 'matching' | 'directInput';
+export type DrillType = 'multipleChoice' | 'multipleChoiceDeclension' | 'typeLatinWord';
 
 /**
  * CONFIGURACIÓN DE UN DRILL INDIVIDUAL
@@ -113,8 +115,9 @@ const DrillSessionComponent: React.FC<DrillSessionComponentProps> = ({
     const randomDrillType = drillTypes[Math.floor(Math.random() * drillTypes.length)];
     
     // Para multiple choice, seleccionar tipo de pregunta aleatorio
-    // Excluimos 'declension' si el tipo es multipleChoice porque ahora tenemos un ejercicio específico
-    const questionTypes: QuestionType[] = ['latinToSpanish', 'spanishToLatin', 'gender'];
+    // Solo incluimos latinToSpanish y spanishToLatin para traducción
+    // 'gender' y 'declension' son para otros tipos de ejercicios
+    const questionTypes: QuestionType[] = ['latinToSpanish', 'spanishToLatin'];
     const randomQuestionType = questionTypes[Math.floor(Math.random() * questionTypes.length)];
     
     return {
@@ -315,120 +318,161 @@ const DrillSessionComponent: React.FC<DrillSessionComponentProps> = ({
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
-      overflow: 'hidden',  // Prevenir que el contenido se salga
+      overflow: 'hidden',  // Prevenir scroll del contenedor principal
       position: 'relative'
     }} data-testid="drill-session">
-      {/* HEADER CON ESTADÍSTICAS Y TIMER */}
+      {/* HEADER CON ESTADÍSTICAS Y TIMER - Más compacto */}
       <Box sx={{ 
         flexShrink: 0,  // No permitir que se encoja
-        pb: 2  // Padding bottom para separar del contenido
+        pb: { xs: 0.5, sm: 1 }  // Menos padding en móvil
       }}>
-        {/* Barra de progreso */}
+        {/* Barra de progreso - más delgada */}
         <LinearProgress 
           variant="determinate" 
           value={progress} 
-          sx={{ mb: 2, height: 8, borderRadius: 1 }}
+          sx={{ mb: { xs: 0.5, sm: 1 }, height: { xs: 4, sm: 6 }, borderRadius: 1 }}  // Más delgada en móvil
         />
         
-        {/* Estadísticas y timer */}
+        {/* Estadísticas y timer - más compacto */}
         <Stack 
           direction="row" 
           justifyContent="space-between" 
           alignItems="center"
-          sx={{ mb: 2 }}
+          sx={{ mb: { xs: 0.5, sm: 1 } }}  // Menos margen en móvil
         >
-          {/* Estadísticas */}
-          <Stack direction="row" spacing={2}>
+          {/* Estadísticas - ocultar etiquetas en móvil para ahorrar espacio */}
+          <Stack direction="row" spacing={1}>  {/* Reducir spacing */}
             <Chip
               icon={<CheckCircleIcon />}
-              label={`Correctas: ${stats.correct}`}
+              label={stats.correct}  // Solo número en móvil
               color="success"
               size="small"
+              sx={{ 
+                '& .MuiChip-label': { 
+                  px: { xs: 0.5, sm: 1 }  // Menos padding en móvil
+                }
+              }}
             />
             <Chip
               icon={<CancelIcon />}
-              label={`Incorrectas: ${stats.total - stats.correct}`}
+              label={stats.total - stats.correct}  // Solo número
               color="error"
               size="small"
+              sx={{ 
+                '& .MuiChip-label': { 
+                  px: { xs: 0.5, sm: 1 }
+                }
+              }}
             />
             <Chip
-              label={`Precisión: ${stats.accuracy}%`}
+              label={`${stats.accuracy}%`}  // Solo porcentaje
               color="primary"
               size="small"
+              sx={{ 
+                '& .MuiChip-label': { 
+                  px: { xs: 0.5, sm: 1 }
+                }
+              }}
             />
           </Stack>
           
           {/* Timer */}
           <Chip
-            label={`Tiempo: ${formatTime(timeRemaining)}`}
+            label={formatTime(timeRemaining)}  // Solo tiempo sin etiqueta
             color={timeRemaining < 60 ? 'error' : 'default'}
-            size="medium"
+            size="small"  // Cambiar a small para consistencia
+            sx={{ fontWeight: 'bold' }}
           />
         </Stack>
       </Box>
       
-      {/* DRILL ACTUAL */}
-      <Fade in key={currentDrill.id}>
-        <Box sx={{ 
-          flex: 1, 
-          minHeight: 0,  // Importante para que flex funcione correctamente
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          px: { xs: 1, sm: 2 },  // Padding horizontal responsivo
-          py: 1
-        }}>
-          {/* Multiple Choice tradicional */}
-          {currentDrill.type === 'multipleChoice' && (
-            <Box sx={{ 
-              width: '100%', 
-              maxWidth: 600,  // Mismo ancho máximo para todos los drills
-              mx: 'auto'
-            }}>
-              <MultipleChoiceDrillCard
-                currentWord={currentDrill.word}
-                allWords={selectedWords}
-                questionType={currentDrill.questionType}
-                onAnswer={handleDrillAnswer}
-                numberOfOptions={4}
-                showLabels={true}
-              />
-            </Box>
-          )}
-          
-          {/* Multiple Choice de Declinación */}
-          {currentDrill.type === 'multipleChoiceDeclension' && (
-            <Box sx={{ 
-              width: '100%', 
-              maxWidth: 600,  // Mismo ancho máximo que otros drills
-              mx: 'auto'
-            }}>
-              <MultipleChoiceDeclensionCard
-                currentWord={currentDrill.word}
-                onAnswer={handleDrillAnswer}
-                showLabels={true}
-                compact={false}
-              />
-            </Box>
-          )}
-          
-          {/* Aquí se agregarían otros tipos de drills cuando se implementen */}
-          {currentDrill.type === 'fillInBlank' && (
-            <Box sx={{ p: 4, textAlign: 'center', bgcolor: 'background.paper', borderRadius: 2 }}>
-              <Typography>Fill in Blank - Por implementar</Typography>
-              <Button onClick={() => handleDrillAnswer(Math.random() > 0.5)}>
-                Simular Respuesta
-              </Button>
-            </Box>
-          )}
-        </Box>
-      </Fade>
-      
-      {/* CONTROLES DE NAVEGACIÓN */}
+      {/* DRILL ACTUAL - Usar todo el espacio disponible para mejor visualización */}
       <Box sx={{ 
-        mt: 2, 
-        pb: 2,  // Padding bottom para separar del borde
+        flex: 1, 
+        minHeight: 0,  // Importante para que flex funcione correctamente
+        overflow: 'hidden',  // NO scroll - debe caber todo
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',  // Centrar verticalmente el contenido
+        alignItems: 'center',
+        px: { xs: 0.5, sm: 2, md: 3 },  // Mínimo padding en móvil
+        py: { xs: 0.5, sm: 1, md: 2 }  // Mínimo padding vertical en móvil
+      }}>
+        <Fade in key={currentDrill.id}>
+          <Box sx={{ 
+            width: '100%',
+            maxWidth: { xs: '100%', sm: '100%', md: 900, lg: 1000 },  // Permitir más ancho
+            height: '100%',  // Ocupar toda la altura disponible
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'stretch',  // Estirar contenido horizontalmente
+            justifyContent: 'center',  // Centrar verticalmente
+          }}>
+            {/* Contenedor wrapper para controlar el tamaño del drill card */}
+            <Box sx={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              // Sobreescribir estilos del drill card
+              '& > div': {
+                width: '100%',
+                maxWidth: '100%',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                '& > .MuiPaper-root': {
+                  flex: 1,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%',
+                  maxHeight: '100%',
+                  overflow: 'auto'
+                }
+              }
+            }}>
+              {/* Multiple Choice tradicional - usando el componente correcto */}
+              {currentDrill.type === 'multipleChoice' && (
+                <MultipleChoiceDrillCard
+                  currentWord={currentDrill.word}
+                  allWords={selectedWords}
+                  questionType={currentDrill.questionType || 'latinToSpanish'}
+                  onAnswer={handleDrillAnswer}
+                  numberOfOptions={4}
+                  showLabels={false}  // Sin labels para modo drill
+                />
+              )}
+              
+              {/* Multiple Choice de Declinación - usando el componente correcto */}
+              {currentDrill.type === 'multipleChoiceDeclension' && (
+                <MultipleChoiceDeclensionCard
+                  currentWord={currentDrill.word}
+                  onAnswer={handleDrillAnswer}
+                  showLabels={true}  // IMPORTANTE: Mostrar labels para ver las explicaciones educativas
+                  compact={false}  // Usar versión completa
+                />
+              )}
+              
+              {/* Escribir en Latín - ejercicio de escritura completa */}
+              {currentDrill.type === 'typeLatinWord' && (
+                <TypeLatinWordDrillCard
+                  currentWord={currentDrill.word}
+                  onAnswer={handleDrillAnswer}
+                  showLabels={true}  // Mostrar ayudas y labels
+                  compact={false}  // Usar versión completa
+                />
+              )}
+            </Box>
+          </Box>
+        </Fade>
+      </Box>
+      
+      {/* CONTROLES DE NAVEGACIÓN - Más compacto */}
+      <Box sx={{ 
+        mt: { xs: 0.5, sm: 1 },  // Menos margen en móvil
+        pb: { xs: 0.5, sm: 1 },  // Menos padding en móvil
         display: 'flex', 
         justifyContent: 'center', 
         gap: 2,

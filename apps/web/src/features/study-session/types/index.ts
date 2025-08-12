@@ -12,8 +12,13 @@
  * DrillType - Tipos de ejercicios disponibles
  * Usamos un tipo union literal (valores específicos de string)
  * para tener mayor seguridad de tipos
+ * 
+ * NOTA: Estos tipos deben coincidir con los de DrillSessionComponent
+ * - multipleChoice: Ejercicio de opción múltiple tradicional
+ * - multipleChoiceDeclension: Ejercicio específico para identificar declinaciones
+ * - typeLatinWord: Ejercicio de escritura - escribir la palabra latina completa
  */
-export type DrillType = 'multipleChoice' | 'fillInBlank' | 'directInput';
+export type DrillType = 'multipleChoice' | 'multipleChoiceDeclension' | 'typeLatinWord';
 
 /**
  * Declension - Las cinco declinaciones del latín

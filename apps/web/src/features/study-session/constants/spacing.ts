@@ -16,28 +16,28 @@
  * Numeric values for use with MUI's sx prop spacing properties
  */
 export const SPACING = {
-  // Component internal padding
-  cardPadding: { xs: 2, sm: 3 },           // 16px mobile, 24px desktop
-  cardPaddingCompact: { xs: 1.5, sm: 2 },  // 12px mobile, 16px desktop
-  buttonPadding: { x: 4, y: 1.5 },         // 32px horizontal, 12px vertical
+  // Component internal padding - más compacto en móvil
+  cardPadding: { xs: 1.5, sm: 2.5, md: 3 },           // 12px mobile, 20px tablet, 24px desktop
+  cardPaddingCompact: { xs: 1, sm: 1.5, md: 2 },      // 8px mobile, 12px tablet, 16px desktop
+  buttonPadding: { x: { xs: 3, sm: 4 }, y: { xs: 1, sm: 1.5 } },  // Botones más pequeños en móvil
   
-  // Margins between elements
-  elementGap: 1.5,         // 12px - between related elements
-  sectionGap: 2.5,         // 20px - between sections within a component
-  componentGap: 3,         // 24px - between major components
+  // Margins between elements - reducidos para móvil
+  elementGap: { xs: 1, sm: 1.5 },         // 8px mobile, 12px desktop
+  sectionGap: { xs: 1.5, sm: 2, md: 2.5 }, // 12px mobile, 16px tablet, 20px desktop
+  componentGap: { xs: 2, sm: 2.5, md: 3 }, // 16px mobile, 20px tablet, 24px desktop
   
-  // Specific use cases
-  optionSpacing: 1.5,      // 12px - between multiple choice options
-  chipSpacing: 1,          // 8px - between chips
-  iconTextGap: 1,          // 8px - between icon and text
+  // Specific use cases - más compactos
+  optionSpacing: { xs: 1, sm: 1.5 },      // 8px mobile, 12px desktop - entre opciones
+  chipSpacing: { xs: 0.5, sm: 1 },        // 4px mobile, 8px desktop - entre chips
+  iconTextGap: { xs: 0.5, sm: 1 },        // 4px mobile, 8px desktop - entre icono y texto
   
   // Container padding
-  containerPadding: { xs: 2, sm: 3, md: 4 },  // Responsive container padding
+  containerPadding: { xs: 1.5, sm: 2.5, md: 3, lg: 4 },  // Menos padding en móvil
   
-  // Section margins
-  headerMargin: { mb: 3 },          // 24px - after headers
-  dividerMargin: { my: 2.5 },       // 20px - around dividers
-  feedbackMargin: { mt: 2, mb: 2 }, // 16px - around feedback messages
+  // Section margins - más compactos en móvil
+  headerMargin: { mb: { xs: 2, sm: 2.5, md: 3 } },     // Menos margen después de headers
+  dividerMargin: { my: { xs: 1.5, sm: 2, md: 2.5 } },  // Menos margen alrededor de dividers
+  feedbackMargin: { mt: { xs: 1.5, sm: 2 }, mb: { xs: 1.5, sm: 2 } }, // Menos margen para feedback
 } as const;
 
 /**
@@ -55,7 +55,9 @@ export const HEIGHTS = {
   questionCard: { xs: 100, sm: 120, md: 140 },
   
   // Container heights for study session
-  studyContainer: { xs: 600, sm: 600, md: 600, lg: 650, xl: 700 },
+  // Aumentado significativamente para pantallas medianas y grandes
+  // para que los ejercicios se muestren correctamente
+  studyContainer: { xs: 600, sm: 650, md: 750, lg: 850, xl: 950 },
 } as const;
 
 /**

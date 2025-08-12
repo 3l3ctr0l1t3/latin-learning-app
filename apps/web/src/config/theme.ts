@@ -252,14 +252,15 @@ export const BREAKPOINTS = {
 // Latin Learning Specific Colors
 // These are semantic colors for different Latin concepts
 export const LATIN_COLORS = {
-  // Declension Colors - Sistema armonizado de colores
-  // Progresión espectral: Violeta → Índigo → Cyan → Ámbar → Rosa
+  // Declension Colors - Carefully selected to avoid theme color conflicts
+  // Distinct from: Primary (#BB86FC), Secondary (#FFA726), Success (#00E5CC), Error (#CF6679)
+  // Based on educational color psychology and accessibility research
   declensions: {
-    '1st': '#A78BFA', // Violeta - Análogo al púrpura principal
-    '2nd': '#818CF8', // Índigo - Transición natural desde violeta
-    '3rd': '#22D3EE', // Cyan - Color puente vibrante
-    '4th': '#FBD38D', // Ámbar - Conecta con color secundario
-    '5th': '#FDA4AF', // Rosa Coral - Complementario cálido
+    '1st': '#7C4DFF', // Deep Purple - Distinct from primary purple, more saturated
+    '2nd': '#2196F3', // Bright Blue - Classic educational color, high contrast
+    '3rd': '#009688', // Teal - Different from success cyan, more green-shifted
+    '4th': '#FF6F00', // Deep Orange - Darker than secondary amber, more red-shifted
+    '5th': '#E91E63', // Pink/Magenta - Distinct from error red, more vibrant
   },
   
   // Gender Colors - colores para géneros gramaticales
@@ -272,8 +273,10 @@ export const LATIN_COLORS = {
   // Drill Type Colors - colores para tipos de ejercicios
   drillTypes: {
     multipleChoice: '#BB86FC', // Púrpura del tema principal
-    spanishToLatin: '#03DAC6',  // Cyan del tema principal
-    fillInBlank: '#CF6679',     // Rojo/Rosa del tema
+    declension: '#A78BFA',     // Violeta para ejercicios de declinación
+    gender: '#03DAC6',         // Cyan para ejercicios de género
+    spanishToLatin: '#03DAC6', // Cyan del tema principal
+    fillInBlank: '#CF6679',    // Rojo/Rosa del tema
   },
   
   // Gradients - for special UI elements

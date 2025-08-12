@@ -22,8 +22,8 @@ import {
 
 // Importamos los iconos para hacer más visual cada tipo de ejercicio
 import QuizIcon from '@mui/icons-material/Quiz'; // Icono para opción múltiple
-import EditIcon from '@mui/icons-material/Edit'; // Icono para llenar espacios
-import KeyboardIcon from '@mui/icons-material/Keyboard'; // Icono para entrada directa
+import CategoryIcon from '@mui/icons-material/Category'; // Icono para declinación
+import EditIcon from '@mui/icons-material/Edit'; // Icono para escritura
 
 // Importamos el tipo DrillType desde nuestro archivo de tipos
 // Esto es mejor práctica que definirlo aquí porque evita problemas de importación
@@ -53,17 +53,17 @@ const drillTypeConfig: Record<DrillType, {
     icon: <QuizIcon />,
     color: LATIN_COLORS.drillTypes.multipleChoice // Color desde tema centralizado
   },
-  fillInBlank: {
-    label: 'Llenar Espacios',
-    description: 'Completa la palabra o frase que falta',
-    icon: <EditIcon />,
-    color: LATIN_COLORS.drillTypes.spanishToLatin // Color desde tema centralizado
+  multipleChoiceDeclension: {
+    label: 'Identificar Declinación',
+    description: 'Identifica la declinación correcta de la palabra',
+    icon: <CategoryIcon />,
+    color: LATIN_COLORS.drillTypes.declension // Color morado para declinación
   },
-  directInput: {
-    label: 'Entrada Directa',
-    description: 'Escribe la respuesta completa',
-    icon: <KeyboardIcon />,
-    color: LATIN_COLORS.drillTypes.fillInBlank // Color desde tema centralizado
+  typeLatinWord: {
+    label: 'Escribir en Latín',
+    description: 'Escribe la palabra latina completa con sus casos y atributos',
+    icon: <EditIcon />,
+    color: LATIN_COLORS.drillTypes.writing || '#4CAF50' // Verde para escritura, con fallback
   }
 };
 

@@ -1,13 +1,13 @@
 /**
- * PAGE CANVAS - Página de configuración de sesión de estudio
+ * PAGE CANVAS - Contenedor principal de páginas
  * 
- * Esta página muestra el flujo completo de configuración de sesión
- * con múltiples pasos y componentes trabajando juntos.
+ * Este componente actúa como el contenedor principal para las diferentes
+ * "páginas" de la aplicación. En un SPA, las páginas son componentes.
  * 
  * CONCEPTOS IMPORTANTES:
- * - Composición de páginas: Cómo los componentes trabajan juntos
- * - Flujo de datos: Cómo pasa la información entre componentes
- * - Layout y estructura: Cómo organizar componentes en una página
+ * - Single Page Application (SPA): Una sola página HTML, múltiples vistas
+ * - Page Components: Componentes que representan páginas completas
+ * - State Management: Manejo del estado de navegación entre páginas
  */
 
 import React, { useState } from 'react';
@@ -22,29 +22,38 @@ import {
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-// Importar nuestros componentes
+// Importar páginas y componentes
+import Homepage from '../homepage/Homepage';
 import ConfigStep1WordSelection from '../study-session/components/ConfigStep1WordSelection';
 import ConfigStep2DurationDrills from '../study-session/components/ConfigStep2DurationDrills';
 import StudySession from '../study-session/components/StudySession';
+
+// Importar constantes de espaciado - para usar alturas consistentes
+import { HEIGHTS } from '../study-session/constants/spacing';
 
 // Importar tipos
 import type { DrillType, SessionDuration } from '../study-session/types';
 import type { LatinWord } from '../study-session/components/WordCard';
 
 /**
- * PÁGINA DE CONFIGURACIÓN DE SESIÓN DE ESTUDIO
- * 
- * Esta página permite al usuario configurar una sesión de estudio:
- * 1. Seleccionar palabras para estudiar
- * 2. Elegir la duración, tipos de ejercicios y comenzar la sesión
+ * TIPOS DE PÁGINA DISPONIBLES
  */
-const StudySessionConfigPage: React.FC = () => {
-  // Estados para la configuración de la sesión
+type PageType = 'homepage' | 'study-config' | 'study-session';
+
+/**
+ * PAGE CANVAS - CONTENEDOR PRINCIPAL
+ * 
+ * Maneja la navegación entre diferentes páginas/vistas de la aplicación
+ */
+const PageCanvas: React.FC = () => {
+  // Estado de la página actual
+  const [currentPage, setCurrentPage] = useState<PageType>('homepage');
+  
+  // Estados para la configuración de la sesión de estudio
   const [selectedWords, setSelectedWords] = useState<LatinWord[]>([]);
   const [duration, setDuration] = useState<SessionDuration>(10);
   const [drillTypes, setDrillTypes] = useState<DrillType[]>(['multipleChoice']);
-  const [currentStep, setCurrentStep] = useState(0); // Para navegación por pasos
-  const [sessionStarted, setSessionStarted] = useState(false); // Estado para sesión activa
+  const [currentStep, setCurrentStep] = useState(0); // Para navegación por pasos en configuración
 
   // Pasos de configuración
   const steps = [
@@ -85,40 +94,75 @@ const StudySessionConfigPage: React.FC = () => {
   };
   
   /**
+   * MANEJADOR PARA IR A CONFIGURACIÓN DE SESIÓN
+   * Llamado desde la Homepage cuando el usuario quiere empezar
+   */
+  const handleStartConfiguration = () => {
+    setCurrentPage('study-config');
+    setCurrentStep(0); // Empezar desde el primer paso
+  };
+  
+  /**
    * MANEJADOR PARA INICIAR SESIÓN
+   * Llamado desde el último paso de configuración
    */
   const handleStartSession = () => {
-    setSessionStarted(true);
+    setCurrentPage('study-session');
   };
   
   /**
    * MANEJADOR PARA FINALIZAR SESIÓN
+   * Vuelve a la homepage al terminar
    */
   const handleEndSession = () => {
-    setSessionStarted(false);
-    setCurrentStep(0); // Volver al inicio
+    setCurrentPage('homepage');
+    setCurrentStep(0); // Resetear pasos de configuración
     // Opcionalmente, limpiar las selecciones
+    // setSelectedWords([]);
+    // setDuration(10);
+    // setDrillTypes(['multipleChoice']);
   };
 
-  // Si la sesión está activa, mostrar el componente StudySession
-  // IMPORTANTE: Mantener el mismo contenedor con altura definida
-  if (sessionStarted) {
+  /**
+   * RENDERIZAR PÁGINA SEGÚN EL ESTADO ACTUAL
+   */
+  
+  // PÁGINA 1: HOMEPAGE
+  if (currentPage === 'homepage') {
+    return (
+      <Box 
+        data-testid="homepage-wrapper"
+        sx={{ 
+          minHeight: 'calc(100vh - 110px)',
+          display: 'flex',
+          flexDirection: 'column'
+        }}
+      >
+        <Homepage onStartSession={handleStartConfiguration} />
+      </Box>
+    );
+  }
+  
+  // PÁGINA 2: SESIÓN DE ESTUDIO ACTIVA
+  if (currentPage === 'study-session') {
     return (
       <Box 
         data-testid="study-session-wrapper"
         sx={{ 
-          // Mantener las mismas alturas que en la configuración
+          // Usar alturas desde constantes - ahora más grandes para pantallas md/lg/xl
           minHeight: { 
             xs: 'calc(100vh - 110px)',  // Móvil: ajustado para llenar toda la pantalla
-            md: '600px',  // Desktop mediano: altura consistente
-            lg: '650px',  // Desktop grande: altura consistente
-            xl: '700px'   // Desktop XL: altura consistente
+            sm: `${HEIGHTS.studyContainer.sm}px`,  // Tablet: 650px
+            md: `${HEIGHTS.studyContainer.md}px`,  // Desktop mediano: 750px (aumentado)
+            lg: `${HEIGHTS.studyContainer.lg}px`,  // Desktop grande: 850px (aumentado)
+            xl: `${HEIGHTS.studyContainer.xl}px`   // Desktop XL: 950px (aumentado)
           },
           height: { 
             xs: 'calc(100vh - 110px)',  // Móvil: forzar altura completa exacta
-            md: '600px',  // Desktop mediano: altura fija
-            lg: '650px',  // Desktop grande: altura fija
-            xl: '700px'   // Desktop XL: altura fija
+            sm: `${HEIGHTS.studyContainer.sm}px`,  // Tablet: 650px
+            md: `${HEIGHTS.studyContainer.md}px`,  // Desktop mediano: 750px
+            lg: `${HEIGHTS.studyContainer.lg}px`,  // Desktop grande: 850px
+            xl: `${HEIGHTS.studyContainer.xl}px`   // Desktop XL: 950px
           },
           display: 'flex',
           flexDirection: 'column',
@@ -136,6 +180,8 @@ const StudySessionConfigPage: React.FC = () => {
       </Box>
     );
   }
+  
+  // PÁGINA 3: CONFIGURACIÓN DE SESIÓN DE ESTUDIO
 
   return (
     <Box 
@@ -146,15 +192,17 @@ const StudySessionConfigPage: React.FC = () => {
       pb: .5,  // Sin padding inferior
       minHeight: { 
         xs: 'calc(100vh - 110px)',  // Móvil: ajustado para llenar toda la pantalla
-        md: '600px',  // Desktop mediano: altura consistente
-        lg: '650px',  // Desktop grande: altura consistente
-        xl: '700px'   // Desktop XL: altura consistente
+        sm: `${HEIGHTS.studyContainer.sm}px`,  // Tablet: 650px
+        md: `${HEIGHTS.studyContainer.md}px`,  // Desktop mediano: 750px (aumentado)
+        lg: `${HEIGHTS.studyContainer.lg}px`,  // Desktop grande: 850px (aumentado)
+        xl: `${HEIGHTS.studyContainer.xl}px`   // Desktop XL: 950px (aumentado)
       },
       height: { 
         xs: 'calc(100vh - 110px)',  // Móvil: forzar altura completa exacta
-        md: '600px',  // Desktop mediano: altura fija
-        lg: '650px',  // Desktop grande: altura fija
-        xl: '700px'   // Desktop XL: altura fija
+        sm: `${HEIGHTS.studyContainer.sm}px`,  // Tablet: 650px
+        md: `${HEIGHTS.studyContainer.md}px`,  // Desktop mediano: 750px
+        lg: `${HEIGHTS.studyContainer.lg}px`,  // Desktop grande: 850px
+        xl: `${HEIGHTS.studyContainer.xl}px`   // Desktop XL: 950px
       },
       display: 'flex',
       flexDirection: 'column'
@@ -247,66 +295,6 @@ const StudySessionConfigPage: React.FC = () => {
   );
 };
 
-/**
- * PAGE CANVAS PRINCIPAL
- * 
- * Contenedor principal que muestra la configuración de sesión de estudio
- * sin tabs de navegación, enfocado únicamente en el flujo de configuración
- */
-const PageCanvas: React.FC = () => {
-  return (
-    // Contenedor externo que centra el contenido
-    <Box 
-      data-testid="page-canvas-wrapper" 
-      sx={{ 
-        // Centrar horizontalmente con margin auto
-        display: 'flex',
-        justifyContent: 'center',
-        py: { xs: 1, sm: 3, md: 4 },
-        px: { xs: 1, sm: 2, md: 3 },
-        minHeight: 'calc(100vh - 64px)', // Altura total menos el AppBar
-      }}
-    >
-      {/* Contenedor con ancho máximo para pantallas grandes */}
-      <Box
-        sx={{
-          width: '100%',
-          // Limitar el ancho máximo según el tamaño de pantalla
-          maxWidth: {
-            xs: '100%',     // Móvil: ancho completo
-            sm: '600px',    // Tablets pequeñas: 600px
-            md: '800px',    // Tablets: 800px
-            lg: '900px',    // Desktop: 900px
-            xl: '1000px'    // Desktop grande: 1000px
-          }
-        }}
-      >
-        {/* CONTENEDOR PRINCIPAL */}
-        <Paper 
-          data-testid="main-container" 
-          sx={{ 
-            width: '100%', 
-            p: { 
-              xs: 1,      // Móvil: padding pequeño
-              sm: 2,      // Tablet: padding medio
-              md: 3,      // Desktop: padding normal
-              lg: 4       // Desktop grande: padding amplio
-            },
-            // Sombra más sutil para pantallas grandes
-            boxShadow: {
-              xs: 1,
-              sm: 2,
-              md: 3,
-              lg: 4
-            }
-          }}
-        >
-          <StudySessionConfigPage />
-        </Paper>
-      </Box>
-    </Box>
-  );
-};
 
 // Exportar el componente
 export default PageCanvas;

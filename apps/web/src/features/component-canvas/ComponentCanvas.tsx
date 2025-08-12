@@ -43,6 +43,7 @@ import WordSelectionStep from '../study-session/components/WordSelectionStep';
 import MultipleChoiceOption from '../study-session/components/exercises/MultipleChoiceOption';
 import MultipleChoiceDrillCard from '../study-session/components/exercises/MultipleChoiceDrillCard';
 import MultipleChoiceDeclensionCard from '../study-session/components/exercises/MultipleChoiceDeclensionCard';
+import TypeLatinWordDrillCard from '../study-session/components/exercises/TypeLatinWordDrillCard';
 
 // Importar componentes de navegación y estudio
 import StudyWordsViewer from '../study-session/components/StudyWordsViewer';
@@ -185,6 +186,188 @@ const ComponentCanvas: React.FC = () => {
         {/* spacing={2} en móvil para menos espacio entre elementos */}
         <Grid container spacing={{ xs: 2, sm: 3 }}>
           
+          {/* COMPONENTE NUEVO: TypeLatinWordDrillCard - Ejercicio de escritura */}
+          <Grid item xs={12}>
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                p: { xs: 2, sm: 3 }, 
+                height: '100%',
+                bgcolor: 'background.paper'
+              }}
+            >
+              <Typography 
+                variant="h6" 
+                gutterBottom 
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
+              >
+                🆕 TypeLatinWordDrillCard - Escribir en Latín
+              </Typography>
+              
+              <Typography 
+                variant="body2" 
+                sx={{ mb: 2, color: 'text.secondary' }}
+              >
+                Ejercicio completo donde el usuario escribe la palabra latina. Se muestra
+                la traducción en español y debe escribir nominativo, genitivo, y seleccionar
+                género y declinación. Incluye navegación por tabulador optimizada.
+              </Typography>
+              
+              <Divider sx={{ mb: 3 }} />
+              
+              <Box sx={{ 
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%'
+              }}>
+                <TypeLatinWordDrillCard
+                  currentWord={sampleWords[0]} // Rosa - 1ª declinación
+                  onAnswer={(isCorrect) => {
+                    console.log('Respuesta escritura:', isCorrect ? 'Correcta' : 'Incorrecta');
+                  }}
+                  showLabels={true}
+                  compact={false}
+                />
+              </Box>
+            </Paper>
+          </Grid>
+          
+          {/* TEST: Nuevo feedback visual con bordes */}
+          <Grid item xs={12}>
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                p: { xs: 2, sm: 3 }, 
+                height: '100%',
+                bgcolor: 'background.paper'
+              }}
+            >
+              <Typography 
+                variant="h6" 
+                gutterBottom 
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
+              >
+                🆕 TEST: Feedback Visual con Bordes (MultipleChoice)
+              </Typography>
+              
+              <Typography 
+                variant="body2" 
+                sx={{ mb: 2, color: 'text.secondary' }}
+              >
+                Prueba del nuevo sistema de feedback que usa bordes de colores en lugar de cajas separadas.
+                Esto ahorra espacio vertical especialmente en móviles.
+              </Typography>
+              
+              <Divider sx={{ mb: 3 }} />
+              
+              <Grid container spacing={2}>
+                {/* Ejemplo sin responder */}
+                <Grid item xs={12} md={4}>
+                  <Typography variant="subtitle2" sx={{ mb: 1, color: 'text.secondary' }}>
+                    Sin responder:
+                  </Typography>
+                  <MultipleChoiceDrillCard
+                    currentWord={sampleWord}
+                    allWords={sampleWords}
+                    questionType="latinToSpanish"
+                    onAnswer={(isCorrect) => console.log('Test sin responder:', isCorrect)}
+                    numberOfOptions={4}
+                    showLabels={true}
+                  />
+                </Grid>
+                
+                {/* Ejemplo correcto */}
+                <Grid item xs={12} md={4}>
+                  <Typography variant="subtitle2" sx={{ mb: 1, color: 'text.secondary' }}>
+                    Respuesta correcta (borde verde + glow):
+                  </Typography>
+                  <Box sx={{ 
+                    // Simular estado respondido correcto
+                    '& [data-testid="base-drill-card"] .MuiPaper-root': {
+                      border: '3px solid',
+                      borderColor: 'success.main',
+                      boxShadow: '0 0 20px rgba(0, 229, 204, 0.3)'
+                    }
+                  }}>
+                    <MultipleChoiceDrillCard
+                      currentWord={sampleWord}
+                      allWords={sampleWords}
+                      questionType="latinToSpanish"
+                      onAnswer={(isCorrect) => console.log('Test correcto:', isCorrect)}
+                      numberOfOptions={4}
+                      showLabels={true}
+                    />
+                  </Box>
+                </Grid>
+                
+                {/* Ejemplo incorrecto */}
+                <Grid item xs={12} md={4}>
+                  <Typography variant="subtitle2" sx={{ mb: 1, color: 'text.secondary' }}>
+                    Respuesta incorrecta (borde rojo + glow):
+                  </Typography>
+                  <Box sx={{ 
+                    // Simular estado respondido incorrecto
+                    '& [data-testid="base-drill-card"] .MuiPaper-root': {
+                      border: '3px solid',
+                      borderColor: 'error.main',
+                      boxShadow: '0 0 20px rgba(207, 102, 121, 0.3)'
+                    }
+                  }}>
+                    <MultipleChoiceDrillCard
+                      currentWord={sampleWord}
+                      allWords={sampleWords}
+                      questionType="latinToSpanish"
+                      onAnswer={(isCorrect) => console.log('Test incorrecto:', isCorrect)}
+                      numberOfOptions={4}
+                      showLabels={true}
+                    />
+                  </Box>
+                </Grid>
+              </Grid>
+              
+              {/* Test con MultipleChoiceDeclensionCard */}
+              <Typography variant="subtitle1" sx={{ mt: 3, mb: 2, color: 'primary.main' }}>
+                Test con Declinación (incluye tips educativos):
+              </Typography>
+              
+              <Grid container spacing={2}>
+                {/* Ejemplo sin responder */}
+                <Grid item xs={12} md={6}>
+                  <Typography variant="subtitle2" sx={{ mb: 1, color: 'text.secondary' }}>
+                    Declinación sin responder:
+                  </Typography>
+                  <MultipleChoiceDeclensionCard
+                    currentWord={sampleWords[6]} // Rex, regis - 3ª declinación
+                    onAnswer={(isCorrect) => console.log('Declinación:', isCorrect)}
+                    showLabels={true}
+                    compact={false}
+                  />
+                </Grid>
+                
+                {/* Nota sobre el feedback educativo */}
+                <Grid item xs={12} md={6}>
+                  <Typography variant="subtitle2" sx={{ mb: 1, color: 'text.secondary' }}>
+                    Nota sobre el feedback:
+                  </Typography>
+                  <Paper sx={{ p: 2, bgcolor: 'background.default' }}>
+                    <Typography variant="body2" paragraph>
+                      La tarjeta de declinación mantiene su feedback educativo interno
+                      (la caja con explicación dentro del ejercicio) además del nuevo
+                      borde de color para feedback visual inmediato.
+                    </Typography>
+                    <Typography variant="body2">
+                      Esto combina lo mejor de ambos mundos:
+                    </Typography>
+                    <ul>
+                      <li>Borde de color = feedback visual inmediato</li>
+                      <li>Caja interna = explicación educativa detallada</li>
+                    </ul>
+                  </Paper>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+          
           {/* COMPONENTE NUEVO: DrillSessionComponent - Sesión completa de ejercicios */}
           <Grid item xs={12}>
             <Paper 
@@ -215,13 +398,18 @@ const ComponentCanvas: React.FC = () => {
               <Divider sx={{ mb: 3 }} />
               
               <Box sx={{ 
-                height: 500,
-                overflow: 'auto',  // Agregar scroll si el contenido es muy grande
-                position: 'relative'  // Para contener el contenido
+                height: { xs: 600, sm: 700, md: 850, lg: 950, xl: 1050 },  // Altura aumentada para mejor visibilidad en pantallas grandes
+                overflow: 'hidden',  // Sin scroll
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
+                bgcolor: 'background.default',  // Fondo para mejor contraste
+                borderRadius: 2,
+                p: { xs: 2, sm: 3 }  // Más padding para mejor espaciado
               }}>
                 <DrillSessionComponent
                   selectedWords={sampleWords}
-                  drillTypes={['multipleChoice', 'multipleChoiceDeclension']}
+                  drillTypes={['multipleChoice', 'multipleChoiceDeclension', 'typeLatinWord']}
                   sessionDurationMinutes={5}
                   onSessionEnd={(results) => {
                     console.log('Sesión terminada. Resultados:', results);
@@ -266,16 +454,20 @@ const ComponentCanvas: React.FC = () => {
               <Box sx={{ 
                 display: 'flex',
                 justifyContent: 'center',
-                overflow: 'auto',
-                p: 2
+                width: '100%',
+                overflow: 'hidden',
+                p: 1
               }}>
-                <MultipleChoiceDeclensionCard
-                  currentWord={sampleWords[6]} // Rex, regis - 3ª declinación
-                  onAnswer={(isCorrect) => {
-                    console.log(`Respuesta declinación: ${isCorrect ? 'Correcta' : 'Incorrecta'}`);
-                  }}
-                  showLabels={true}
-                />
+                <Box sx={{ width: '100%', maxWidth: 500 }}>
+                  <MultipleChoiceDeclensionCard
+                    currentWord={sampleWords[6]} // Rex, regis - 3ª declinación
+                    onAnswer={(isCorrect) => {
+                      console.log(`Respuesta declinación: ${isCorrect ? 'Correcta' : 'Incorrecta'}`);
+                    }}
+                    showLabels={true}
+                    compact={false}
+                  />
+                </Box>
               </Box>
             </Paper>
           </Grid>
@@ -308,7 +500,8 @@ const ComponentCanvas: React.FC = () => {
               <Divider sx={{ mb: 3 }} />
               
               <Box sx={{ 
-                overflow: 'auto',
+                width: '100%',
+                overflow: 'hidden',
                 p: 1
               }}>
                 <MultipleChoiceDeclensionCard
@@ -317,6 +510,7 @@ const ComponentCanvas: React.FC = () => {
                     console.log(`Respuesta declinación: ${isCorrect ? 'Correcta' : 'Incorrecta'}`);
                   }}
                   showLabels={true}
+                  compact={true}  // Compacto para md={6}
                 />
               </Box>
             </Paper>
@@ -350,7 +544,8 @@ const ComponentCanvas: React.FC = () => {
               <Divider sx={{ mb: 3 }} />
               
               <Box sx={{ 
-                overflow: 'auto',
+                width: '100%',
+                overflow: 'hidden',
                 p: 1
               }}>
                 <MultipleChoiceDeclensionCard
@@ -359,6 +554,7 @@ const ComponentCanvas: React.FC = () => {
                     console.log(`Respuesta declinación: ${isCorrect ? 'Correcta' : 'Incorrecta'}`);
                   }}
                   showLabels={true}
+                  compact={true}  // Compacto para md={6}
                 />
               </Box>
             </Paper>
@@ -1067,11 +1263,11 @@ const ComponentCanvas: React.FC = () => {
               
               <Divider sx={{ mb: 3 }} />
               
-              <Box sx={{ height: 700 }}>
+              <Box sx={{ height: { xs: 700, sm: 750, md: 850, lg: 950, xl: 1050 } }}>
                 <StudySession
                   selectedWords={sampleWords}
                   duration={5}
-                  drillTypes={['multipleChoice', 'fillInBlank']}
+                  drillTypes={['multipleChoice', 'multipleChoiceDeclension', 'typeLatinWord']}
                   onEndSession={() => console.log('Sesión finalizada')}
                 />
               </Box>

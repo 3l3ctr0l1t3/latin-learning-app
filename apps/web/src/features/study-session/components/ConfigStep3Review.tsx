@@ -43,9 +43,7 @@ const ConfigStep3Review: React.FC<ConfigStep3ReviewProps> = ({
    */
   const drillTypeLabels: Record<DrillType, string> = {
     multipleChoice: 'Opción Múltiple',
-    fillInBlank: 'Completar Espacios',
-    directInput: 'Entrada Directa',
-    // flashcards: 'Tarjetas', // Removed - not a valid DrillType
+    multipleChoiceDeclension: 'Identificar Declinación',
   };
 
   return (

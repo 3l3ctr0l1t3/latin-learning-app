@@ -11,7 +11,7 @@
  * - Visual Feedback: Colores y animaciones para indicar resultado
  */
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Card,
@@ -156,7 +156,7 @@ const MultipleChoiceDeclension: React.FC<MultipleChoiceDeclensionProps> = ({
   /**
    * DETERMINAR SI UN BOTÓN DEBE ESTAR DESHABILITADO
    */
-  const isButtonDisabled = (declension: string) => {
+  const isButtonDisabled = (_declension: string) => {
     return hasAnswered || disabled;
   };
   
@@ -355,7 +355,7 @@ const MultipleChoiceDeclension: React.FC<MultipleChoiceDeclensionProps> = ({
               {/* Explicación */}
               <Typography variant="body2" sx={{ color: 'text.primary' }}>
                 <strong>{word.nominative}</strong> pertenece a la{' '}
-                <strong>{DECLENSION_INFO[correctDeclension].label}</strong>.
+                <strong>{DECLENSION_INFO[correctDeclension as keyof typeof DECLENSION_INFO].label}</strong>.
               </Typography>
               
               {/* Pista sobre el genitivo */}
@@ -368,12 +368,12 @@ const MultipleChoiceDeclension: React.FC<MultipleChoiceDeclensionProps> = ({
                    correctDeclension === '4th' ? '-us' :
                    '-ei'}
                 </strong>
-                , característico de la {DECLENSION_INFO[correctDeclension].label}.
+                , característico de la {DECLENSION_INFO[correctDeclension as keyof typeof DECLENSION_INFO].label}.
               </Typography>
               
               {/* Más ejemplos */}
               <Typography variant="caption" sx={{ display: 'block', mt: 1, fontStyle: 'italic' }}>
-                Otros ejemplos: {DECLENSION_INFO[correctDeclension].examples}
+                Otros ejemplos: {DECLENSION_INFO[correctDeclension as keyof typeof DECLENSION_INFO].examples}
               </Typography>
             </Box>
           </Fade>

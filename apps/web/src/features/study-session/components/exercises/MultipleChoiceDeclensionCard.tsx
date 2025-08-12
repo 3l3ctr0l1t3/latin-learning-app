@@ -23,9 +23,9 @@ import {
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
-import SchoolIcon from '@mui/icons-material/School';
 import type { LatinWord } from '../WordCard';
 import BaseDrillCard from './BaseDrillCard';
+import { LATIN_COLORS } from '../../../../config/theme';
 
 /**
  * PROPS DEL COMPONENTE
@@ -45,44 +45,60 @@ interface MultipleChoiceDeclensionCardProps {
 }
 
 /**
- * INFORMACIÓN SOBRE LAS DECLINACIONES (versión compacta)
+ * INFORMACIÓN SOBRE LAS DECLINACIONES (versión expandida con más tips)
  * Usa el nuevo sistema de colores armonizado
  */
 const DECLENSION_INFO = {
   '1st': {
     label: '1ª',
-    fullLabel: '1ª Declinación',
-    color: '#A78BFA',  // Violeta - Análogo al púrpura principal
+    fullLabel: 'Primera Declinación',
+    color: LATIN_COLORS.declensions['1st'],  // Deep Purple from theme
     hint: '-ae',
-    example: 'rosa'
+    example: 'rosa, rosae',
+    // Tips educativos expandidos
+    gender: 'Mayoría femeninas (excepciones: poeta, nauta, agricola)',
+    pattern: 'Nom: -a, Gen: -ae',
+    mnemonic: 'Termina en -A como RosA, AquA'
   },
   '2nd': {
     label: '2ª',
-    fullLabel: '2ª Declinación', 
-    color: '#818CF8',  // Índigo - Transición desde violeta
+    fullLabel: 'Segunda Declinación', 
+    color: LATIN_COLORS.declensions['2nd'],  // Bright Blue from theme
     hint: '-i',
-    example: 'dominus'
+    example: 'dominus, domini',
+    gender: 'Masculinos (-us/-er) y Neutros (-um)',
+    pattern: 'Masc: -us/-er → -i, Neut: -um → -i',
+    mnemonic: 'DominUS dominI, templUM templI'
   },
   '3rd': {
     label: '3ª',
-    fullLabel: '3ª Declinación',
-    color: '#22D3EE',  // Cyan - Color puente vibrante
+    fullLabel: 'Tercera Declinación',
+    color: LATIN_COLORS.declensions['3rd'],  // Teal from theme
     hint: '-is',
-    example: 'rex'
+    example: 'rex, regis',
+    gender: 'Todos los géneros posibles',
+    pattern: 'Variado → Gen: -is (siempre)',
+    mnemonic: 'La más variada, pero Gen siempre en -IS'
   },
   '4th': {
     label: '4ª',
-    fullLabel: '4ª Declinación',
-    color: '#FBD38D',  // Ámbar - Conecta con secundario
+    fullLabel: 'Cuarta Declinación',
+    color: LATIN_COLORS.declensions['4th'],  // Deep Orange from theme
     hint: '-us',
-    example: 'manus'
+    example: 'manus, manus',
+    gender: 'Mayoría masculinos, algunas fem (manus, domus)',
+    pattern: 'Nom: -us, Gen: -us (¡igual!)',
+    mnemonic: 'ManUS manUS - ¡se repite!'
   },
   '5th': {
     label: '5ª',
-    fullLabel: '5ª Declinación',
-    color: '#FDA4AF',  // Rosa Coral - Complementario cálido
+    fullLabel: 'Quinta Declinación',
+    color: LATIN_COLORS.declensions['5th'],  // Pink/Magenta from theme
     hint: '-ei',
-    example: 'dies'
+    example: 'dies, diei',
+    gender: 'Mayoría femeninas (excepto dies)',
+    pattern: 'Nom: -es, Gen: -ei',
+    mnemonic: 'DiES diEI, rES rEI - muy pocas palabras'
   }
 };
 
@@ -137,26 +153,29 @@ const MultipleChoiceDeclensionCard: React.FC<MultipleChoiceDeclensionCardProps> 
    * OBTENER COLOR DE BOTÓN
    */
   const getButtonColor = (declension: string) => {
+    const declensionColor = DECLENSION_INFO[declension as keyof typeof DECLENSION_INFO].color;
+    
     if (!hasAnswered) {
-      return DECLENSION_INFO[declension as keyof typeof DECLENSION_INFO].color;
+      return declensionColor;
     }
     
+    // Después de responder, mantener colores de declinación pero con diferente intensidad
     if (declension === correctDeclension) {
-      return '#4CAF50';
+      return declensionColor;  // Color completo para la respuesta correcta
     }
     
     if (declension === selectedDeclension && !isCorrect) {
-      return '#F44336';
+      return declensionColor;  // Mantener color pero se verá con opacity
     }
     
-    return '#666666';
+    return '#666666';  // Gris para las no seleccionadas
   };
   
   /**
    * CONTENIDO DEL EJERCICIO
    */
   const exerciseContent = (
-    <Box>
+    <Box sx={{ width: '100%', overflow: 'hidden' }}>
       {/* PALABRA A IDENTIFICAR */}
       <Box 
         sx={{ 
@@ -165,7 +184,9 @@ const MultipleChoiceDeclensionCard: React.FC<MultipleChoiceDeclensionCardProps> 
           px: 2,
           bgcolor: 'background.default',
           borderRadius: 2,
-          mb: isCompact ? 2 : 3
+          mb: isCompact ? 2 : 3,
+          mx: 'auto',
+          maxWidth: '100%'
         }}
       >
         {/* Nominativo */}
@@ -208,8 +229,10 @@ const MultipleChoiceDeclensionCard: React.FC<MultipleChoiceDeclensionCardProps> 
       {/* OPCIONES EN GRID PARA MÓVIL */}
       <Box sx={{ 
         display: 'grid',
-        gridTemplateColumns: isCompact ? 'repeat(5, 1fr)' : 'repeat(5, 1fr)',
-        gap: isCompact ? 1 : 1.5
+        gridTemplateColumns: 'repeat(5, minmax(0, 1fr))',  // minmax prevents overflow
+        gap: isCompact ? 0.5 : 1,
+        width: '100%',
+        px: isCompact ? 0.5 : 1  // Small padding to prevent edge touching
       }}>
         {declensionOptions.map((declension) => {
           const info = DECLENSION_INFO[declension];
@@ -224,13 +247,14 @@ const MultipleChoiceDeclensionCard: React.FC<MultipleChoiceDeclensionCardProps> 
               onClick={() => handleSelectDeclension(declension)}
               disabled={hasAnswered}
               sx={{
-                minWidth: isCompact ? 50 : 80,
-                height: isCompact ? 60 : 80,
+                width: '100%',  // Full width of grid cell
+                minWidth: 0,    // Override MUI default
+                height: isCompact ? 56 : 72,
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                p: isCompact ? 0.5 : 1,
+                p: isCompact ? 0.25 : 0.5,
                 borderColor: buttonColor,
                 borderWidth: 2,
                 color: isSelected || (hasAnswered && isCorrectAnswer) ? '#fff' : buttonColor,
@@ -251,7 +275,12 @@ const MultipleChoiceDeclensionCard: React.FC<MultipleChoiceDeclensionCardProps> 
                   bgcolor: hasAnswered && (isSelected || isCorrectAnswer) 
                     ? buttonColor 
                     : 'transparent',
-                  opacity: hasAnswered && (isSelected || isCorrectAnswer) ? 1 : 0.6
+                  // Diferenciar opacidad: correcta = 1, incorrecta seleccionada = 0.7, otras = 0.4
+                  opacity: hasAnswered ? (
+                    isCorrectAnswer ? 1 : 
+                    isSelected ? 0.7 : 
+                    0.4
+                  ) : 0.6
                 }
               }}
               data-testid={`declension-option-${declension}`}
@@ -295,19 +324,53 @@ const MultipleChoiceDeclensionCard: React.FC<MultipleChoiceDeclensionCardProps> 
         <Box 
           sx={{ 
             mt: 2,
-            p: isCompact ? 1.5 : 2,
+            mx: isCompact ? 0 : 1,  // Margin horizontal para no tocar bordes
+            p: isCompact ? 1 : 1.5,
             borderRadius: 1,
-            bgcolor: alpha(isCorrect ? '#4CAF50' : '#F44336', 0.1),
-            border: 1,
-            borderColor: isCorrect ? '#4CAF50' : '#F44336'
+            bgcolor: alpha(DECLENSION_INFO[correctDeclension as keyof typeof DECLENSION_INFO].color, 0.15),  // Usar color de la declinación
+            border: 2,
+            borderColor: DECLENSION_INFO[correctDeclension as keyof typeof DECLENSION_INFO].color,  // Borde del color de la declinación
+            width: 'calc(100% - 16px)',  // Compensar por márgenes
+            maxWidth: '100%',
+            boxSizing: 'border-box'
           }}
         >
-          <Typography variant="body2" sx={{ color: 'text.primary' }}>
-            {currentWord.nominative} → {DECLENSION_INFO[correctDeclension].fullLabel}
+          {/* Indicador de resultado */}
+          <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 0.5 }}>
+            {isCorrect ? (
+              <CheckCircleIcon sx={{ color: DECLENSION_INFO[correctDeclension as keyof typeof DECLENSION_INFO].color, fontSize: 20 }} />
+            ) : (
+              <CancelIcon sx={{ color: DECLENSION_INFO[correctDeclension as keyof typeof DECLENSION_INFO].color, fontSize: 20 }} />
+            )}
+            <Typography 
+              variant="body2" 
+              sx={{ 
+                color: DECLENSION_INFO[correctDeclension as keyof typeof DECLENSION_INFO].color,
+                fontWeight: 'bold' 
+              }}
+            >
+              {isCorrect ? '¡Correcto!' : 'Respuesta incorrecta'}
+            </Typography>
+          </Stack>
+          
+          {/* Información principal */}
+          <Typography variant="body2" sx={{ color: 'text.primary', mb: 0.5 }}>
+            <strong>{currentWord.nominative}</strong> → {DECLENSION_INFO[correctDeclension as keyof typeof DECLENSION_INFO].fullLabel}
           </Typography>
-          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-            Genitivo en {DECLENSION_INFO[correctDeclension].hint} 
-            (ej: {DECLENSION_INFO[correctDeclension].example})
+          
+          {/* Patrón de la declinación */}
+          <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 0.5 }}>
+            📖 {DECLENSION_INFO[correctDeclension as keyof typeof DECLENSION_INFO].pattern}
+          </Typography>
+          
+          {/* Información de género */}
+          <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 0.5 }}>
+            ⚡ {DECLENSION_INFO[correctDeclension as keyof typeof DECLENSION_INFO].gender}
+          </Typography>
+          
+          {/* Truco mnemotécnico */}
+          <Typography variant="caption" sx={{ color: 'primary.main', display: 'block', fontWeight: 'medium' }}>
+            💡 {DECLENSION_INFO[correctDeclension as keyof typeof DECLENSION_INFO].mnemonic}
           </Typography>
         </Box>
       )}
@@ -319,8 +382,6 @@ const MultipleChoiceDeclensionCard: React.FC<MultipleChoiceDeclensionCardProps> 
    */
   return (
     <BaseDrillCard
-      icon={<SchoolIcon color="primary" />}
-      exerciseType="Declinación"
       title="Identifica la Declinación"
       subtitle="¿A qué declinación pertenece esta palabra?"
       isAnswered={hasAnswered}
@@ -330,7 +391,7 @@ const MultipleChoiceDeclensionCard: React.FC<MultipleChoiceDeclensionCardProps> 
       feedbackContent={
         hasAnswered && !showLabels && (
           <Typography variant="caption">
-            {currentWord.nominative} → {DECLENSION_INFO[correctDeclension].fullLabel}
+            {currentWord.nominative} → {DECLENSION_INFO[correctDeclension as keyof typeof DECLENSION_INFO].fullLabel}
           </Typography>
         )
       }

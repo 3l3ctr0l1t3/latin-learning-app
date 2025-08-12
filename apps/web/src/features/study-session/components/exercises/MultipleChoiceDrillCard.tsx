@@ -15,9 +15,6 @@ import BaseDrillCard from './BaseDrillCard';
 import MultipleChoiceExercise from './MultipleChoiceExercise';
 import type { LatinWord } from '../WordCard';
 import type { QuestionType } from './MultipleChoiceExercise';
-import TranslateIcon from '@mui/icons-material/Translate';
-import SchoolIcon from '@mui/icons-material/School';
-import QuizIcon from '@mui/icons-material/Quiz';
 
 /**
  * PROPS ESPECÍFICAS DE MULTIPLE CHOICE
@@ -70,32 +67,24 @@ const MultipleChoiceDrillCard: React.FC<MultipleChoiceDrillCardProps> = ({
     switch (questionType) {
       case 'latinToSpanish':
         return {
-          icon: <TranslateIcon />,
-          type: 'Latín → Español',
           title: 'Traducción al Español',
           subtitle: 'Selecciona la traducción correcta'
         };
       
       case 'spanishToLatin':
         return {
-          icon: <SchoolIcon />,
-          type: 'Español → Latín',
           title: 'Traducción al Latín',
           subtitle: 'Selecciona la palabra latina correcta'
         };
 
       case 'declension':
         return {
-          icon: <QuizIcon />,
-          type: 'Declinación',
           title: 'Identificar Declinación',
           subtitle: 'Selecciona la declinación correcta'
         };
       
       default:
         return {
-          icon: <TranslateIcon />,
-          type: 'Latín → Español',
           title: 'Traducción al Español',
           subtitle: 'Selecciona la traducción correcta'
         };
@@ -112,8 +101,6 @@ const MultipleChoiceDrillCard: React.FC<MultipleChoiceDrillCardProps> = ({
       onAnswer(correct);
     }
   };
-  
-  // handleNext removed - navigation now handled by DrillSessionComponent
   
   const exerciseInfo = getExerciseInfo();
   
@@ -133,8 +120,6 @@ const MultipleChoiceDrillCard: React.FC<MultipleChoiceDrillCardProps> = ({
       // Props del encabezado
       title={exerciseInfo.title}
       subtitle={exerciseInfo.subtitle}
-      icon={exerciseInfo.icon}
-      exerciseType={exerciseInfo.type}
       
       // Estado del ejercicio
       isAnswered={isAnswered}
@@ -154,18 +139,6 @@ const MultipleChoiceDrillCard: React.FC<MultipleChoiceDrillCardProps> = ({
           numberOfOptions={numberOfOptions}
           showLabels={showLabels}
         />
-      }
-      
-      // Contenido de feedback adicional (opcional)
-      feedbackContent={
-        isAnswered && (
-          <span style={{ fontSize: '0.9rem', opacity: 0.8 }}>
-            {isCorrect 
-              ? `"${currentWord.nominative}" significa "${currentWord.spanishTranslation}"`
-              : `La respuesta correcta era: ${currentWord.spanishTranslation}`
-            }
-          </span>
-        )
       }
     />
   );

@@ -15,8 +15,6 @@ import {
   Paper,
   Box,
   Typography,
-  Stack,
-  Chip,
   Divider,
   Fade
 } from '@mui/material';
@@ -30,16 +28,13 @@ export interface BaseDrillCardProps {
   // Información del ejercicio
   title: string;                         // Título del ejercicio
   subtitle: string;                      // Instrucción
-  icon: React.ReactNode;                 // Icono del tipo
-  exerciseType: string;                  // Etiqueta del tipo
-  
+
   // Estado del ejercicio
   isAnswered?: boolean;                  // Si ya se respondió
   isCorrect?: boolean;                   // Si la respuesta fue correcta
   feedbackMessage?: string;              // Mensaje de feedback personalizado
   
-  // Callbacks (removed onNext - handled by DrillSessionComponent)
-  
+
   // Configuración visual
   compact?: boolean;                     // Versión compacta
   maxWidth?: any;                        // Ancho máximo
@@ -55,7 +50,6 @@ export interface BaseDrillCardProps {
  * BASE DRILL CARD - COMPONENTE BASE
  * 
  * Proporciona toda la estructura común para los drill cards:
- * - Encabezado con icono y tipo
  * - Área de contenido para el ejercicio
  * - Sección de feedback
  * - Botón de siguiente
@@ -66,26 +60,14 @@ export interface BaseDrillCardProps {
 const BaseDrillCard: React.FC<BaseDrillCardProps> = ({
   title,
   subtitle,
-  icon,
-  exerciseType,
   isAnswered = false,
   isCorrect = false,
-  feedbackMessage,
+  // feedbackMessage,  // Comentado - no se usa actualmente
   compact = false,
   maxWidth = { xs: '100%', sm: 450, md: 500, lg: 550, xl: 600 },
   exerciseContent,
   feedbackContent
 }) => {
-  /**
-   * OBTENER MENSAJE DE FEEDBACK POR DEFECTO
-   */
-  const getDefaultFeedback = () => {
-    if (feedbackMessage) return feedbackMessage;
-    return isCorrect 
-      ? '¡Correcto! 🎉' 
-      : 'Incorrecto. Intenta con la siguiente palabra.';
-  };
-
   return (
     <Box 
       sx={{ 
@@ -101,9 +83,17 @@ const BaseDrillCard: React.FC<BaseDrillCardProps> = ({
           p: compact ? SPACING.cardPaddingCompact : SPACING.cardPadding,
           borderRadius: RADIUS.large,
           bgcolor: 'background.paper',
-          border: '1px solid',
-          borderColor: 'divider',
+          border: isAnswered ? '3px solid' : '1px solid',  // Borde más grueso cuando se responde
+          borderColor: isAnswered 
+            ? (isCorrect ? 'success.main' : 'error.main')  // Verde para correcto, rojo para incorrecto
+            : 'divider',  // Borde normal antes de responder
           transition: 'all 0.3s ease',
+          // Añadir un sutil glow cuando se responde
+          boxShadow: isAnswered 
+            ? (isCorrect 
+              ? '0 0 20px rgba(0, 229, 204, 0.3)'  // Glow cyan para correcto
+              : '0 0 20px rgba(207, 102, 121, 0.3)')  // Glow rojo para incorrecto
+            : undefined,
         }}
       >
         {/* ENCABEZADO COMÚN PARA TODOS LOS DRILL CARDS */}
@@ -114,22 +104,6 @@ const BaseDrillCard: React.FC<BaseDrillCardProps> = ({
           }} 
           data-testid="drill-card-header"
         >
-          {/* Tipo de ejercicio con icono */}
-          <Stack 
-            direction="row" 
-            alignItems="center" 
-            spacing={1} 
-            justifyContent="center"
-            sx={{ mb: 0.5 }}
-          >
-            {icon}
-            <Chip 
-              label={exerciseType}
-              color="secondary"
-              size="small"
-            />
-          </Stack>
-          
           {/* Título principal */}
           <Typography 
             variant={compact ? "body1" : "h6"}
@@ -161,45 +135,23 @@ const BaseDrillCard: React.FC<BaseDrillCardProps> = ({
           {exerciseContent as any}
         </Box>
         
-        {/* SECCIÓN DE FEEDBACK Y ACCIONES - COMÚN */}
-        {isAnswered && (
-          <>
-            {/* Mensaje de feedback */}
-            <Fade in timeout={300}>
-              <Box 
-                sx={{ 
-                  mt: SPACING.feedbackMargin.mt,
-                  mb: SPACING.feedbackMargin.mb,
-                  textAlign: 'center',
-                  p: SPACING.cardPaddingCompact.xs,
-                  borderRadius: RADIUS.small,
-                  bgcolor: isCorrect 
-                    ? 'rgba(0, 229, 204, 0.1)'  // Cyan transparente
-                    : 'rgba(207, 102, 121, 0.1)',  // Soft red transparente
-                  border: '1px solid',
-                  borderColor: isCorrect ? 'success.main' : 'error.main'
-                }}
-                data-testid="feedback-message"
-              >
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: isCorrect ? 'success.main' : 'error.main',
-                    fontWeight: 'medium'
-                  }}
-                >
-                  {getDefaultFeedback()}
-                </Typography>
-                
-                {/* Contenido adicional de feedback si existe */}
-                {feedbackContent && (
-                  <Box sx={{ mt: 1 }}>
-                    {feedbackContent as any}
-                  </Box>
-                )}
-              </Box>
-            </Fade>
-          </>
+        {/* CONTENIDO DE FEEDBACK ADICIONAL - Solo si se proporciona */}
+        {/* Este es para tips educativos, explicaciones, etc. */}
+        {isAnswered && feedbackContent && (
+          <Fade in timeout={300}>
+            <Box sx={{ 
+              mt: SPACING.sectionGap,
+              textAlign: 'center',
+              // Estilo opcional para hacer el feedback más visible
+              p: { xs: 1, sm: 1.5 },
+              bgcolor: isCorrect 
+                ? 'rgba(0, 229, 204, 0.05)'  // Fondo muy sutil cyan para correcto
+                : 'rgba(207, 102, 121, 0.05)',  // Fondo muy sutil rojo para incorrecto
+              borderRadius: RADIUS.small,
+            }}>
+              {feedbackContent as any}
+            </Box>
+          </Fade>
         )}
       </Paper>
     </Box>
@@ -220,8 +172,6 @@ export default BaseDrillCard;
  *     <BaseDrillCard
  *       title="Mi Ejercicio"
  *       subtitle="Instrucciones"
- *       icon={<MyIcon />}
- *       exerciseType="Tipo"
  *       exerciseContent={
  *         // Aquí va el contenido específico del ejercicio
  *         <MyExerciseComponent {...props} />
