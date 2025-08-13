@@ -15,7 +15,6 @@ import {
   Paper,
   Box,
   Typography,
-  Stack,
   Chip,
   Divider
 } from '@mui/material';
@@ -64,7 +63,10 @@ const DrillCard: React.FC<DrillCardProps> = ({
       sx={{ 
         width: '100%', 
         maxWidth, 
-        mx: 'auto' 
+        mx: 'auto',
+        height: '100%',  // Ocupar toda la altura disponible
+        display: 'flex',  // Usar flexbox
+        flexDirection: 'column'  // Dirección vertical
       }} 
       data-testid="drill-card"
     >
@@ -78,6 +80,10 @@ const DrillCard: React.FC<DrillCardProps> = ({
           borderColor: 'divider',
           // Transición suave para efectos hover si se necesitan
           transition: 'all 0.3s ease',
+          flex: 1,  // Permitir que crezca
+          display: 'flex',  // Usar flexbox
+          flexDirection: 'column',  // Dirección vertical
+          overflow: 'hidden'  // Prevenir scroll
         }}
       >
         {/* ENCABEZADO DEL EJERCICIO */}
@@ -92,14 +98,15 @@ const DrillCard: React.FC<DrillCardProps> = ({
             >
               {/* Tipo de ejercicio con icono */}
               {(icon || exerciseType) && (
-                <Stack 
-                  direction="row" 
-                  alignItems="center" 
-                  spacing={1} 
-                  justifyContent="center"
-                  sx={{ mb: 0.5 }}
-                >
-                  {icon}
+                <Box sx={{ 
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 1,
+                  justifyContent: 'center',
+                  mb: 0.5
+                }}>
+                  {icon && <>{icon}</>}
                   {exerciseType && (
                     <Chip 
                       label={exerciseType}
@@ -107,7 +114,7 @@ const DrillCard: React.FC<DrillCardProps> = ({
                       size="small"
                     />
                   )}
-                </Stack>
+                </Box>
               )}
               
               {/* Título principal */}
@@ -145,7 +152,12 @@ const DrillCard: React.FC<DrillCardProps> = ({
         {/* CONTENIDO DEL EJERCICIO */}
         <Box 
           sx={{ 
-            p: noPadding ? 0 : undefined 
+            p: noPadding ? 0 : undefined,
+            flex: 1,  // Permitir que crezca y ocupe espacio disponible
+            display: 'flex',  // Usar flexbox
+            flexDirection: 'column',  // Dirección vertical
+            overflow: 'auto',  // Permitir scroll solo si es necesario
+            minHeight: 0  // Importante para que flex funcione correctamente
           }}
           data-testid="drill-card-content"
         >

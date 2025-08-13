@@ -75,7 +75,10 @@ const BaseDrillCard: React.FC<BaseDrillCardProps> = ({
       sx={{ 
         width: '100%', 
         maxWidth, 
-        mx: 'auto' 
+        mx: 'auto',
+        height: '100%',  // Ocupar toda la altura disponible
+        display: 'flex',  // Usar flexbox
+        flexDirection: 'column'  // Dirección vertical
       }} 
       data-testid="base-drill-card"
     >
@@ -85,6 +88,10 @@ const BaseDrillCard: React.FC<BaseDrillCardProps> = ({
           p: compact ? SPACING.cardPaddingCompact : SPACING.cardPadding,
           borderRadius: RADIUS.large,
           bgcolor: 'background.paper',
+          flex: 1,  // Permitir que el Paper crezca
+          display: 'flex',  // Usar flexbox dentro del Paper
+          flexDirection: 'column',  // Dirección vertical
+          overflow: 'hidden',  // Prevenir overflow
           border: isAnswered ? '3px solid' : '1px solid',  // Borde más grueso cuando se responde
           borderColor: isAnswered 
             ? (isCorrect ? 'success.main' : 'error.main')  // Verde para correcto, rojo para incorrecto
@@ -137,7 +144,16 @@ const BaseDrillCard: React.FC<BaseDrillCardProps> = ({
         )}
         
         {/* CONTENIDO DEL EJERCICIO - ESPECÍFICO DE CADA TIPO */}
-        <Box data-testid="drill-card-exercise-content">
+        <Box 
+          data-testid="drill-card-exercise-content"
+          sx={{
+            flex: 1,  // Permitir que el contenido crezca y ocupe espacio disponible
+            display: 'flex',  // Usar flexbox
+            flexDirection: 'column',  // Dirección vertical
+            overflow: 'hidden',  // Prevenir scroll - el contenido debe ajustarse
+            minHeight: 0  // Importante para que flex funcione correctamente
+          }}
+        >
           {exerciseContent as any}
         </Box>
         

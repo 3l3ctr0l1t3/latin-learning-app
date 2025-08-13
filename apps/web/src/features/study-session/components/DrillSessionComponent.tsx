@@ -428,7 +428,7 @@ const DrillSessionComponent: React.FC<DrillSessionComponentProps> = ({
                   display: 'flex',
                   flexDirection: 'column',
                   height: '100%',
-                  overflow: 'auto'  // Scroll solo si es necesario
+                  overflow: 'hidden'  // Prevenir scroll - el contenido debe ajustarse
                 }
               }
             }}>

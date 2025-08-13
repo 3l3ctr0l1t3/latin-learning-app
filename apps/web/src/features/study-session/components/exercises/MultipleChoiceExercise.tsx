@@ -15,7 +15,6 @@ import {
   Box,
   Typography,
   Fade,
-  Stack,
   Chip,
   Divider
 } from '@mui/material';
@@ -27,9 +26,9 @@ import { RADIUS } from '../../constants/spacing';
 
 // Espaciados compactos para que todo quepa sin scroll
 const COMPACT_SPACING = {
-  sectionGap: { xs: 0.75, sm: 1, md: 1.25 },     // Reducido para ahorrar espacio vertical
-  optionGap: { xs: 0.5, sm: 0.75, md: 1 },       // Menos espacio entre opciones
-  cardPadding: { xs: 1, sm: 1.25, md: 1.5 },     // Padding reducido
+  sectionGap: { xs: 0.5, sm: 0.75, md: 1 },      // Más reducido para ahorrar espacio vertical
+  optionGap: { xs: 0.25, sm: 0.5, md: 0.75 },    // Mínimo espacio entre opciones
+  cardPadding: { xs: 0.75, sm: 1, md: 1.25 },    // Padding más reducido
 };
 
 /**
@@ -283,9 +282,19 @@ const MultipleChoiceExercise: React.FC<MultipleChoiceExerciseProps> = ({
   }, [currentWord, questionType]);
 
   return (
-    <Box sx={{ width: '100%' }} data-testid="multiple-choice-exercise">
+    // Contenedor principal con flexbox para prevenir scroll
+    <Box sx={{ 
+      width: '100%',
+      height: '100%',  // Ocupar toda la altura disponible
+      display: 'flex',  // Usar flexbox
+      flexDirection: 'column',  // Dirección vertical
+      overflow: 'hidden'  // Prevenir scroll
+    }} data-testid="multiple-choice-exercise">
       {/* PALABRA O CONCEPTO A PREGUNTAR */}
-      <Box sx={{ mb: COMPACT_SPACING.sectionGap }} data-testid="question-card">
+      <Box sx={{ 
+        flex: '0 1 auto',  // Puede encoger si es necesario para dar espacio a las opciones
+        mb: COMPACT_SPACING.sectionGap 
+      }} data-testid="question-card">
         {questionType === 'spanishToLatin' ? (
           // Para Español → Latín, mostrar el español en una tarjeta simple
             <Box
@@ -361,13 +370,15 @@ const MultipleChoiceExercise: React.FC<MultipleChoiceExerciseProps> = ({
               {currentWord.nominative}, {currentWord.genitive}
             </Typography>
             
-            {/* Información gramatical compacta */}
-            <Stack 
-              direction="row" 
-              spacing={1.5} 
-              justifyContent="center" 
-              alignItems="center"
-            >
+            {/* Información gramatical compacta - Usando flexbox */}
+            <Box sx={{ 
+              display: 'flex',
+              flexDirection: 'row',
+              gap: 1.5,
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexShrink: 0  // No permitir que se encoja
+            }}>
               <Chip 
                 label={`${currentWord.declension === '1st' ? '1ª' : currentWord.declension === '2nd' ? '2ª' : currentWord.declension === '3rd' ? '3ª' : currentWord.declension === '4th' ? '4ª' : '5ª'} Declinación`}
                 size="small"
@@ -387,18 +398,35 @@ const MultipleChoiceExercise: React.FC<MultipleChoiceExerciseProps> = ({
                   fontWeight: 'medium'
                 }}
               />
-            </Stack>
+            </Box>
           </Box>
         )}
       </Box>
 
-      <Divider sx={{ mb: COMPACT_SPACING.sectionGap }} />
+      <Divider sx={{ 
+        flex: '0 0 auto',  // No crecer ni encoger, mantener su tamaño
+        mb: COMPACT_SPACING.sectionGap 
+      }} />
 
-      {/* OPCIONES */}
-      <Box data-testid="options-container">
+      {/* OPCIONES - Usando flexbox para distribuir mejor el espacio */}
+      <Box 
+        data-testid="options-container"
+        sx={{
+          flex: 1,  // Permitir que crezca y ocupe el espacio disponible
+          display: 'flex',  // Usar flexbox
+          flexDirection: 'column',  // Dirección vertical
+          gap: COMPACT_SPACING.optionGap,  // Espacio entre opciones
+          justifyContent: 'center',  // Centrar las opciones verticalmente
+          minHeight: 0,  // Importante para que flex funcione correctamente
+          overflow: 'hidden'  // Prevenir scroll - las opciones deben ajustarse al espacio
+        }}
+      >
         {options.map((option, index) => (
           <Fade in key={option.id} timeout={300 + index * 100}>
-            <Box>
+            <Box sx={{ 
+              flex: '0 1 auto',  // Puede encoger si es necesario, pero no crecer
+              minHeight: 0  // Permitir que se encoja más allá de su contenido
+            }}>
               <MultipleChoiceOption
                 id={option.id}
                 text={option.text}

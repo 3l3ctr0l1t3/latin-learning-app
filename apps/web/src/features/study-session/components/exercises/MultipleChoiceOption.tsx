@@ -152,8 +152,12 @@ const MultipleChoiceOption: React.FC<MultipleChoiceOptionProps> = ({
     <Paper
       elevation={0}  // Sin elevación para integrarse mejor
       sx={{
+        // Flexbox para que pueda adaptarse
+        display: 'flex',
+        minHeight: 0,  // Permitir que se encoja si es necesario
+        
         // Espaciado
-        mb: { xs: 1, sm: 1.25, md: 1.5 },  // Menos margen entre opciones en móvil
+        mb: 0,  // Sin margen, lo maneja el gap del contenedor padre
         p: 0,  // Sin padding, lo manejamos internamente
         
         // Borde dinámico
@@ -191,8 +195,10 @@ const MultipleChoiceOption: React.FC<MultipleChoiceOptionProps> = ({
         sx={{
           display: 'flex',
           alignItems: 'center',
-          p: { xs: 1.5, sm: 1.75, md: 2 },  // Padding interno reducido en móvil
-          gap: { xs: 1, sm: 1.25, md: 1.5 }  // Espaciado entre elementos más ajustado
+          flex: 1,  // Ocupar todo el espacio disponible
+          minHeight: 0,  // Permitir que se encoja
+          p: { xs: 1, sm: 1.25, md: 1.5 },  // Padding interno más reducido
+          gap: { xs: 0.75, sm: 1, md: 1.25 }  // Espaciado entre elementos más ajustado
         }}
       >
         {/* COLUMNA IZQUIERDA: Etiqueta opcional o icono de selección */}

@@ -23,7 +23,6 @@ import {
   ToggleButtonGroup,
   ToggleButton,
   Button,
-  Stack,
   Fade,
   Alert,
   Divider,
@@ -111,9 +110,21 @@ const TypeLatinWordExercise: React.FC<{
   };
   
   return (
-    <Stack spacing={3}>
+    // Usar Box con flex en lugar de Stack para mejor control del layout
+    // display: 'flex' con flexDirection: 'column' para layout vertical
+    // gap proporciona espaciado entre elementos hijos
+    <Box sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: { xs: 1.5, sm: 2, md: 2.5 },
+      height: '100%',  // Ocupar toda la altura disponible
+      overflow: 'hidden'  // Prevenir scroll
+    }}>
       {/* PREGUNTA - Palabra en español */}
-      <Box sx={{ mb: 2, textAlign: 'center' }}>
+      <Box sx={{ 
+        flexShrink: 0,  // No permitir que se encoja
+        textAlign: 'center' 
+      }}>
         <Typography 
           variant={isMdUp ? 'h4' : 'h5'}
           sx={{ 
@@ -139,12 +150,14 @@ const TypeLatinWordExercise: React.FC<{
       
       <Divider />
       
-      {/* CAMPOS DE TEXTO */}
-      <Stack 
-        direction={{ xs: 'column', md: 'row' }} 
-        spacing={2}
-        sx={{ width: '100%' }}
-      >
+      {/* CAMPOS DE TEXTO - Usando flexbox */}
+      <Box sx={{ 
+        display: 'flex',
+        flexDirection: { xs: 'column', md: 'row' },
+        gap: 2,
+        width: '100%',
+        flexShrink: 0  // No permitir que se encoja
+      }}>
         {/* Campo Nominativo */}
         <TextField
           inputRef={nominativeRef}
@@ -213,14 +226,16 @@ const TypeLatinWordExercise: React.FC<{
             'data-testid': 'input-genitive'
           }}
         />
-      </Stack>
+      </Box>
       
-      {/* SELECCIÓN DE GÉNERO Y DECLINACIÓN */}
-      <Stack 
-        direction={{ xs: 'column', md: 'row' }} 
-        spacing={3}
-        sx={{ width: '100%' }}
-      >
+      {/* SELECCIÓN DE GÉNERO Y DECLINACIÓN - Usando flexbox */}
+      <Box sx={{ 
+        display: 'flex',
+        flexDirection: { xs: 'column', md: 'row' },
+        gap: { xs: 2, md: 3 },
+        width: '100%',
+        flexShrink: 0  // No permitir que se encoja
+      }}>
         {/* Selección de Género */}
         <Box sx={{ flex: 1 }}>
           <Typography 
@@ -345,11 +360,15 @@ const TypeLatinWordExercise: React.FC<{
             </Typography>
           )}
         </Box>
-      </Stack>
+      </Box>
       
       {/* BOTÓN DE AYUDA */}
       {!hasAnswered && showLabels && (
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Box sx={{ 
+          display: 'flex', 
+          justifyContent: 'flex-end',
+          flexShrink: 0  // No permitir que se encoja
+        }}>
           <Button
             size="small"
             startIcon={<HelpOutlineIcon />}
@@ -376,7 +395,12 @@ const TypeLatinWordExercise: React.FC<{
       
       {/* BOTÓN DE ENVIAR */}
       {!hasAnswered && (
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+        <Box sx={{ 
+          display: 'flex', 
+          justifyContent: 'center',
+          flexShrink: 0,  // No permitir que se encoja
+          mt: 'auto'  // Empujar hacia abajo usando margin-top auto
+        }}>
           <Button
             variant="contained"
             size="large"
@@ -394,7 +418,7 @@ const TypeLatinWordExercise: React.FC<{
           </Button>
         </Box>
       )}
-    </Stack>
+    </Box>
   );
 };
 

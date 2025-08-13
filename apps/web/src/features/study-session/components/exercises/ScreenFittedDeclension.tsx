@@ -243,8 +243,10 @@ const ScreenFittedDeclension: React.FC<ScreenFittedDeclensionProps> = ({
                 onClick={() => handleSelectDeclension(declension)}
                 disabled={hasAnswered}
                 sx={{
-                  width: '100%',
-                  minWidth: 0,
+                  // Propiedades flexbox para tamaño uniforme de botones
+                  flex: '1 1 auto',  // Permite crecer y encoger según espacio disponible
+                  minWidth: { xs: 55, sm: 70 },  // Ancho mínimo para legibilidad
+                  maxWidth: { xs: 90, sm: 110 },  // Ancho máximo para evitar estiramiento excesivo
                   height: { xs: 80, sm: 100 },
                   display: 'flex',
                   flexDirection: 'column',
@@ -317,10 +319,13 @@ const ScreenFittedDeclension: React.FC<ScreenFittedDeclensionProps> = ({
           })}
         </Box>
 
-        {/* Información adicional de cada declinación */}
+        {/* Información adicional de cada declinación - También usando flexbox
+            Mantiene la misma alineación que los botones de arriba
+        */}
         <Box sx={{ 
-          display: 'grid',
-          gridTemplateColumns: 'repeat(5, minmax(0, 1fr))',
+          display: 'flex',  // Cambiado de grid a flex para consistencia
+          flexWrap: 'wrap',  // Permite envolver si es necesario
+          justifyContent: 'center',  // Centra los elementos
           gap: { xs: 0.5, sm: 1 },
           width: '100%'
         }}>
@@ -332,6 +337,10 @@ const ScreenFittedDeclension: React.FC<ScreenFittedDeclensionProps> = ({
               <Box
                 key={`info-${declension}`}
                 sx={{
+                  // Propiedades flex para alineación con botones de arriba
+                  flex: '1 1 auto',  // Mismo comportamiento flex que los botones
+                  minWidth: { xs: 55, sm: 70 },  // Mismo ancho mínimo que botones
+                  maxWidth: { xs: 90, sm: 110 },  // Mismo ancho máximo que botones
                   textAlign: 'center',
                   opacity: hasAnswered && !isCorrectAnswer ? 0.4 : 1,
                   transition: 'opacity 0.3s ease'

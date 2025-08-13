@@ -230,10 +230,17 @@ const MultipleChoiceDeclensionCard: React.FC<MultipleChoiceDeclensionCardProps> 
         )}
       </Box>
       
-      {/* OPCIONES EN GRID PARA MÓVIL */}
+      {/* OPCIONES EN FLEXBOX - Cambiado de grid a flex para mejor distribución
+          Flexbox permite mejor control del layout y distribución de elementos.
+          - display: 'flex' crea un contenedor flex
+          - flexWrap: 'wrap' permite que los elementos pasen a la siguiente línea si es necesario
+          - justifyContent: 'center' centra los elementos horizontalmente
+          - gap: espacio entre elementos
+      */}
       <Box sx={{ 
-        display: 'grid',
-        gridTemplateColumns: 'repeat(5, minmax(0, 1fr))',  // minmax prevents overflow
+        display: 'flex',  // Cambiado de grid a flex
+        flexWrap: 'wrap',  // Permite que los botones se envuelvan en pantallas pequeñas
+        justifyContent: 'center',  // Centra los botones horizontalmente
         gap: isCompact ? 0.5 : 1,
         width: '100%',
         px: isCompact ? 0.5 : 1  // Small padding to prevent edge touching
@@ -251,8 +258,11 @@ const MultipleChoiceDeclensionCard: React.FC<MultipleChoiceDeclensionCardProps> 
               onClick={() => handleSelectDeclension(declension)}
               disabled={hasAnswered}
               sx={{
-                width: '100%',  // Full width of grid cell
-                minWidth: 0,    // Override MUI default
+                // Propiedades flex para distribución uniforme
+                // flex: '1 1 auto' permite que el botón crezca y se encoja según necesidad
+                flex: '1 1 auto',  // Crecer y encoger según el espacio disponible
+                minWidth: isCompact ? 50 : 60,  // Ancho mínimo para legibilidad
+                maxWidth: isCompact ? 80 : 100,  // Ancho máximo para evitar botones muy grandes
                 height: isCompact ? 56 : 72,
                 display: 'flex',
                 flexDirection: 'column',
