@@ -1,0 +1,23 @@
+{
+  "name": "Latin Learning App",
+  "short_name": "Latin App",
+  "description": "Aplicación interactiva para aprender latín con ejercicios y práctica",
+  "theme_color": "#BB86FC",
+  "background_color": "#121212",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/latin-learning-app/",
+  "start_url": "/latin-learning-app/",
+  "icons": [
+    {
+      "src": "/latin-learning-app/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "books"],
+  "lang": "es",
+  "dir": "ltr",
+  "prefer_related_applications": false
+}

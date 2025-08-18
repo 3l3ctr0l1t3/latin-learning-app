@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="240" fill="#121212"/>
+  
+  <!-- Purple accent circle -->
+  <circle cx="256" cy="256" r="220" fill="#BB86FC"/>
+  
+  <!-- Inner dark circle -->
+  <circle cx="256" cy="256" r="200" fill="#121212"/>
+  
+  <!-- Text "LA" for Latin App -->
+  <text x="256" y="280" font-family="Arial, sans-serif" font-size="180" font-weight="bold" text-anchor="middle" fill="#BB86FC">LA</text>
+  
+  <!-- Subtitle -->
+  <text x="256" y="380" font-family="Arial, sans-serif" font-size="40" text-anchor="middle" fill="#03DAC6">LATIN</text>
+</svg>

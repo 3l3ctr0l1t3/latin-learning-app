@@ -1,7 +1,7 @@
 ---
 name: server-build-manager
 description: Use this agent when you need to manage development servers, build processes, or handle npm commands. This includes starting/stopping servers, resolving port conflicts, running npm scripts, building applications, and managing development environments. Examples:\n\n<example>\nContext: User needs to start the development server for their web application.\nuser: "Start the dev server"\nassistant: "I'll use the server-build-manager agent to start the development server for you."\n<commentary>\nSince the user wants to start a development server, use the Task tool to launch the server-build-manager agent.\n</commentary>\n</example>\n\n<example>\nContext: User encounters a port conflict when trying to run their application.\nuser: "The server won't start, it says port 5173 is already in use"\nassistant: "I'll use the server-build-manager agent to identify and kill the process using port 5173, then restart your server."\n<commentary>\nPort conflicts need to be resolved, so use the Task tool to launch the server-build-manager agent to handle this.\n</commentary>\n</example>\n\n<example>\nContext: User wants to build their application for production.\nuser: "Build the app for production"\nassistant: "I'll use the server-build-manager agent to run the production build process."\n<commentary>\nBuilding applications requires the server-build-manager agent to execute the appropriate npm build commands.\n</commentary>\n</example>
-tools: Grep, LS, Read, TodoWrite, BashOutput, KillBash, Bash
+tools: Grep, LS, Read, TodoWrite, BashOutput, KillBash, Bash, Edit
 model: inherit
 color: yellow
 ---

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Iconos PWA - Latin App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .canvas-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        canvas {
+            border: 2px solid #BB86FC;
+            border-radius: 20px;
+        }
+        .icon-wrapper {
+            text-align: center;
+        }
+        button {
+            background: #BB86FC;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background: #9966DC;
+        }
+        h1 {
+            color: #BB86FC;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generador de Iconos PWA - Latin Learning App</h1>
+    <p>Abre esta página en un navegador, luego haz clic derecho en cada canvas y guarda como imagen</p>
+    
+    <div class="canvas-container">
+        <div class="icon-wrapper">
+            <canvas id="icon192" width="192" height="192"></canvas>
+            <p>icon-192.png</p>
+        </div>
+        <div class="icon-wrapper">
+            <canvas id="icon512" width="512" height="512"></canvas>
+            <p>icon-512.png</p>
+        </div>
+    </div>
+
+    <button onclick="generateIcons()">Regenerar Iconos</button>
+
+    <script>
+        function generateIcons() {
+            // Generar icono 192x192
+            const ctx192 = document.getElementById('icon192').getContext('2d');
+            drawIcon(ctx192, 192);
+            
+            // Generar icono 512x512
+            const ctx512 = document.getElementById('icon512').getContext('2d');
+            drawIcon(ctx512, 512);
+        }
+
+        function drawIcon(ctx, size) {
+            // Fondo con gradiente
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#1e1e2e');
+            gradient.addColorStop(1, '#2d2d44');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Círculo de fondo
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2.5, 0, Math.PI * 2);
+            ctx.fillStyle = '#BB86FC';
+            ctx.fill();
+            
+            // Círculo interior
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2.8, 0, Math.PI * 2);
+            ctx.fillStyle = '#121212';
+            ctx.fill();
+            
+            // Texto "LA" (Latin App)
+            ctx.fillStyle = '#BB86FC';
+            ctx.font = `bold ${size/3}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('LA', size/2, size/2);
+            
+            // Subtítulo
+            if (size >= 512) {
+                ctx.fillStyle = '#03DAC6';
+                ctx.font = `${size/16}px Arial`;
+                ctx.fillText('LATIN', size/2, size/1.4);
+            }
+        }
+
+        // Generar iconos al cargar la página
+        window.onload = generateIcons;
+    </script>
+</body>
+</html>
