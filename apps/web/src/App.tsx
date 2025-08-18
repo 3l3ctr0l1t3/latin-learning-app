@@ -30,8 +30,10 @@ import ComponentCanvas from './features/component-canvas/ComponentCanvas';
 // This canvas shows complete pages with multiple components working together
 import PageCanvas from './features/page-canvas/PageCanvas';
 
-// Import React's useState hook to manage which view we're showing
-import { useState } from 'react';
+// Import React's useState and useEffect hooks 
+// useState: manages component state (which view, drawer open/closed, PWA install)
+// useEffect: runs side effects like setting up event listeners
+import { useState, useEffect } from 'react';
 
 // Import Box and Button from MUI for layout and navigation
 import { Box, Button, AppBar, Toolbar, Typography, IconButton, useMediaQuery, useTheme, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
@@ -45,6 +47,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 import SchoolIcon from '@mui/icons-material/School';
 import MenuIcon from '@mui/icons-material/Menu';
+import InstallDesktopIcon from '@mui/icons-material/InstallDesktop';
 
 /**
  * AppContent Component - Contenido principal de la app con header condicional
@@ -62,12 +65,143 @@ function AppContent() {
   // Estado para el drawer móvil
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   
+  /**
+   * PWA (Progressive Web App) Install Button State
+   * 
+   * PWA es una tecnología que permite que las aplicaciones web se comporten como apps nativas.
+   * Pueden instalarse en el dispositivo, funcionar offline, y enviar notificaciones push.
+   * 
+   * Para que una app sea instalable como PWA necesita:
+   * 1. Un manifest.json con metadata de la app (nombre, iconos, colores)
+   * 2. HTTPS (o localhost para desarrollo)
+   * 3. Un Service Worker para funcionalidad offline
+   * 
+   * El navegador dispara un evento 'beforeinstallprompt' cuando detecta que la app
+   * cumple los criterios para ser instalada como PWA.
+   */
+  
+  // Estado para guardar el evento de instalación PWA
+  // Este evento lo proporciona el navegador cuando la app es instalable
+  const [installPrompt, setInstallPrompt] = useState<any>(null);
+  
+  // Estado para saber si el botón de instalar debe mostrarse
+  // Solo se muestra si el navegador soporta instalación PWA y no está ya instalada
+  const [showInstallButton, setShowInstallButton] = useState(false);
+  
   // Hook para detectar el tamaño de pantalla
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // true si es móvil
   
   // Hook para acceder al contexto de sesión de estudio
   const { headerVisible, isInStudySession } = useStudySession();
+  
+  /**
+   * useEffect Hook - Configura el listener para el evento PWA
+   * 
+   * useEffect ejecuta código después de que el componente se renderiza.
+   * Es perfecto para configurar event listeners, suscripciones, o timers.
+   * 
+   * El array vacío [] al final significa que este efecto solo se ejecuta una vez,
+   * cuando el componente se monta (aparece en pantalla por primera vez).
+   */
+  useEffect(() => {
+    /**
+     * Handler para el evento beforeinstallprompt
+     * 
+     * Este evento es disparado por el navegador cuando:
+     * 1. La app tiene un manifest.json válido
+     * 2. Se sirve por HTTPS (o localhost)
+     * 3. Tiene un service worker registrado
+     * 4. El usuario ha visitado la página al menos dos veces con 5 minutos de diferencia
+     *    (esto varía según el navegador)
+     */
+    const handleBeforeInstallPrompt = (event: Event) => {
+      // Prevenir que Chrome muestre su propio prompt de instalación
+      // Queremos controlar cuándo y cómo se muestra el botón de instalar
+      event.preventDefault();
+      
+      // Guardar el evento para usarlo más tarde cuando el usuario haga click
+      // Este evento tiene un método prompt() que muestra el diálogo de instalación
+      setInstallPrompt(event);
+      
+      // Mostrar nuestro botón personalizado de instalación
+      setShowInstallButton(true);
+      
+      // Log para debugging - ver si el evento se dispara
+      console.log('PWA: App es instalable, mostrando botón de instalación');
+    };
+    
+    // Agregar el listener al objeto window
+    // window es el objeto global del navegador que representa la ventana
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    
+    /**
+     * Verificar si la app ya está instalada
+     * 
+     * Cuando una PWA está instalada, el navegador la abre en modo 'standalone'
+     * en lugar del modo normal de navegador con barra de direcciones.
+     * 
+     * window.matchMedia es una API para verificar media queries de CSS
+     * La query '(display-mode: standalone)' es true si la app está instalada
+     */
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      console.log('PWA: App ya está instalada');
+      setShowInstallButton(false);
+    }
+    
+    /**
+     * Cleanup function - Se ejecuta cuando el componente se desmonta
+     * 
+     * Es importante remover event listeners para evitar memory leaks
+     * (fugas de memoria) cuando el componente ya no está en uso.
+     */
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []); // Array vacío = solo ejecutar una vez al montar el componente
+  
+  /**
+   * Función para manejar la instalación de la PWA
+   * 
+   * Esta función se ejecuta cuando el usuario hace click en el botón "Instalar App"
+   * Usa el evento guardado anteriormente para mostrar el prompt nativo del navegador
+   */
+  const handleInstallClick = async () => {
+    // Verificar que tenemos el evento de instalación guardado
+    if (!installPrompt) {
+      console.log('PWA: No hay prompt de instalación disponible');
+      return;
+    }
+    
+    try {
+      // Mostrar el diálogo de instalación del navegador
+      // prompt() es un método del evento beforeinstallprompt
+      installPrompt.prompt();
+      
+      // Esperar a que el usuario responda al prompt
+      // userChoice será un objeto con {outcome: 'accepted' | 'dismissed'}
+      const { outcome } = await installPrompt.userChoice;
+      
+      // Log del resultado para debugging
+      console.log(`PWA: Usuario respondió con: ${outcome}`);
+      
+      if (outcome === 'accepted') {
+        // El usuario aceptó instalar la app
+        console.log('PWA: App instalada exitosamente');
+        
+        // Ocultar el botón ya que la app fue instalada
+        setShowInstallButton(false);
+      }
+      
+      // Limpiar el prompt guardado
+      // No se puede reutilizar el mismo evento, el navegador creará uno nuevo si es necesario
+      setInstallPrompt(null);
+      
+    } catch (error) {
+      // Manejar cualquier error durante la instalación
+      console.error('PWA: Error al instalar la app:', error);
+    }
+  };
   
   // Función para cambiar de vista y cerrar el drawer en móvil
   const handleViewChange = (view: 'dashboard' | 'components' | 'pages') => {
@@ -150,10 +284,57 @@ function AppContent() {
                 color={currentView === 'pages' ? 'secondary' : 'inherit'}
                 variant={currentView === 'pages' ? 'contained' : 'outlined'}
                 onClick={() => handleViewChange('pages')}
+                sx={{ mr: 1 }}
               >
                 Páginas
               </Button>
             </>
+          )}
+          
+          {/**
+           * PWA Install Button
+           * 
+           * Este botón solo aparece cuando:
+           * 1. El navegador soporta instalación PWA (dispara beforeinstallprompt)
+           * 2. La app no está ya instalada
+           * 3. El usuario no ha rechazado la instalación previamente en esta sesión
+           * 
+           * El botón usa el icono InstallDesktop y colores que contrastan bien
+           * con el tema oscuro para llamar la atención del usuario.
+           */}
+          {showInstallButton && (
+            <Button
+              data-testid="pwa-install-button"
+              startIcon={<InstallDesktopIcon />}
+              onClick={handleInstallClick}
+              variant="contained"
+              color="primary"
+              sx={{
+                // Margen izquierdo para separarlo de otros botones
+                ml: { xs: 0, sm: 1 },
+                // En móvil, hacerlo más pequeño para que quepa
+                fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                // Padding adaptativo según el tamaño de pantalla
+                px: { xs: 1, sm: 2 },
+                // Animación suave de aparición
+                animation: 'fadeIn 0.3s ease-in',
+                // Definir la animación fadeIn
+                '@keyframes fadeIn': {
+                  from: { opacity: 0 },
+                  to: { opacity: 1 }
+                },
+                // Efecto hover para desktop
+                '&:hover': {
+                  // Escala ligeramente el botón al pasar el mouse
+                  transform: 'scale(1.05)',
+                  // Transición suave para el efecto hover
+                  transition: 'transform 0.2s'
+                }
+              }}
+            >
+              {/* Texto en español como se requiere */}
+              {isMobile ? 'Instalar' : 'Instalar App'}
+            </Button>
           )}
         </Toolbar>
       </AppBar>
