@@ -488,10 +488,12 @@ const StudyWordsViewerWithNavigation: React.FC<StudyWordsViewerWithNavigationPro
       {/* BOTÓN CONTINUAR A EJERCICIOS */}
       <Box sx={{ 
         mt: { xs: 2, sm: 3 },
-        // mb removido - sin margen inferior para que el botón esté más cerca del final
+        pb: { xs: 2, sm: 1 },  // Más padding inferior en móvil para separar del borde - igual que DrillSessionComponent
         display: 'flex',
         justifyContent: 'center',
-        flexShrink: 0  // No permite que el botón se encoja
+        flexShrink: 0,  // No permite que el botón se encoja
+        // Añadir padding horizontal al contenedor en móvil para que el botón no toque los bordes
+        px: { xs: 2, sm: 0 }
       }} data-testid="continue-button-section">
         <Button
           variant="outlined"
@@ -499,27 +501,49 @@ const StudyWordsViewerWithNavigation: React.FC<StudyWordsViewerWithNavigationPro
           startIcon={<PlayArrowIcon data-testid="button-continue-icon" />}
           onClick={onContinueToExercises}
           sx={{ 
-            px: { xs: 2.5, sm: 3, md: 4 },   // Menos padding en móvil
-            py: { xs: 0.8, sm: 1, md: 1.5 }, // Menos padding vertical en móvil
+            // Ajustar el ancho del botón responsivamente
+            // En móvil (xs): usa todo el ancho disponible
+            // En tablets y desktop: ancho automático basado en contenido
+            width: { xs: '100%', sm: 'auto' },
+            
+            // Padding horizontal y vertical mejorado para touch targets
+            // El mínimo recomendado para touch es 48px de altura
+            px: { xs: 3, sm: 4, md: 5 },   // Más padding horizontal en todos los tamaños
+            py: { xs: 1.5, sm: 1.75, md: 2 }, // Más padding vertical para mejor touch target (mínimo 48px altura total)
+            
+            // Tamaño mínimo para garantizar buena usabilidad táctil
+            minHeight: { xs: 48, sm: 52, md: 56 }, // Altura mínima para touch (48px es el estándar)
+            
             borderColor: 'primary.main',
             borderWidth: 2,
             color: 'primary.main',
             fontWeight: 'medium',
-            fontSize: { xs: '0.9rem', sm: '1rem' },  // Texto más pequeño en móvil
+            
+            // Tamaño de fuente mejorado para mejor legibilidad
+            fontSize: { xs: '1rem', sm: '1.1rem', md: '1.2rem' },  // Texto más grande y legible
+            
             backgroundColor: 'transparent',
             backdropFilter: 'blur(10px)',
-            '&:hover': {
-              borderColor: 'primary.light',
-              borderWidth: 2,
-              backgroundColor: 'rgba(187, 134, 252, 0.08)',
-              backdropFilter: 'blur(15px)',
-              transform: 'translateY(-1px)',
-              boxShadow: '0 4px 20px rgba(187, 134, 252, 0.15)',
+            
+            // Efectos hover (solo se activan en dispositivos con cursor)
+            '@media (hover: hover)': {
+              '&:hover': {
+                borderColor: 'primary.light',
+                borderWidth: 2,
+                backgroundColor: 'rgba(187, 134, 252, 0.08)',
+                backdropFilter: 'blur(15px)',
+                transform: 'translateY(-1px)',
+                boxShadow: '0 4px 20px rgba(187, 134, 252, 0.15)',
+              }
             },
+            
+            // Estado activo (cuando se presiona el botón)
             '&:active': {
               transform: 'translateY(0)',
               backdropFilter: 'blur(20px)',
+              backgroundColor: 'rgba(187, 134, 252, 0.12)', // Feedback visual más claro en móvil
             },
+            
             transition: 'all 0.2s ease',
           }}
           data-testid="button-continue-to-exercises"

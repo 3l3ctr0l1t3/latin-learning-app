@@ -64,9 +64,9 @@ This is CRITICAL for the Latin learning app as users may:
 
 Latin Learning Application - An interactive, module-based platform for learning Latin through dynamic content and active practice sessions.
 
-### Current Project State (Last Updated: 2025-08-16 - Session 3)
+### Current Project State (Last Updated: 2025-08-18 - Session 4)
 
-#### ✅ Completed:
+#### ✅ Completed (Updated: 2025-08-18 - Session 4):
 1. **Monorepo Structure** - Set up with npm workspaces
    - `/apps/web` - React SPA with Vite
    - `/apps/mobile` - React Native with Expo
@@ -143,24 +143,40 @@ Latin Learning Application - An interactive, module-based platform for learning 
    - Updated all import paths for new structure
    - Build successful with new organization
 
+9. **Progressive Web App (PWA) Support** (Session 4)
+   - **Manifest.json** - PWA configuration with app metadata, theme colors, and icon
+   - **Service Worker** - Enables offline functionality with cache-first strategy
+   - **App Icons** - SVG icon with "LA" branding (scalable to all sizes)
+   - **Install Button** - Native install prompt in app header
+   - **iOS Support** - Apple-specific meta tags for home screen installation
+   - **Offline Capability** - Works without internet after first visit
+   - **Full-Screen Mode** - No browser UI when launched from home screen
+   - PWA features work on Android, iOS, and desktop browsers
+
 #### 🚧 In Progress:
 - Exercise phase implementation (multiple components created, integration pending)
 - Navigation arrows for NavigationContainer (md-xl screens)
 
 #### 📋 Immediate Next Steps:
-1. **Complete Exercise Components**:
+1. **Implement Local Storage** (See `/docs/STORAGE_BACKEND_PLAN.md`):
+   - Create LocalStorageService for data persistence
+   - Track session progress and results
+   - Add statistics to Dashboard
+   - Implement auto-save functionality
+
+2. **Complete Exercise Components**:
    - Finish MultipleChoiceExercise implementation
    - Create FillInTheBlankExercise component
    - Create DirectInputExercise component
    - Create exercise manager to rotate between types
 
-2. **Session Flow Completion**:
+3. **Session Flow Completion**:
    - Connect exercises to StudySession
    - Implement exercise rotation logic
    - Add progress tracking within exercises
    - Create results summary with statistics
 
-3. **Polish & Bug Fixes**:
+4. **Polish & Bug Fixes**:
    - Fix any remaining TypeScript errors
    - Test full flow on mobile and desktop
    - Ensure smooth transitions between phases
@@ -173,11 +189,12 @@ Latin Learning Application - An interactive, module-based platform for learning 
 - Create more exercise types (conjugation, translation)
 - Add audio pronunciation
 - Implement achievements/gamification
-- Add offline support with service workers
+- Enhance offline support with background sync
+- Add push notifications for study reminders
 
 ## Technical Stack
 
-- **Architecture**: Single Page Application (SPA) + Mobile App
+- **Architecture**: Progressive Web App (PWA) + Mobile App
 - **Web Framework**: React 18 with TypeScript
 - **Build Tool**: Vite
 - **Mobile Framework**: React Native with Expo
@@ -188,6 +205,11 @@ Latin Learning Application - An interactive, module-based platform for learning 
 - **Routing**: React Router DOM (to be implemented)
 - **AI Integration**: Gemini API (future)
 - **Internationalization**: i18next (installed, not configured)
+- **PWA Features**:
+  - Service Worker for offline support
+  - Web App Manifest for installability
+  - Cache-first strategy for assets
+  - Full-screen capable on mobile
 
 ## Development Commands
 
@@ -208,8 +230,13 @@ cd apps/mobile && npm start
 # Normalize vocabulary data
 node scripts/normalize-vocabulary.js
 
-# Build web app
+# Build web app (includes PWA assets)
 npm run build:web
+
+# Test PWA installation locally
+# 1. Run dev server: npm run dev:web
+# 2. Open http://localhost:5173/latin-learning-app/
+# 3. Look for install button in header or browser prompt
 ```
 
 ## Project Structure
@@ -217,13 +244,18 @@ npm run build:web
 ```
 latin2/
 ├── apps/
-│   ├── web/                    # React web application
+│   ├── web/                    # React web application (PWA)
+│   │   ├── public/             # Static assets
+│   │   │   ├── manifest.json   # PWA manifest
+│   │   │   ├── service-worker.js # Service worker for offline
+│   │   │   └── icon.svg        # App icon
 │   │   ├── src/
 │   │   │   ├── app/            # App-level components
 │   │   │   ├── components/     # Shared components
 │   │   │   │   ├── global/     # Globally reusable components
 │   │   │   │   └── exercises/  # Exercise/drill components
 │   │   │   ├── config/         # Configuration (theme.ts)
+│   │   │   ├── contexts/       # React contexts (StudySession)
 │   │   │   ├── features/       # Feature-based modules
 │   │   │   │   ├── dashboard/  # Dashboard page
 │   │   │   │   ├── homepage/   # Homepage
@@ -236,7 +268,7 @@ latin2/
 │   │   │   │           └── search/   # Search components
 │   │   │   ├── hooks/          # Custom React hooks (to be added)
 │   │   │   └── services/       # API services (future)
-│   │   └── index.html
+│   │   └── index.html          # Main HTML with PWA meta tags
 │   └── mobile/                  # React Native app
 │       └── src/                 # To be structured
 ├── packages/
@@ -245,6 +277,11 @@ latin2/
 │   └── shared/                  # Shared utilities
 ├── scripts/
 │   └── normalize-vocabulary.js  # Data normalization script
+├── docs/                        # Documentation
+│   └── STORAGE_BACKEND_PLAN.md # Local storage & backend roadmap
+├── .claude/
+│   └── agents/                  # Custom AI agents
+│       └── server-build-manager.md # Server management agent
 ├── vocabulary.json              # Original Latin words data
 ├── vocabulary-normalized.json   # Processed data with IDs
 └── CLAUDE.md                    # This file
@@ -344,6 +381,19 @@ interface NormalizedLatinWord {
 - Multiple choice (Latin→Spanish, Spanish→Latin)
 - Fill in the blank
 - Direct input
+
+## Session 4 Key Achievements (2025-08-18)
+
+This session focused on making the app installable as a Progressive Web App (PWA):
+
+1. **PWA Implementation**: Full PWA support with offline capabilities
+2. **Service Worker**: Implemented caching strategy for offline functionality
+3. **App Manifest**: Created manifest.json with app metadata and branding
+4. **Install Flow**: Added native install button with browser prompt integration
+5. **Cross-Platform Support**: Works on Android, iOS, and desktop browsers
+6. **Icon System**: Created scalable SVG icon with app branding
+7. **iOS Optimization**: Added Apple-specific meta tags for home screen
+8. **Agent Enhancement**: Updated server-build-manager agent to run servers in background
 
 ## Session 3 Key Achievements
 

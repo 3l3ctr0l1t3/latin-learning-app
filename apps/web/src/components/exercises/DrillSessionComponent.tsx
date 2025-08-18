@@ -56,6 +56,7 @@ interface DrillResult {
   isCorrect: boolean;                  // Si fue correcto
   timeSpent: number;                   // Tiempo en segundos
   timestamp: number;                   // Cuándo se respondió
+  wasSkipped?: boolean;                // Si el ejercicio fue saltado (sin responder)
 }
 
 /**
@@ -199,14 +200,16 @@ const DrillSessionComponent: React.FC<DrillSessionComponentProps> = ({
    */
   const skipDrill = () => {
     if (currentDrill) {
-      // Registrar como incorrecto con tiempo 0
+      // Registrar como ejercicio saltado (no como incorrecto)
+      // wasSkipped = true indica que el usuario no intentó responder
       const result: DrillResult = {
         drillId: currentDrill.id,
         word: currentDrill.word,
         type: currentDrill.type,
-        isCorrect: false,
-        timeSpent: 0,
-        timestamp: Date.now()
+        isCorrect: false,      // Técnicamente no es correcto, pero tampoco es un error
+        timeSpent: 0,          // No se gastó tiempo intentando resolverlo
+        timestamp: Date.now(),
+        wasSkipped: true       // NUEVO: Marcar explícitamente como saltado
       };
       
       // Actualizar los drills completados inmediatamente
@@ -277,9 +280,15 @@ const DrillSessionComponent: React.FC<DrillSessionComponentProps> = ({
   const getStats = () => {
     const total = completedDrills.length;
     const correct = completedDrills.filter(d => d.isCorrect).length;
-    const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
+    // NUEVO: Contar ejercicios saltados separadamente
+    const skipped = completedDrills.filter(d => d.wasSkipped === true).length;
+    // Incorrectos son los que NO fueron correctos Y NO fueron saltados
+    const incorrect = completedDrills.filter(d => !d.isCorrect && !d.wasSkipped).length;
+    // Precisión se calcula solo con los ejercicios intentados (no saltados)
+    const attempted = total - skipped;
+    const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
     
-    return { total, correct, accuracy };
+    return { total, correct, incorrect, skipped, accuracy, attempted };
   };
   
   const stats = getStats();
@@ -293,15 +302,25 @@ const DrillSessionComponent: React.FC<DrillSessionComponentProps> = ({
         <Typography variant="h5" gutterBottom>
           ¡Sesión Completada!
         </Typography>
-        <Typography variant="body1">
+        <Typography variant="body1" sx={{ mb: 1 }}>
           Total de ejercicios: {stats.total}
         </Typography>
-        <Typography variant="body1">
-          Respuestas correctas: {stats.correct}
+        {/* Mostrar desglose completo de resultados */}
+        <Typography variant="body1" sx={{ color: 'success.main', mb: 0.5 }}>
+          ✓ Respuestas correctas: {stats.correct}
         </Typography>
-        <Typography variant="body1">
-          Precisión: {stats.accuracy}%
+        <Typography variant="body1" sx={{ color: 'error.main', mb: 0.5 }}>
+          ✗ Respuestas incorrectas: {stats.incorrect}
         </Typography>
+        <Typography variant="body1" sx={{ color: 'text.secondary', mb: 1 }}>
+          ⤳ Ejercicios saltados: {stats.skipped}
+        </Typography>
+        {/* Mostrar precisión solo si hubo ejercicios intentados */}
+        {stats.attempted > 0 && (
+          <Typography variant="body1" sx={{ mt: 1, fontWeight: 'medium' }}>
+            Precisión (sin contar saltados): {stats.accuracy}%
+          </Typography>
+        )}
       </Box>
     );
   }
@@ -422,17 +441,29 @@ const DrillSessionComponent: React.FC<DrillSessionComponentProps> = ({
         flexShrink: 0,  // No permitir que se encoja
         // En móvil, fijar los botones cerca del fondo
         position: { xs: 'sticky', sm: 'relative' },
-        bottom: { xs: 0, sm: 'auto' },
-        bgcolor: 'background.default',  // Fondo para que se vea sobre el contenido
-        borderTop: { xs: '1px solid', sm: 'none' },
-        borderColor: 'divider'
+        bottom: { xs: 0, sm: 'auto' }
+        // Removed borderTop and borderColor - cards already have their own borders
       }}>
         {!hasAnswered && (
           <Button
             variant="outlined"
+            size="large"  // Make the button larger for better touch targets
             startIcon={<SkipNextIcon />}
             onClick={skipDrill}
-            sx={{ px: 3 }}
+            sx={{ 
+              // IMPORTANTE: Mismo tamaño que el botón "Siguiente Ejercicio"
+              // px: padding horizontal (izquierda y derecha)
+              // py: padding vertical (arriba y abajo)
+              px: 4,      // 32px horizontal padding - IGUAL que "Siguiente"
+              py: 1.5,    // 12px vertical padding - IGUAL que "Siguiente"
+              // Asegurar tamaño mínimo para touch en móvil (48x48px)
+              minHeight: { xs: 48, sm: 'auto' },
+              // Mismo tamaño de fuente que "Siguiente" para consistencia visual
+              fontSize: { xs: '1rem', sm: '0.9375rem' },
+              // Asegurar que el botón tenga el mismo ancho visual
+              // minWidth ayuda a que ambos botones se vean del mismo tamaño
+              minWidth: 180  // Ancho mínimo para consistencia
+            }}
           >
             Saltar
           </Button>
@@ -446,7 +477,15 @@ const DrillSessionComponent: React.FC<DrillSessionComponentProps> = ({
               endIcon={<NavigateNextIcon />}
               onClick={goToNextDrill}
               color="primary"
-              sx={{ px: 4, py: 1.5 }}
+              sx={{ 
+                px: 4,      // 32px horizontal padding
+                py: 1.5,    // 12px vertical padding
+                // Mismo ancho mínimo que el botón "Saltar" para consistencia
+                minWidth: 180,  // Ancho mínimo para que ambos se vean igual
+                // Asegurar tamaño mínimo para touch en móvil
+                minHeight: { xs: 48, sm: 'auto' },
+                fontSize: { xs: '1rem', sm: '0.9375rem' }
+              }}
             >
               Siguiente Ejercicio
             </Button>

@@ -30,6 +30,7 @@ import type { DrillType, SessionDuration } from '../types';
 import type { DrillType as DrillSessionType } from '../../../components/exercises/DrillSessionComponent';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
 // Importar configuración centralizada de layout
 import { getPageContainerSx } from '../../../config/pageLayout';
 // Comentados - se usarán cuando implementemos la función getPhaseInfo
@@ -179,11 +180,23 @@ const StudySession: React.FC<StudySessionProps> = ({
               />
               <Chip
                 icon={<CancelIcon />}
-                label={drillResults.filter((r: any) => !r.isCorrect).length}
+                // Mostrar solo respuestas incorrectas (NO saltadas)
+                // wasSkipped indica que el usuario no intentó responder
+                label={drillResults.filter((r: any) => !r.isCorrect && !r.wasSkipped).length}
                 color="error"
                 size="small"
                 sx={{ minWidth: 60 }}
               />
+              {/* NUEVO: Mostrar ejercicios saltados si hay alguno */}
+              {drillResults.some((r: any) => r.wasSkipped) && (
+                <Chip
+                  icon={<SkipNextIcon />}
+                  label={drillResults.filter((r: any) => r.wasSkipped).length}
+                  color="default"
+                  size="small"
+                  sx={{ minWidth: 60 }}
+                />
+              )}
             </Stack>
           )}
         </Box>
