@@ -17,6 +17,9 @@
       "Bash(npx tsc:*)",
       "Bash(sed:*)"
     ],
-    "deny": []
+    "deny": [],
+    "additionalDirectories": [
+      "E:\\e\\latin2\\apps"
+    ]
   }
 }

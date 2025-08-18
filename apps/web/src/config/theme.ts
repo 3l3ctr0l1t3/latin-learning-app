@@ -9,7 +9,9 @@
  */
 
 // Import the theme creation function from MUI
+// We use "import type" for types that are only used in TypeScript
 import { createTheme } from '@mui/material/styles';
+import type { Theme } from '@mui/material/styles';
 
 /**
  * Create our custom dark theme
@@ -323,3 +325,186 @@ export const LAYOUT = {
   cardSpacing: 2,            // Standard spacing between cards (x8 = 16px)
   sectionSpacing: 4,         // Spacing between sections (x8 = 32px)
 };
+
+/**
+ * FUNCIÓN PARA CREAR TEMA DINÁMICO CON ESCALA DE FUENTE
+ * 
+ * Esta función crea un tema MUI con tipografía escalada según las preferencias del usuario.
+ * Es importante para la accesibilidad permitir que los usuarios ajusten el tamaño del texto.
+ * 
+ * @param fontScale - Multiplicador para escalar todos los tamaños de fuente
+ *                    1.0 = tamaño normal, 1.25 = 25% más grande, etc.
+ * @returns Un tema MUI completo con tipografía escalada
+ * 
+ * CÓMO FUNCIONA:
+ * 1. Toma el tema base (darkTheme) como referencia
+ * 2. Aplica el multiplicador a todos los tamaños de tipografía
+ * 3. Mantiene todas las demás configuraciones (colores, espaciado, etc.)
+ * 4. Retorna un nuevo tema con los tamaños actualizados
+ * 
+ * NOTA: Los tamaños base están en rem, que es relativo al tamaño de fuente raíz.
+ * 1rem = 16px por defecto en la mayoría de navegadores.
+ */
+export const createDynamicTheme = (fontScale: number = 1.0): Theme => {
+  /**
+   * FUNCIÓN AUXILIAR PARA ESCALAR TAMAÑOS DE FUENTE
+   * 
+   * Convierte un string de tamaño (ej: "1.5rem") a número, lo escala,
+   * y lo convierte de vuelta a string con la unidad.
+   * 
+   * @param size - Tamaño original como string (ej: "1.5rem", "24px")
+   * @returns Tamaño escalado como string con la misma unidad
+   */
+  const scaleTypographySize = (size: string): string => {
+    // Expresión regular para extraer número y unidad
+    // (\d+\.?\d*) captura el número (entero o decimal)
+    // (rem|px|em) captura la unidad
+    const match = size.match(/^(\d+\.?\d*)(rem|px|em)$/);
+    
+    if (!match) {
+      // Si no coincide con el patrón esperado, retornar sin cambios
+      console.warn(`No se pudo escalar el tamaño de fuente: ${size}`);
+      return size;
+    }
+    
+    // Extraer el valor numérico y la unidad
+    const value = parseFloat(match[1]);
+    const unit = match[2];
+    
+    // Aplicar el escalado y retornar con la misma unidad
+    // toFixed(4) limita a 4 decimales para evitar números muy largos
+    return `${(value * fontScale).toFixed(4)}${unit}`;
+  };
+  
+  /**
+   * CREAR EL TEMA ESCALADO
+   * 
+   * Usamos createTheme de MUI para generar un nuevo tema.
+   * Copiamos todas las configuraciones del tema base pero
+   * con la tipografía escalada según la preferencia del usuario.
+   */
+  return createTheme({
+    // Copiar toda la configuración de paleta (colores)
+    palette: darkTheme.palette,
+    
+    // Copiar configuración de forma (border radius)
+    shape: darkTheme.shape,
+    
+    // Copiar configuración de espaciado
+    spacing: darkTheme.spacing,
+    
+    // TIPOGRAFÍA ESCALADA
+    // Aquí es donde aplicamos el escalado a cada variante de texto
+    typography: {
+      // Mantener la familia de fuentes sin cambios
+      fontFamily: darkTheme.typography.fontFamily,
+      
+      // ENCABEZADOS - Escalar cada tamaño de encabezado
+      // h1 es el más grande, h6 el más pequeño
+      h1: {
+        ...darkTheme.typography.h1, // Copiar otras propiedades (fontWeight, letterSpacing)
+        fontSize: scaleTypographySize(darkTheme.typography.h1.fontSize as string),
+      },
+      h2: {
+        ...darkTheme.typography.h2,
+        fontSize: scaleTypographySize(darkTheme.typography.h2.fontSize as string),
+      },
+      h3: {
+        ...darkTheme.typography.h3,
+        fontSize: scaleTypographySize(darkTheme.typography.h3.fontSize as string),
+      },
+      h4: {
+        ...darkTheme.typography.h4,
+        fontSize: scaleTypographySize(darkTheme.typography.h4.fontSize as string),
+      },
+      h5: {
+        ...darkTheme.typography.h5,
+        fontSize: scaleTypographySize(darkTheme.typography.h5.fontSize as string),
+      },
+      h6: {
+        ...darkTheme.typography.h6,
+        fontSize: scaleTypographySize(darkTheme.typography.h6.fontSize as string),
+      },
+      
+      // TEXTO DE CUERPO - Para párrafos y contenido general
+      body1: {
+        ...darkTheme.typography.body1,
+        fontSize: scaleTypographySize(darkTheme.typography.body1.fontSize as string),
+      },
+      body2: {
+        ...darkTheme.typography.body2,
+        fontSize: scaleTypographySize(darkTheme.typography.body2.fontSize as string),
+      },
+      
+      // SUBTÍTULOS - Para texto secundario con énfasis
+      subtitle1: {
+        ...darkTheme.typography.subtitle1,
+        fontSize: darkTheme.typography.subtitle1?.fontSize 
+          ? scaleTypographySize(darkTheme.typography.subtitle1.fontSize as string)
+          : scaleTypographySize('1rem'), // Valor por defecto si no está definido
+      },
+      subtitle2: {
+        ...darkTheme.typography.subtitle2,
+        fontSize: darkTheme.typography.subtitle2?.fontSize
+          ? scaleTypographySize(darkTheme.typography.subtitle2.fontSize as string)
+          : scaleTypographySize('0.875rem'), // Valor por defecto si no está definido
+      },
+      
+      // TEXTO DE BOTÓN - Mantener otras propiedades pero escalar si tiene fontSize
+      button: {
+        ...darkTheme.typography.button,
+        // Los botones a menudo heredan el tamaño, así que solo escalar si está definido
+        ...(darkTheme.typography.button.fontSize && {
+          fontSize: scaleTypographySize(darkTheme.typography.button.fontSize as string),
+        }),
+      },
+      
+      // CAPTION - Texto muy pequeño para etiquetas y anotaciones
+      caption: {
+        ...darkTheme.typography.caption,
+        fontSize: darkTheme.typography.caption?.fontSize
+          ? scaleTypographySize(darkTheme.typography.caption.fontSize as string)
+          : scaleTypographySize('0.75rem'), // Valor por defecto
+      },
+      
+      // OVERLINE - Texto en mayúsculas pequeño para categorías
+      overline: {
+        ...darkTheme.typography.overline,
+        fontSize: darkTheme.typography.overline?.fontSize
+          ? scaleTypographySize(darkTheme.typography.overline.fontSize as string)
+          : scaleTypographySize('0.75rem'), // Valor por defecto
+      },
+    },
+    
+    // COPIAR PERSONALIZACIONES DE COMPONENTES
+    // Mantener todos los estilos personalizados de componentes
+    components: {
+      ...darkTheme.components,
+      
+      // Podríamos agregar ajustes específicos para componentes aquí si es necesario
+      // Por ejemplo, ajustar el padding de botones basado en el tamaño de fuente
+      MuiButton: {
+        ...darkTheme.components?.MuiButton,
+        styleOverrides: {
+          ...darkTheme.components?.MuiButton?.styleOverrides,
+          root: {
+            ...((darkTheme.components?.MuiButton?.styleOverrides as any)?.root || {}),
+            // Ajustar padding proporcionalmente al tamaño de fuente
+            padding: `${10 * fontScale}px ${24 * fontScale}px`,
+          },
+        },
+      },
+    },
+  });
+};
+
+/**
+ * TEMA POR DEFECTO PARA EXPORTACIÓN
+ * 
+ * Mantenemos la exportación del tema estático por compatibilidad,
+ * pero la aplicación usará createDynamicTheme() cuando necesite
+ * aplicar el escalado de fuente del usuario.
+ * 
+ * Este tema se usa como fallback si hay algún problema con el tema dinámico.
+ */
+// El darkTheme ya está exportado arriba, no necesitamos duplicarlo

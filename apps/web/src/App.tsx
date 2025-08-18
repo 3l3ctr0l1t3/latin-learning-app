@@ -16,8 +16,9 @@ import { ThemeProvider } from '@mui/material/styles';
 // It's like CSS reset + normalize.css
 import CssBaseline from '@mui/material/CssBaseline';
 
-// Import our custom theme
-import { darkTheme } from './config/theme';
+// Import our theme functions
+// createDynamicTheme genera temas con tipografía escalada
+import { createDynamicTheme } from './config/theme';
 
 // Import our Dashboard component
 import Dashboard from './features/dashboard/components/Dashboard';
@@ -30,16 +31,23 @@ import ComponentCanvas from './features/component-canvas/ComponentCanvas';
 // This canvas shows complete pages with multiple components working together
 import PageCanvas from './features/page-canvas/PageCanvas';
 
-// Import React's useState and useEffect hooks 
+// Import React's useState, useEffect, and useMemo hooks 
 // useState: manages component state (which view, drawer open/closed, PWA install)
 // useEffect: runs side effects like setting up event listeners
-import { useState, useEffect } from 'react';
+// useMemo: memoriza valores calculados para evitar recálculos innecesarios
+import { useState, useEffect, useMemo } from 'react';
 
 // Import Box and Button from MUI for layout and navigation
-import { Box, Button, AppBar, Toolbar, Typography, IconButton, useMediaQuery, useTheme, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { Box, Button, AppBar, Toolbar, Typography, IconButton, useMediaQuery, useTheme, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider } from '@mui/material';
 
-// Import our StudySession context to manage header visibility
+// Import our contexts
+// StudySessionContext: maneja la visibilidad del header durante sesiones de estudio
+// AppSettingsContext: maneja configuraciones globales como el tamaño de fuente
 import { StudySessionProvider, useStudySession } from './contexts/StudySessionContext';
+import { AppSettingsProvider, useAppSettings } from './contexts/AppSettingsContext';
+
+// Import FontSizeSelector component
+import FontSizeSelector from './components/global/FontSizeSelector';
 
 // Import icons for better navigation
 import WidgetsIcon from '@mui/icons-material/Widgets';
@@ -48,6 +56,7 @@ import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 import SchoolIcon from '@mui/icons-material/School';
 import MenuIcon from '@mui/icons-material/Menu';
 import InstallDesktopIcon from '@mui/icons-material/InstallDesktop';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 /**
  * AppContent Component - Contenido principal de la app con header condicional
@@ -394,6 +403,29 @@ function AppContent() {
             </ListItemButton>
           </ListItem>
         </List>
+        
+        {/* Divider para separar navegación de configuración */}
+        <Divider sx={{ my: 2 }} />
+        
+        {/* SECCIÓN DE CONFIGURACIÓN */}
+        <Box sx={{ px: 2 }}>
+          <Typography 
+            variant="subtitle2" 
+            sx={{ 
+              color: 'text.secondary',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1,
+              mb: 2
+            }}
+          >
+            <SettingsIcon fontSize="small" />
+            Configuración
+          </Typography>
+          
+          {/* Selector de tamaño de fuente */}
+          <FontSizeSelector />
+        </Box>
       </Drawer>
       
       {/* Contenedor principal con el contenido */}
@@ -426,29 +458,65 @@ function AppContent() {
 }
 
 /**
+ * AppWithTheme Component - Componente que aplica el tema dinámico
+ * 
+ * Este componente intermedio se encarga de:
+ * 1. Leer la configuración de tamaño de fuente del contexto
+ * 2. Crear un tema dinámico con la tipografía escalada
+ * 3. Aplicar ese tema a toda la aplicación
+ * 
+ * Necesitamos este componente separado porque useAppSettings()
+ * solo funciona dentro de AppSettingsProvider.
+ */
+function AppWithTheme() {
+  // Obtener la escala de fuente del contexto de configuraciones
+  const { fontScale } = useAppSettings();
+  
+  /**
+   * CREAR TEMA DINÁMICO CON MEMOIZACIÓN
+   * 
+   * useMemo es un Hook que memoriza el resultado de un cálculo costoso.
+   * Solo recalcula cuando las dependencias cambian (fontScale en este caso).
+   * 
+   * Esto es importante porque:
+   * 1. Crear un tema es una operación costosa
+   * 2. No queremos recrearlo en cada render
+   * 3. Solo debe recrearse cuando cambia el tamaño de fuente
+   */
+  const theme = useMemo(
+    () => createDynamicTheme(fontScale),
+    [fontScale] // Solo recrear cuando fontScale cambie
+  );
+  
+  return (
+    // ThemeProvider con el tema dinámico calculado
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <StudySessionProvider>
+        <AppContent />
+      </StudySessionProvider>
+    </ThemeProvider>
+  );
+}
+
+/**
  * App Component - Componente raíz con todos los providers
  * 
  * This is the root of our component tree.
  * Every React app has one root component that contains all others.
  * Este componente envuelve todo con los providers necesarios.
+ * 
+ * ORDEN DE PROVIDERS:
+ * 1. AppSettingsProvider - Primero, para que las configuraciones estén disponibles
+ * 2. AppWithTheme - Segundo, usa las configuraciones para crear el tema
+ * 3. StudySessionProvider - Dentro del tema, maneja el estado de sesión
  */
 function App() {
   return (
-    // ThemeProvider makes our theme available to all MUI components
-    // Any MUI component inside ThemeProvider will use our custom theme
-    <ThemeProvider theme={darkTheme}>
-      {/* CssBaseline does several things:
-          1. Removes default margins from <body>
-          2. Applies background color from theme
-          3. Sets default font from theme
-          4. Ensures consistent rendering across browsers */}
-      <CssBaseline />
-      
-      {/* StudySessionProvider envuelve la app para manejar el estado de sesión */}
-      <StudySessionProvider>
-        <AppContent />
-      </StudySessionProvider>
-    </ThemeProvider>
+    // AppSettingsProvider debe estar más externo para que el tema pueda acceder a las configuraciones
+    <AppSettingsProvider>
+      <AppWithTheme />
+    </AppSettingsProvider>
   );
 }
 

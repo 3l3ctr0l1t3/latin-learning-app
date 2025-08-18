@@ -51,6 +51,9 @@ import StudySession from '../study-session/components/StudySession';
 import SessionTimer from '../../components/global/SessionTimer';
 import DrillSessionComponent from '../../components/exercises/DrillSessionComponent';
 
+// Importar el nuevo FontSizeSelector para configuración de tamaño de fuente
+import FontSizeSelector from '../../components/global/FontSizeSelector';
+
 // Importar tipos necesarios (ya no necesitamos Declension y Gender aquí)
 
 // Importar los tipos desde el archivo de tipos
@@ -185,6 +188,64 @@ const ComponentCanvas: React.FC = () => {
         {/* Grid container para organizar los componentes en columnas */}
         {/* spacing={2} en móvil para menos espacio entre elementos */}
         <Grid container spacing={{ xs: 2, sm: 3 }}>
+          
+          {/* COMPONENTE NUEVO: FontSizeSelector - Selector de tamaño de fuente */}
+          <Grid item xs={12} md={6}>
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                p: { xs: 2, sm: 3 }, 
+                height: '100%',
+                bgcolor: 'background.paper'
+              }}
+            >
+              <Typography 
+                variant="h6" 
+                gutterBottom 
+                sx={{ color: 'text.primary', fontWeight: 'medium' }}
+              >
+                🆕 FontSizeSelector - Configuración de Tamaño de Fuente
+              </Typography>
+              
+              <Typography 
+                variant="body2" 
+                sx={{ mb: 2, color: 'text.secondary' }}
+              >
+                Permite al usuario ajustar el tamaño de fuente de toda la aplicación.
+                Los cambios se aplican inmediatamente y se guardan en localStorage para persistencia.
+                Ofrece 4 opciones: Pequeño (87.5%), Mediano (100%), Grande (112.5%), Extra Grande (125%).
+              </Typography>
+              
+              <Divider sx={{ mb: 3 }} />
+              
+              <Box sx={{ 
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%'
+              }}>
+                <FontSizeSelector />
+              </Box>
+              
+              {/* Información adicional sobre accesibilidad */}
+              <Box sx={{ 
+                mt: 3,
+                p: 2, 
+                bgcolor: 'background.default', 
+                borderRadius: 1 
+              }}>
+                <Typography variant="subtitle2" gutterBottom sx={{ color: 'primary.main' }}>
+                  Características de Accesibilidad:
+                </Typography>
+                <Typography variant="body2" component="ul" sx={{ mt: 1, pl: 2 }}>
+                  <li>Mejora la legibilidad para usuarios con dificultades visuales</li>
+                  <li>Los cambios se aplican a toda la aplicación instantáneamente</li>
+                  <li>Configuración persistente entre sesiones (localStorage)</li>
+                  <li>Escalado proporcional de toda la tipografía</li>
+                  <li>Vista previa en tiempo real del tamaño seleccionado</li>
+                </Typography>
+              </Box>
+            </Paper>
+          </Grid>
           
           {/* COMPONENTE NUEVO: TypeLatinWordDrillCard - Ejercicio de escritura */}
           <Grid item xs={12}>
