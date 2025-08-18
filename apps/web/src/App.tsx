@@ -36,6 +36,9 @@ import { useState } from 'react';
 // Import Box and Button from MUI for layout and navigation
 import { Box, Button, AppBar, Toolbar, Typography, IconButton, useMediaQuery, useTheme, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 
+// Import our StudySession context to manage header visibility
+import { StudySessionProvider, useStudySession } from './contexts/StudySessionContext';
+
 // Import icons for better navigation
 import WidgetsIcon from '@mui/icons-material/Widgets';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -44,13 +47,12 @@ import SchoolIcon from '@mui/icons-material/School';
 import MenuIcon from '@mui/icons-material/Menu';
 
 /**
- * App Component
+ * AppContent Component - Contenido principal de la app con header condicional
  * 
- * This is the root of our component tree.
- * Every React app has one root component that contains all others.
- * We've added a simple navigation to switch between Dashboard and ComponentCanvas
+ * Este componente interno maneja la lógica del header y contenido.
+ * Está separado para poder usar el hook useStudySession dentro del Provider.
  */
-function App() {
+function AppContent() {
   // Estado para controlar qué vista mostrar
   // 'dashboard' muestra el Dashboard principal
   // 'components' muestra el ComponentCanvas para desarrollo de componentes
@@ -64,6 +66,9 @@ function App() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // true si es móvil
   
+  // Hook para acceder al contexto de sesión de estudio
+  const { headerVisible, isInStudySession } = useStudySession();
+  
   // Función para cambiar de vista y cerrar el drawer en móvil
   const handleViewChange = (view: 'dashboard' | 'components' | 'pages') => {
     setCurrentView(view);
@@ -71,19 +76,24 @@ function App() {
   };
   
   return (
-    // ThemeProvider makes our theme available to all MUI components
-    // Any MUI component inside ThemeProvider will use our custom theme
-    <ThemeProvider theme={darkTheme}>
-      {/* CssBaseline does several things:
-          1. Removes default margins from <body>
-          2. Applies background color from theme
-          3. Sets default font from theme
-          4. Ensures consistent rendering across browsers */}
-      <CssBaseline />
-      
-      {/* AppBar - Barra de navegación superior mejorada y responsiva */}
-      <AppBar position="sticky" sx={{ bgcolor: 'background.paper', borderBottom: '1px solid', borderColor: 'divider' }}>
-        <Toolbar>
+    <>
+      {/* HEADER WRAPPER - Contenedor que mantiene el espacio pero puede ocultar el contenido */}
+      <Box
+        sx={{
+          // Transiciones suaves para opacity y visibility
+          transition: 'all 0.3s ease-in-out',
+          // Ocultar visualmente cuando no está visible, pero mantener el espacio
+          opacity: headerVisible ? 1 : 0,
+          // Evitar interacciones cuando está oculto
+          pointerEvents: headerVisible ? 'auto' : 'none',
+          // En modo sesión, colapsar completamente el header
+          height: isInStudySession ? 0 : 'auto',
+          overflow: 'hidden'
+        }}
+      >
+        {/* AppBar - Barra de navegación superior mejorada y responsiva */}
+        <AppBar position="sticky" sx={{ bgcolor: 'background.paper', borderBottom: '1px solid', borderColor: 'divider' }}>
+          <Toolbar>
           {/* Menú hamburguesa en móvil */}
           {isMobile && (
             <IconButton
@@ -147,8 +157,9 @@ function App() {
           )}
         </Toolbar>
       </AppBar>
+      </Box>
       
-      {/* Drawer para navegación móvil */}
+      {/* Drawer para navegación móvil - Solo visible cuando el header está visible */}
       <Drawer
         anchor="left"
         open={mobileDrawerOpen}
@@ -206,10 +217,13 @@ function App() {
       
       {/* Contenedor principal con el contenido */}
       <Box sx={{ 
-        minHeight: '100vh', 
+        // Altura dinámica: pantalla completa en sesión, altura normal con header
+        minHeight: isInStudySession ? '100vh' : 'calc(100vh - 64px)', 
         bgcolor: 'background.default',
         width: '100%',
-        overflow: 'hidden'  // Prevenir overflow horizontal
+        overflow: 'hidden',  // Prevenir overflow horizontal
+        // Transición suave cuando cambia la altura
+        transition: 'min-height 0.3s ease-in-out'
       }}>
         {/* Renderizado condicional: mostramos el componente según currentView */}
         {currentView === 'dashboard' && <Dashboard />}
@@ -226,6 +240,33 @@ function App() {
             </Routes>
           </Router>
       */}
+    </>
+  );
+}
+
+/**
+ * App Component - Componente raíz con todos los providers
+ * 
+ * This is the root of our component tree.
+ * Every React app has one root component that contains all others.
+ * Este componente envuelve todo con los providers necesarios.
+ */
+function App() {
+  return (
+    // ThemeProvider makes our theme available to all MUI components
+    // Any MUI component inside ThemeProvider will use our custom theme
+    <ThemeProvider theme={darkTheme}>
+      {/* CssBaseline does several things:
+          1. Removes default margins from <body>
+          2. Applies background color from theme
+          3. Sets default font from theme
+          4. Ensures consistent rendering across browsers */}
+      <CssBaseline />
+      
+      {/* StudySessionProvider envuelve la app para manejar el estado de sesión */}
+      <StudySessionProvider>
+        <AppContent />
+      </StudySessionProvider>
     </ThemeProvider>
   );
 }

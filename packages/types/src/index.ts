@@ -30,7 +30,8 @@ export interface LatinWord {
   
   // Gender of the noun - important for Latin grammar
   // Using union type to match vocabulary.json values
-  gender: 'masculine' | 'feminine' | 'neuter';
+  // 'common' is for words that can be both masculine and feminine
+  gender: 'masculine' | 'feminine' | 'neuter' | 'common';
   
   // Declension tells us which pattern the noun follows when it changes form
   // Currently a number in the JSON (1, 2, 3, 4, 5) but we'll normalize to strings
@@ -68,7 +69,8 @@ export interface NormalizedLatinWord {
   declension: '1st' | '2nd' | '3rd' | '4th' | '5th';
   
   // Gender (already correct in JSON)
-  gender: 'masculine' | 'feminine' | 'neuter';
+  // 'common' is for words that can be both masculine and feminine
+  gender: 'masculine' | 'feminine' | 'neuter' | 'common';
   
   // Primary Spanish translation
   spanishTranslation: string;
@@ -241,7 +243,8 @@ export interface VocabularyFilter {
   declensions?: ('1st' | '2nd' | '3rd' | '4th' | '5th')[];
   
   // Filter by gender(s)
-  genders?: ('masculine' | 'feminine' | 'neuter')[];
+  // 'common' is for words that can be both masculine and feminine
+  genders?: ('masculine' | 'feminine' | 'neuter' | 'common')[];
   
   // Search text for nominative or translation
   searchText?: string;

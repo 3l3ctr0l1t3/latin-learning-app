@@ -19,15 +19,19 @@ import {
   Typography,
   Button,
   Stack,
-  Alert
+  Alert,
+  Chip
 } from '@mui/material';
-import StudyWordsViewer from './StudyWordsViewer';
-import SessionTimer from './SessionTimer';
-import DrillSessionComponent from './DrillSessionComponent';
-import type { LatinWord } from './WordCard';
+import StudyWordsViewerWithNavigation from './StudyWordsViewerWithNavigation';
+import SessionTimer from '../../../components/global/SessionTimer';
+import DrillSessionComponent from '../../../components/exercises/DrillSessionComponent';
+import type { LatinWord } from '../../../components/global/WordCard';
 import type { DrillType, SessionDuration } from '../types';
-import type { DrillType as DrillSessionType } from './DrillSessionComponent';
+import type { DrillType as DrillSessionType } from '../../../components/exercises/DrillSessionComponent';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+// Importar configuración centralizada de layout
+import { getPageContainerSx } from '../../../config/pageLayout';
 // Comentados - se usarán cuando implementemos la función getPhaseInfo
 // import SchoolIcon from '@mui/icons-material/School';
 // import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
@@ -50,7 +54,12 @@ interface StudySessionProps {
 /**
  * COMPONENTE DE SESIÓN DE ESTUDIO
  * 
- * Maneja el flujo completo de una sesión de estudio
+ * Este es un componente de PÁGINA completa que maneja:
+ * - Su propio layout y centrado
+ * - El flujo completo de una sesión de estudio
+ * - Las tres fases: revisión, ejercicios, resumen
+ * 
+ * Como página, se encarga de su propia presentación visual
  */
 const StudySession: React.FC<StudySessionProps> = ({
   selectedWords,
@@ -82,7 +91,14 @@ const StudySession: React.FC<StudySessionProps> = ({
     if (results) {
       setDrillResults(results);
     }
+    // Cambiar a la fase de resumen
     setCurrentPhase('summary');
+  };
+  
+  // Nuevo manejador para actualizar resultados en tiempo real
+  const handleDrillComplete = (results: any[]) => {
+    // Solo actualizar los resultados, sin cambiar de fase
+    setDrillResults(results);
   };
   
   const handleTimeUp = () => {
@@ -120,22 +136,59 @@ const StudySession: React.FC<StudySessionProps> = ({
   */
   
   return (
-    <Box sx={{ 
-      height: '100%',  // Usa toda la altura del contenedor padre
-      // Removemos minHeight ya que el contenedor padre ya define la altura
-      display: 'flex',  // Contenedor flex vertical
-      flexDirection: 'column',  // Elementos apilados verticalmente
-      position: 'relative'  // Para posicionamiento de elementos hijos si es necesario
-    }} data-testid="study-session-container">
-      {/* HEADER SIMPLIFICADO CON TIMER EN ESQUINA */}
+    // CONTENEDOR DE PÁGINA - Usa configuración centralizada en modo fullscreen
+    <Box
+      data-testid="study-session-page"
+      sx={getPageContainerSx('fullscreen', 'standard')}
+    >
+      {/* CONTENEDOR DE CONTENIDO - Usa configuración centralizada tipo 'card' */}
+      <Box sx={getPageContainerSx('card', 'standard')}>
+        {/* CONTENIDO DE LA SESIÓN - El componente original */}
+        <Box sx={{ 
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column'
+        }} data-testid="study-session-container">
+      {/* HEADER SIMPLIFICADO CON TIMER, ESTADÍSTICAS Y BOTÓN */}
       <Box sx={{ 
         display: 'flex', 
         justifyContent: 'space-between',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         mb: 2,
         gap: 2
       }} data-testid="study-session-header">
-        {/* Botón de finalizar sesión (izquierda) */}
+        {/* Timer y estadísticas (izquierda) */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Box sx={{ minWidth: 150 }} data-testid="session-timer-container">
+            <SessionTimer
+              totalMinutes={duration}
+              onTimeUp={handleTimeUp}
+              isPaused={isTimerPaused}
+            />
+          </Box>
+          
+          {/* Estadísticas de ejercicios - solo visible en fase de ejercicios */}
+          {currentPhase === 'exercises' && (
+            <Stack direction="column" spacing={0.5} data-testid="exercise-stats">
+              <Chip
+                icon={<CheckCircleIcon />}
+                label={drillResults.filter((r: any) => r.isCorrect).length}
+                color="success"
+                size="small"
+                sx={{ minWidth: 60 }}
+              />
+              <Chip
+                icon={<CancelIcon />}
+                label={drillResults.filter((r: any) => !r.isCorrect).length}
+                color="error"
+                size="small"
+                sx={{ minWidth: 60 }}
+              />
+            </Stack>
+          )}
+        </Box>
+        
+        {/* Botón de finalizar sesión (derecha) */}
         <Button
           variant="outlined"
           color="error"
@@ -145,15 +198,6 @@ const StudySession: React.FC<StudySessionProps> = ({
         >
           Finalizar Sesión
         </Button>
-        
-        {/* Timer compacto (derecha) */}
-        <Box sx={{ minWidth: 150 }} data-testid="session-timer-container">
-          <SessionTimer
-            totalMinutes={duration}
-            onTimeUp={handleTimeUp}
-            isPaused={isTimerPaused}
-          />
-        </Box>
       </Box>
       
       {/* Alerta si se acabó el tiempo */}
@@ -179,7 +223,7 @@ const StudySession: React.FC<StudySessionProps> = ({
             display: 'flex',  // También es un contenedor flex
             flexDirection: 'column'  // Para que StudyWordsViewer pueda expandirse
           }} data-testid="phase-review">
-            <StudyWordsViewer
+            <StudyWordsViewerWithNavigation
               words={selectedWords}
               onContinueToExercises={handleContinueToExercises}
               showTranslation={true}
@@ -199,6 +243,7 @@ const StudySession: React.FC<StudySessionProps> = ({
               drillTypes={drillTypes as DrillSessionType[]}  // Conversión de tipos
               sessionDurationMinutes={duration}  // Duración en minutos
               onSessionEnd={handleFinishExercises}  // Callback cuando termine
+              onDrillComplete={handleDrillComplete}  // Callback para actualizar resultados en tiempo real
             />
           </Box>
         )}
@@ -260,6 +305,8 @@ const StudySession: React.FC<StudySessionProps> = ({
             </Stack>
           </Paper>
         )}
+      </Box>
+        </Box>
       </Box>
     </Box>
   );

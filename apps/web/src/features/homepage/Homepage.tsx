@@ -31,7 +31,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 // Componente reutilizable de guía de colores
-import DeclensionColorGuide from '../study-session/components/DeclensionColorGuide';
+import DeclensionColorGuide from '../../components/global/DeclensionColorGuide';
 
 /**
  * PROPS DEL COMPONENTE

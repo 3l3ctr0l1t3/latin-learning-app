@@ -1,7 +1,21 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run build:web:*)"
+      "Bash(npm run build:web:*)",
+      "Bash(mv:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm run build:*)",
+      "Bash(grep:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_take_screenshot",
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(npm run dev:web:*)",
+      "Bash(taskkill:*)",
+      "Bash(npx tsc:*)",
+      "Bash(sed:*)"
     ],
     "deny": []
   }

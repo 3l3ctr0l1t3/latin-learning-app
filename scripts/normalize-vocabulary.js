@@ -37,6 +37,67 @@ const DECLENSION_MAP = {
 };
 
 /**
+ * Function to capitalize the first letter of a string
+ * Handles Spanish text properly, including accented characters
+ * 
+ * @param {string} str - The string to capitalize
+ * @returns {string} - The string with first letter capitalized
+ */
+function capitalizeFirstLetter(str) {
+  if (!str) return '';
+  
+  // Trim whitespace first
+  str = str.trim();
+  
+  // Use charAt(0) and slice(1) to handle Unicode properly
+  // This works correctly with Spanish accented characters like á, é, í, ó, ú, ñ
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+/**
+ * Function to normalize gender values to standard forms
+ * Converts various forms like "masculine/feminine", "común", etc. to standard values
+ * 
+ * @param {string} gender - The original gender value
+ * @returns {string} - The normalized gender value
+ */
+function normalizeGender(gender) {
+  // Convert to lowercase for easier matching
+  const lowerGender = (gender || '').toLowerCase().trim();
+  
+  // Check for common gender variations
+  if (lowerGender.includes('masculine') && lowerGender.includes('feminine')) {
+    return 'common';
+  }
+  if (lowerGender === 'común' || lowerGender === 'common') {
+    return 'common';
+  }
+  if (lowerGender.includes('masculine or feminine')) {
+    return 'common';
+  }
+  if (lowerGender === 'feminine/masculine') {
+    return 'common';
+  }
+  if (lowerGender === 'neuter and masculine') {
+    // This is a special case - keep as neuter since it's primarily neuter
+    return 'neuter';
+  }
+  if (lowerGender === 'adjective') {
+    // Adjectives can be any gender, mark as common
+    return 'common';
+  }
+  
+  // Standard genders
+  if (lowerGender === 'masculine') return 'masculine';
+  if (lowerGender === 'feminine') return 'feminine';
+  if (lowerGender === 'neuter') return 'neuter';
+  
+  // Default to common if unrecognized
+  console.warn(`  ⚠️ Unknown gender value: "${gender}" - defaulting to common`);
+  return 'common';
+}
+
+/**
  * Function to generate a unique ID for each word
  * 
  * In JavaScript, functions can be defined with:
@@ -109,14 +170,19 @@ async function normalizeVocabulary() {
         // If DECLENSION_MAP doesn't have the value, use the original
         declension: DECLENSION_MAP[word.declension] || word.declension,
         
-        // Gender is already correct
-        gender: word.gender,
+        // Normalize gender - convert various forms to standard values
+        // Handle all variations of common gender
+        gender: normalizeGender(word.gender),
         
         // Rename spanishMeaning to spanishTranslation for consistency
-        spanishTranslation: word.spanishMeaning,
+        // Capitalize the first letter of the Spanish translation
+        spanishTranslation: capitalizeFirstLetter(word.spanishMeaning),
         
         // Additional meanings (already an array)
-        additionalMeanings: word.additionalMeanings || [],
+        // Capitalize each additional meaning
+        additionalMeanings: (word.additionalMeanings || []).map(meaning => 
+          capitalizeFirstLetter(meaning)
+        ),
         
         // Add placeholder for example sentence (will be filled by AI later)
         exampleSentence: null

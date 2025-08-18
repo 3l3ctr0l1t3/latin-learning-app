@@ -268,6 +268,7 @@ export const LATIN_COLORS = {
     masculine: '#2196F3',  // Azul
     feminine: '#E91E63',   // Rosa
     neuter: '#9C27B0',     // Púrpura
+    common: '#4CAF50',     // Verde - para palabras que pueden ser masculinas o femeninas
   },
   
   // Drill Type Colors - colores para tipos de ejercicios

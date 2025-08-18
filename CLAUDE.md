@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## CRITICAL: UI Development Agent Usage
+
+**MANDATORY: For ALL UI-related tasks (creating components, updating components, styling, layout changes), you MUST use the ui-developer agent located at `.claude/agents/ui-developer.md`**
+
+This ensures consistent, learning-focused development with proper comments, MUI-only styling, Spanish UI text, and mobile-responsive design.
+
 ## CRITICAL: Learning-Focused Development
 
 **The user is learning web development through this project.** They have:
@@ -58,7 +64,7 @@ This is CRITICAL for the Latin learning app as users may:
 
 Latin Learning Application - An interactive, module-based platform for learning Latin through dynamic content and active practice sessions.
 
-### Current Project State (Last Updated: 2025-08-10 - Session 2)
+### Current Project State (Last Updated: 2025-08-16 - Session 3)
 
 #### ✅ Completed:
 1. **Monorepo Structure** - Set up with npm workspaces
@@ -127,9 +133,19 @@ Latin Learning Application - An interactive, module-based platform for learning 
    - App navigation between different development views
    - Network access configured for mobile testing (port proxy for WSL)
 
+8. **Component Organization** (Session 3)
+   - Reorganized components into logical folders:
+     - `/components/global/` - Reusable components (WordCard, SessionTimer, etc.)
+     - `/components/exercises/` - All exercise and drill components
+     - `/features/study-session/components/config/` - Configuration step components
+     - `/features/study-session/components/filters/` - Filter components
+     - `/features/study-session/components/search/` - Search components
+   - Updated all import paths for new structure
+   - Build successful with new organization
+
 #### 🚧 In Progress:
-- Exercise phase implementation (placeholder exists)
-- TypeScript build errors may need checking
+- Exercise phase implementation (multiple components created, integration pending)
+- Navigation arrows for NavigationContainer (md-xl screens)
 
 #### 📋 Immediate Next Steps:
 1. **Complete Exercise Components**:
@@ -203,12 +219,21 @@ latin2/
 ├── apps/
 │   ├── web/                    # React web application
 │   │   ├── src/
-│   │   │   ├── app/            # App-level components (future: router, providers)
+│   │   │   ├── app/            # App-level components
+│   │   │   ├── components/     # Shared components
+│   │   │   │   ├── global/     # Globally reusable components
+│   │   │   │   └── exercises/  # Exercise/drill components
 │   │   │   ├── config/         # Configuration (theme.ts)
 │   │   │   ├── features/       # Feature-based modules
-│   │   │   │   ├── dashboard/  # Homepage
-│   │   │   │   └── study-session/ # Study session (in progress)
-│   │   │   ├── components/     # Shared components (to be added)
+│   │   │   │   ├── dashboard/  # Dashboard page
+│   │   │   │   ├── homepage/   # Homepage
+│   │   │   │   ├── component-canvas/ # Component testing
+│   │   │   │   ├── page-canvas/      # Page testing
+│   │   │   │   └── study-session/    # Study session feature
+│   │   │   │       └── components/
+│   │   │   │           ├── config/   # Configuration components
+│   │   │   │           ├── filters/  # Filter components
+│   │   │   │           └── search/   # Search components
 │   │   │   ├── hooks/          # Custom React hooks (to be added)
 │   │   │   └── services/       # API services (future)
 │   │   └── index.html
@@ -320,10 +345,16 @@ interface NormalizedLatinWord {
 - Fill in the blank
 - Direct input
 
-## Session 2 Key Achievements
+## Session 3 Key Achievements
 
-This session focused on completing the study session flow and improving UX:
+This session focused on code organization and preparation for enhanced navigation:
 
+1. **Component Reorganization**: Created logical folder structure separating global, exercise, and feature-specific components
+2. **Import Path Updates**: Successfully updated all import paths across 30+ components
+3. **Build Verification**: Project builds successfully with new structure
+4. **Documentation Update**: Updated CLAUDE.md with current project state
+
+Previous Session (Session 2) Achievements:
 1. **Created Complete Study Flow**: Configuration → Word Review → Exercises → Summary
 2. **Added Advanced Navigation**: Swipe gestures for mobile, keyboard arrows for desktop
 3. **Implemented Session Timer**: Visual countdown with progress bar
@@ -401,3 +432,4 @@ git push origin main
 - CSS Flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 - Add unique identifiers to each UI element coded, Always ALWAYS
 - When creating new components, add them to the start of the component cnavas, not the end
+- the user is ALWAY in charge of running the development server

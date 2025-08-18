@@ -19,8 +19,8 @@ import {
   Chip,
   Stack
 } from '@mui/material';
-import WordNavigator from './WordNavigator';
-import type { LatinWord } from './WordCard';
+import WordNavigator from '../../../components/global/WordNavigator';
+import type { LatinWord } from '../../../components/global/WordCard';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SchoolIcon from '@mui/icons-material/School';
 import SwipeIcon from '@mui/icons-material/Swipe';

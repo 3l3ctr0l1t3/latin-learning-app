@@ -26,9 +26,10 @@ export type DrillType = 'multipleChoice' | 'multipleChoiceDeclension' | 'typeLat
 export type Declension = '1st' | '2nd' | '3rd' | '4th' | '5th';
 
 /**
- * Gender - Los tres géneros gramaticales del latín
+ * Gender - Los géneros gramaticales del latín
+ * 'common' es para palabras que pueden ser tanto masculinas como femeninas
  */
-export type Gender = 'masculine' | 'feminine' | 'neuter';
+export type Gender = 'masculine' | 'feminine' | 'neuter' | 'common';
 
 /**
  * Configuración para mostrar información sobre cada tipo de ejercicio

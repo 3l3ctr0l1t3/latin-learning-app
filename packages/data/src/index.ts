@@ -320,7 +320,7 @@ export class VocabularyService {
    * @param {string} gender - Raw gender value
    * @returns {string} Normalized gender
    */
-  private normalizeGender(gender: string): 'masculine' | 'feminine' | 'neuter' {
+  private normalizeGender(gender: string): 'masculine' | 'feminine' | 'neuter' | 'common' {
     const genderLower = gender.toLowerCase();
     
     // Handle various cases
@@ -333,7 +333,10 @@ export class VocabularyService {
     if (genderLower.includes('neuter') || genderLower === 'neutro') {
       return 'neuter';
     }
-    
+    if (genderLower.includes('common') || genderLower === 'común') {
+      return 'common';
+    }
+
     // Default for ambiguous cases (like "common", "adjective")
     // You might want to handle these differently
     return 'masculine';

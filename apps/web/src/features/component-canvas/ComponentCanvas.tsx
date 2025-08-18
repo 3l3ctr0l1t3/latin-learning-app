@@ -17,39 +17,39 @@ import {
 } from '@mui/material';
 
 // Importar el componente DurationSelector que ya creamos
-import DurationSelector from '../study-session/components/DurationSelector';
+import DurationSelector from '../study-session/components/config/DurationSelector';
 
 // Importar el nuevo DrillTypeSelector que acabamos de crear
 // Este componente permite seleccionar múltiples tipos de ejercicios
-import DrillTypeSelector from '../study-session/components/DrillTypeSelector';
+import DrillTypeSelector from '../study-session/components/config/DrillTypeSelector';
 
 // Importar el WordCard que muestra información de palabras latinas
-import WordCard from '../study-session/components/WordCard';
-import type { LatinWord } from '../study-session/components/WordCard';
+import WordCard from '../../components/global/WordCard';
+import type { LatinWord } from '../../components/global/WordCard';
 
 // Importar WordSearchBar para búsqueda de palabras (versión antigua)
-// import WordSearchBar from '../study-session/components/WordSearchBar'; // Removed - not being used
+// import WordSearchBar from '../study-session/components/search/WordSearchBar'; // Removed - not being used
 
 // Importar WordSearchDropdown - versión mejorada con dropdown
-import WordSearchDropdown from '../study-session/components/WordSearchDropdown';
+import WordSearchDropdown from '../study-session/components/search/WordSearchDropdown';
 
 // Importar SelectedWordChip para mostrar palabras seleccionadas
-import SelectedWordChip from '../study-session/components/SelectedWordChip';
+import SelectedWordChip from '../../components/global/SelectedWordChip';
 
 // Importar WordSelectionStep - componente integrado de selección
-import WordSelectionStep from '../study-session/components/WordSelectionStep';
+import WordSelectionStep from '../study-session/components/config/WordSelectionStep';
 
 // Importar componentes de ejercicios
-import MultipleChoiceOption from '../study-session/components/exercises/MultipleChoiceOption';
-import MultipleChoiceDrillCard from '../study-session/components/exercises/MultipleChoiceDrillCard';
-import MultipleChoiceDeclensionCard from '../study-session/components/exercises/MultipleChoiceDeclensionCard';
-import TypeLatinWordDrillCard from '../study-session/components/exercises/TypeLatinWordDrillCard';
+import MultipleChoiceOption from '../../components/exercises/MultipleChoiceOption';
+import MultipleChoiceDrillCard from '../../components/exercises/MultipleChoiceDrillCard';
+import MultipleChoiceDeclensionCard from '../../components/exercises/MultipleChoiceDeclensionCard';
+import TypeLatinWordDrillCard from '../../components/exercises/TypeLatinWordDrillCard';
 
 // Importar componentes de navegación y estudio
 import StudyWordsViewer from '../study-session/components/StudyWordsViewer';
 import StudySession from '../study-session/components/StudySession';
-import SessionTimer from '../study-session/components/SessionTimer';
-import DrillSessionComponent from '../study-session/components/DrillSessionComponent';
+import SessionTimer from '../../components/global/SessionTimer';
+import DrillSessionComponent from '../../components/exercises/DrillSessionComponent';
 
 // Importar tipos necesarios (ya no necesitamos Declension y Gender aquí)
 

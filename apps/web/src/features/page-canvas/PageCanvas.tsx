@@ -10,25 +10,24 @@
  * - State Management: Manejo del estado de navegación entre páginas
  */
 
-import React, { useState } from 'react';
-import {
-  Box,
-  Button
-} from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Box } from '@mui/material';
 
-// Iconos
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+// Importar el hook del contexto de sesión de estudio
+import { useStudySession } from '../../contexts/StudySessionContext';
+
+// No necesitamos estos iconos ya que ahora están en StudySessionConfig
+// import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 // Importar páginas y componentes
 import Homepage from '../homepage/Homepage';
-import ConfigStep1WordSelection from '../study-session/components/ConfigStep1WordSelection';
-import ConfigStep2DurationDrills from '../study-session/components/ConfigStep2DurationDrills';
 import StudySession from '../study-session/components/StudySession';
+import StudySessionConfig from '../study-session/components/StudySessionConfig';
 
 // Importar tipos
 import type { DrillType, SessionDuration } from '../study-session/types';
-import type { LatinWord } from '../study-session/components/WordCard';
+import type { LatinWord } from '../../components/global/WordCard';
 
 /**
  * TIPOS DE PÁGINA DISPONIBLES
@@ -45,48 +44,41 @@ const PageCanvas: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>('homepage');
   
   // Estados para la configuración de la sesión de estudio
+  // Estos estados se comparten entre las páginas de configuración y sesión
   const [selectedWords, setSelectedWords] = useState<LatinWord[]>([]);
   const [duration, setDuration] = useState<SessionDuration>(10);
   const [drillTypes, setDrillTypes] = useState<DrillType[]>(['multipleChoice']);
-  const [currentStep, setCurrentStep] = useState(0); // Para navegación por pasos en configuración
-
-  // Pasos de configuración
-  const steps = [
-    'Seleccionar Palabras',
-    'Duración y Ejercicios'
-  ];
-
+  
+  // Hook para manejar el contexto de sesión de estudio
+  const { enterStudySession, exitStudySession } = useStudySession();
+  
   /**
-   * MANEJADOR PARA AVANZAR AL SIGUIENTE PASO
+   * EFECTO PARA MANEJAR EL ESTADO DE SESIÓN
+   * 
+   * Este useEffect se ejecuta cada vez que cambia currentPage.
+   * Activa o desactiva el modo de sesión de estudio según la página actual.
+   * 
+   * CONCEPTO: useEffect
+   * - Se ejecuta después de cada renderizado
+   * - El segundo parámetro [currentPage] hace que solo se ejecute cuando cambia currentPage
+   * - La función de retorno se ejecuta al limpiar (cuando el componente se desmonta o antes del próximo efecto)
    */
-  const handleNext = () => {
-    if (currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1);
+  useEffect(() => {
+    // Si entramos a configuración o sesión de estudio, activar modo sesión
+    if (currentPage === 'study-config' || currentPage === 'study-session') {
+      enterStudySession();
+    } 
+    // Si volvemos a homepage, desactivar modo sesión
+    else if (currentPage === 'homepage') {
+      exitStudySession();
     }
-  };
-
-  /**
-   * MANEJADOR PARA RETROCEDER AL PASO ANTERIOR
-   */
-  const handleBack = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-    }
-  };
-
-  /**
-   * VALIDACIÓN: ¿Puede avanzar al siguiente paso?
-   */
-  const canProceed = () => {
-    switch (currentStep) {
-      case 0:
-        return selectedWords.length >= 5; // Mínimo 5 palabras
-      case 1:
-        return drillTypes.length > 0; // Al menos un tipo de ejercicio
-      default:
-        return true;
-    }
-  };
+    
+    // Función de limpieza: se ejecuta cuando el componente se desmonta
+    return () => {
+      // Asegurar que salimos del modo sesión si el componente se desmonta
+      exitStudySession();
+    };
+  }, [currentPage, enterStudySession, exitStudySession]);
   
   /**
    * MANEJADOR PARA IR A CONFIGURACIÓN DE SESIÓN
@@ -94,7 +86,6 @@ const PageCanvas: React.FC = () => {
    */
   const handleStartConfiguration = () => {
     setCurrentPage('study-config');
-    setCurrentStep(0); // Empezar desde el primer paso
   };
   
   /**
@@ -111,7 +102,6 @@ const PageCanvas: React.FC = () => {
    */
   const handleEndSession = () => {
     setCurrentPage('homepage');
-    setCurrentStep(0); // Resetear pasos de configuración
     // Opcionalmente, limpiar las selecciones
     // setSelectedWords([]);
     // setDuration(10);
@@ -121,7 +111,7 @@ const PageCanvas: React.FC = () => {
   /**
    * RENDERIZAR PÁGINA SEGÚN EL ESTADO ACTUAL
    */
-  
+
   // PÁGINA 1: HOMEPAGE
   if (currentPage === 'homepage') {
     return (
@@ -138,203 +128,46 @@ const PageCanvas: React.FC = () => {
     );
   }
   
-  // PÁGINA 2: SESIÓN DE ESTUDIO ACTIVA
+  // SESIÓN DE ESTUDIO ACTIVA
+  // StudySession es una página completa que maneja su propio layout
   if (currentPage === 'study-session') {
     return (
-      <Box
-        data-testid="study-session-page-wrapper"
-        sx={{
-          // Centrar el contenido en pantallas grandes
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          minHeight: 'calc(100vh - 110px)',
-          px: { xs: 0, md: 2, lg: 3, xl: 4 }, // Padding horizontal en pantallas grandes
-          py: { xs: 0, md: 2 }, // Padding vertical en pantallas grandes
-        }}
-      >
-        <Box 
-          data-testid="study-session-wrapper"
-          sx={{ 
-            // Limitar el ancho máximo en pantallas grandes
-            width: '100%',
-            maxWidth: {
-              xs: '100%',      // Móvil: ancho completo
-              sm: '100%',      // Tablet pequeña: ancho completo
-              md: '900px',     // Desktop mediano: máximo 900px
-              lg: '1100px',    // Desktop grande: máximo 1100px
-              xl: '1300px'     // Desktop XL: máximo 1300px
-            },
-            // Ajustar alturas para que quepa sin scroll
-            height: { 
-              xs: 'calc(100vh - 110px)',  // Móvil: altura completa
-              sm: '600px',     // Tablet: 600px
-              md: '650px',     // Desktop mediano: 650px (reducido de 750px)
-              lg: '700px',     // Desktop grande: 700px (reducido de 850px)
-              xl: '750px'      // Desktop XL: 750px (reducido de 950px)
-            },
-            display: 'flex',
-            flexDirection: 'column',
-            // Agregar sombra y borde en pantallas grandes
-            boxShadow: { xs: 0, md: 3, lg: 4 },
-            borderRadius: { xs: 0, md: 2 },
-            bgcolor: { xs: 'transparent', md: 'background.paper' },
-            // Padding interno
-            p: {
-              xs: 0.5,         // Móvil: padding mínimo
-              sm: 1,           // Tablet: padding pequeño
-              md: 2,           // Desktop: padding normal
-              lg: 2.5,         // Desktop grande: más padding
-              xl: 3            // Desktop XL: padding amplio
-            }
-          }}
-        >
-          <StudySession
-            selectedWords={selectedWords}
-            duration={duration}
-            drillTypes={drillTypes}
-            onEndSession={handleEndSession}
-          />
-        </Box>
-      </Box>
+      <StudySession
+        selectedWords={selectedWords}
+        duration={duration}
+        drillTypes={drillTypes}
+        onEndSession={handleEndSession}
+      />
     );
   }
   
-  // PÁGINA 3: CONFIGURACIÓN DE SESIÓN DE ESTUDIO
-
+  // CONFIGURACIÓN DE SESIÓN DE ESTUDIO
+  // StudySessionConfig es una página completa que maneja su propio layout
+  if (currentPage === 'study-config') {
+    return (
+      <StudySessionConfig
+        selectedWords={selectedWords}
+        onSelectionChange={setSelectedWords}
+        duration={duration}
+        onDurationChange={setDuration}
+        drillTypes={drillTypes}
+        onDrillTypesChange={setDrillTypes}
+        onStartSession={handleStartSession}
+      />
+    );
+  }
+  
+  // Si llegamos aquí, mostramos la homepage por defecto
   return (
-    <Box
-      data-testid="config-page-wrapper"
-      sx={{
-        // Mismo enfoque que la sesión de estudio: centrado y contenido
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+    <Box 
+      data-testid="homepage-wrapper"
+      sx={{ 
         minHeight: 'calc(100vh - 110px)',
-        px: { xs: 0, md: 2, lg: 3, xl: 4 }, // Padding horizontal en pantallas grandes
-        py: { xs: 0, md: 2 }, // Padding vertical en pantallas grandes
+        display: 'flex',
+        flexDirection: 'column'
       }}
     >
-      <Box 
-        data-testid="study-session-config-page"
-        sx={{ 
-          // Limitar el ancho máximo como en la sesión
-          width: '100%',
-          maxWidth: {
-            xs: '100%',      // Móvil: ancho completo
-            sm: '100%',      // Tablet pequeña: ancho completo
-            md: '900px',     // Desktop mediano: máximo 900px
-            lg: '1100px',    // Desktop grande: máximo 1100px
-            xl: '1300px'     // Desktop XL: máximo 1300px
-          },
-          // Alturas ajustadas para evitar scroll
-          height: { 
-            xs: 'calc(100vh - 110px)',  // Móvil: altura completa
-            sm: '600px',     // Tablet: 600px
-            md: '650px',     // Desktop mediano: 650px
-            lg: '700px',     // Desktop grande: 700px
-            xl: '750px'      // Desktop XL: 750px
-          },
-          display: 'flex',
-          flexDirection: 'column',
-          // Estilo visual consistente con la sesión
-          boxShadow: { xs: 0, md: 3, lg: 4 },
-          borderRadius: { xs: 0, md: 2 },
-          bgcolor: { xs: 'transparent', md: 'background.paper' },
-          // Padding interno
-          p: {
-            xs: 0.5,         // Móvil: padding mínimo
-            sm: 1,           // Tablet: padding pequeño
-            md: 2,           // Desktop: padding normal
-            lg: 2.5,         // Desktop grande: más padding
-            xl: 3            // Desktop XL: padding amplio
-          }
-        }}>
-      {/* CONTENIDO DE CADA PASO */}
-      <Box 
-        data-testid="step-content-container"
-        sx={{ 
-          flexGrow: 1,  // Toma todo el espacio disponible
-          minHeight: '250px',
-          // Solo mostrar scroll en el paso 1 (selección de palabras) que puede tener mucho contenido
-          // En el paso 2 (duración y ejercicios) no hay necesidad de scroll
-          overflowY: currentStep === 0 ? 'auto' : 'hidden',  // 'hidden' evita scroll en paso 2
-          overflowX: 'hidden'  // Evitar scroll horizontal siempre
-        }}>
-        {/* PASO 1: SELECCIONAR PALABRAS - Usando el nuevo componente optimizado */}
-        {currentStep === 0 && (
-          <ConfigStep1WordSelection
-            selectedWords={selectedWords}
-            onSelectionChange={setSelectedWords}
-            minWords={5}
-            maxWords={30}
-          />
-        )}
-
-        {/* PASO 2: DURACIÓN Y EJERCICIOS - Con botón de inicio integrado */}
-        {currentStep === 1 && (
-          <ConfigStep2DurationDrills
-            duration={duration}
-            onDurationChange={setDuration}
-            drillTypes={drillTypes}
-            onDrillTypesChange={setDrillTypes}
-            onStartSession={handleStartSession}
-            canStartSession={selectedWords.length >= 5}
-          />
-        )}
-      </Box>
-
-      {/* NAVEGACIÓN ENTRE PASOS */}
-      {(
-        <Box 
-          data-testid="navigation-buttons-container"
-          sx={{ 
-          mt: { xs: 2, sm: 3 },  // Menos margen en móvil
-          pt: { xs: 1.5, sm: 2 },  // Menos padding en móvil
-          pb: { xs: 0, sm: 0, l:0, xl:0, m:0 },  // Padding inferior solo en móvil
-          borderTop: '1px solid',
-          borderColor: 'divider',
-          display: 'flex', 
-          justifyContent: 'space-between',
-          gap: 2  // Espacio entre botones
-        }}>
-        <Button
-          data-testid="nav-button-back"
-          startIcon={<ArrowBackIcon />}
-          onClick={handleBack}
-          disabled={currentStep === 0}
-          sx={{ 
-            fontSize: { xs: '1rem', sm: '0.875rem' },
-            py: { xs: 1.5, sm: 1 }
-          }}
-        >
-          Anterior
-        </Button>
-        
-        <Button
-          data-testid="nav-button-next"
-          endIcon={<ArrowForwardIcon />}
-          variant="contained"
-          onClick={() => {
-            // En el paso 1, "Comenzar" inicia la sesión
-            if (currentStep === 1) {
-              handleStartSession();
-            } else {
-              handleNext();
-            }
-          }}
-          disabled={!canProceed()}
-          sx={{ 
-            fontSize: { xs: '1rem', sm: '0.875rem' },
-            py: { xs: 1.5, sm: 1 }
-          }}
-        >
-          {/* Mostrar "Comenzar" en el paso 2, "Siguiente" en otros pasos */}
-          {currentStep === 1 ? 'Comenzar' : 'Siguiente'}
-        </Button>
-      </Box>
-      )}
-      </Box>
+      <Homepage onStartSession={handleStartConfiguration} />
     </Box>
   );
 };
