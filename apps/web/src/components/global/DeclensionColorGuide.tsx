@@ -203,8 +203,7 @@ const DeclensionCard: React.FC<DeclensionCardProps> = ({ info, compact }) => {
           bgcolor: info.color,
           color: 'white',
           fontWeight: 'bold',
-          mb: compact ? 1 : 1.5,
-          fontSize: compact ? '0.7rem' : '0.75rem'
+          mb: compact ? 1 : 1.5
         }}
       />
       
@@ -214,8 +213,7 @@ const DeclensionCard: React.FC<DeclensionCardProps> = ({ info, compact }) => {
         sx={{ 
           fontWeight: 'bold',
           color: info.color,
-          mb: 0.5,
-          fontSize: compact ? '0.9rem' : undefined
+          mb: 0.5
         }}
       >
         {info.example}
@@ -227,8 +225,7 @@ const DeclensionCard: React.FC<DeclensionCardProps> = ({ info, compact }) => {
         sx={{ 
           display: 'block',
           color: 'text.secondary',
-          lineHeight: 1.4,
-          fontSize: compact ? '0.7rem' : '0.75rem'
+          lineHeight: 1.4
         }}
       >
         {info.description}
@@ -240,19 +237,17 @@ const DeclensionCard: React.FC<DeclensionCardProps> = ({ info, compact }) => {
           <Typography 
             variant="caption"
             sx={{ 
-              fontSize: '0.7rem',
               color: 'text.secondary'
             }}
           >
             Terminaciones:
           </Typography>
           <Typography 
-            variant="caption"
+            variant="body2"
             sx={{ 
               display: 'block',
               fontWeight: 'medium',
-              color: info.color,
-              fontSize: '0.75rem'
+              color: info.color
             }}
           >
             {info.commonEndings.join(', ')}

@@ -100,6 +100,40 @@ sx={{
 }}
 ```
 
+#### CRITICAL: Font Size Rules
+
+**NEVER use hardcoded font sizes!** The app has a user-configurable font size setting that scales all text.
+
+```javascript
+// ❌ NEVER DO THIS:
+sx={{ fontSize: '1rem' }}
+sx={{ fontSize: '14px' }}
+sx={{ fontSize: '0.875rem' }}
+
+// ✅ ALWAYS DO THIS:
+// Option 1: Use Typography variants (PREFERRED)
+<Typography variant="body1">      // 1rem base
+<Typography variant="body2">      // 0.875rem base
+<Typography variant="caption">    // 0.75rem base
+<Typography variant="subtitle1">  // 1rem base
+<Typography variant="subtitle2">  // 0.875rem base
+<Typography variant="h6">        // 1.25rem base
+
+// Option 2: Reference theme typography in sx
+sx={{ fontSize: 'body1.fontSize' }}
+sx={{ fontSize: 'caption.fontSize' }}
+sx={{ fontSize: 'subtitle1.fontSize' }}
+
+// Option 3: For responsive, use variants
+<Typography variant={isMobile ? "body2" : "body1"}>
+```
+
+**Why this matters:**
+- Users can set font size to: small (0.875x), medium (1.0x), large (1.125x), or extraLarge (1.25x)
+- The `createDynamicTheme` function in theme.ts scales ALL Typography variants
+- Hardcoded sizes won't scale and break accessibility
+- This is managed by AppSettingsContext and applied via ThemeProvider
+
 #### Theme Colors
 - Background: #121212 (dark)
 - Primary: #BB86FC (purple)
@@ -297,7 +331,15 @@ sx={{
 }}
 ```
 
-### 10. Component Canvas Integration
+### 10. Font Size Testing
+
+When developing components:
+1. **Test with different font sizes** - Change setting in FontSizeSelector
+2. **Verify all text scales** - No hardcoded sizes should remain fixed
+3. **Check layout doesn't break** - Larger text shouldn't overflow containers
+4. **Use Typography variants** - Let the theme handle scaling
+
+### 11. Component Canvas Integration
 
 When creating new components:
 1. **Add to ComponentCanvas.tsx** at the START of the list
@@ -328,6 +370,8 @@ When creating new components:
 - ❌ Add emojis unless explicitly requested
 - ❌ Create documentation files unless requested
 - ❌ Use light theme colors
+- ❌ Use hardcoded font sizes (fontSize: '1rem', '14px', etc.)
+- ❌ Bypass the theme's typography system
 
 ## Common Tasks
 
@@ -376,6 +420,8 @@ Before completing any UI task, verify:
 - [ ] Added to ComponentCanvas if new
 - [ ] No TypeScript errors
 - [ ] Follows existing patterns
+- [ ] NO hardcoded font sizes - using Typography variants or theme references
+- [ ] Text scales properly with user's font size setting
 
 ## Example Workflows
 

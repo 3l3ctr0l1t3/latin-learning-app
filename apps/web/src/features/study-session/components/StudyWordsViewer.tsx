@@ -146,7 +146,6 @@ const StudyWordsViewer: React.FC<StudyWordsViewerProps> = ({
             borderWidth: 2,
             color: 'primary.main',
             fontWeight: 'medium',
-            fontSize: '1rem',
             backgroundColor: 'transparent',
             backdropFilter: 'blur(10px)',
             '&:hover': {

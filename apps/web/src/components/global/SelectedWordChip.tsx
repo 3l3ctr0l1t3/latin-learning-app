@@ -16,6 +16,7 @@ import {
   Avatar,    // Imagen circular o inicial dentro del chip
   Tooltip,
   Box,
+  Typography,
   alpha,
 } from '@mui/material';
 
@@ -107,12 +108,12 @@ const SelectedWordChip: React.FC<SelectedWordChipProps> = ({
         // Enunciación completa con género
         return (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }} data-testid="selected-word-chip-detailed-content">
-            <span style={{ fontWeight: 'bold' }} data-testid="selected-word-chip-word-text">
+            <Typography component="span" variant="body2" sx={{ fontWeight: 'bold' }} data-testid="selected-word-chip-word-text">
               {word.nominative}, {word.genitive}
-            </span>
-            <span style={{ opacity: 0.7, fontSize: '0.85em' }} data-testid="selected-word-chip-gender-text">
+            </Typography>
+            <Typography component="span" variant="caption" sx={{ opacity: 0.7 }} data-testid="selected-word-chip-gender-text">
               ({word.gender === 'masculine' ? 'm' : word.gender === 'feminine' ? 'f' : 'n'})
-            </span>
+            </Typography>
           </Box>
         );
       
@@ -133,10 +134,10 @@ const SelectedWordChip: React.FC<SelectedWordChipProps> = ({
       </Box>
       
       {/* Información gramatical */}
-      <Box sx={{ fontSize: '0.85em' }} data-testid="selected-word-chip-tooltip-grammar">
-        <div>Género: {word.gender === 'masculine' ? 'Masculino' : 
-                     word.gender === 'feminine' ? 'Femenino' : word.gender === 'neuter' ? 'Neutro': 'Común'}</div>
-        <div>Declinación: {word.declension}</div>
+      <Box data-testid="selected-word-chip-tooltip-grammar">
+        <Typography variant="body2">Género: {word.gender === 'masculine' ? 'Masculino' : 
+                     word.gender === 'feminine' ? 'Femenino' : word.gender === 'neuter' ? 'Neutro': 'Común'}</Typography>
+        <Typography variant="body2">Declinación: {word.declension}</Typography>
       </Box>
       
       {/* Traducción */}

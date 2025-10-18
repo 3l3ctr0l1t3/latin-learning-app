@@ -220,22 +220,34 @@ function AppContent() {
   
   return (
     <>
-      {/* HEADER WRAPPER - Contenedor que mantiene el espacio pero puede ocultar el contenido */}
+      {/* HEADER WRAPPER - Contenedor que usa transform para deslizar suavemente */}
       <Box
         sx={{
-          // Transiciones suaves para opacity y visibility
-          transition: 'all 0.3s ease-in-out',
-          // Ocultar visualmente cuando no está visible, pero mantener el espacio
-          opacity: headerVisible ? 1 : 0,
+          // Usar transform para deslizar el header arriba/abajo
+          // translateY(-100%) lo mueve completamente fuera de la pantalla hacia arriba
+          // translateY(0) lo mantiene en su posición normal
+          transform: headerVisible ? 'translateY(0)' : 'translateY(-100%)',
+          
+          // Transición suave usando transform para mejor rendimiento
+          // Transform es más eficiente que height/opacity porque no causa reflow
+          transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+          
           // Evitar interacciones cuando está oculto
           pointerEvents: headerVisible ? 'auto' : 'none',
-          // En modo sesión, colapsar completamente el header
-          height: isInStudySession ? 0 : 'auto',
-          overflow: 'hidden'
+          
+          // Mantener el header en la parte superior con posición fija
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: theme => theme.zIndex.appBar,
+          
+          // Agregar sombra cuando está visible para mejor separación visual
+          boxShadow: headerVisible ? '0 2px 4px rgba(0,0,0,0.2)' : 'none',
         }}
       >
         {/* AppBar - Barra de navegación superior mejorada y responsiva */}
-        <AppBar position="sticky" sx={{ bgcolor: 'background.paper', borderBottom: '1px solid', borderColor: 'divider' }}>
+        <AppBar position="static" sx={{ bgcolor: 'background.paper', borderBottom: '1px solid', borderColor: 'divider' }}>
           <Toolbar>
           {/* Menú hamburguesa en móvil */}
           {isMobile && (
@@ -255,11 +267,10 @@ function AppContent() {
           
           {/* Título de la aplicación - más corto en móvil */}
           <Typography 
-            variant="h6" 
+            variant={isMobile ? "body1" : "h6"}
             sx={{ 
               flexGrow: 1, 
-              color: 'text.primary',
-              fontSize: { xs: '1rem', sm: '1.25rem' } // Texto más pequeño en móvil
+              color: 'text.primary'
             }}
           >
             {isMobile ? 'Latin Learning' : 'Latin Learning - Entorno de Desarrollo'}
@@ -321,8 +332,6 @@ function AppContent() {
               sx={{
                 // Margen izquierdo para separarlo de otros botones
                 ml: { xs: 0, sm: 1 },
-                // En móvil, hacerlo más pequeño para que quepa
-                fontSize: { xs: '0.75rem', sm: '0.875rem' },
                 // Padding adaptativo según el tamaño de pantalla
                 px: { xs: 1, sm: 2 },
                 // Animación suave de aparición
@@ -428,15 +437,32 @@ function AppContent() {
         </Box>
       </Drawer>
       
+      {/* SPACER - Espacio que mantiene el layout cuando el header está visible */}
+      {/* Cuando el header es fixed, necesitamos este espacio para que el contenido no quede debajo */}
+      <Box 
+        sx={{ 
+          // Solo mostrar el spacer cuando el header está visible
+          // El height corresponde a la altura del AppBar (64px en desktop, 56px en mobile)
+          height: headerVisible ? { xs: 56, sm: 64 } : 0,
+          // Transición suave para coincidir con el header
+          transition: 'height 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+        }} 
+      />
+      
       {/* Contenedor principal con el contenido */}
       <Box sx={{ 
-        // Altura dinámica: pantalla completa en sesión, altura normal con header
-        minHeight: isInStudySession ? '100vh' : 'calc(100vh - 64px)', 
+        // Altura calculada: viewport completo menos el spacer actual
+        // Esto asegura que el contenido siempre llene la pantalla correctamente
+        minHeight: headerVisible 
+          ? { xs: 'calc(100vh - 56px)', sm: 'calc(100vh - 64px)' }  // Con header: resta altura del spacer
+          : '100vh',  // Sin header: pantalla completa
         bgcolor: 'background.default',
         width: '100%',
         overflow: 'hidden',  // Prevenir overflow horizontal
-        // Transición suave cuando cambia la altura
-        transition: 'min-height 0.3s ease-in-out'
+        // Padding top suave cuando el header está oculto para mejor transición visual
+        pt: headerVisible ? 0 : 2,
+        // Transición suave del padding y altura
+        transition: 'padding-top 0.4s cubic-bezier(0.4, 0, 0.2, 1), min-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
       }}>
         {/* Renderizado condicional: mostramos el componente según currentView */}
         {currentView === 'dashboard' && <Dashboard />}

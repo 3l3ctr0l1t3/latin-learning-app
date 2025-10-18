@@ -92,16 +92,8 @@ export const darkTheme = createTheme({
   
   // Typography defines font styles
   typography: {
-    // Font family - using system fonts for better performance
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-    ].join(','),  // join() creates a comma-separated string
+    // Font family - using CSS variable with fallback to system fonts
+    fontFamily: 'var(--font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif)',
     
     // Heading styles
     h1: {

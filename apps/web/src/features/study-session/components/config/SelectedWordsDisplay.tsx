@@ -111,7 +111,7 @@ const SelectedWordsDisplay: React.FC<SelectedWordsDisplayProps> = ({
           p: 0.5,                   // padding: 4px (0.5 * 8)
           minWidth: 'auto',         // No forzar ancho mínimo
           textTransform: 'none',    // No convertir a mayúsculas
-          fontSize: '0.875rem',     // Tamaño de fuente pequeño
+          fontSize: 'body2.fontSize',     // Tamaño de fuente pequeño
           border: '1px solid transparent',  // Borde transparente inicial para evitar saltos
           borderRadius: 1,          // Esquinas ligeramente redondeadas
           transition: 'border-color 0.2s ease',  // Transición suave del borde

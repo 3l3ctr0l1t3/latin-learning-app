@@ -65,32 +65,32 @@ export const StudySessionProvider: React.FC<{ children: ReactNode }> = ({ childr
   /**
    * ENTRAR EN SESIÓN DE ESTUDIO
    * 
-   * Activa el modo de sesión y oculta el header con animación
+   * Activa el modo de sesión y desliza el header hacia arriba con transform
+   * La animación es suave porque usa translateY sin causar reflow del layout
    */
   const enterStudySession = () => {
-    // Primero iniciamos la animación de ocultar
+    // Iniciamos la animación de deslizar el header hacia arriba
+    // El header se mueve con transform: translateY(-100%)
     setHeaderVisible(false);
     
-    // Después de un pequeño delay, marcamos que estamos en sesión
-    // Esto permite que la animación se complete suavemente
-    setTimeout(() => {
-      setIsInStudySession(true);
-    }, 150); // 150ms para que coincida con la animación CSS
+    // Marcamos inmediatamente que estamos en sesión
+    // Ya no necesitamos delay porque transform no causa layout shift
+    setIsInStudySession(true);
   };
   
   /**
    * SALIR DE SESIÓN DE ESTUDIO
    * 
-   * Desactiva el modo de sesión y muestra el header con animación
+   * Desactiva el modo de sesión y desliza el header de vuelta hacia abajo
+   * El header vuelve suavemente con transform: translateY(0)
    */
   const exitStudySession = () => {
-    // Primero marcamos que ya no estamos en sesión
+    // Marcamos que ya no estamos en sesión
     setIsInStudySession(false);
     
-    // Luego mostramos el header con animación
-    setTimeout(() => {
-      setHeaderVisible(true);
-    }, 50); // Pequeño delay para suavizar la transición
+    // Mostramos el header inmediatamente con animación de deslizamiento
+    // La transición CSS con cubic-bezier maneja el timing suave
+    setHeaderVisible(true);
   };
   
   // Valor que será provisto a todos los componentes hijos

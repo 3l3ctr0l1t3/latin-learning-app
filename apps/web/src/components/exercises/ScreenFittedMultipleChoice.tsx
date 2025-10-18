@@ -414,7 +414,7 @@ const ScreenFittedMultipleChoice: React.FC<ScreenFittedMultipleChoiceProps> = ({
                         'inherit' : 
                         'text.secondary',
                       fontWeight: 'bold',
-                      fontSize: '0.75rem'
+                      fontSize: 'caption.fontSize'
                     }}
                   />
                   

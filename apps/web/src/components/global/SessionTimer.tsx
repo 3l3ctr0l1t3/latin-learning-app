@@ -108,12 +108,11 @@ const SessionTimer: React.FC<SessionTimerProps> = ({
           data-testid="timer-icon"
         />
         <Typography 
-          variant="h6" 
+          variant="subtitle1" 
           sx={{ 
             fontWeight: 'bold',
             color: `${getTimerColor()}.main`,
-            fontFamily: 'monospace',
-            fontSize: '1.1rem'
+            fontFamily: 'var(--font-family-monospace, monospace)'
           }}
           data-testid="text-timer-display"
         >

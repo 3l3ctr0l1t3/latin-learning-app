@@ -19,7 +19,12 @@ body {
 
 /* Root defaults */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Font CSS Variables for consistent typography */
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-monospace: "Courier New", Courier, monospace;
+  
+  /* Apply the font variable */
+  font-family: var(--font-family-base);
   line-height: 1.5;
   font-weight: 400;
   color-scheme: dark;

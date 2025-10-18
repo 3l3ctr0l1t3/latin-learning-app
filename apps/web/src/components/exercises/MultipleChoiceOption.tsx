@@ -224,7 +224,7 @@ const MultipleChoiceOption: React.FC<MultipleChoiceOptionProps> = ({
                 backgroundColor: isSelected && !isAnswered ? '#BB86FC' : 'rgba(187, 134, 252, 0.15)',
                 color: isSelected && !isAnswered ? 'white' : 'text.primary',
                 fontWeight: 'bold',
-                fontSize: '1.1rem',
+                fontSize: 'subtitle1.fontSize',
                 transition: 'all 0.2s ease'
               }}
               data-testid={`option-label-${id}`}
