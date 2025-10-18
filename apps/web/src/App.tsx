@@ -102,7 +102,7 @@ function AppContent() {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // true si es móvil
   
   // Hook para acceder al contexto de sesión de estudio
-  const { headerVisible, isInStudySession } = useStudySession();
+  const { headerVisible } = useStudySession();
   
   /**
    * useEffect Hook - Configura el listener para el evento PWA
